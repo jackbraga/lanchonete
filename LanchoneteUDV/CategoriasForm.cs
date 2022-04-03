@@ -77,7 +77,7 @@ namespace LanchoneteUDV
                         });
                     }
 
-
+                    vai curintia!
                     RecarregaGrid();
                     MessageBox.Show("Categoria cadastrada com sucesso!", "Sucesso!", MessageBoxButtons.OK);
                     LimparButton_Click(sender, e);
