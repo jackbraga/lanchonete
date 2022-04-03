@@ -1,0 +1,110 @@
+﻿<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAGBgAAAEAIACICQAAFgAAACgAAAAYAAAAMAAAAAEAIAAAAAAAAAkAAAAAAAAAAAAAAAAAAAAA
+        AAD/////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////v7////+////////////////////////////////////
+        //////////79//////////////79///////////////////////////////////////////////+///+
+        /f/////////////+/f////7//////////////////////////////////////////v////3///////7/
+        //////////////////////////////////////7///////3////69ub/+vfp//3////////////+////
+        ///////////////////8+/X/8eKs//3////+////8OGs//n58P/////////+////////////////////
+        /v//////+vv3/+/LYf/usQv/7K0A/+7HV//7/fr//////////v/////////////+/P//////78hd/+/H
+        VP/vx1f/78dW/////////vz////////////////////////+/P/+////8M9v/+6mAP/urwL/8MdS/+25
+        Kf/uzm/////////+/P/////////+/////v//////8tuS/+6oAP/uqAD/8tqP//////////3/////////
+        ///////////+///////6+/X/7rgh/+6rAP/y2pP//v////z////u2ZX//Pv0//////////////////z9
+        /f/u1YX/668I/++wBf/vsAT/668I/+/Vh//7/fz////////////////////////////7/v//7rss/+2s
+        AP/59+z//////////v/8/v///v78//////////////////v69f/27cn/+Pbn/+7CRf/vwkL/+ffm//bs
+        yf/7+/b//////////v////7////////+/P//////8+Go/+ulAP/v03r//P////7+/P//////////////
+        //////////////////////////////HenP/z3pz///////////////////79///////////////+///+
+        /f////7//v////Xmtv/ux1b/8eGr//7///////7//////////////////////////////v3///////r5
+        8P/5+fD///////7+/P////////////39+f/5+fD////////////////////9/////////////v//////
+        ///////////////////////////////////////////////////+///////+///////69eL/+PLc//fz
+        3//t0n3/+/////Trxv/9/fr////////+/P///vz/////////////////////////////////////////
+        /////////////////v////////78///////389//6ctr/+/Vg//tx1j/7deM/+zSfv//////////////
+        /v///////////////////////////////////////////////////////////////////v3///////Ll
+        tf/t2ZH/78ha/++oAP/vrAD/7q4F/+7bmv/u1on/+vnw//////////7/////////////////////////
+        //////////////////////////////////////7///////r58P/u2ZL/7q4B/++xBP/vsgn/76wA/+6/
+        Ov/y6cP//f79////////////////////////////////////////////////////////////////////
+        //////7///////Xsy//r0Xn/77EL/++vAP/vsgf/76wA/+zCQv/u25z//Pv2////////////////////
+        //////////////////////////////////////////////////////7//v////Xsyf/y57v/7c1o/+2s
+        AP/vrgD/7bMT/+/hqv/x5LD/+vry//////////7/////////////////////////////////////////
+        //////////////////////////78///////59OD/6s1u/+7dnv/uzGj/79+l/+3Qef/+////////////
+        /v//////////////////////////////////////////////////////////////////////////////
+        ///6+Ov/+vnw//jz3v/s1ov//f////j04f/9/fr/////////////////////////////////////////
+        /////////////////////////////////////////////////v////////////7//v/9////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //////////////////////7////+/////////////////////v//////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAA=
+</value>
+  </data>
+</root>

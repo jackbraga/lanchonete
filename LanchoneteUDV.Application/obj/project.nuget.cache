@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "f+0LMXfGWd6pzt8zt5IDFqkfLiq0xVK6P3bHHbvfFFOFRP0WNyF3+4V+PgkhjJK/mNbJLKEA5b0vgEGKeP2ZXw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jacks\\OneDrive\\UDV\\Sistema\\lanchonete\\LanchoneteUDV.Application\\LanchoneteUDV.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jacks\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
+    "C:\\Users\\jacks\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

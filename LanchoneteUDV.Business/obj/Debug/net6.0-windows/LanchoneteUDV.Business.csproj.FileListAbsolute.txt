@@ -1,0 +1,17 @@
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.Business\bin\Debug\net6.0-windows\LanchoneteUDV.Business.deps.json
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.Business\bin\Debug\net6.0-windows\LanchoneteUDV.Business.dll
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.Business\bin\Debug\net6.0-windows\ref\LanchoneteUDV.Business.dll
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.Business\bin\Debug\net6.0-windows\LanchoneteUDV.Business.pdb
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.Business\bin\Debug\net6.0-windows\LanchoneteUDV.Database.dll
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.Business\bin\Debug\net6.0-windows\LanchoneteUDV.DataObject.dll
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.Business\bin\Debug\net6.0-windows\LanchoneteUDV.Database.pdb
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.Business\bin\Debug\net6.0-windows\LanchoneteUDV.DataObject.pdb
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.Business\obj\Debug\net6.0-windows\LanchoneteUDV.Business.csproj.AssemblyReference.cache
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.Business\obj\Debug\net6.0-windows\LanchoneteUDV.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.Business\obj\Debug\net6.0-windows\LanchoneteUDV.Business.AssemblyInfoInputs.cache
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.Business\obj\Debug\net6.0-windows\LanchoneteUDV.Business.AssemblyInfo.cs
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.Business\obj\Debug\net6.0-windows\LanchoneteUDV.Business.csproj.CoreCompileInputs.cache
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.Business\obj\Debug\net6.0-windows\LanchoneteUDV.Business.csproj.CopyComplete
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.Business\obj\Debug\net6.0-windows\LanchoneteUDV.Business.dll
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.Business\obj\Debug\net6.0-windows\ref\LanchoneteUDV.Business.dll
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.Business\obj\Debug\net6.0-windows\LanchoneteUDV.Business.pdb

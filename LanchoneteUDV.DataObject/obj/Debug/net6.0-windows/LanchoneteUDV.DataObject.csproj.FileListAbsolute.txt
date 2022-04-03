@@ -1,0 +1,12 @@
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.DataObject\bin\Debug\net6.0-windows\LanchoneteUDV.DataObject.deps.json
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.DataObject\bin\Debug\net6.0-windows\LanchoneteUDV.DataObject.dll
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.DataObject\bin\Debug\net6.0-windows\ref\LanchoneteUDV.DataObject.dll
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.DataObject\bin\Debug\net6.0-windows\LanchoneteUDV.DataObject.pdb
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.DataObject\obj\Debug\net6.0-windows\LanchoneteUDV.DataObject.csproj.AssemblyReference.cache
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.DataObject\obj\Debug\net6.0-windows\LanchoneteUDV.DataObject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.DataObject\obj\Debug\net6.0-windows\LanchoneteUDV.DataObject.AssemblyInfoInputs.cache
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.DataObject\obj\Debug\net6.0-windows\LanchoneteUDV.DataObject.AssemblyInfo.cs
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.DataObject\obj\Debug\net6.0-windows\LanchoneteUDV.DataObject.csproj.CoreCompileInputs.cache
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.DataObject\obj\Debug\net6.0-windows\LanchoneteUDV.DataObject.dll
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.DataObject\obj\Debug\net6.0-windows\ref\LanchoneteUDV.DataObject.dll
+C:\Users\jacks\OneDrive\UDV\Sistema\LanchoneteUDV.DataObject\obj\Debug\net6.0-windows\LanchoneteUDV.DataObject.pdb

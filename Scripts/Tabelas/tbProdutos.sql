@@ -1,0 +1,97 @@
+USE LANCHONETE 
+GO
+CREATE TABLE tbProdutos
+(
+	ID INT PRIMARY KEY IDENTITY,
+	Descricao VARCHAR(150) NOT NULL,
+	Categoria INT NOT NULL FOREIGN KEY REFERENCES tbCategorias(ID),
+	PrecoCustoCaixa DECIMAL(10,2),
+	QtdPorCaixa INT,
+	PrecoCustoUnitario DECIMAL(10,2),
+	PrecoVenda DECIMAL(10,2),
+	EstoqueInicial INT,
+	ProdutoVenda BIT
+--)
+--SET IDENTITY_INSERT tbProdutos ON 
+
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(56,'Açaí Médio','11','0',0,'0','12',100,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(57,'Açaí Pequeno','11','0',0,'0','7',100,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(58,'Açucar Refinado','12','0',0,'3.8','0',0,0)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(59,'Agua Com gás Limão 500ml','9','20.28',12,'1.69','4',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(60,'Agua Com gás 500ml','9','0',0,'1.29','4',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(61,'Agua de Coco 200ml','9','0',0,'2.29','4',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(62,'Agua Sem gás 500ml','9','0',0,'1.09','2.5',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(63,'Baguete de Calabresa','10','98.7',27,'3.66','7',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(64,'Baguete de Frango','10','98.7',27,'3.66','7',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(65,'Baguete de Mussarela','10','98.7',27,'3.66','7',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(66,'Bala Yorgute','11','7.39',100,'0.07','0.2',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(67,'Brownie','11','25',12,'2.08','5',24,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(68,'Cacau em pó','12','0',0,'13.9','0',0,0)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(69,'Café','9','0',0,'0','4',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(70,'Canudo Biodegradavel','13','8.9',0,'0','0',0,0)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(71,'Guaraviton Açai','9','0',0,'2.35','5',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(72,'Chiclete Bubbaloo Morango','11','7.99',60,'0.13','0.3',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(73,'Barra de Chocolate Hersheys','12','0',0,'3.79','0',0,0)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(74,'Talento Mini Tablet','11','24.85',15,'1.66','3.5',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(75,'Coca-Cola 220ml','9','0',0,'2.09','4',0,0)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(76,'Coca-Cola Zero 220ml','9','0',0,'2.09','4',0,0)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(77,'Coca-Cola 350ml','9','0',0,'2.35','5',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(78,'Coca-Cola Zero 350ml','9','0',0,'2.5','5',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(79,'Colher de Plastico','13','0',0,'4.05','0',0,0)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(80,'Dell Vale Maracujá 290ml','9','0',0,'2.65','5',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(81,'Dell Vale Uva 290ml','9','0',0,'2.65','5',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(82,'Essencia de Baunilha','12','0',0,'2.99','0',0,0)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(83,'Fanta Guaraná 220ml','9','0',0,'2.09','4',0,0)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(84,'Farinha de Trigo','12','0',0,'3.9','0',0,0)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(85,'Fini','11','7.29',12,'0.61','2',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(86,'Fini com açucar','11','7.29',12,'0.61','2',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(87,'Folhado de Calabresa','10','0',0,'3','6',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(88,'Granola','12','0',0,'20','0',0,0)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(89,'Guaraná Antártica 350ml','9','31.8',12,'2.65','5',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(90,'Guardanapo','13','0',0,'1.29','0',0,0)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(91,'Halls Morango','11','16.29',21,'0.78','2.5',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(92,'Kombucha Pink lemonade','9','0',0,'5','10',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(93,'Leite','12','0',0,'3.79','0',0,0)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(94,'Leite Condensado','12','0',0,'6.78','0',0,0)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(95,'Mini Croissant','10','68.12',100,'0.68','2.5',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(96,'Mousse de Maracujá','11','0',0,'0','5',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(97,'Nescau','12','0',0,'4.99','0',0,0)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(98,'Paçoca','11','19.9',50,'0.4','1',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(99,'Pavê','11','30',15,'2','6',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(100,'Pizza Lombinho Pedaço','10','16',8,'2','7',32,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(101,'Pizza Margherita Pedaço','10','16',8,'2','7',80,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(102,'Pizza Mussarela Pedaço','10','16',8,'2','7',40,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(103,'Pote para açaí medio','13','0',0,'2','0',0,0)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(104,'Pote para açaí pequeno','13','0',0,'2','0',0,0)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(105,'Saco para Lanches','13','0',0,'19.8','0',0,0)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(106,'Salgadinho Fofura','11','18',12,'1.5','3',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(107,'Ovo','12','0',0,'12.9','0',0,0)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(108,'Bandeija para Pizza','13','0',0,'13.39','0',0,0)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(109,'Plastico Filme','13','0',0,'6.29','0',0,0)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(110,'Salgadinho Torcida Bacon','11','0',0,'1.65','3',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(111,'Salgadinho Torcida Costela','11','0',0,'1.65','3',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(112,'Salgadinho Torcida Churrasco','11','0',0,'1.65','3',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(113,'Amendoin Japonês','11','0',0,'2.19','4',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(114,'Kombucha Hibisco com Abacaxi','9','0',0,'0','12',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(115,'Teste','11','0',0,'0','2',2,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(116,'Pudim','11','0',0,'0','5',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(117,'Palha Italiana','9','0',0,'0','3',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(118,'Agua de Coco 330ml','9','0',0,'3.89','6',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(119,'Cha Yai Lichia','9','0',0,'2.99','6',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(120,'Chá Yai Jabuticaba','9','0',0,'3.29','6',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(121,'Chá Yai Frutas Vermelhas','9','0',0,'3.29','6',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(122,'Chá Yai Limão','9','0',0,'3.29','6',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(131,'Amostra Bottons','14','0',0,'2.5','2.5',6,0)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(132,'Bottom Imã','14','0',0,'2.5','6',94,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(133,'Salgado','10','0',0,'0','6',72,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(134,'Pão de Queijo','10','0',0,'0','4',44,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(135,'Escova de dente','14','0',0,'1.1','6',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(136,'Garrafa de Agua Squeeze','14','0',0,'6.6','10',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(137,'Meia Branca','14','9.5',3,'0','8',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(138,'Clube Social','11','0',0,'0','2',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(139,'Barra de Cereal','11','7.8',12,'0','2',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(140,'Pingo de Leite','11','13.9',50,'0','0.5',0,1)
+--INSERT INTO tbProdutos(ID,Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) VALUES(141,'Amendoim sem pele','11','0',0,'0.99','2.5',0,1)
+
+
+--SET IDENTITY_INSERT tbProdutos OFF

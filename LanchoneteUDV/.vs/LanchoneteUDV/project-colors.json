@@ -1,0 +1,56 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b5a2b0a7-a94a-45ce-8596-93cabb91708b": {
+      "ProjectGuid": "b5a2b0a7-a94a-45ce-8596-93cabb91708b",
+      "DisplayName": "LanchoneteUDV",
+      "ColorIndex": 0
+    },
+    "a517f744-634f-4a7e-a133-a93c83956b58": {
+      "ProjectGuid": "a517f744-634f-4a7e-a133-a93c83956b58",
+      "DisplayName": "LanchoneteUDV.Database",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "92da6891-d36f-489f-9281-2bd9e0e85bf7": {
+      "ProjectGuid": "92da6891-d36f-489f-9281-2bd9e0e85bf7",
+      "DisplayName": "LanchoneteUDV.DataObject",
+      "ColorIndex": 2
+    },
+    "b3f58bfb-8fef-4c74-8fb6-2444808f4435": {
+      "ProjectGuid": "b3f58bfb-8fef-4c74-8fb6-2444808f4435",
+      "DisplayName": "LanchoneteUDV.Business",
+      "ColorIndex": 3
+    },
+    "a945d85e-d943-4426-bb4a-8ca5d9d81233": {
+      "ProjectGuid": "a945d85e-d943-4426-bb4a-8ca5d9d81233",
+      "DisplayName": "LanchoneteUDV.Services",
+      "ColorIndex": 4
+    },
+    "937b00eb-eb36-4d2c-8fbd-b8721eb2e5d6": {
+      "ProjectGuid": "937b00eb-eb36-4d2c-8fbd-b8721eb2e5d6",
+      "DisplayName": "LanchoneteUDV.Domain",
+      "ColorIndex": 5
+    },
+    "3347f8ff-fd89-408b-b79a-73d820f117d9": {
+      "ProjectGuid": "3347f8ff-fd89-408b-b79a-73d820f117d9",
+      "DisplayName": "LanchoneteUDV.Infra.Data",
+      "ColorIndex": 6
+    },
+    "44479c76-62f8-4eec-9bec-5e754891a970": {
+      "ProjectGuid": "44479c76-62f8-4eec-9bec-5e754891a970",
+      "DisplayName": "LanchoneteUDV.Application",
+      "ColorIndex": 7
+    },
+    "66080b99-3746-4eea-b736-aa0556004b5d": {
+      "ProjectGuid": "66080b99-3746-4eea-b736-aa0556004b5d",
+      "DisplayName": "LanchoneteUDV.Infra.IoC",
+      "ColorIndex": 8
+    }
+  },
+  "NextColorIndex": 9
+}
