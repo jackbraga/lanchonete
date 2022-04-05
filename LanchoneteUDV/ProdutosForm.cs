@@ -1,25 +1,20 @@
-﻿using LanchoneteUDV.Business;
-using LanchoneteUDV.DataObject;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using LanchoneteUDV.Application.DTO;
+using LanchoneteUDV.Application.Interfaces;
+using LanchoneteUDV.Business;
+
 
 namespace LanchoneteUDV
 {
 
     public partial class ProdutosForm : Form
     {
-        CategoriasBLL _bll = new CategoriasBLL();
-        ProdutosBLL _bllProdutos = new ProdutosBLL();
         Helper _helper = new Helper();
-        public ProdutosForm()
+        private readonly IProdutoService _produtoService;
+        private readonly ICategoriaService _categoriaService;
+        public ProdutosForm(IProdutoService produtoService, ICategoriaService categoriaService)
         {
+            _produtoService = produtoService;
+            _categoriaService = categoriaService;
             InitializeComponent();
 
         }
@@ -28,9 +23,11 @@ namespace LanchoneteUDV
 
         private void ProdutosForm_Load(object sender, EventArgs e)
         {
-            CategoriaComboBox.DataSource = _bll.ListarCategorias();
+            //CategoriaComboBox.DataSource = _bll.ListarCategorias();
+            CategoriaComboBox.DataSource = _categoriaService.GetCategorias().ToList();
             CategoriaComboBox.DisplayMember = "Descricao";
             CategoriaComboBox.ValueMember = "ID";
+            CategoriaComboBox.SelectedIndex = -1;
 
             RecarregaGrid();
         }
@@ -95,30 +92,40 @@ namespace LanchoneteUDV
 
         private void SalvarButton_Click(object sender, EventArgs e)
         {
-            ProdutoDTO produto = new ProdutoDTO();
-
-            produto.ID = Convert.ToInt32(IdTextBox.Text);
+       
+            //produto.ID = Convert.ToInt32(IdTextBox.Text);
 
             if (!ValidaCamposParaSalvar())
             {
                 return;
             }
 
-
-
             ValidaComZero(QtdCaixaTextBox, EstoqueInicialTextBox, CategoriaComboBox, PrecoCustoCaixaTextBox, PrecoCustoUnitarioTextBox, PrecoVendaTextBox
                 , ProdutoVendaCheckBox);
 
-            produto.Descricao = DescricaoTextBox.Text.Trim();
-            produto.QuantidadePorCaixa = Convert.ToInt32(QtdCaixaTextBox.Text);
-            produto.EstoqueInicial = Convert.ToInt32(EstoqueInicialTextBox.Text);
-            produto.IDCategoria = Convert.ToInt32(CategoriaComboBox.SelectedValue);
-            produto.PrecoCustoCaixa = Double.Parse(PrecoCustoCaixaTextBox.Text);
-            produto.PrecoCustoUnitario = Double.Parse(PrecoCustoUnitarioTextBox.Text);
-            produto.PrecoVenda = Double.Parse(PrecoVendaTextBox.Text);
-            produto.ProdutoVenda = Convert.ToBoolean(ProdutoVendaCheckBox.Checked);
 
-            _bllProdutos.SalvarProduto(produto);
+            var produto = new ProdutoDTO
+            {
+                Id = Convert.ToInt32(IdTextBox.Text),
+                CategoriaId = (Int32)CategoriaComboBox.SelectedValue,
+                Descricao = DescricaoTextBox.Text.Trim(),
+                EstoqueInicial = Convert.ToInt32(EstoqueInicialTextBox.Text),
+                PrecoCustoCaixa = Double.Parse(PrecoCustoCaixaTextBox.Text),
+                PrecoCustoUnitario = Double.Parse(PrecoCustoUnitarioTextBox.Text),
+                PrecoVenda = Double.Parse(PrecoVendaTextBox.Text),
+                ProdutoVenda = Convert.ToBoolean(ProdutoVendaCheckBox.Checked),
+                QtdPorCaixa = Convert.ToInt32(QtdCaixaTextBox.Text)
+            };
+
+
+            if (produto.Id > 0)
+            {
+                _produtoService.Update(produto);
+            }
+            else
+            {
+                _produtoService.Add(produto);
+            }
 
             RecarregaGrid();
             LimparButton_Click(sender, e);
@@ -149,8 +156,6 @@ namespace LanchoneteUDV
 
             return valido;
         }
-
-
 
         private void EditarButton_Click(object sender, EventArgs e)
         {
@@ -184,7 +189,7 @@ namespace LanchoneteUDV
 
             IdTextBox.Text = ProdutosDataGridView.Rows[row].Cells[0].Value.ToString();
             DescricaoTextBox.Text = ProdutosDataGridView.Rows[row].Cells[1].Value.ToString();
-            CategoriaComboBox.SelectedValue = ProdutosDataGridView.Rows[row].Cells[2].Value.ToString();
+            CategoriaComboBox.SelectedValue = ProdutosDataGridView.Rows[row].Cells[2].Value;
             PrecoCustoCaixaTextBox.Text = String.Format("{0:N2}", double.Parse(ProdutosDataGridView.Rows[row].Cells[4].Value.ToString()));
             QtdCaixaTextBox.Text = ProdutosDataGridView.Rows[row].Cells[5].Value.ToString();
             PrecoCustoUnitarioTextBox.Text = String.Format("{0:N2}", double.Parse(ProdutosDataGridView.Rows[row].Cells[6].Value.ToString()));
@@ -203,7 +208,8 @@ namespace LanchoneteUDV
 
         private void PesquisaTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            ProdutosDataGridView.DataSource = _bllProdutos.PesquisarProduto(PesquisaTextBox.Text);
+            //ProdutosDataGridView.DataSource = _bllProdutos.PesquisarProduto(PesquisaTextBox.Text);
+            RecarregaGrid(PesquisaTextBox.Text);
         }
 
         #endregion
@@ -214,7 +220,7 @@ namespace LanchoneteUDV
         {
             IdTextBox.Text = "0";
             DescricaoTextBox.Clear();
-            CategoriaComboBox.SelectedIndex = 0;
+            CategoriaComboBox.SelectedIndex = -1;
             PrecoCustoCaixaTextBox.Text = "0";
             QtdCaixaTextBox.Text = "0";
             PrecoCustoUnitarioTextBox.Text = "0";
@@ -225,15 +231,22 @@ namespace LanchoneteUDV
 
         private void RecarregaGrid()
         {
+            ProdutosDataGridView.DataSource = _produtoService.GetAll();
+            FormatarGrid();
+        }
+        private void RecarregaGrid(string pesquisa)
+        {
+            ProdutosDataGridView.DataSource = _produtoService.GetByName(pesquisa);
+            FormatarGrid();
+        }
 
-            ProdutosDataGridView.DataSource = _bllProdutos.ListarProdutos();
+        private void FormatarGrid() 
+        {
             ProdutosDataGridView.Columns[0].Visible = false;
             ProdutosDataGridView.Columns[2].Visible = false;
-
             ProdutosDataGridView.Columns[1].Width = 230;
             ProdutosDataGridView.Columns[4].HeaderText = "Custo Caixa";
             ProdutosDataGridView.Columns[4].DefaultCellStyle.Format = "R$ 0.00##";
-
             ProdutosDataGridView.Columns[5].HeaderText = "Qtd na Caixa";
             ProdutosDataGridView.Columns[6].HeaderText = "Custo Unitário";
             ProdutosDataGridView.Columns[6].DefaultCellStyle.Format = "R$ 0.00##";
@@ -241,10 +254,8 @@ namespace LanchoneteUDV
             ProdutosDataGridView.Columns[7].DefaultCellStyle.Format = "R$ 0.00##";
             ProdutosDataGridView.Columns[8].HeaderText = "Estoque Inicial";
             ProdutosDataGridView.Columns[9].HeaderText = "Produto de Venda";
-
-
-
         }
+
         public void ValidaComZero(params Object[] objetos)
         {
 
@@ -257,11 +268,18 @@ namespace LanchoneteUDV
             }
         }
 
-
         #endregion
 
+        private void ExcluirButton_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja realmente excluir esse produto?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                _produtoService.Remove(Convert.ToInt32(IdTextBox.Text));
 
-
-  
+                MessageBox.Show("Produto removido com sucesso!", "Sucesso!", MessageBoxButtons.OK);
+                LimparButton_Click(sender, e);
+                RecarregaGrid();
+            }
+        }
     }
 }

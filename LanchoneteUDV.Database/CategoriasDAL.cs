@@ -19,7 +19,7 @@ namespace LanchoneteUDV.Database
             string query = "SELECT ID,Descricao FROM tbCategorias order by Descricao";
 
             try
-            {   
+            {
                 dados = _banco.ExecutarQueryDados(query);
             }
             catch (Exception)
@@ -37,7 +37,7 @@ namespace LanchoneteUDV.Database
         public DataTable PesquisarCategoria(string pesquisa)
         {
             DataTable dados = new DataTable();
-            string query = "SELECT ID,Descricao FROM tbCategorias WHERE Descricao Like '" + pesquisa +"%'order by Descricao";
+            string query = "SELECT ID,Descricao FROM tbCategorias WHERE Descricao Like '" + pesquisa + "%'order by Descricao";
 
             try
             {
@@ -58,7 +58,7 @@ namespace LanchoneteUDV.Database
         {
             //OleDbCommand cmd = new OleDbCommand();
             SqlCommand cmd = new SqlCommand();
-            
+
             cmd.CommandText =
                 "INSERT INTO tbCategorias " +
                 "(Descricao)" +

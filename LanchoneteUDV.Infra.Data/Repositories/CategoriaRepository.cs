@@ -13,26 +13,26 @@ namespace LanchoneteUDV.Infra.Data.Repositories
             Connection = connection;
         }
 
-        public async Task<IEnumerable<Categoria>> GetCategoriasAsync()
+        public  IEnumerable<Categoria> GetCategorias()
         {
-            string sql = "SELECT ID,Descricao FROM tbCategorias order by Descricao";
+            string sql = "SELECT ID,Descricao FROM tbCategorias WITH(NOLOCK) order by Descricao";
             IList<Categoria> categorias = new List<Categoria>();
             
             using (var connectionDb = Connection.Connection())
             {
                 connectionDb.Open();
 
-               return await connectionDb.QueryAsync<Categoria>(sql);
+               return  connectionDb.Query<Categoria>(sql);
                 
             }
            
         }
-        public Task<Categoria> GetByIdAsync(int? id)
+        public Categoria GetById(int? id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Categoria>> GetByNameAsync(string texto)
+        public  IEnumerable<Categoria> GetByName(string texto)
         {
             string sql = "SELECT ID,Descricao FROM tbCategorias WHERE Descricao Like @texto% order by Descricao";
             IList<Categoria> categorias = new List<Categoria>();
@@ -42,7 +42,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                 connectionDb.Open();
 
 
-                return await connectionDb.QueryAsync<Categoria>(sql,
+                return  connectionDb.Query<Categoria>(sql,
                     new
                     {
                         texto = texto
@@ -52,8 +52,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
             }
         }
 
-
-        public async Task<Categoria> CreateAsync(Categoria categoria)
+        public  Categoria Create(Categoria categoria)
         {
             string sql = "INSERT INTO tbCategorias(Descricao) VALUES(@descricao)";
 
@@ -61,7 +60,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
             {
                 connectionDb.Open();
 
-                var result = await connectionDb.ExecuteAsync(sql,
+                var result =  connectionDb.Execute(sql,
                     new
                     {
                         descricao = categoria.Descricao
@@ -73,8 +72,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
 
         }
 
-
-        public async Task<Categoria> RemoveAsync(Categoria categoria)
+        public  Categoria Remove(Categoria categoria)
         {
             string sql = "DELETE FROM tbCategorias WHERE ID=@id";
 
@@ -82,7 +80,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
             {
                 connectionDb.Open();
 
-                var result = await connectionDb.ExecuteAsync(sql,
+                var result =  connectionDb.Execute(sql,
                     new
                     {
                         id = categoria.Id
@@ -92,7 +90,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
 
             return categoria;
         }
-        public async Task<Categoria> UpdateAsync(Categoria categoria)
+        public  Categoria Update(Categoria categoria)
         {
             string sql = "UPDATE tbCategorias SET Descricao = @descricao WHERE ID = @id";
 
@@ -100,7 +98,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
             {
                 connectionDb.Open();
 
-                var result = await connectionDb.ExecuteAsync(sql,
+                var result =  connectionDb.Execute(sql,
                     new
                     {
                         descricao=categoria.Descricao,

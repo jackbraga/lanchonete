@@ -1,4 +1,5 @@
-﻿using LanchoneteUDV.Business;
+﻿using LanchoneteUDV.Application.Interfaces;
+using LanchoneteUDV.Business;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,11 +16,15 @@ namespace LanchoneteUDV
     {
         VendasBLL _bllVendas = new VendasBLL();
         FinanceiroBLL _bllFinanceiro = new FinanceiroBLL();
-        EscalasBLL _bllEscalas = new EscalasBLL();
+        
+        private readonly IEscalaService _escalaService;
         Helper _helper = new Helper();
         public int IDEscala { get; set; }
-        public RepasseTesourariaVendaForm()
+
+
+        public RepasseTesourariaVendaForm(IEscalaService escalaService)
         {
+            _escalaService = escalaService;
             InitializeComponent();
         }
 
@@ -81,7 +86,7 @@ namespace LanchoneteUDV
         {
             if (MessageBox.Show("Deseja realmente finalizar essa escala?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                _bllEscalas.FinalizarEscala(IDEscala);
+                _escalaService.FinalizarEscala(IDEscala);
             }
             RecarregarTela();
         }

@@ -408,6 +408,7 @@
             this.ExcluirButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.ExcluirButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.ExcluirButton.UseVisualStyleBackColor = true;
+            this.ExcluirButton.Click += new System.EventHandler(this.ExcluirButton_Click);
             // 
             // EditarButton
             // 

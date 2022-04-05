@@ -11,7 +11,10 @@ namespace LanchoneteUDV.Domain.Entidades
     {
         public string Descricao { get; private set; }
 
+        public Categoria()
+        {
 
+        }
         public Categoria(string descricao)
         {
             ValidarDominio(descricao);

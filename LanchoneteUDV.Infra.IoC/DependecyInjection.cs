@@ -15,6 +15,12 @@ namespace LanchoneteUDV.Infra.IoC
         {
             Bind(typeof(ICategoriaService)).To(typeof(CategoriaService));
             Bind(typeof(ICategoriaRepository)).To(typeof(CategoriaRepository));
+            Bind(typeof(IEscalaService)).To(typeof(EscalaService));
+            Bind(typeof(IEscalaRepository)).To(typeof(EscalaRepository));
+            Bind(typeof(IProdutoService)).To(typeof(ProdutoService));
+            Bind(typeof(IProdutoRepository)).To(typeof(ProdutoRepository));
+
+
             Bind(typeof(IConnectionFactory)).To(typeof(DefaultSqlConnectionFactory));
             var mapperConfiguration = new MapperConfiguration(cfg => { cfg.AddProfile<DomaintToDTOMappingProfile>(); });
             this.Bind<IMapper>().ToConstructor(c => new Mapper(mapperConfiguration)).InSingletonScope();

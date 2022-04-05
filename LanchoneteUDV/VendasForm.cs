@@ -1,4 +1,5 @@
-﻿using LanchoneteUDV.Business;
+﻿using LanchoneteUDV.Application.Interfaces;
+using LanchoneteUDV.Business;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,9 +15,12 @@ namespace LanchoneteUDV
     public partial class VendasForm : Form
     {
         VendasBLL _bllVendas = new VendasBLL();
-        public VendasForm()
+        private readonly IProdutoService _produtoService;
+        public VendasForm(IProdutoService produtoService)
         {
+            _produtoService = produtoService;
             InitializeComponent();
+            
         }
 
         private void VendasForm_Load(object sender, EventArgs e)
@@ -70,7 +74,7 @@ namespace LanchoneteUDV
         {
             int row = VendasDataGridView.CurrentRow.Index;
 
-            PedidoForm pedido = new PedidoForm();
+            PedidoForm pedido = new PedidoForm(_produtoService);
             pedido.IdEscala = Convert.ToInt32(IdTextBox.Text);
             pedido.IdSocio = Convert.ToInt32(VendasDataGridView.Rows[row].Cells[1].Value);
             pedido.ShowDialog();
@@ -113,7 +117,7 @@ namespace LanchoneteUDV
 
         private void NovoButton_Click_1(object sender, EventArgs e)
         {
-            PedidoForm pedido = new PedidoForm();
+            PedidoForm pedido = new PedidoForm(_produtoService);
             pedido.IdEscala = Convert.ToInt32(IdTextBox.Text);
             pedido.ShowDialog();
             RecarregarTela();
