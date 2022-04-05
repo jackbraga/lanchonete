@@ -22,14 +22,14 @@ namespace LanchoneteUDV
 
         private async void RecarregaGrid()
         {
-            CategoriasDataGridView.DataSource = await _categoriaService.GetCategorias();
+            CategoriasDataGridView.DataSource =  _categoriaService.GetCategorias();
             CategoriasDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             CategoriasDataGridView.Columns[0].Visible = false;
             CategoriasDataGridView.Columns[1].MinimumWidth = 430;
         }
         private async void RecarregaGrid(string texto)
         {
-            CategoriasDataGridView.DataSource = await _categoriaService.GetByNameAsync(texto);
+            CategoriasDataGridView.DataSource =  _categoriaService.GetByName(texto);
             CategoriasDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             CategoriasDataGridView.Columns[0].Visible = false;
             CategoriasDataGridView.Columns[1].MinimumWidth = 430;
@@ -44,7 +44,7 @@ namespace LanchoneteUDV
             _helper.Desabilita(DescricaoTextBox, IdTextBox, SalvarButton);
             _helper.Habilita(ExcluirButton, EditarButton);
         }
-        private async void LimparButton_Click(object sender, EventArgs e)
+        private  void LimparButton_Click(object sender, EventArgs e)
         {
             IdTextBox.Text = "0";
             DescricaoTextBox.Text = "";
@@ -52,7 +52,7 @@ namespace LanchoneteUDV
             _helper.Desabilita(ExcluirButton, EditarButton);
         }
 
-        private async void SalvarButton_Click(object sender, EventArgs e)
+        private  void SalvarButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace LanchoneteUDV
                 {
                     if (Convert.ToInt32(IdTextBox.Text) > 0)
                     {
-                        await _categoriaService.Update(new Application.DTO.CategoriaDTO
+                         _categoriaService.Update(new Application.DTO.CategoriaDTO
                         {
                             Id = Convert.ToInt32(IdTextBox.Text),
                             Descricao = DescricaoTextBox.Text.Trim()
@@ -70,14 +70,13 @@ namespace LanchoneteUDV
                     }
                     else
                     {
-                        await _categoriaService.Add(new Application.DTO.CategoriaDTO
+                         _categoriaService.Add(new Application.DTO.CategoriaDTO
                         {
                             Id = Convert.ToInt32(IdTextBox.Text),
                             Descricao = DescricaoTextBox.Text.Trim()
                         });
                     }
 
-                    vai curintia!
                     RecarregaGrid();
                     MessageBox.Show("Categoria cadastrada com sucesso!", "Sucesso!", MessageBoxButtons.OK);
                     LimparButton_Click(sender, e);
@@ -101,14 +100,14 @@ namespace LanchoneteUDV
             RecarregaGrid(PesquisaTextBox.Text);
         }
 
-        private async void ExcluirButton_Click(object sender, EventArgs e)
+        private  void ExcluirButton_Click(object sender, EventArgs e)
         {
             try
             {
 
                 if (MessageBox.Show("Deseja realmente excluir a categoria: " + DescricaoTextBox.Text, "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    await _categoriaService.Remove(new CategoriaDTO
+                     _categoriaService.Remove(new CategoriaDTO
                     {
                         Id = Convert.ToInt32(IdTextBox.Text),
                         Descricao = DescricaoTextBox.Text

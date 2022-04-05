@@ -22,41 +22,41 @@ namespace LanchoneteUDV.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<CategoriaDTO>> GetCategorias()
+        public IEnumerable<CategoriaDTO> GetCategorias()
         {
-            var categorias = await _categoriaRepository.GetCategoriasAsync();
+            var categorias = _categoriaRepository.GetCategorias();
 
             return _mapper.Map<IEnumerable<CategoriaDTO>>(categorias);
         }
 
-        public async Task<IEnumerable<CategoriaDTO>> GetByNameAsync(string texto)
+        public IEnumerable<CategoriaDTO> GetByName(string texto)
         {
-            var categorias = await _categoriaRepository.GetByNameAsync(texto);
+            var categorias = _categoriaRepository.GetByName(texto);
 
             return _mapper.Map<IEnumerable<CategoriaDTO>>(categorias);
         }
 
-        public Task<CategoriaDTO> GetById(int? id)
+        public CategoriaDTO GetById(int? id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task Add(CategoriaDTO categoryDTO)
+        public void Add(CategoriaDTO categoryDTO)
         {
             var categoria = _mapper.Map<Categoria>(categoryDTO);
-            await _categoriaRepository.CreateAsync(categoria);
+             _categoriaRepository.Create(categoria);
         }
 
-        public async Task Update(CategoriaDTO categoryDTO)
+        public void Update(CategoriaDTO categoryDTO)
         {
             var categoria = _mapper.Map<Categoria>(categoryDTO);
-            await _categoriaRepository.UpdateAsync(categoria);
+             _categoriaRepository.Update(categoria);
         }
 
-        public async Task Remove(CategoriaDTO categoriaDTO)
+        public void Remove(CategoriaDTO categoriaDTO)
         {
             var categoria = _mapper.Map<Categoria>(categoriaDTO);
-            await _categoriaRepository.RemoveAsync(categoria);
+             _categoriaRepository.Remove(categoria);
         }
 
 

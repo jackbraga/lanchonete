@@ -1,4 +1,5 @@
-﻿using LanchoneteUDV.Business;
+﻿using LanchoneteUDV.Application.Interfaces;
+using LanchoneteUDV.Business;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,10 +14,12 @@ namespace LanchoneteUDV
 {
     public partial class RepasseTesourariaForm : Form
     {
-        EscalasBLL _bllEscalas = new EscalasBLL();
+        //EscalasBLL _bllEscalas = new EscalasBLL();
         Helper _helper = new Helper();
-        public RepasseTesourariaForm()
+        private readonly IEscalaService _escalaService;
+        public RepasseTesourariaForm(IEscalaService escalaService)
         {
+            _escalaService=escalaService;
             InitializeComponent();
         }
 
@@ -29,7 +32,7 @@ namespace LanchoneteUDV
 
         private void AbrirEscalaButton_Click(object sender, EventArgs e)
         {
-            RepasseTesourariaVendaForm repasseVendaForm = new RepasseTesourariaVendaForm();
+            RepasseTesourariaVendaForm repasseVendaForm = new RepasseTesourariaVendaForm(_escalaService);
             repasseVendaForm.IDEscala = Convert.ToInt32(IdTextBox.Text);
             repasseVendaForm.ShowDialog();
             RecarregarGrid();
@@ -61,7 +64,7 @@ namespace LanchoneteUDV
         #region Metodos
         private void RecarregarGrid()
         {
-            EscalasDataGridView.DataSource = _bllEscalas.ListarEscalas();
+            EscalasDataGridView.DataSource = _escalaService.GetAll();
             EscalasDataGridView.Columns[0].Visible = false;
 
             EscalasDataGridView.Columns[1].HeaderText = "Data da Escala";

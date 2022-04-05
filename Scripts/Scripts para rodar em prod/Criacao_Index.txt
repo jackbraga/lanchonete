@@ -1,0 +1,3 @@
+CREATE   NONCLUSTERED INDEX    IX_tbVendas_Escala   ON dbo.tbVendas (Escala);
+CREATE   NONCLUSTERED INDEX    IX_tbVendasPedido_Venda   ON dbo.tbVendasPedido (Venda);
+CREATE   NONCLUSTERED INDEX    IX_tbVendas_Escala   ON dbo.tbVendas (Escala);

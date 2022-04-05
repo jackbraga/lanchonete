@@ -9,12 +9,12 @@ namespace LanchoneteUDV.Domain.Interfaces
 {
     public interface ICategoriaRepository
     {
-        Task<IEnumerable<Categoria>> GetCategoriasAsync();
-        Task<Categoria> GetByIdAsync(int? id);
+        IEnumerable<Categoria> GetCategorias();
+        Categoria GetById(int? id);
 
-        Task<IEnumerable<Categoria>> GetByNameAsync(string texto);
-        Task<Categoria> CreateAsync(Categoria categoria);
-        Task<Categoria> UpdateAsync(Categoria categoria);
-        Task<Categoria> RemoveAsync(Categoria categoria);
+        IEnumerable<Categoria> GetByName(string texto);
+        Categoria Create(Categoria categoria);
+        Categoria Update(Categoria categoria);
+        Categoria Remove(Categoria categoria);
     }
 }

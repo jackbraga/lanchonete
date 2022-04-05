@@ -7,9 +7,13 @@ namespace LanchoneteUDV
     public partial class PrincipalForm : Form
     {
         private readonly ICategoriaService _categoriaService;
-        public PrincipalForm(ICategoriaService categoriaService)
+        private readonly IEscalaService _escalaService;
+        private readonly IProdutoService _produtoService;
+        public PrincipalForm(ICategoriaService categoriaService, IEscalaService escalaService, IProdutoService produtoService)
         {
             _categoriaService = categoriaService;
+            _escalaService = escalaService;
+            _produtoService = produtoService;
             InitializeComponent();
         }
 
@@ -28,7 +32,7 @@ namespace LanchoneteUDV
 
         private void cadastroProdutosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ProdutosForm sc = new ProdutosForm();
+            ProdutosForm sc = new ProdutosForm(_produtoService,_categoriaService);
             sc.Show();
         }
 
@@ -41,7 +45,7 @@ namespace LanchoneteUDV
 
         private void escalasDeVendaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EscalasForm sc = new EscalasForm();
+            EscalasForm sc = new EscalasForm(_escalaService,_produtoService);
             sc.Show();
         }
 
@@ -53,9 +57,7 @@ namespace LanchoneteUDV
 
         private async void gerarRepasseTesourariaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //GranatumService service = new GranatumService();
-            //var lancamentos = await service.GetLancamentosAsync();
-            RepasseTesourariaForm sc = new RepasseTesourariaForm();
+            RepasseTesourariaForm sc = new RepasseTesourariaForm(_escalaService);
             sc.Show();
         }
 

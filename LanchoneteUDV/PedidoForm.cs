@@ -1,4 +1,5 @@
-﻿using LanchoneteUDV.Business;
+﻿using LanchoneteUDV.Application.Interfaces;
+using LanchoneteUDV.Business;
 using LanchoneteUDV.DataObject;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,10 @@ namespace LanchoneteUDV
     public partial class PedidoForm : Form
     {
         SociosBLL _bllSocios = new SociosBLL();
-        ProdutosBLL _bllProdutos = new ProdutosBLL();
+        //ProdutosBLL _bllProdutos = new ProdutosBLL();
+
+        private readonly IProdutoService _produtoService;
+
         VendasBLL _bllVendas = new VendasBLL();
         VendasPedidoBLL _bllVendasPedido = new VendasPedidoBLL();
         Helper _helper = new Helper();
@@ -28,8 +32,9 @@ namespace LanchoneteUDV
         public int IdVenda { get; set; }
 
 
-        public PedidoForm()
+        public PedidoForm(IProdutoService produtoService)
         {
+            _produtoService = produtoService;
             InitializeComponent();
         }
 
@@ -191,13 +196,15 @@ namespace LanchoneteUDV
 
             DataTable dt = new DataTable();
 
-            dt = _bllProdutos.ListarProdutosParaVendaPorEscala(IdEscala);
-            ProdutosComboBox.DataSource = dt;
+            //dt = _bllProdutos.ListarProdutosParaVendaPorEscala(IdEscala);
+            //ProdutosComboBox.DataSource = dt;
+            var lista = _produtoService.ListarProdutosParaVendaPorEscala(IdEscala);
+            ProdutosComboBox.DataSource = lista;
             ProdutosComboBox.DisplayMember = "Descricao";
             ProdutosComboBox.ValueMember = "ID";
             ProdutosComboBox.SelectedValue = -1;
 
-            PrecoComboBox.DataSource = dt;
+            PrecoComboBox.DataSource = lista;
             PrecoComboBox.DisplayMember = "PrecoVenda";
 
             PrecoComboBox.ValueMember = "ID";

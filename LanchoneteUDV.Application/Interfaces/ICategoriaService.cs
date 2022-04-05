@@ -9,14 +9,14 @@ namespace LanchoneteUDV.Application.Interfaces
 {
     public interface ICategoriaService
     {
-        Task<IEnumerable<CategoriaDTO>> GetCategorias();
+        IEnumerable<CategoriaDTO> GetCategorias();
 
-        Task<IEnumerable<CategoriaDTO>> GetByNameAsync(string texto);
+        IEnumerable<CategoriaDTO> GetByName(string texto);
 
-        Task<CategoriaDTO> GetById(int? id);
+        CategoriaDTO GetById(int? id);
 
-        Task Add(CategoriaDTO categoryDTO);
-        Task Update(CategoriaDTO categoryDTO);
-        Task Remove(CategoriaDTO categoria);
+        void Add(CategoriaDTO categoryDTO);
+        void Update(CategoriaDTO categoryDTO);
+        void Remove(CategoriaDTO categoria);
     }
 }

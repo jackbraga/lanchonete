@@ -1,25 +1,22 @@
-﻿using LanchoneteUDV.Business;
-using LanchoneteUDV.DataObject;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using LanchoneteUDV.Application.DTO;
+using LanchoneteUDV.Application.Interfaces;
 
 namespace LanchoneteUDV
 {
     public partial class EscalasForm : Form
     {
-        EscalasBLL _bllEscalas = new EscalasBLL();
+        //EscalasBLL _bllEscalas = new EscalasBLL();
+
+
+        private readonly IEscalaService _escalaService;
+        private readonly IProdutoService _produtoService;
         Helper _helper = new Helper();
         //Regex reg = new Regex(@"^-?\d+[.]?\d*$");
 
-        public EscalasForm()
+        public EscalasForm(IEscalaService escalaService,IProdutoService produtoService)
         {
+            _escalaService = escalaService;
+            _produtoService = produtoService;
             InitializeComponent();
         }
 
@@ -43,22 +40,39 @@ namespace LanchoneteUDV
 
         private void SalvarButton_Click(object sender, EventArgs e)
         {
+            //EscalaDTO escala = new EscalaDTO();
 
-            EscalaDTO escala = new EscalaDTO();
-
-            escala.ID = Convert.ToInt32(IdTextBox.Text);
+            //escala.ID = Convert.ToInt32(IdTextBox.Text);
 
             if (!ValidaCamposParaSalvar())
             {
                 return;
             }
 
-            escala.DataEscala = DataEscalaDateTimePicker.Value.Date;
-            escala.Descricao = DescricaoTextBox.Text.Trim();
-            escala.TipoSessao = TipoSessaoComboBox.Text;
-            escala.Observacao = ObservacaoTextBox.Text.Trim();
+            //escala.DataEscala = DataEscalaDateTimePicker.Value.Date;
+            //escala.Descricao = DescricaoTextBox.Text.Trim();
+            //escala.TipoSessao = TipoSessaoComboBox.Text;
+            //escala.Observacao = ObservacaoTextBox.Text.Trim();
 
-            _bllEscalas.SalvarEscala(escala);
+            //_bllEscalas.SalvarEscala(escala);
+
+            var escala = new EscalaDTO
+            {
+                DataEscala = DataEscalaDateTimePicker.Value.Date,
+                Descricao = DescricaoTextBox.Text.Trim(),
+                TipoSessao = TipoSessaoComboBox.Text,
+                Observacao = ObservacaoTextBox.Text.Trim(),
+                Id = Convert.ToInt32(IdTextBox.Text)
+            };
+
+            if (escala.Id>0)
+            {
+                _escalaService.Update(escala);
+            }
+            else
+            {
+                _escalaService.Add(escala);
+            }            
 
             RecarregaGrid();
             LimparButton_Click(sender, e);
@@ -76,7 +90,11 @@ namespace LanchoneteUDV
         {
             if (MessageBox.Show("Deseja realmente excluir a escala?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                _bllEscalas.ExcluirEscala(new EscalaDTO { ID = Convert.ToInt32(IdTextBox.Text) });
+                _escalaService.Remove(Convert.ToInt32(IdTextBox.Text));
+ 
+
+                //_bllEscalas.ExcluirEscala(new EscalaDTO { ID = Convert.ToInt32(IdTextBox.Text) });
+
                 MessageBox.Show("Escala removida com sucesso!", "Sucesso!", MessageBoxButtons.OK);
                 LimparButton_Click(sender, e);
                 RecarregaGrid();
@@ -108,12 +126,28 @@ namespace LanchoneteUDV
 
         private void PesquisaTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            EscalasDataGridView.DataSource = _bllEscalas.PesquisarEscala(PesquisaTextBox.Text);
+            //EscalasDataGridView.DataSource = _bllEscalas.PesquisarEscala(PesquisaTextBox.Text);
+            //EscalasDataGridView.DataSource = _bllEscalas.PesquisarEscala(PesquisaTextBox.Text);
+            //EscalasDataGridView.DataSource = _escalaService.
+            RecarregaGrid(PesquisaTextBox.Text);   
+
         }
 
-        private void RecarregaGrid()
+        private async void RecarregaGrid()
         {
-            EscalasDataGridView.DataSource = _bllEscalas.ListarEscalas();
+            //EscalasDataGridView.DataSource = _bllEscalas.ListarEscalas();
+            EscalasDataGridView.DataSource =  _escalaService.GetAll();
+            FormataGrid();
+        }
+        private  void RecarregaGrid(string pesquisa)
+        {
+            //EscalasDataGridView.DataSource = _bllEscalas.ListarEscalas();
+            EscalasDataGridView.DataSource =  _escalaService.GetByName(pesquisa);
+            FormataGrid();
+        }
+
+        private void FormataGrid()
+        {
             EscalasDataGridView.Columns[0].Visible = false;
 
             EscalasDataGridView.Columns[1].HeaderText = "Data da Escala";
@@ -122,7 +156,7 @@ namespace LanchoneteUDV
             EscalasDataGridView.Columns[2].Width = 230;
 
             EscalasDataGridView.Columns[3].HeaderText = "Tipo de Sessão";
-            
+
             EscalasDataGridView.Columns[4].HeaderText = "Observacao";
             EscalasDataGridView.Columns[4].Width = 150;
 
@@ -158,7 +192,6 @@ namespace LanchoneteUDV
             return valido;
         }
 
-
         #endregion
 
         private void EscalasDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -169,7 +202,7 @@ namespace LanchoneteUDV
 
         private void AbrirEscalaButton_Click(object sender, EventArgs e)
         {
-            VendasForm vendasForm = new VendasForm();
+            VendasForm vendasForm = new VendasForm(_produtoService);
             vendasForm.Tag = IdTextBox.Text;
             vendasForm.ShowDialog();         
             

@@ -43,8 +43,8 @@ namespace LanchoneteUDV.Database
             DataTable dados = new DataTable();
             string query =
                     "SELECT  A.ID,A.DataEscala, A.Descricao, A.Finalizada, A.Observacao, A.TipoSessao " +
-                    "FROM tbEscalas A " +                    
-                    "WHERE A.Descricao "  + " LIKE '%" + pesquisa + "%' " +
+                    "FROM tbEscalas A " +
+                    "WHERE A.Descricao " + " LIKE '%" + pesquisa + "%' " +
                     "order by A.DataEscala Desc";
 
             try
@@ -75,7 +75,7 @@ namespace LanchoneteUDV.Database
             cmd.Parameters.AddWithValue("@dataEscala", OleDbType.Date).Value = escala.DataEscala;
             cmd.Parameters.AddWithValue("@finalizada", escala.Finalizada);
             cmd.Parameters.AddWithValue("@observacao", escala.Observacao);
-            cmd.Parameters.AddWithValue("@tipoSessao", escala.TipoSessao);          
+            cmd.Parameters.AddWithValue("@tipoSessao", escala.TipoSessao);
 
             try
             {
