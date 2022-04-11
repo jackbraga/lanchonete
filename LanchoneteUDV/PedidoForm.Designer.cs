@@ -656,7 +656,7 @@
             this.PedidosDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PedidosDataGridView.RowTemplate.Height = 25;
             this.PedidosDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PedidosDataGridView.Size = new System.Drawing.Size(629, 357);
+            this.PedidosDataGridView.Size = new System.Drawing.Size(629, 361);
             this.PedidosDataGridView.TabIndex = 0;
             this.PedidosDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PedidosDataGridView_CellDoubleClick);
             // 
@@ -670,9 +670,9 @@
             this.groupBox4.Controls.Add(this.EstoqueDataGridView);
             this.groupBox4.Controls.Add(this.button3);
             this.groupBox4.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox4.Location = new System.Drawing.Point(788, 332);
+            this.groupBox4.Location = new System.Drawing.Point(788, 314);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(434, 343);
+            this.groupBox4.Size = new System.Drawing.Size(434, 361);
             this.groupBox4.TabIndex = 30;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Estoque da escala";
@@ -774,7 +774,7 @@
             this.EstoqueDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.EstoqueDataGridView.RowTemplate.Height = 25;
             this.EstoqueDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.EstoqueDataGridView.Size = new System.Drawing.Size(422, 311);
+            this.EstoqueDataGridView.Size = new System.Drawing.Size(422, 333);
             this.EstoqueDataGridView.TabIndex = 0;
             // 
             // button3
@@ -804,7 +804,7 @@
             this.groupBox5.Controls.Add(this.EstoqueSalgadosDataGridView);
             this.groupBox5.Controls.Add(this.button6);
             this.groupBox5.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox5.Location = new System.Drawing.Point(788, 12);
+            this.groupBox5.Location = new System.Drawing.Point(788, 4);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(440, 312);
             this.groupBox5.TabIndex = 31;

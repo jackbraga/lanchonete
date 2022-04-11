@@ -1,6 +1,5 @@
-﻿using LanchoneteUDV.Business;
-using LanchoneteUDV.DataObject;
-using System.Globalization;
+﻿using LanchoneteUDV.Application.DTO;
+using LanchoneteUDV.Application.Interfaces;
 using System.Text.RegularExpressions;
 
 namespace LanchoneteUDV
@@ -8,11 +7,17 @@ namespace LanchoneteUDV
 
     public partial class ComprasForm : Form
     {
-        ComprasBLL _bllCompras = new ComprasBLL();
+        //ComprasBLL _bllCompras = new ComprasBLL();
         Helper _helper = new Helper();
         Regex reg = new Regex(@"^-?\d+[.]?\d*$");
-        public ComprasForm()
+
+        private readonly ICompraService _compraService;
+        private readonly IProdutoService _produtoService;
+
+        public ComprasForm(ICompraService compraService,IProdutoService produtoService)
         {
+            _compraService = compraService;
+            _produtoService = produtoService;
             InitializeComponent();
 
         }
@@ -21,12 +26,11 @@ namespace LanchoneteUDV
 
         private void ComprasForm_Load(object sender, EventArgs e)
         {
-            ProdutoComboBox.DataSource = _bllCompras.ListarProdutos();
+            ProdutoComboBox.DataSource = _produtoService.GetAll();//_bllCompras.ListarProdutos();
             ProdutoComboBox.DisplayMember = "Descricao";
             ProdutoComboBox.ValueMember = "ID";
             ProdutoComboBox.SelectedValue = -1;
             FiltroComboBox.SelectedIndex = 0;
-
 
             RecarregaGrid();
         }
@@ -64,7 +68,8 @@ namespace LanchoneteUDV
         {
             if (MessageBox.Show("Deseja realmente excluir o registro de compra?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                _bllCompras.ExcluirCompra(new CompraDTO { ID = Convert.ToInt32(IdTextBox.Text) });
+                _compraService.Remove(Convert.ToInt32(IdTextBox.Text));
+                //_bllCompras.ExcluirCompra(new CompraDTO { ID = Convert.ToInt32(IdTextBox.Text) });
                 MessageBox.Show("Sócio removido com sucesso!", "Sucesso!", MessageBoxButtons.OK);
                 LimparButton_Click(sender, e);
                 RecarregaGrid();
@@ -73,27 +78,32 @@ namespace LanchoneteUDV
 
         private void SalvarButton_Click(object sender, EventArgs e)
         {
-            NomeLabel.Text = CompradoPorTextBox.Text;
-            CompraDTO compra = new CompraDTO();
-
-            compra.ID = Convert.ToInt32(IdTextBox.Text);
-
             if (!ValidaCamposParaSalvar())
             {
                 return;
             }
 
-            compra.Quantidade = Convert.ToInt32(QuantidadeTextBox.Text);
-            compra.CompradoPor = CompradoPorTextBox.Text;
-            compra.DataCompra = DataCompraDateTimePicker.Value.Date;
-            compra.IDProduto = Convert.ToInt32(ProdutoComboBox.SelectedValue);
-            compra.PrecoUnitario = Double.Parse(PrecoTextBox.Text);
+            var compra = new CompraDTO
+            {
+                Id = Convert.ToInt32(IdTextBox.Text),
+                Quantidade = Convert.ToInt32(QuantidadeTextBox.Text),
+                CompradoPor = CompradoPorTextBox.Text,
+                DataCompra = DataCompraDateTimePicker.Value.Date,
+                IdProduto = Convert.ToInt32(ProdutoComboBox.SelectedValue),
+                PrecoUnitario = Double.Parse(PrecoTextBox.Text),
+                DescricaoProduto = ProdutoComboBox.Text,
+                TipoEntrada = TipoEntradaComboBox.Text,
+                Observacao = ObservacaoTextBox.Text.Trim()
+            };
 
-            compra.Descricao = ProdutoComboBox.Text;
-            compra.TipoEntrada = TipoEntradaComboBox.Text;
-            compra.Observacao = ObservacaoTextBox.Text.Trim();
-
-            _bllCompras.SalvarCompra(compra);
+            if (compra.Id>0)
+            {
+                _compraService.Update(compra);
+            }
+            else
+            {
+                _compraService.Add(compra);
+            }
 
             RecarregaGrid();
             LimparButton_Click(sender, e);
@@ -139,7 +149,7 @@ namespace LanchoneteUDV
             IdTextBox.Text = ComprasDataGridView.Rows[row].Cells[0].Value.ToString();
 
             DataCompraDateTimePicker.Value = Convert.ToDateTime(ComprasDataGridView.Rows[row].Cells[1].Value);
-            ProdutoComboBox.SelectedValue = Convert.ToInt32(ComprasDataGridView.Rows[row].Cells[6].Value);
+            ProdutoComboBox.SelectedValue = (Int32)ComprasDataGridView.Rows[row].Cells[6].Value;
             QuantidadeTextBox.Text = ComprasDataGridView.Rows[row].Cells[3].Value.ToString();
             //PrecoTextBox.Text = ComprasDataGridView.Rows[row].Cells[4].Value.ToString();
             PrecoTextBox.Text = String.Format("{0:N2}", double.Parse(ComprasDataGridView.Rows[row].Cells[4].Value.ToString()));
@@ -155,7 +165,7 @@ namespace LanchoneteUDV
 
         private void PesquisaTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            ComprasDataGridView.DataSource = _bllCompras.PesquisarCompra(PesquisaTextBox.Text, FiltroComboBox.Text);
+            RecarregaGrid(PesquisaTextBox.Text);
         }
 
         #endregion
@@ -167,8 +177,10 @@ namespace LanchoneteUDV
             IdTextBox.Text = "0";
             ProdutoComboBox.SelectedIndex = -1;
             PrecoTextBox.Clear();
-
             QuantidadeTextBox.Clear();
+            ObservacaoTextBox.Clear();
+            TipoEntradaComboBox.SelectedIndex = -1;
+            CompradoPorTextBox.Clear();
 
 
             if (FixarNomecheckBox.Checked)
@@ -179,7 +191,17 @@ namespace LanchoneteUDV
 
         private void RecarregaGrid()
         {
-            ComprasDataGridView.DataSource = _bllCompras.ListarCompras();
+            ComprasDataGridView.DataSource = _compraService.GetAll();//_bllCompras.ListarCompras();
+            FormatarGrid();
+        }
+        private void RecarregaGrid(string texto)
+        {
+            ComprasDataGridView.DataSource = _compraService.GetByName(texto);//_bllCompras.ListarCompras();
+            FormatarGrid();
+        }
+
+        private void FormatarGrid()
+        {
             ComprasDataGridView.Columns[0].Visible = false;
             ComprasDataGridView.Columns[6].Visible = false;
             ComprasDataGridView.Columns[1].HeaderText = "Data da Compra";
@@ -240,6 +262,6 @@ namespace LanchoneteUDV
 
         #endregion
 
-        
+
     }
 }

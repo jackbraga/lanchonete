@@ -56,5 +56,6 @@ namespace LanchoneteUDV.Domain.Entidades
             ResumoVendas = resumoVendas;
 
             }
-        }
+       
+    }
 }

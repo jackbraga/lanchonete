@@ -17,9 +17,13 @@ namespace LanchoneteUDV
         //EscalasBLL _bllEscalas = new EscalasBLL();
         Helper _helper = new Helper();
         private readonly IEscalaService _escalaService;
-        public RepasseTesourariaForm(IEscalaService escalaService)
+        private readonly IFinanceiroService _financeiroService;
+        private readonly IVendaService _vendaService;
+        public RepasseTesourariaForm(IEscalaService escalaService, IFinanceiroService financeiroService, IVendaService vendaService)
         {
             _escalaService=escalaService;
+            _financeiroService = financeiroService;
+            _vendaService = vendaService;
             InitializeComponent();
         }
 
@@ -32,7 +36,7 @@ namespace LanchoneteUDV
 
         private void AbrirEscalaButton_Click(object sender, EventArgs e)
         {
-            RepasseTesourariaVendaForm repasseVendaForm = new RepasseTesourariaVendaForm(_escalaService);
+            RepasseTesourariaVendaForm repasseVendaForm = new RepasseTesourariaVendaForm(_escalaService,_financeiroService,_vendaService);
             repasseVendaForm.IDEscala = Convert.ToInt32(IdTextBox.Text);
             repasseVendaForm.ShowDialog();
             RecarregarGrid();

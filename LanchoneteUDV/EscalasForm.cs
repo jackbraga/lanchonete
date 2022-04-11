@@ -10,13 +10,22 @@ namespace LanchoneteUDV
 
         private readonly IEscalaService _escalaService;
         private readonly IProdutoService _produtoService;
+        private readonly ISocioService _socioService;
+        private readonly IEstoqueEscalaService _estoqueEscalaService;
+        private readonly IVendaService _vendaService;
+        private readonly IVendasPedidoService _vendasPedidoService;
         Helper _helper = new Helper();
         //Regex reg = new Regex(@"^-?\d+[.]?\d*$");
 
-        public EscalasForm(IEscalaService escalaService,IProdutoService produtoService)
+        public EscalasForm(IEscalaService escalaService, IProdutoService produtoService,
+            ISocioService socioService, IEstoqueEscalaService estoqueEscalaService, IVendaService vendaService, IVendasPedidoService vendasPedidoService)
         {
             _escalaService = escalaService;
             _produtoService = produtoService;
+            _socioService = socioService;
+            _estoqueEscalaService = estoqueEscalaService;
+            _vendaService = vendaService;
+            _vendasPedidoService = vendasPedidoService;
             InitializeComponent();
         }
 
@@ -34,7 +43,7 @@ namespace LanchoneteUDV
                 FinalizadaCheckBox, ObservacaoTextBox,
              SalvarButton);
 
-            _helper.Desabilita(NovoButton, EditarButton, ExcluirButton,AbrirEscalaButton);
+            _helper.Desabilita(NovoButton, EditarButton, ExcluirButton, AbrirEscalaButton);
             LimparCampos();
         }
 
@@ -65,14 +74,14 @@ namespace LanchoneteUDV
                 Id = Convert.ToInt32(IdTextBox.Text)
             };
 
-            if (escala.Id>0)
+            if (escala.Id > 0)
             {
                 _escalaService.Update(escala);
             }
             else
             {
                 _escalaService.Add(escala);
-            }            
+            }
 
             RecarregaGrid();
             LimparButton_Click(sender, e);
@@ -91,7 +100,7 @@ namespace LanchoneteUDV
             if (MessageBox.Show("Deseja realmente excluir a escala?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 _escalaService.Remove(Convert.ToInt32(IdTextBox.Text));
- 
+
 
                 //_bllEscalas.ExcluirEscala(new EscalaDTO { ID = Convert.ToInt32(IdTextBox.Text) });
 
@@ -129,20 +138,20 @@ namespace LanchoneteUDV
             //EscalasDataGridView.DataSource = _bllEscalas.PesquisarEscala(PesquisaTextBox.Text);
             //EscalasDataGridView.DataSource = _bllEscalas.PesquisarEscala(PesquisaTextBox.Text);
             //EscalasDataGridView.DataSource = _escalaService.
-            RecarregaGrid(PesquisaTextBox.Text);   
+            RecarregaGrid(PesquisaTextBox.Text);
 
         }
 
         private async void RecarregaGrid()
         {
             //EscalasDataGridView.DataSource = _bllEscalas.ListarEscalas();
-            EscalasDataGridView.DataSource =  _escalaService.GetAll();
+            EscalasDataGridView.DataSource = _escalaService.GetAll();
             FormataGrid();
         }
-        private  void RecarregaGrid(string pesquisa)
+        private void RecarregaGrid(string pesquisa)
         {
             //EscalasDataGridView.DataSource = _bllEscalas.ListarEscalas();
-            EscalasDataGridView.DataSource =  _escalaService.GetByName(pesquisa);
+            EscalasDataGridView.DataSource = _escalaService.GetByName(pesquisa);
             FormataGrid();
         }
 
@@ -196,16 +205,16 @@ namespace LanchoneteUDV
 
         private void EscalasDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
- 
+
             AbrirEscalaButton_Click(sender, e);
         }
 
         private void AbrirEscalaButton_Click(object sender, EventArgs e)
         {
-            VendasForm vendasForm = new VendasForm(_produtoService);
+            VendasForm vendasForm = new VendasForm(_vendaService, _produtoService, _socioService, _estoqueEscalaService, _vendasPedidoService);
             vendasForm.Tag = IdTextBox.Text;
-            vendasForm.ShowDialog();         
-            
+            vendasForm.ShowDialog();
+
         }
 
         private void EscalasDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)

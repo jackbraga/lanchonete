@@ -1,25 +1,20 @@
-﻿using LanchoneteUDV.Business;
-using LanchoneteUDV.Database;
-using LanchoneteUDV.DataObject;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using LanchoneteUDV.Application.DTO;
+using LanchoneteUDV.Application.Interfaces;
+
 
 namespace LanchoneteUDV
 {
     public partial class SociosForm : Form
     {
 
-        SociosBLL _bll = new SociosBLL();
+        //SociosBLL _bll = new SociosBLL();
         Helper _helper = new Helper();
-        public SociosForm()
+
+        private readonly ISocioService _socioService;
+
+        public SociosForm(ISocioService socioService)
         {
+            _socioService = socioService;
             InitializeComponent();
         }
 
@@ -34,7 +29,7 @@ namespace LanchoneteUDV
 
         private void CarregarCombos()
         {
-            ResponsavelFinanceiroComboBox.DataSource = _bll.ListarSocios();
+            ResponsavelFinanceiroComboBox.DataSource = _socioService.GetAll();
             ResponsavelFinanceiroComboBox.DisplayMember = "Nome";
             ResponsavelFinanceiroComboBox.ValueMember = "ID";
             ResponsavelFinanceiroComboBox.SelectedValue = -1;
@@ -47,7 +42,7 @@ namespace LanchoneteUDV
             IdTextBox.Text = SociosDataGridView.Rows[row].Cells[0].Value.ToString();
             NomeTextBox.Text = SociosDataGridView.Rows[row].Cells[1].Value.ToString();
             EmailTextBox.Text = SociosDataGridView.Rows[row].Cells[2].Value.ToString();
-            ResponsavelFinanceiroComboBox.SelectedValue = Convert.ToInt32(SociosDataGridView.Rows[row].Cells[0].Value);
+            ResponsavelFinanceiroComboBox.SelectedValue = Convert.ToInt32(SociosDataGridView.Rows[row].Cells[3].Value);
             _helper.Desabilita(NomeTextBox, IdTextBox, SalvarButton, NovoButton);
             _helper.Habilita(ExcluirButton, EditarButton);
         }
@@ -56,21 +51,33 @@ namespace LanchoneteUDV
             IdTextBox.Text = "0";
             NomeTextBox.Text = "";
             EmailTextBox.Text = "";
+            ResponsavelFinanceiroComboBox.SelectedIndex = -1;
             _helper.Habilita(NovoButton);
-            _helper.Desabilita(ExcluirButton, EditarButton, SalvarButton,NomeTextBox,EmailTextBox,ResponsavelFinanceiroComboBox);
+            _helper.Desabilita(ExcluirButton, EditarButton, SalvarButton, NomeTextBox, EmailTextBox, ResponsavelFinanceiroComboBox);
         }
 
         private void SalvarButton_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(NomeTextBox.Text))
             {
-
-                SocioDTO socio = new SocioDTO
-                { ID = Convert.ToInt32(IdTextBox.Text), Nome = NomeTextBox.Text.ToUpper().Trim(),
-                Email = EmailTextBox.Text.Trim(), TipoSocio=1,
-                ResponsavelFinanceiro=Convert.ToInt32(ResponsavelFinanceiroComboBox.SelectedValue)
+                var socio = new SocioDTO
+                {
+                    Id = Convert.ToInt32(IdTextBox.Text),
+                    Nome = NomeTextBox.Text.ToUpper().Trim(),
+                    Email = EmailTextBox.Text.Trim(),
+                    TipoSocio = 1,
+                    ResponsavelFinanceiro = Convert.ToInt32(ResponsavelFinanceiroComboBox.SelectedValue)
                 };
-                _bll.SalvarSocio(socio);
+
+                if (socio.Id > 0)
+                {
+                    _socioService.Update(socio);
+                }
+                else
+                {
+                    _socioService.Add(socio);
+                }
+
                 RecarregaGrid();
                 LimparButton_Click(sender, e);
                 MessageBox.Show("Sócio registrado com sucesso!", "Sucesso!", MessageBoxButtons.OK);
@@ -79,8 +86,8 @@ namespace LanchoneteUDV
 
         private void EditarButton_Click(object sender, EventArgs e)
         {
-            _helper.Habilita(NomeTextBox, EmailTextBox, SalvarButton,ResponsavelFinanceiroComboBox);
-            _helper.Desabilita(EditarButton,NovoButton);
+            _helper.Habilita(NomeTextBox, EmailTextBox, SalvarButton, ResponsavelFinanceiroComboBox);
+            _helper.Desabilita(EditarButton, NovoButton);
         }
 
         private void SociosForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -88,13 +95,13 @@ namespace LanchoneteUDV
 
         }
 
-        
+
 
         private void ExcluirButton_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja realmente excluir o Socio: " + NomeTextBox.Text, "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                _bll.ExcluirSocio(new SocioDTO { ID = Convert.ToInt32(IdTextBox.Text), Nome = NomeTextBox.Text });
+                _socioService.Remove(Convert.ToInt32(IdTextBox.Text));
                 MessageBox.Show("Sócio removido com sucesso!", "Sucesso!", MessageBoxButtons.OK);
                 RecarregaGrid();
             }
@@ -103,26 +110,35 @@ namespace LanchoneteUDV
         private void NovoButton_Click(object sender, EventArgs e)
         {
             LimparButton_Click(sender, e);
-            _helper.Habilita(NomeTextBox, EmailTextBox,SalvarButton);
-            _helper.Desabilita(NovoButton, ExcluirButton, EditarButton,ResponsavelFinanceiroComboBox);
+            _helper.Habilita(NomeTextBox, EmailTextBox, SalvarButton);
+            _helper.Desabilita(NovoButton, ExcluirButton, EditarButton, ResponsavelFinanceiroComboBox);
         }
 
         private void RecarregaGrid()
         {
-            SociosDataGridView.DataSource = _bll.ListarSocios();
+            SociosDataGridView.DataSource = _socioService.GetAll();
+            FormatarGrid();
+        }
+        private void RecarregaGrid(string texto)
+        {
+            SociosDataGridView.DataSource = _socioService.GetByName(texto);
+            FormatarGrid();
+        }
+
+        private void FormatarGrid()
+        {
             SociosDataGridView.Columns[0].Visible = false;
             SociosDataGridView.Columns[1].MinimumWidth = 190;
             SociosDataGridView.Columns[2].MinimumWidth = 190;
             SociosDataGridView.Columns[3].Visible = false;
-            SociosDataGridView.Columns[4].HeaderText= "Financeiro";
+            SociosDataGridView.Columns[4].HeaderText = "Financeiro";
             SociosDataGridView.Columns[4].MinimumWidth = 190;
+            SociosDataGridView.Columns[5].Visible = false;
         }
 
         private void PesquisaTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            SociosDataGridView.DataSource = _bll.PesquisarSocio(PesquisaTextBox.Text);
+            RecarregaGrid(PesquisaTextBox.Text);
         }
-
-
     }
 }

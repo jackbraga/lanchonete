@@ -1,4 +1,5 @@
-﻿using LanchoneteUDV.Business;
+﻿using LanchoneteUDV.Application.Interfaces;
+using LanchoneteUDV.Business;
 using LanchoneteUDV.DataObject;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,12 @@ namespace LanchoneteUDV
 {
     public class Email
     {
-        FinanceiroBLL _bll = new FinanceiroBLL();
+        //FinanceiroBLL _bll = new FinanceiroBLL();
+        private readonly IFinanceiroService _financeiroService;
+        public Email(IFinanceiroService financeiroService)
+        {
+            _financeiroService = financeiroService;
+        }
         public void EnviarEmail(int idEscala, int idSocio, string emailSocio)
         {
             SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
@@ -48,27 +54,27 @@ namespace LanchoneteUDV
         {
             string produtos = "";
 
-            RepasseFinanceiroDTO repasse = _bll.ListarItensRepasseFinanceiro(idEscala,idSocio);
-            
-            foreach (var item in repasse.Itens)
+            var repasse = _financeiroService.ListarItensRepasseFinanceiro(idEscala, idSocio).ToList();//_bll.ListarItensRepasseFinanceiro(idEscala,idSocio);
+
+            foreach (var item in repasse)
             {
-                produtos = produtos + 
+                produtos = produtos +
                     "<tr>" +
                         "<td>" + item.Produto + "</td>" +
-                        "<td>" + item.PrecoUnitario.ToString("R$ 0.00##") + "</td>" +
+                        "<td>" + item.PrecoProduto.ToString("R$ 0.00##") + "</td>" +
                         "<td>" + item.Quantidade + "</td>" +
                         "<td>" + item.SubTotal().ToString("R$ 0.00##") + "</td>" +
                     "</tr>";
             }
             string email = BuscaHtml()
-                .Replace("@nome", repasse.PrimeiroNome())
-                .Replace("@data", repasse.DataEscala.ToShortDateString())
-                .Replace("@escala", repasse.DescricaoEscala)
+                .Replace("@nome", repasse.First().PrimeiroNome())
+                .Replace("@data", repasse.First().DataEscala.ToShortDateString())
+                .Replace("@escala", repasse.First().Escala)
                 .Replace("@produtos", produtos)
-                .Replace("@total", repasse.Itens.Sum(x => x.SubTotal()).ToString("R$ 0.00##"))
+                .Replace("@total", repasse.Sum(x => x.SubTotal()).ToString("R$ 0.00##"))
                 .Replace("@contestacao", DateTime.Now.AddDays(2).ToShortDateString());
 
-            return email;
+            return "";//email;
         }
 
         private string BuscaHtml()
