@@ -74,7 +74,7 @@ namespace LanchoneteUDV
                 .Replace("@total", repasse.Sum(x => x.SubTotal()).ToString("R$ 0.00##"))
                 .Replace("@contestacao", DateTime.Now.AddDays(2).ToShortDateString());
 
-            return "";//email;
+            return email;
         }
 
         private string BuscaHtml()

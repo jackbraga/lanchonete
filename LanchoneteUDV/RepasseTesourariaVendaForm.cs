@@ -115,7 +115,6 @@ namespace LanchoneteUDV
                 Email email = new Email(_financeiroService);
 
                 email.EnviarEmail(IDEscala, idSocio, emailSocio);
-                //_bllFinanceiro.AtualizaEmailDisparado(idVenda);
                 _financeiroService.AtualizaEmailDisparado(idVenda);
                 MessageBox.Show("E-mail disparado com sucesso!", "E-mail", MessageBoxButtons.OK);
                 RecarregaGrid();
