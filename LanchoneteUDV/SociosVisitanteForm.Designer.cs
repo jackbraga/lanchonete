@@ -301,7 +301,7 @@
             this.PesquisaTextBox.Name = "PesquisaTextBox";
             this.PesquisaTextBox.Size = new System.Drawing.Size(260, 23);
             this.PesquisaTextBox.TabIndex = 6;
-            this.PesquisaTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.PesquisaTextBox_KeyUp);
+            
             // 
             // label3
             // 

@@ -1,25 +1,20 @@
-﻿using LanchoneteUDV.Business;
-using LanchoneteUDV.DataObject;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using LanchoneteUDV.Application.DTO;
+using LanchoneteUDV.Application.Interfaces;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace LanchoneteUDV
 {
     public partial class FluxoCaixaForm : Form
     {
 
-        FinanceiroBLL _bllFinanceiro = new FinanceiroBLL();
+        //FinanceiroBLL _bllFinanceiro = new FinanceiroBLL();
+        private readonly ICaixaService _caixaService;
+
         Helper _helper = new Helper();
 
-        public FluxoCaixaForm()
+        public FluxoCaixaForm(ICaixaService caixaService)
         {
+            _caixaService = caixaService;
             InitializeComponent();
         }
 
@@ -31,31 +26,54 @@ namespace LanchoneteUDV
         private void SalvarButton_Click(object sender, EventArgs e)
         {
             //NomeLabel.Text = CompradoPorTextBox.Text;
-            CaixaDTO caixa = new CaixaDTO();
+            //CaixaDTO caixa = new CaixaDTO();
 
-            caixa.ID = Convert.ToInt32(IdTextBox.Text);
+            //caixa.ID = Convert.ToInt32(IdTextBox.Text);
 
             if (!ValidaCamposParaSalvar())
             {
                 return;
             }
 
-            caixa.DataEvento = DataEventoDateTimePicker.Value;
-            caixa.TipoEvento = TipoEventoComboBox.Text;
-            caixa.Categoria = Convert.ToInt32(CategoriaComboBox.SelectedValue);
+            //caixa.DataEvento = DataEventoDateTimePicker.Value;
+            //caixa.TipoEvento = TipoEventoComboBox.Text;
+            //caixa.Categoria = Convert.ToInt32(CategoriaComboBox.SelectedValue);
+            //caixa.Observacao = ObservacaoTextBox.Text.Trim();
 
-            if (TipoEventoComboBox.Text == "Entrada")
+
+            var caixa = new CaixaDTO
             {
-                caixa.Valor = Convert.ToDouble(PrecoTextBox.Text);
+                DataEvento = DataEventoDateTimePicker.Value,
+                IdCategoria = Convert.ToInt32(CategoriaComboBox.SelectedValue),
+                Id = Convert.ToInt32(IdTextBox.Text),
+                Observacao = ObservacaoTextBox.Text.Trim(),
+                TipoEvento = TipoEventoComboBox.Text,
+                Valor = TipoEventoComboBox.Text == "Entrada" ? Convert.ToDouble(PrecoTextBox.Text) : Convert.ToDouble(PrecoTextBox.Text) * -1
+            };
+
+            if (caixa.Id>0)
+            {
+                _caixaService.Update(caixa);
             }
             else
             {
-                caixa.Valor = Convert.ToDouble(PrecoTextBox.Text) * -1;
+                _caixaService.Add(caixa);
             }
 
-            caixa.Observacao = ObservacaoTextBox.Text.Trim();
+            //if (TipoEventoComboBox.Text == "Entrada")
+            //{
+            //    caixa.Valor = Convert.ToDouble(PrecoTextBox.Text);
+            //}
+            //else
+            //{
+            //    caixa.Valor = Convert.ToDouble(PrecoTextBox.Text) * -1;
+            //}
 
-            _bllFinanceiro.AdicionarEventoCaixa(caixa);
+         
+
+            //_bllFinanceiro.AdicionarEventoCaixa(caixa);
+            //_caixaService.Add(caixa);
+
 
             RecarregarTela();
             LimparButton_Click(sender, e);
@@ -96,7 +114,7 @@ namespace LanchoneteUDV
 
         private void FluxoCaixaForm_Load(object sender, EventArgs e)
         {
-            CategoriaComboBox.DataSource = _bllFinanceiro.ListarCategoriaLancamento();
+            CategoriaComboBox.DataSource = _caixaService.ListarCategoriaLancamento();// _bllFinanceiro.ListarCategoriaLancamento();
             CategoriaComboBox.DisplayMember = "Descricao";
             CategoriaComboBox.ValueMember = "ID";
             CategoriaComboBox.SelectedValue = -1;
@@ -119,7 +137,7 @@ namespace LanchoneteUDV
         private void RecarregarGrid()
         {
 
-            FluxoCaixaDataGridView.DataSource = _bllFinanceiro.ListarCaixa();
+            FluxoCaixaDataGridView.DataSource = _caixaService.GetAll();// _bllFinanceiro.ListarCaixa();
             FluxoCaixaDataGridView.Columns[0].Visible = false;
 
             FluxoCaixaDataGridView.Columns[1].HeaderText = "Data do Evento";
@@ -214,55 +232,66 @@ namespace LanchoneteUDV
             }
         }
 
-        private void CarregarResumo()
+        private async void CarregarResumo()
         {
-            DataTable dados = _bllFinanceiro.ListarResumo();
+            //DataTable dados = _caixaService.ListarResumo();// _bllFinanceiro.ListarResumo();
 
-            if (dados.Rows.Count > 0)
+            var resumo = await _caixaService.ListarResumo();
+            if (resumo!= null)
             {
-                DataRow row = dados.Rows[0];
-                SaldoInicialTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["SaldoInicial"].ToString()));
-                EntradasTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Entradas"].ToString()));
-                SaidasTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Saidas"].ToString()));
-                FaturadoTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Faturado"].ToString()));
-                LucroTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Lucro"].ToString()));
-                DinheiroTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Dinheiro"].ToString()));
-                SaldoAtualTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Saldo"].ToString()));
+                SaldoInicialTextBox.Text = "R$ " + String.Format("{0:N2}",(resumo.SaldoInicial));
+                EntradasTextBox.Text = "R$ " + String.Format("{0:N2}", resumo.Entradas);
+                SaidasTextBox.Text = "R$ " + String.Format("{0:N2}", resumo.Saidas);
+                FaturadoTextBox.Text = "R$ " + String.Format("{0:N2}", resumo.Faturado);
+                LucroTextBox.Text = "R$ " + String.Format("{0:N2}", resumo.Lucro);
+                DinheiroTextBox.Text = "R$ " + String.Format("{0:N2}", resumo.Dinheiro);
+                SaldoAtualTextBox.Text = "R$ " + String.Format("{0:N2}", resumo.Saldo);
+                //  DataRow row = dados.Rows[0];
+                //SaldoInicialTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["SaldoInicial"].ToString()));
+                //EntradasTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Entradas"].ToString()));
+                //SaidasTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Saidas"].ToString()));
+                //FaturadoTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Faturado"].ToString()));
+                //LucroTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Lucro"].ToString()));
+                //DinheiroTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Dinheiro"].ToString()));
+                //SaldoAtualTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Saldo"].ToString()));
             }
         }
 
-        private void CarregarMesaMes(int ano)
+        private async void CarregarMesaMes(int ano)
         {
-            DataTable dados = _bllFinanceiro.ListarMesAMes(ano);
+            //DataTable dados = //_bllFinanceiro.ListarMesAMes(ano);
 
-            if (dados.Rows.Count > 0)
+            var meses = (await _caixaService.ListarResumoMesAMes(ano)).ToList();
+
+
+            if (meses.Count() > 0)
             {
-                CarregaCamposMesAMes(dados.Rows[0], JanEntradasTextBox, JanSaidasTextBox, JanFaturadoTextBox, JanLucroTextBox);
-                CarregaCamposMesAMes(dados.Rows[1], FevEntradasTextBox, FevSaidasTextBox, FevFaturadoTextBox, FevLucroTextBox);
-                CarregaCamposMesAMes(dados.Rows[2], MarEntradasTextBox, MarSaidasTextBox, MarFaturadoTextBox, MarLucroTextBox);
-                CarregaCamposMesAMes(dados.Rows[3], AbrEntradasTextBox, AbrSaidasTextBox, AbrFaturadoTextBox, AbrLucroTextBox);
-                CarregaCamposMesAMes(dados.Rows[4], MaiEntradasTextBox, MaiSaidasTextBox, MaiFaturadoTextBox, MaiLucroTextBox);
-                CarregaCamposMesAMes(dados.Rows[5], JunEntradasTextBox, JunSaidasTextBox, JunFaturadoTextBox, JunLucroTextBox);
-                CarregaCamposMesAMes(dados.Rows[6], JulEntradasTextBox, JulSaidasTextBox, JulFaturadoTextBox, JulLucroTextBox);
-                CarregaCamposMesAMes(dados.Rows[7], AgoEntradasTextBox, AgoSaidasTextBox, AgoFaturadoTextBox, AgoLucroTextBox);
-                CarregaCamposMesAMes(dados.Rows[8], SetEntradasTextBox, SetSaidasTextBox, SetFaturadoTextBox, SetLucroTextBox);
-                CarregaCamposMesAMes(dados.Rows[9], OutEntradasTextBox, OutSaidasTextBox, OutFaturadoTextBox, OutLucroTextBox);                
-                CarregaCamposMesAMes(dados.Rows[10], NovEntradasTextBox, NovSaidasTextBox, NovFaturadoTextBox, NovLucroTextBox);
-                CarregaCamposMesAMes(dados.Rows[11], DezEntradasTextBox, DezSaidasTextBox, DezFaturadoTextBox, DezLucroTextBox);
+                CarregaCamposMesAMes(meses[0], JanEntradasTextBox, JanSaidasTextBox, JanFaturadoTextBox, JanLucroTextBox);
+                CarregaCamposMesAMes(meses[1], FevEntradasTextBox, FevSaidasTextBox, FevFaturadoTextBox, FevLucroTextBox);
+                CarregaCamposMesAMes(meses[2], MarEntradasTextBox, MarSaidasTextBox, MarFaturadoTextBox, MarLucroTextBox);
+                CarregaCamposMesAMes(meses[3], AbrEntradasTextBox, AbrSaidasTextBox, AbrFaturadoTextBox, AbrLucroTextBox);
+                CarregaCamposMesAMes(meses[4], MaiEntradasTextBox, MaiSaidasTextBox, MaiFaturadoTextBox, MaiLucroTextBox);
+                CarregaCamposMesAMes(meses[5], JunEntradasTextBox, JunSaidasTextBox, JunFaturadoTextBox, JunLucroTextBox);
+                CarregaCamposMesAMes(meses[6], JulEntradasTextBox, JulSaidasTextBox, JulFaturadoTextBox, JulLucroTextBox);
+                CarregaCamposMesAMes(meses[7], AgoEntradasTextBox, AgoSaidasTextBox, AgoFaturadoTextBox, AgoLucroTextBox);
+                CarregaCamposMesAMes(meses[8], SetEntradasTextBox, SetSaidasTextBox, SetFaturadoTextBox, SetLucroTextBox);
+                CarregaCamposMesAMes(meses[9], OutEntradasTextBox, OutSaidasTextBox, OutFaturadoTextBox, OutLucroTextBox);                
+                CarregaCamposMesAMes(meses[10], NovEntradasTextBox, NovSaidasTextBox, NovFaturadoTextBox, NovLucroTextBox);
+                CarregaCamposMesAMes(meses[11], DezEntradasTextBox, DezSaidasTextBox, DezFaturadoTextBox, DezLucroTextBox);
             }
         }
 
-        private void CarregaCamposMesAMes(DataRow row, params Object[] objetos)
+        private void CarregaCamposMesAMes(ResumoVendasDTO mes, params Object[] objetos)
         {
             Control entradas = (Control)objetos[0];
             Control saidas = (Control)objetos[1];
             Control faturado = (Control)objetos[2];
             Control lucro = (Control)objetos[3];
 
-            entradas.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Entradas"].ToString()));
-            saidas.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Saidas"].ToString()));
-            faturado.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Faturado"].ToString()));
-            lucro.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Lucro"].ToString()));
+            entradas.Text = "R$ " + String.Format("{0:N2}", mes.Entradas);
+            saidas.Text = "R$ " + String.Format("{0:N2}", mes.Saidas);
+            faturado.Text = "R$ " + String.Format("{0:N2}", mes.Faturado);
+            lucro.Text = "R$ " + String.Format("{0:N2}", mes.Lucro);
 
         }
 

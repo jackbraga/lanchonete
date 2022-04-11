@@ -43,7 +43,6 @@ namespace LanchoneteUDV.Database
 
             return dados;
         }
-        
         public DataTable ListarEstoquePorEscala(int idEscala)
         {
             DataTable dados = new DataTable();
@@ -53,7 +52,7 @@ namespace LanchoneteUDV.Database
                     "tbProdutos.PrecoVenda, " +
                     "tbEstoqueEscala.QtdVenda, " +
                     "dbo.ItensVendidos(tbVendasPedido.Produto," + idEscala + ") AS Saida, " +
-                    "(ISNULL(QtdVenda, 0) - ISNULL(dbo.ItensVendidos(tbVendasPedido.Produto," + idEscala +"),0)) AS Estoque " +
+                    "(ISNULL(QtdVenda, 0) - ISNULL(dbo.ItensVendidos(tbVendasPedido.Produto," + idEscala + "),0)) AS Estoque " +
                     "FROM tbProdutos " +
                     "INNER JOIN tbEstoqueEscala ON tbProdutos.ID = tbEstoqueEscala.Produto " +
                     "LEFT JOIN tbVendasPedido ON tbProdutos.ID = tbVendasPedido.Produto " +
@@ -151,6 +150,11 @@ namespace LanchoneteUDV.Database
             return dados;
         }
 
+
+
+
+
+
         public DataTable ListarVendas(int idEscala)
         {
             DataTable dados = new DataTable();
@@ -211,7 +215,6 @@ namespace LanchoneteUDV.Database
 
         }
 
-
         public DataTable TrazerEscala(int idEscala)
         {
             DataTable dados = new DataTable();
@@ -235,11 +238,6 @@ namespace LanchoneteUDV.Database
                 "LEFT JOIN tbVendasPedido ON tbVendas.ID = tbVendasPedido.Venda " +
                 "WHERE tbEscalas.ID = " + idEscala + " " +
                 "GROUP BY  tbEscalas.ID, tbEscalas.Descricao, tbEscalas.DataEscala, TipoPagamento,tbEscalas.Finalizada ";
-
-
-
-
-
 
 
             try
@@ -331,7 +329,11 @@ namespace LanchoneteUDV.Database
             }
         }
 
-        //public 
+
+
+
+
+        //public
 
         //public DataTable PesquisarCompra(string pesquisa, string filtro)
         //{

@@ -1,15 +1,17 @@
-﻿using LanchoneteUDV.Business;
-using LanchoneteUDV.DataObject;
+﻿using LanchoneteUDV.Application.DTO;
+using LanchoneteUDV.Application.Interfaces;
 
 namespace LanchoneteUDV
 {
     public partial class SociosVisitanteForm : Form
     {
 
-        SociosBLL _bll = new SociosBLL();
+        //SociosBLL _bll = new SociosBLL();
+        private readonly ISocioService _socioService;
         Helper _helper = new Helper();
-        public SociosVisitanteForm()
+        public SociosVisitanteForm(ISocioService socioService)
         {
+            _socioService = socioService;
             InitializeComponent();
         }
 
@@ -46,12 +48,21 @@ namespace LanchoneteUDV
 
                 SocioDTO socio = new SocioDTO
                 {
-                    ID = Convert.ToInt32(IdTextBox.Text),
+                    Id = Convert.ToInt32(IdTextBox.Text),
                     Nome = "VISITANTE - " + NomeTextBox.Text.ToUpper().Trim(),
                     Email = EmailTextBox.Text.Trim(),
                     TipoSocio = 2
                 };
-                _bll.SalvarSocio(socio);
+
+                if (socio.Id>0)
+                {
+                    _socioService.Update(socio);
+                }
+                else
+                {
+                    _socioService.Add(socio);
+                }
+                
                 RecarregaGrid();
                 LimparButton_Click(sender, e);
                 MessageBox.Show("Sócio registrado com sucesso!", "Sucesso!", MessageBoxButtons.OK);
@@ -75,7 +86,8 @@ namespace LanchoneteUDV
         {
             if (MessageBox.Show("Deseja realmente excluir o Socio: " + NomeTextBox.Text, "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                _bll.ExcluirSocio(new SocioDTO { ID = Convert.ToInt32(IdTextBox.Text), Nome = NomeTextBox.Text });
+                _socioService.Remove(Convert.ToInt32(IdTextBox.Text));
+
                 MessageBox.Show("Sócio removido com sucesso!", "Sucesso!", MessageBoxButtons.OK);
                 RecarregaGrid();
             }
@@ -91,16 +103,21 @@ namespace LanchoneteUDV
 
         private void RecarregaGrid()
         {
-            SociosDataGridView.DataSource = _bll.ListarSociosVisitantes();
+            SociosDataGridView.DataSource = _socioService.ListarSociosVisitantes();
+
+        }
+
+
+        private void FormatarGrid()
+        {
             SociosDataGridView.Columns[0].Visible = false;
             SociosDataGridView.Columns[1].MinimumWidth = 250;
             SociosDataGridView.Columns[2].MinimumWidth = 250;
         }
-
-        private void PesquisaTextBox_KeyUp(object sender, KeyEventArgs e)
-        {
-            SociosDataGridView.DataSource = _bll.PesquisarSocio(PesquisaTextBox.Text);
-        }
+        //private void PesquisaTextBox_KeyUp(object sender, KeyEventArgs e)
+        //{
+        //    SociosDataGridView.DataSource = _bll.PesquisarSocio(PesquisaTextBox.Text);
+        //}
 
 
     }

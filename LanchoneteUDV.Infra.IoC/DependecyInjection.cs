@@ -19,7 +19,20 @@ namespace LanchoneteUDV.Infra.IoC
             Bind(typeof(IEscalaRepository)).To(typeof(EscalaRepository));
             Bind(typeof(IProdutoService)).To(typeof(ProdutoService));
             Bind(typeof(IProdutoRepository)).To(typeof(ProdutoRepository));
-
+            Bind(typeof(ISocioService)).To(typeof(SocioService));
+            Bind(typeof(ISocioRepository)).To(typeof(SocioRepository));
+            Bind(typeof(ICompraService)).To(typeof(CompraService));
+            Bind(typeof(ICompraRepository)).To(typeof(CompraRepository));
+            Bind(typeof(IEstoqueEscalaService)).To(typeof(EstoqueEscalaService));
+            Bind(typeof(IEstoqueEscalaRepository)).To(typeof(EstoqueEscalaRepository));
+            Bind(typeof(IVendaService)).To(typeof(VendaService));
+            Bind(typeof(IVendaRepository)).To(typeof(VendaRepository));
+            Bind(typeof(IVendasPedidoService)).To(typeof(VendasPedidoService));
+            Bind(typeof(IVendasPedidoRepository)).To(typeof(VendasPedidoRepository));
+            Bind(typeof(ICaixaRepository)).To(typeof(CaixaRepository));
+            Bind(typeof(ICaixaService)).To(typeof(CaixaService));
+            Bind(typeof(IFinanceiroRepository)).To(typeof(FinanceiroRepository));
+            Bind(typeof(IFinanceiroService)).To(typeof(FinanceiroService));
 
             Bind(typeof(IConnectionFactory)).To(typeof(DefaultSqlConnectionFactory));
             var mapperConfiguration = new MapperConfiguration(cfg => { cfg.AddProfile<DomaintToDTOMappingProfile>(); });

@@ -14,11 +14,20 @@ namespace LanchoneteUDV
 {
     public partial class VendasForm : Form
     {
-        VendasBLL _bllVendas = new VendasBLL();
+        //VendasBLL _bllVendas = new VendasBLL();
+        private readonly IVendaService _vendaService;
         private readonly IProdutoService _produtoService;
-        public VendasForm(IProdutoService produtoService)
+        private readonly ISocioService _socioService;
+        private readonly IEstoqueEscalaService _estoqueEscalaService;
+        private readonly IVendasPedidoService _vendasPedidoService;
+        public VendasForm(IVendaService vendaService,IProdutoService produtoService,ISocioService socioService,IEstoqueEscalaService estoqueEscalaService
+            ,IVendasPedidoService vendasPedidoService)
         {
+            _vendaService = vendaService;
             _produtoService = produtoService;
+            _socioService = socioService;
+            _estoqueEscalaService = estoqueEscalaService;
+            _vendasPedidoService = vendasPedidoService;
             InitializeComponent();
             
         }
@@ -34,7 +43,7 @@ namespace LanchoneteUDV
 
         private void RecarregaGrid()
         {
-            VendasDataGridView.DataSource = _bllVendas.ListarVendas(Convert.ToInt32(this.Tag));
+            VendasDataGridView.DataSource = _vendaService.ListarVendasEscala(Convert.ToInt32(this.Tag)); //_bllVendas.ListarVendas(Convert.ToInt32(this.Tag));
             VendasDataGridView.Columns[0].Visible = false;
             VendasDataGridView.Columns[1].Visible = false;
             VendasDataGridView.Columns[2].HeaderText = "Socio";
@@ -74,7 +83,7 @@ namespace LanchoneteUDV
         {
             int row = VendasDataGridView.CurrentRow.Index;
 
-            PedidoForm pedido = new PedidoForm(_produtoService);
+            PedidoForm pedido = new PedidoForm(_produtoService,_socioService,_vendaService,_vendasPedidoService);
             pedido.IdEscala = Convert.ToInt32(IdTextBox.Text);
             pedido.IdSocio = Convert.ToInt32(VendasDataGridView.Rows[row].Cells[1].Value);
             pedido.ShowDialog();
@@ -84,18 +93,31 @@ namespace LanchoneteUDV
 
         private void RecarregarTela()
         {
-            DataTable dados = _bllVendas.TrazerEscala(Convert.ToInt32(this.Tag));
+            // DataTable dados = _vendaService.TrazerVendaEscalaResumoVenda(Convert.ToInt32(this.Tag));  //_bllVendas.TrazerEscala(Convert.ToInt32(this.Tag));
 
-            DataRow row = dados.Rows[0];
+            //DataRow row = dados.Rows[0];
 
-            IdTextBox.Text = row["ID"].ToString();
-            DescricaoEscalaTextBox.Text = row["Descricao"].ToString();
-            DataEscalaDateTimePicker.Value = Convert.ToDateTime(row["DataEscala"]);
-            if (!string.IsNullOrEmpty(row["Resumo"].ToString()))
+            //IdTextBox.Text = row["ID"].ToString();
+            //DescricaoEscalaTextBox.Text = row["Descricao"].ToString();
+            //DataEscalaDateTimePicker.Value = Convert.ToDateTime(row["DataEscala"]);
+            //if (!string.IsNullOrEmpty(row["Resumo"].ToString()))
+            //{
+            //    ResumoVendasTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Resumo"].ToString()));
+            //}
+
+            var vendas = _vendaService.TrazerVendaEscalaResumoVenda(Convert.ToInt32(this.Tag));
+            var vendas1 = vendas.First();
+            IdTextBox.Text = vendas1.IdEscala.ToString();
+            DescricaoEscalaTextBox.Text = vendas1.Descricao;
+            DataEscalaDateTimePicker.Value = vendas1.DataEscala;
+            if (!string.IsNullOrEmpty(vendas1.ResumoVendas.ToString()))
             {
-                ResumoVendasTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Resumo"].ToString()));
+                ResumoVendasTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(vendas1.ResumoVendas.ToString()));
             }
-            ResumoVendasDataGridView.DataSource = dados;
+
+
+            //vendas.First().
+            ResumoVendasDataGridView.DataSource = vendas;//dados;
             FormataGridResumo();
             RecarregaGrid();
         }
@@ -103,7 +125,7 @@ namespace LanchoneteUDV
 
         private void FilaButton_Click(object sender, EventArgs e)
         {
-            FilaPedidosForm fila = new FilaPedidosForm();
+            FilaPedidosForm fila = new FilaPedidosForm(_vendasPedidoService);
             fila.Tag = IdTextBox.Text;
             fila.Show();
         }
@@ -111,13 +133,13 @@ namespace LanchoneteUDV
 
         private void EstoqueButton_Click(object sender, EventArgs e)
         {
-            EstoqueForm estoque = new EstoqueForm();
+            EstoqueForm estoque = new EstoqueForm(_estoqueEscalaService);
             estoque.Show();
         }
 
         private void NovoButton_Click_1(object sender, EventArgs e)
         {
-            PedidoForm pedido = new PedidoForm(_produtoService);
+            PedidoForm pedido = new PedidoForm(_produtoService,_socioService,_vendaService, _vendasPedidoService);
             pedido.IdEscala = Convert.ToInt32(IdTextBox.Text);
             pedido.ShowDialog();
             RecarregarTela();
@@ -125,14 +147,14 @@ namespace LanchoneteUDV
 
         private void EstoqueEscalaButton_Click(object sender, EventArgs e)
         {
-            EstoqueEscalaForm estoque = new EstoqueEscalaForm();
+            EstoqueEscalaForm estoque = new EstoqueEscalaForm(_estoqueEscalaService,_vendaService);
             estoque.IDEscala = Convert.ToInt32(this.Tag);
             estoque.ShowDialog();
         }
 
         private void PesquisaTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            VendasDataGridView.DataSource = _bllVendas.ListarVendasPesquisa(Convert.ToInt32(this.Tag),PesquisaTextBox.Text);
+            VendasDataGridView.DataSource = _vendaService.ListarVendasPesquisa(Convert.ToInt32(this.Tag), PesquisaTextBox.Text); //_bllVendas.ListarVendasPesquisa(Convert.ToInt32(this.Tag),PesquisaTextBox.Text);
             VendasDataGridView.Columns[0].Visible = false;
             VendasDataGridView.Columns[1].Visible = false;
             VendasDataGridView.Columns[2].HeaderText = "Socio";

@@ -1,4 +1,5 @@
-﻿using LanchoneteUDV.Business;
+﻿using LanchoneteUDV.Application.Interfaces;
+using LanchoneteUDV.Business;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,12 +14,14 @@ namespace LanchoneteUDV
 {
     public partial class EstoqueForm : Form
     {
-        VendasBLL _bllVendas = new VendasBLL();
+        //VendasBLL _bllVendas = new VendasBLL();
+        private readonly IEstoqueEscalaService _estoqueEscalaService;
         Helper _helper = new Helper();
 
 
-        public EstoqueForm()
+        public EstoqueForm(IEstoqueEscalaService estoqueEscalaService)
         {
+            _estoqueEscalaService = estoqueEscalaService;
             InitializeComponent();
         }
 
@@ -26,7 +29,7 @@ namespace LanchoneteUDV
         private void RecarregaGrid()
         {
 
-            EstoqueDataGridView.DataSource = _bllVendas.ListarEstoque();
+            EstoqueDataGridView.DataSource = _estoqueEscalaService.ListarEstoque(); //_bllVendas.ListarEstoque();
             EstoqueDataGridView.Columns[0].Visible = false;
 
             EstoqueDataGridView.Columns[1].HeaderText = "Produto";

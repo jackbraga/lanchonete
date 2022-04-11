@@ -37,7 +37,7 @@ namespace LanchoneteUDV.Business
         {
             return _vendasDal.ListarEstoqueSalgadosPorEscala(idEscala);
         }
-        
+
 
         public DataTable PesquisarEstoque(string pesquisa)
         {
@@ -99,10 +99,10 @@ namespace LanchoneteUDV.Business
                     "TipoPagamento: " + venda.TipoPagamento + " " +
                     "Atualizado por: " + "Jackson Santos Braga " +
                     "Em: " + DateTime.Now.ToString(),
-                                Formulario = "PedidoFormForm",
-                                IDTabela = venda.ID,
-                                NomeTabela = "tbVendas"
-                            });
+                    Formulario = "PedidoFormForm",
+                    IDTabela = venda.ID,
+                    NomeTabela = "tbVendas"
+                });
             }
 
             return idVenda;

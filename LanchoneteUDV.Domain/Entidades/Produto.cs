@@ -19,10 +19,6 @@ namespace LanchoneteUDV.Domain.Entidades
         public int EstoqueInicial { get; set; }
         public bool ProdutoVenda { get; set; }
 
-        //public Categoria Categoria { get; set; }
-
-        
-
 
         public Produto()
         {
@@ -33,26 +29,34 @@ namespace LanchoneteUDV.Domain.Entidades
             ValidarDominio(descricao,categoria,  precoCustoCaixa,  qtdPorCaixa,  precoCustoUnitario,  precoVenda,  estoqueInicial,  prevoVenda);
         }
 
-        public Produto(int id, string descricao, int categoria, double precoCustoCaixa, int qtdPorCaixa, double precoCustoUnitario, double precoVenda, int estoqueInicial, bool prevoVenda)
+        public Produto(int id, string descricao, int categoria, double precoCustoCaixa, int qtdPorCaixa, double precoCustoUnitario, double precoVenda, int estoqueInicial, bool produtoVenda)
         {
             DomainExceptionValidation.When(id < 0, "Necessário informar um ID");
             Id = id;
-            ValidarDominio(descricao, categoria, precoCustoCaixa, qtdPorCaixa, precoCustoUnitario, precoVenda, estoqueInicial, prevoVenda);
+            ValidarDominio(descricao, categoria, precoCustoCaixa, qtdPorCaixa, precoCustoUnitario, precoVenda, estoqueInicial, produtoVenda);
         }
 
-        public void Update(string descricao, int categoria, double precoCustoCaixa, int qtdPorCaixa, double precoCustoUnitario, double precoVenda, int estoqueInicial, bool prevoVenda)
+        public void Update(string descricao, int categoria, double precoCustoCaixa, int qtdPorCaixa, double precoCustoUnitario, double precoVenda, int estoqueInicial, bool produtoVenda)
         {
-            ValidarDominio(descricao, categoria, precoCustoCaixa, qtdPorCaixa, precoCustoUnitario, precoVenda, estoqueInicial, prevoVenda);
+            ValidarDominio(descricao, categoria, precoCustoCaixa, qtdPorCaixa, precoCustoUnitario, precoVenda, estoqueInicial, produtoVenda);
         }
 
-        private void ValidarDominio(string descricao, int categoria, double precoCustoCaixa, int qtdPorCaixa, double precoCustoUnitario, double precoVenda, int estoqueInicial, bool prevoVenda)
+        private void ValidarDominio(string descricao, int categoria, double precoCustoCaixa, int qtdPorCaixa, double precoCustoUnitario, double precoVenda, int estoqueInicial, bool produtoVenda)
         {
             DomainExceptionValidation.When(string.IsNullOrEmpty(descricao),
-                "É necessário informar uma categoria");
+                "É necessário informar um produto");
             DomainExceptionValidation.When(descricao.Trim().Length < 3,
-                "Categoria muito curta para o cadastro");
+                "Produto muito curta para o cadastro");
 
             Descricao = descricao;
+            CategoriaId = categoria;
+            PrecoCustoCaixa = precoCustoCaixa;
+            QtdPorCaixa = qtdPorCaixa;
+            PrecoCustoUnitario = precoCustoUnitario;
+            PrecoVenda = precoVenda;
+            EstoqueInicial = estoqueInicial;
+            ProdutoVenda = produtoVenda;
+
         }
     }
 }

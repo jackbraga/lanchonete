@@ -13,6 +13,155 @@ namespace LanchoneteUDV.Database
     public class FinanceiroDAL
     {
         Configuration _banco = new Configuration();
+
+        public DataTable ListarCaixa()
+        {
+            DataTable dados = new DataTable();
+            string query =
+            "SELECT A.ID, A.DataEvento, A.TipoEvento, A.Valor,B.Descricao, A.Observacao " +
+            "FROM tbCaixa AS A " +
+            "INNER JOIN tbCategoriaLancamento AS B ON B.ID=A.CAtegoriaLancamento " +
+            "ORDER BY 2 desc; ";
+
+            try
+            {
+                dados = _banco.ExecutarQueryDados(query);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return dados;
+
+        }
+
+
+        public int AdicionarEventoCaixa(CaixaDTO caixa)
+        {
+            //OleDbCommand cmd = new OleDbCommand();
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.CommandText =
+                "INSERT INTO tbCaixa(DataEvento, TipoEvento,CategoriaLancamento,Valor,Observacao) " +
+                "VALUES(@data,@tipoEvento,@categoria,@valor,@observacao) ";
+
+
+            cmd.Parameters.AddWithValue("@data", OleDbType.Date).Value = caixa.DataEvento;
+            cmd.Parameters.AddWithValue("@tipoEvento", caixa.TipoEvento);
+            cmd.Parameters.AddWithValue("@categoria", caixa.Categoria);
+            cmd.Parameters.AddWithValue("@valor", caixa.Valor);
+            cmd.Parameters.AddWithValue("@observacao", caixa.Observacao);
+
+            try
+            {
+                return _banco.ExecutarQueryComando(cmd);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public DataTable ListarCategoriaLancamento()
+        {
+            DataTable dados = new DataTable();
+            string query =
+            "SELECT A.ID, A.Descricao " +
+            "FROM tbCategoriaLancamento AS A ;";
+
+            try
+            {
+                dados = _banco.ExecutarQueryDados(query);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return dados;
+        }
+
+        public DataTable ListarResumo()
+        {
+            DataTable dados = new DataTable();
+            string query =
+                            "SELECT " +
+                            "(SELECT SUM(VALOR) FROM tbCaixa WHERE CategoriaLancamento = 3) AS SaldoInicial, " +
+                            "(SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Entrada') AS Entradas, " +
+                            "(SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Saida') AS Saidas, " +
+                            "(SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Entrada' AND CategoriaLancamento NOT IN(3, 4)) AS Faturado, " +
+                            "((SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Entrada' AND CategoriaLancamento NOT IN(3, 4)) + (SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Saida') ) AS Lucro, " +
+                            "(SELECT SUM(VALOR) AS Dinheiro FROM tbCaixa WHERE CategoriaLancamento = 5) AS Dinheiro, " +
+                            "((SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Entrada') + (SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Saida')) AS Saldo ";
+
+
+            try
+            {
+                dados = _banco.ExecutarQueryDados(query);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return dados;
+        }
+
+        public DataTable ListarMesAMes(int ano)
+        {
+            DataTable dados = new DataTable();
+            string query =
+
+                "select '01' AS Mes, Entradas,Saidas,Faturado,Lucro from RetornaResumoAnoMes(" + ano + ",1) " +
+                "UNION ALL " +
+                "select '02' AS Mes, Entradas, Saidas, Faturado, Lucro from RetornaResumoAnoMes(" + ano + ", 2) " +
+                "UNION ALL " +
+                "select '03' AS Mes, Entradas, Saidas, Faturado, Lucro from RetornaResumoAnoMes(" + ano + ", 3) " +
+                "UNION ALL " +
+                "select '04' AS Mes, Entradas, Saidas, Faturado, Lucro from RetornaResumoAnoMes(" + ano + ", 4) " +
+                "UNION ALL " +
+                "select '05' AS Mes, Entradas, Saidas, Faturado, Lucro from RetornaResumoAnoMes(" + ano + ", 5) " +
+                "UNION ALL " +
+                "select '06' AS Mes, Entradas, Saidas, Faturado, Lucro from RetornaResumoAnoMes(" + ano + ", 6) " +
+                "UNION ALL " +
+                "select '07' AS Mes, Entradas, Saidas, Faturado, Lucro from RetornaResumoAnoMes(" + ano + ", 7) " +
+                "UNION ALL " +
+                "select '08' AS Mes, Entradas, Saidas, Faturado, Lucro from RetornaResumoAnoMes(" + ano + ", 8) " +
+                "UNION ALL " +
+                "select '09' AS Mes, Entradas, Saidas, Faturado, Lucro from RetornaResumoAnoMes(" + ano + ", 9) " +
+                "UNION ALL " +
+                "select '10' AS Mes, Entradas, Saidas, Faturado, Lucro from RetornaResumoAnoMes(" + ano + ", 10) " +
+                "UNION ALL " +
+                "select '11' AS Mes, Entradas, Saidas, Faturado, Lucro from RetornaResumoAnoMes(" + ano + ", 11) " +
+                "UNION ALL " +
+                "select '12' AS Mes, Entradas, Saidas, Faturado, Lucro from RetornaResumoAnoMes(" + ano + ", 12) ";
+            try
+            {
+                dados = _banco.ExecutarQueryDados(query);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return dados;
+        }
+
+
+
+        /// <summary>
+        /// ////
+        /// </summary>
+        /// <param name="idEscala"></param>
+        /// <param name="idSocio"></param>
+        /// <returns></returns>
+
+
         public DataTable ListarItensRepasseFinanceiro(int idEscala, int idSocio)
         {
             DataTable dados = new DataTable();
@@ -91,147 +240,6 @@ namespace LanchoneteUDV.Database
             {
                 throw;
             }
-        }
-
-
-        public int AdicionarEventoCaixa(CaixaDTO caixa)
-        {
-            //OleDbCommand cmd = new OleDbCommand();
-            SqlCommand cmd = new SqlCommand();
-
-            cmd.CommandText =
-                "INSERT INTO tbCaixa(DataEvento, TipoEvento,CategoriaLancamento,Valor,Observacao) " +
-                "VALUES(@data,@tipoEvento,@categoria,@valor,@observacao) ";
-
-
-            cmd.Parameters.AddWithValue("@data", OleDbType.Date).Value = caixa.DataEvento;
-            cmd.Parameters.AddWithValue("@tipoEvento", caixa.TipoEvento);
-            cmd.Parameters.AddWithValue("@categoria", caixa.Categoria);
-            cmd.Parameters.AddWithValue("@valor", caixa.Valor);
-            cmd.Parameters.AddWithValue("@observacao", caixa.Observacao);
-
-            try
-            {
-                return _banco.ExecutarQueryComando(cmd);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-
-        public DataTable ListarCaixa()
-        {
-            DataTable dados = new DataTable();
-            string query =
-            "SELECT A.ID, A.DataEvento, A.TipoEvento, A.Valor,B.Descricao, A.Observacao " +
-            "FROM tbCaixa AS A " +
-            "INNER JOIN tbCategoriaLancamento AS B ON B.ID=A.CAtegoriaLancamento " +
-            "ORDER BY 2 desc; ";
-
-
-            try
-            {
-                dados = _banco.ExecutarQueryDados(query);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-            return dados;
-
-        }
-
-        public DataTable ListarCategoriaLancamento()
-        {
-            DataTable dados = new DataTable();
-            string query =
-            "SELECT A.ID, A.Descricao " +
-            "FROM tbCategoriaLancamento AS A ;";
-
-            try
-            {
-                dados = _banco.ExecutarQueryDados(query);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-            return dados;
-        }
-
-        public DataTable ListarResumo()
-        {
-            DataTable dados = new DataTable();
-            string query =
-                            "SELECT " +
-                            "(SELECT SUM(VALOR) FROM tbCaixa WHERE CategoriaLancamento = 3) AS SaldoInicial, " +
-                            "(SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Entrada') AS Entradas, " +
-                            "(SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Saida') AS Saidas, " +
-                            "(SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Entrada' AND CategoriaLancamento NOT IN(3, 4)) AS Faturado, " +
-                            "((SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Entrada' AND CategoriaLancamento NOT IN(3, 4)) + (SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Saida') ) AS Lucro, " +
-                            "(SELECT SUM(VALOR) AS Dinheiro FROM tbCaixa WHERE CategoriaLancamento = 5) AS Dinheiro, " +
-                            "((SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Entrada') + (SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Saida')) AS Saldo ";
-
-
-            try
-            {
-                dados = _banco.ExecutarQueryDados(query);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-            return dados;
-        }
-
-
-        public DataTable ListarMesAMes(int ano)
-        {
-            DataTable dados = new DataTable();
-            string query =
-
-                "select '01' AS Mes, Entradas,Saidas,Faturado,Lucro from RetornaResumoAnoMes(" + ano + ",1) " +
-                "UNION ALL " +
-                "select '02' AS Mes, Entradas, Saidas, Faturado, Lucro from RetornaResumoAnoMes(" + ano + ", 2) " +
-                "UNION ALL " +
-                "select '03' AS Mes, Entradas, Saidas, Faturado, Lucro from RetornaResumoAnoMes(" + ano + ", 3) " +
-                "UNION ALL " +
-                "select '04' AS Mes, Entradas, Saidas, Faturado, Lucro from RetornaResumoAnoMes(" + ano + ", 4) " +
-                "UNION ALL " +
-                "select '05' AS Mes, Entradas, Saidas, Faturado, Lucro from RetornaResumoAnoMes(" + ano + ", 5) " +
-                "UNION ALL " +
-                "select '06' AS Mes, Entradas, Saidas, Faturado, Lucro from RetornaResumoAnoMes(" + ano + ", 6) " +
-                "UNION ALL " +
-                "select '07' AS Mes, Entradas, Saidas, Faturado, Lucro from RetornaResumoAnoMes(" + ano + ", 7) " +
-                "UNION ALL " +
-                "select '08' AS Mes, Entradas, Saidas, Faturado, Lucro from RetornaResumoAnoMes(" + ano + ", 8) " +
-                "UNION ALL " +
-                "select '09' AS Mes, Entradas, Saidas, Faturado, Lucro from RetornaResumoAnoMes(" + ano + ", 9) " +
-                "UNION ALL " +
-                "select '10' AS Mes, Entradas, Saidas, Faturado, Lucro from RetornaResumoAnoMes(" + ano + ", 10) " +
-                "UNION ALL " +
-                "select '11' AS Mes, Entradas, Saidas, Faturado, Lucro from RetornaResumoAnoMes(" + ano + ", 11) " +
-                "UNION ALL " +
-                "select '12' AS Mes, Entradas, Saidas, Faturado, Lucro from RetornaResumoAnoMes(" + ano + ", 12) ";
-            try
-            {
-                dados = _banco.ExecutarQueryDados(query);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-            return dados;
         }
 
     }

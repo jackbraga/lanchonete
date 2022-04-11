@@ -14,30 +14,36 @@ namespace LanchoneteUDV
 {
     public partial class RepasseTesourariaVendaForm : Form
     {
-        VendasBLL _bllVendas = new VendasBLL();
-        FinanceiroBLL _bllFinanceiro = new FinanceiroBLL();
-        
+        //VendasBLL _bllVendas = new VendasBLL();
+        //FinanceiroBLL _bllFinanceiro = new FinanceiroBLL();
+
+        private readonly IVendaService _vendaService;
+        private readonly IFinanceiroService _financeiroService;        
         private readonly IEscalaService _escalaService;
         Helper _helper = new Helper();
         public int IDEscala { get; set; }
 
 
-        public RepasseTesourariaVendaForm(IEscalaService escalaService)
+        public RepasseTesourariaVendaForm(IEscalaService escalaService,IFinanceiroService financeiroService, IVendaService vendaService)
         {
             _escalaService = escalaService;
+            _financeiroService = financeiroService;
+            _vendaService = vendaService;
             InitializeComponent();
         }
 
         private void RecarregarTela()
         {
-            DataTable dados = _bllVendas.TrazerEscala(Convert.ToInt32(IDEscala));
+            //DataTable dados = _bllVendas.TrazerEscala(Convert.ToInt32(IDEscala));
+            //DataRow row = dados.Rows[0];
 
-            DataRow row = dados.Rows[0];
+            var escala = _vendaService.TrazerVendaEscalaResumoVenda(Convert.ToInt32(IDEscala)).FirstOrDefault();
 
-            IdTextBox.Text = row["ID"].ToString();
-            DescricaoEscalaTextBox.Text = row["Descricao"].ToString();
-            DataEscalaDateTimePicker.Value = Convert.ToDateTime(row["DataEscala"]);
-            FinalizadaCheckBox.Checked = Convert.ToBoolean(row["Finalizada"]);
+
+            IdTextBox.Text = escala.IdEscala.ToString();//row["ID"].ToString();
+            DescricaoEscalaTextBox.Text = escala.Descricao;//row["Descricao"].ToString();
+            DataEscalaDateTimePicker.Value = escala.DataEscala; //Convert.ToDateTime(row["DataEscala"]);
+            FinalizadaCheckBox.Checked = escala.EscalaFinalizada;// Convert.ToBoolean(row["Finalizada"]);
 
             if (FinalizadaCheckBox.Checked)
             {
@@ -52,9 +58,14 @@ namespace LanchoneteUDV
 
 
 
-            if (!string.IsNullOrEmpty(row["Resumo"].ToString()))
+            //if (!string.IsNullOrEmpty(row["Resumo"].ToString()))
+            //{
+            //    ResumoVendasTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Resumo"].ToString()));
+            //}
+
+            if (escala != null)
             {
-                ResumoVendasTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Resumo"].ToString()));
+                ResumoVendasTextBox.Text = "R$ " + String.Format("{0:N2}",escala.ResumoVendas);
             }
 
             RecarregaGrid();
@@ -62,9 +73,9 @@ namespace LanchoneteUDV
 
         private void RecarregaGrid()
         {
-            VendasDataGridView.DataSource = _bllFinanceiro.ListarVendasRepasse(Convert.ToInt32(IDEscala));
-            VendasDataGridView.Columns[0].Visible = false;
-            VendasDataGridView.Columns[1].Visible = false;
+            VendasDataGridView.DataSource = _financeiroService.ListarVendasRepasseFinanceiro(Convert.ToInt32(IDEscala));// _//bllFinanceiro.ListarVendasRepasse(Convert.ToInt32(IDEscala));
+            //VendasDataGridView.Columns[0].Visible = false;
+            //VendasDataGridView.Columns[1].Visible = false;
             VendasDataGridView.Columns[2].HeaderText = "Socio";
             VendasDataGridView.Columns[2].Width = 210;
             VendasDataGridView.Columns[3].HeaderText = "Pagamento";
@@ -101,10 +112,11 @@ namespace LanchoneteUDV
 
             if (MessageBox.Show("Deseja realmente disparar o e-mail para o socio selecionado?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                Email email = new Email();
+                Email email = new Email(_financeiroService);
 
                 email.EnviarEmail(IDEscala, idSocio, emailSocio);
-                _bllFinanceiro.AtualizaEmailDisparado(idVenda);
+                //_bllFinanceiro.AtualizaEmailDisparado(idVenda);
+                _financeiroService.AtualizaEmailDisparado(idVenda);
                 MessageBox.Show("E-mail disparado com sucesso!", "E-mail", MessageBoxButtons.OK);
                 RecarregaGrid();
             }
@@ -117,7 +129,7 @@ namespace LanchoneteUDV
             if (MessageBox.Show("Deseja realmente disparar o e-mail para todos os socios?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
 
-                Email email = new Email();
+                Email email = new Email(_financeiroService);
                 ProgressLabel.Visible = true;
                 EmailProgressBar.Visible = true;
                 EmailProgressBar.Value = 0;
@@ -133,7 +145,8 @@ namespace LanchoneteUDV
                         string emailSocio = row.Cells[6].Value.ToString();
 
                         email.EnviarEmail(IDEscala, idSocio, emailSocio);
-                        _bllFinanceiro.AtualizaEmailDisparado(idVenda);
+                        //_bllFinanceiro.AtualizaEmailDisparado(idVenda);
+                        _financeiroService.AtualizaEmailDisparado(idVenda);
                     }
                     //System.Threading.Thread.Sleep(1000);
 

@@ -1,4 +1,5 @@
-﻿using LanchoneteUDV.Business;
+﻿using LanchoneteUDV.Application.Interfaces;
+using LanchoneteUDV.Business;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +14,11 @@ namespace LanchoneteUDV
 {
     public partial class FilaPedidosForm : Form
     {
-        VendasPedidoBLL _bllVendasPedido = new VendasPedidoBLL();
-        public FilaPedidosForm()
+        //VendasPedidoBLL _bllVendasPedido = new VendasPedidoBLL();
+        private readonly IVendasPedidoService _pedidoService;
+        public FilaPedidosForm(IVendasPedidoService pedidoService)
         {
+            _pedidoService=pedidoService;
             InitializeComponent();
         }
 
@@ -25,7 +28,7 @@ namespace LanchoneteUDV
         }
         private void RecarregarGrid()
         {
-            PedidosDataGridView.DataSource = _bllVendasPedido.ListarTodosVendasPedido(Convert.ToInt32(this.Tag));
+            PedidosDataGridView.DataSource = _pedidoService.ListarTodosVendasPedido(Convert.ToInt32(this.Tag));//_bllVendasPedido.ListarTodosVendasPedido(Convert.ToInt32(this.Tag));
 
             PedidosDataGridView.Columns[0].Visible = false;
             PedidosDataGridView.Columns[1].HeaderText = "Data/Hora Pedido";
@@ -58,8 +61,8 @@ namespace LanchoneteUDV
         private void RegistrarRetirada()
         {
             int row = PedidosDataGridView.CurrentRow.Index;
-
-            _bllVendasPedido.RegistrarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
+            _pedidoService.RegistrarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
+            //_bllVendasPedido.RegistrarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
             RecarregarGrid();
             MessageBox.Show("Retirada registrada!", "Atenção!", MessageBoxButtons.OK);
 
@@ -69,7 +72,8 @@ namespace LanchoneteUDV
         {
             int row = PedidosDataGridView.CurrentRow.Index;
 
-            _bllVendasPedido.DesmarcarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
+            _pedidoService.DesmarcarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
+            //_bllVendasPedido.DesmarcarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
             RecarregarGrid();
             MessageBox.Show("Desmarcada retirada!", "Atenção!", MessageBoxButtons.OK);
 
