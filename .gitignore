@@ -1,0 +1,5 @@
+
+*.cache
+*.pdb
+LanchoneteUDV/.vs/LanchoneteUDV/v17/.suo
+LanchoneteUDV/bin/Debug/*
