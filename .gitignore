@@ -3,3 +3,8 @@
 *.pdb
 LanchoneteUDV/.vs/LanchoneteUDV/v17/.suo
 LanchoneteUDV/bin/Debug/*
+LanchoneteUDV.Business/obj/*
+LanchoneteUDV.Database/obj/*
+LanchoneteUDV.Infra.Data/obj/*
+LanchoneteUDV.Infra.IoC/obj/*
+LanchoneteUDV/obj/*

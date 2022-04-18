@@ -1,14 +1,5 @@
-﻿using LanchoneteUDV.Application.Interfaces;
-using LanchoneteUDV.Business;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using LanchoneteUDV.Application.DTO;
+using LanchoneteUDV.Application.Interfaces;
 
 namespace LanchoneteUDV
 {
@@ -43,7 +34,14 @@ namespace LanchoneteUDV
 
         private void RecarregaGrid()
         {
-            VendasDataGridView.DataSource = _vendaService.ListarVendasEscala(Convert.ToInt32(this.Tag)); //_bllVendas.ListarVendas(Convert.ToInt32(this.Tag));
+            var lista = _vendaService.ListarVendasEscala(Convert.ToInt32(this.Tag)).ToList();
+            SortableBindingList<VendaEscalaDTO> listaSort = new SortableBindingList<VendaEscalaDTO>(lista);
+            BindingSource bs = new BindingSource();
+            bs.DataSource = listaSort;   // Bind to the sortable list
+            VendasDataGridView.DataSource = bs;
+
+
+           // VendasDataGridView.DataSource = _vendaService.ListarVendasEscala(Convert.ToInt32(this.Tag)); //_bllVendas.ListarVendas(Convert.ToInt32(this.Tag));
             VendasDataGridView.Columns[0].Visible = false;
             VendasDataGridView.Columns[1].Visible = false;
             VendasDataGridView.Columns[2].HeaderText = "Socio";
@@ -164,6 +162,9 @@ namespace LanchoneteUDV
             VendasDataGridView.Columns[4].HeaderText = "Valor Total";
             VendasDataGridView.Columns[5].HeaderText = "Itens para Retirar";
             VendasDataGridView.ClearSelection();
+
+
+
         }
 
     }

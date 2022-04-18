@@ -126,8 +126,8 @@ namespace LanchoneteUDV.Infra.Data.Repositories
     "FROM tbEscalas WITH(NOLOCK) " +
     "LEFT JOIN tbVendas WITH(NOLOCK) ON tbEscalas.ID = tbVendas.Escala " +
     "LEFT JOIN tbVendasPedido WITH(NOLOCK) ON tbVendas.ID = tbVendasPedido.Venda " +
-    "GROUP BY tbEscalas.ID, tbEscalas.DataEscala, tbEscalas.Descricao, tbEscalas.TipoSessao, tbEscalas.Observacao, tbEscalas.Finalizada, tbEscalas.RepasseTesouraria " +
-    "ORDER BY tbEscalas.DataEscala DESC; ";
+    "GROUP BY tbEscalas.ID, tbEscalas.DataEscala, tbEscalas.Descricao, tbEscalas.TipoSessao, tbEscalas.Observacao, tbEscalas.Finalizada, tbEscalas.RepasseTesouraria ";
+   
 
             IList<Escala> categorias = new List<Escala>();
 

@@ -24,7 +24,7 @@ namespace LanchoneteUDV.Application.Services
 
         public IEnumerable<CompraDTO> GetAll()
         {
-            var compras = _compraRepository.GetAll();
+            var compras = _compraRepository.GetAll().OrderByDescending(x=>x.DataCompra);
             return _mapper.Map<IEnumerable<CompraDTO>>(compras);
         }
 

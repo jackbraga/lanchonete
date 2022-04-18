@@ -1,14 +1,5 @@
-﻿using LanchoneteUDV.Application.Interfaces;
-using LanchoneteUDV.Business;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using LanchoneteUDV.Application.DTO;
+using LanchoneteUDV.Application.Interfaces;
 
 namespace LanchoneteUDV
 {
@@ -28,7 +19,14 @@ namespace LanchoneteUDV
         }
         private void RecarregarGrid()
         {
-            PedidosDataGridView.DataSource = _pedidoService.ListarTodosVendasPedido(Convert.ToInt32(this.Tag));//_bllVendasPedido.ListarTodosVendasPedido(Convert.ToInt32(this.Tag));
+            var lista = _pedidoService.ListarTodosVendasPedido(Convert.ToInt32(this.Tag)).ToList();
+            SortableBindingList<VendasPedidoEscalaDTO> listaSort = new SortableBindingList<VendasPedidoEscalaDTO>(lista);
+            BindingSource bs = new BindingSource();
+            bs.DataSource = listaSort;   // Bind to the sortable list
+            PedidosDataGridView.DataSource = bs;
+
+
+            //PedidosDataGridView.DataSource = _pedidoService.ListarTodosVendasPedido(Convert.ToInt32(this.Tag));//_bllVendasPedido.ListarTodosVendasPedido(Convert.ToInt32(this.Tag));
 
             PedidosDataGridView.Columns[0].Visible = false;
             PedidosDataGridView.Columns[1].HeaderText = "Data/Hora Pedido";

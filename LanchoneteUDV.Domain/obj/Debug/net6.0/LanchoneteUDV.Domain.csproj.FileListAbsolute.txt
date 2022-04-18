@@ -14,6 +14,7 @@ C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Domain\bin\Debug\ne
 C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Domain\bin\Debug\net6.0\LanchoneteUDV.Domain.dll
 C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Domain\bin\Debug\net6.0\ref\LanchoneteUDV.Domain.dll
 C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Domain\bin\Debug\net6.0\LanchoneteUDV.Domain.pdb
+C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Domain\obj\Debug\net6.0\LanchoneteUDV.Domain.csproj.AssemblyReference.cache
 C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Domain\obj\Debug\net6.0\LanchoneteUDV.Domain.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Domain\obj\Debug\net6.0\LanchoneteUDV.Domain.AssemblyInfoInputs.cache
 C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Domain\obj\Debug\net6.0\LanchoneteUDV.Domain.AssemblyInfo.cs
@@ -21,4 +22,3 @@ C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Domain\obj\Debug\ne
 C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Domain\obj\Debug\net6.0\LanchoneteUDV.Domain.dll
 C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Domain\obj\Debug\net6.0\ref\LanchoneteUDV.Domain.dll
 C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Domain\obj\Debug\net6.0\LanchoneteUDV.Domain.pdb
-C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Domain\obj\Debug\net6.0\LanchoneteUDV.Domain.csproj.AssemblyReference.cache

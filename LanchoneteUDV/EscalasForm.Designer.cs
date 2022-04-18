@@ -434,6 +434,7 @@
             this.EscalasDataGridView.TabIndex = 0;
             this.EscalasDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EscalasDataGridView_CellClick);
             this.EscalasDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EscalasDataGridView_CellDoubleClick);
+
             // 
             // EscalasForm
             // 

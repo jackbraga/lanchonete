@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 
-namespace LanchoneteUDV.Business
-{
-    public  class BaseBLL : LoggingBLL
-    {
-    }
-}
+//namespace LanchoneteUDV.Business
+//{
+//    public  class BaseBLL : LoggingBLL
+//    {
+//    }
+//}

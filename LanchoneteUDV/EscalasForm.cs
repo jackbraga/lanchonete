@@ -145,7 +145,17 @@ namespace LanchoneteUDV
         private async void RecarregaGrid()
         {
             //EscalasDataGridView.DataSource = _bllEscalas.ListarEscalas();
-            EscalasDataGridView.DataSource = _escalaService.GetAll();
+            
+            //EscalasDataGridView.DataSource = _escalaService.GetAll().ToList();
+
+            var lista = _escalaService.GetAll().ToList();
+            SortableBindingList<EscalaDTO> listaSort = new SortableBindingList<EscalaDTO>(lista);
+            BindingSource bs = new BindingSource();
+            bs.DataSource = listaSort;   // Bind to the sortable list
+            EscalasDataGridView.DataSource = bs;
+
+            //EscalasDataGridView.Sort(EscalasDataGridView.Columns[1], ListSortDirection.Ascending);
+
             FormataGrid();
         }
         private void RecarregaGrid(string pesquisa)
@@ -235,5 +245,6 @@ namespace LanchoneteUDV
 
             _helper.Habilita(ExcluirButton, EditarButton, NovoButton, AbrirEscalaButton);
         }
+
     }
 }
