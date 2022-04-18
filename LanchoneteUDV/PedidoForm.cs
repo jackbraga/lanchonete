@@ -1,5 +1,6 @@
 ﻿using LanchoneteUDV.Application.DTO;
 using LanchoneteUDV.Application.Interfaces;
+using System.ComponentModel;
 using System.Data;
 using System.Text.RegularExpressions;
 
@@ -204,11 +205,11 @@ namespace LanchoneteUDV
             };
             if (venda.Id > 0)
             {
-                IdVenda = _vendaService.Add(venda);
+                _vendaService.Update(venda);
             }
             else
             {
-                _vendaService.Update(venda);
+                IdVenda = _vendaService.Add(venda);
             }
 
 
@@ -530,5 +531,6 @@ namespace LanchoneteUDV
             SocioComboBox.SelectedValue = -1;
 
         }
+
     }
 }

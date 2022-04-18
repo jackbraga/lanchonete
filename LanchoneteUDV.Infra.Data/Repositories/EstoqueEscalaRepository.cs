@@ -86,11 +86,11 @@ namespace LanchoneteUDV.Infra.Data.Repositories
 
         public IEnumerable<Estoque> ListarEstoque()
         {
-            string sql = "SELECT DISTINCT A.ID, A.Descricao, A.PrecoVenda, " +
+            string sql = "SELECT DISTINCT A.ID AS IdProduto, A.Descricao AS DescricaoProduto, A.PrecoVenda, " +
                     "A.EstoqueInicial, " +
                     "(SELECT SUM(tbCompras.Quantidade) FROM tbCompras WHERE Produto = A.ID) AS Entrada, " +
                     "(SELECT SUM(tbVendasPedido.Quantidade) FROM tbVendasPedido WHERE Produto = A.ID) AS Saida, " +
-                    "(ISNULL(EstoqueInicial,0) + ISNULL((SELECT SUM(tbCompras.Quantidade) FROM tbCompras WHERE Produto = A.ID),0) - ISNULL((SELECT SUM(tbVendasPedido.Quantidade) FROM tbVendasPedido WHERE Produto = A.ID),0)) AS Estoque " +
+                    "(ISNULL(EstoqueInicial,0) + ISNULL((SELECT SUM(tbCompras.Quantidade) FROM tbCompras WHERE Produto = A.ID),0) - ISNULL((SELECT SUM(tbVendasPedido.Quantidade) FROM tbVendasPedido WHERE Produto = A.ID),0)) AS QtdEstoque " +
                     "FROM tbProdutos AS A " +
                     "LEFT JOIN tbCompras AS B ON A.ID = B.Produto " +
                     "LEFT JOIN tbVendasPedido AS C ON A.ID = C.Produto " +

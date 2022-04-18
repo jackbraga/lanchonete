@@ -44,7 +44,9 @@ namespace LanchoneteUDV.Infra.Data.Repositories
 
         public IEnumerable<VendaEscala> ListarVendasPesquisa(int idEscala, string pesquisa)
         {
-            string sql = "SELECT tbVendas.ID, tbSocios.ID,  tbSocios.Nome, tbVendas.TipoPagamento, SUM(tbVendasPedido.Quantidade * tbVendasPedido.PrecoProduto) AS Total,(SELECT COUNT(*) FROM tbVendasPedido WHERE Venda=tbVendas.ID AND Retirado=0) AS PendenteRetirada " +
+            string sql = "SELECT tbVendas.ID AS IdVenda, tbSocios.ID AS IdSocio,  tbSocios.Nome AS NomeSocio, tbVendas.TipoPagamento, " +
+            "SUM(tbVendasPedido.Quantidade * tbVendasPedido.PrecoProduto) AS TotalVenda," +
+            "(SELECT COUNT(*) FROM tbVendasPedido WHERE Venda = tbVendas.ID AND Retirado = 0) AS PendenteRetirada " +
             "FROM tbSocios " +
             "INNER JOIN(tbEscalas " +
             "INNER JOIN (tbVendas " +
@@ -55,6 +57,17 @@ namespace LanchoneteUDV.Infra.Data.Repositories
             "WHERE tbEscalas.ID=" + idEscala + " AND tbSocios.Nome LIKE '" + pesquisa + "%' " +
             "GROUP BY  tbVendas.ID, tbSocios.ID,  tbSocios.Nome, tbVendas.TipoPagamento " +
             "ORDER BY 6 desc,tbSocios.Nome ; ";
+            //string sql = "SELECT tbVendas.ID, tbSocios.ID,  tbSocios.Nome, tbVendas.TipoPagamento, SUM(tbVendasPedido.Quantidade * tbVendasPedido.PrecoProduto) AS Total,(SELECT COUNT(*) FROM tbVendasPedido WHERE Venda=tbVendas.ID AND Retirado=0) AS PendenteRetirada " +
+            //"FROM tbSocios " +
+            //"INNER JOIN(tbEscalas " +
+            //"INNER JOIN (tbVendas " +
+            //"INNER JOIN tbVendasPedido " +
+            //"ON tbVendas.ID = tbVendasPedido.Venda) " +
+            //"ON tbEscalas.ID = tbVendas.Escala) " +
+            //"ON tbSocios.ID = tbVendas.Socio " +
+            //"WHERE tbEscalas.ID=" + idEscala + " AND tbSocios.Nome LIKE '" + pesquisa + "%' " +
+            //"GROUP BY  tbVendas.ID, tbSocios.ID,  tbSocios.Nome, tbVendas.TipoPagamento " +
+            //"ORDER BY 6 desc,tbSocios.Nome ; ";
 
             using (var connection = _connection.Connection())
             {

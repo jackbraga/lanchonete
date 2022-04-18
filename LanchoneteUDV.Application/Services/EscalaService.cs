@@ -30,7 +30,7 @@ namespace LanchoneteUDV.Application.Services
 
         public IEnumerable<EscalaDTO> GetAll()
         {
-            var escalas =  _escalaRepository.GetAll();
+            var escalas =  _escalaRepository.GetAll().OrderByDescending(x=>x.DataEscala);
             return _mapper.Map<IEnumerable<EscalaDTO>>(escalas);
         }
 

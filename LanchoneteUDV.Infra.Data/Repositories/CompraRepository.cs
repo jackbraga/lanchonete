@@ -47,10 +47,9 @@ namespace LanchoneteUDV.Infra.Data.Repositories
 
         public IEnumerable<Compra> GetAll()
         {
-            string sql = "SELECT  A.ID,A.DataCompra, A.Quantidade, A.PrecoUnitario, A.CompradoPor,  A.TipoEntrada, A.Observacao,B.ID AS IDProduto, B.ID,B.Descricao " +
+            string sql = "SELECT  A.ID,A.DataCompra, A.Quantidade, A.PrecoUnitario, A.CompradoPor,  A.TipoEntrada, A.Observacao,B.ID AS IDProduto,B.Id, B.Descricao  " +
                     "FROM tbCompras AS A WITH(NOLOCK) " +
-                    "INNER JOIN tbProdutos AS B  WITH(NOLOCK) ON B.ID = A.Produto " +
-                "order by A.DataCompra Desc";
+                    "INNER JOIN tbProdutos AS B  WITH(NOLOCK) ON B.ID = A.Produto ";
 
 
             using (var connection = _connection.Connection())
