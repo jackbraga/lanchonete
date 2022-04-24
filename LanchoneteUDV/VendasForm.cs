@@ -11,14 +11,16 @@ namespace LanchoneteUDV
         private readonly ISocioService _socioService;
         private readonly IEstoqueEscalaService _estoqueEscalaService;
         private readonly IVendasPedidoService _vendasPedidoService;
+        private readonly IEscalaService _escalaService;
         public VendasForm(IVendaService vendaService,IProdutoService produtoService,ISocioService socioService,IEstoqueEscalaService estoqueEscalaService
-            ,IVendasPedidoService vendasPedidoService)
+            ,IVendasPedidoService vendasPedidoService, IEscalaService escalaService)
         {
             _vendaService = vendaService;
             _produtoService = produtoService;
             _socioService = socioService;
             _estoqueEscalaService = estoqueEscalaService;
             _vendasPedidoService = vendasPedidoService;
+            _escalaService = escalaService;
             InitializeComponent();
             
         }
@@ -40,12 +42,11 @@ namespace LanchoneteUDV
             bs.DataSource = listaSort;   // Bind to the sortable list
             VendasDataGridView.DataSource = bs;
 
-
            // VendasDataGridView.DataSource = _vendaService.ListarVendasEscala(Convert.ToInt32(this.Tag)); //_bllVendas.ListarVendas(Convert.ToInt32(this.Tag));
             VendasDataGridView.Columns[0].Visible = false;
             VendasDataGridView.Columns[1].Visible = false;
             VendasDataGridView.Columns[2].HeaderText = "Socio";
-            VendasDataGridView.Columns[2].Width = 210;
+            VendasDataGridView.Columns[2].Width = 310;
             VendasDataGridView.Columns[3].HeaderText = "Pagamento";
             VendasDataGridView.Columns[4].DefaultCellStyle.Format = "R$ 0.00##";
             VendasDataGridView.Columns[4].HeaderText = "Valor Total";
@@ -63,8 +64,18 @@ namespace LanchoneteUDV
             ResumoVendasDataGridView.Columns[3].DefaultCellStyle.Format = "R$ 0.00##";
             ResumoVendasDataGridView.Columns[3].Width = 80;
             ResumoVendasDataGridView.Columns[5].Width = 80;
+            ResumoVendasDataGridView.Columns[3].HeaderText = "Total";
             ResumoVendasDataGridView.Columns[5].HeaderText = "Pagamento";
 
+            ResumoVendasChurrascoDataGridView.Columns[0].Visible = false;
+            ResumoVendasChurrascoDataGridView.Columns[1].Visible = false;
+            ResumoVendasChurrascoDataGridView.Columns[2].Visible = false;
+            ResumoVendasChurrascoDataGridView.Columns[4].Visible = false;
+            ResumoVendasChurrascoDataGridView.Columns[3].DefaultCellStyle.Format = "R$ 0.00##";
+            ResumoVendasChurrascoDataGridView.Columns[3].Width = 80;
+            ResumoVendasChurrascoDataGridView.Columns[5].Width = 80;
+            ResumoVendasChurrascoDataGridView.Columns[3].HeaderText = "Total";
+            ResumoVendasChurrascoDataGridView.Columns[5].HeaderText = "Pagamento";
 
         }
 
@@ -103,19 +114,34 @@ namespace LanchoneteUDV
             //    ResumoVendasTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Resumo"].ToString()));
             //}
 
-            var vendas = _vendaService.TrazerVendaEscalaResumoVenda(Convert.ToInt32(this.Tag));
-            var vendas1 = vendas.First();
-            IdTextBox.Text = vendas1.IdEscala.ToString();
-            DescricaoEscalaTextBox.Text = vendas1.Descricao;
-            DataEscalaDateTimePicker.Value = vendas1.DataEscala;
-            if (!string.IsNullOrEmpty(vendas1.ResumoVendas.ToString()))
+
+            var escala = _escalaService.GetById(Convert.ToInt32(this.Tag));
+
+            var vendasLanchonete = _vendaService.TrazerVendaEscalaResumoVenda(Convert.ToInt32(this.Tag));
+            
+            //var vendas1 = vendasLanchonete.First();
+            IdTextBox.Text = escala.Id.ToString();
+            DescricaoEscalaTextBox.Text = escala.Descricao;
+            DataEscalaDateTimePicker.Value = escala.DataEscala;
+            if (vendasLanchonete.Count()>0)
             {
-                ResumoVendasTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(vendas1.ResumoVendas.ToString()));
+                //ResumoVendasTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(vendas1.ResumoVendas.ToString()));
+                TotalLanchoneteTextBox.Text = "R$ " + String.Format("{0:N2}", vendasLanchonete.Sum(x=>x.ResumoVendas));
+
             }
 
+            var vendasChurrasco = _vendaService.TrazerVendaEscalaResumoVendaChurrasco(Convert.ToInt32(this.Tag));
+
+            if (vendasChurrasco.Count() > 0)
+            {
+                //ResumoVendasTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(vendas1.ResumoVendas.ToString()));
+                TotalChurrascoTextBox.Text = "R$ " + String.Format("{0:N2}", vendasChurrasco.Sum(x => x.ResumoVendas));
+
+            }
 
             //vendas.First().
-            ResumoVendasDataGridView.DataSource = vendas;//dados;
+            ResumoVendasDataGridView.DataSource = vendasLanchonete;//dados;
+            ResumoVendasChurrascoDataGridView.DataSource = vendasChurrasco;//dados;
             FormataGridResumo();
             RecarregaGrid();
         }

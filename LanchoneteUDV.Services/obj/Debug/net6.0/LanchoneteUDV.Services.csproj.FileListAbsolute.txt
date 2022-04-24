@@ -14,11 +14,16 @@ C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Services\bin\Debug\
 C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Services\bin\Debug\net6.0\LanchoneteUDV.Services.dll
 C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Services\bin\Debug\net6.0\ref\LanchoneteUDV.Services.dll
 C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Services\bin\Debug\net6.0\LanchoneteUDV.Services.pdb
+C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Services\bin\Debug\net6.0\LanchoneteUDV.Application.dll
+C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Services\bin\Debug\net6.0\LanchoneteUDV.Domain.dll
+C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Services\bin\Debug\net6.0\LanchoneteUDV.Application.pdb
+C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Services\bin\Debug\net6.0\LanchoneteUDV.Domain.pdb
 C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Services\obj\Debug\net6.0\LanchoneteUDV.Services.csproj.AssemblyReference.cache
 C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Services\obj\Debug\net6.0\LanchoneteUDV.Services.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Services\obj\Debug\net6.0\LanchoneteUDV.Services.AssemblyInfoInputs.cache
 C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Services\obj\Debug\net6.0\LanchoneteUDV.Services.AssemblyInfo.cs
 C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Services\obj\Debug\net6.0\LanchoneteUDV.Services.csproj.CoreCompileInputs.cache
+C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Services\obj\Debug\net6.0\LanchoneteUDV.Services.csproj.CopyComplete
 C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Services\obj\Debug\net6.0\LanchoneteUDV.Services.dll
 C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Services\obj\Debug\net6.0\ref\LanchoneteUDV.Services.dll
 C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Services\obj\Debug\net6.0\LanchoneteUDV.Services.pdb

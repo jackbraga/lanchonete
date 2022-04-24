@@ -126,10 +126,9 @@
             // GerarRepasseButton
             // 
             this.GerarRepasseButton.AutoSize = true;
-            this.GerarRepasseButton.BackColor = System.Drawing.SystemColors.Info;
+            this.GerarRepasseButton.BackColor = System.Drawing.SystemColors.Window;
             this.GerarRepasseButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GerarRepasseButton.BackgroundImage")));
             this.GerarRepasseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.GerarRepasseButton.Enabled = false;
             this.GerarRepasseButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.GerarRepasseButton.FlatAppearance.BorderSize = 0;
             this.GerarRepasseButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;

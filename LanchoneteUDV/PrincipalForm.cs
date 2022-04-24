@@ -1,6 +1,8 @@
 
 
 using LanchoneteUDV.Application.Interfaces;
+using LanchoneteUDV.Services.Service;
+using OfficeOpenXml;
 
 namespace LanchoneteUDV
 {
@@ -81,6 +83,11 @@ namespace LanchoneteUDV
         {
             FluxoCaixaForm sc = new FluxoCaixaForm(_caixaService);
             sc.Show();
+        }
+
+        private void gerarRecibosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }

@@ -443,7 +443,14 @@ namespace LanchoneteUDV
 
         private void RegistrarRetiradaButton_Click(object sender, EventArgs e)
         {
-            RegistrarRetirada();
+            if (PedidosDataGridView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecione um registro! ", "ATENÇÃO!", MessageBoxButtons.OK);
+            }
+            else
+            {
+                RegistrarRetirada();
+            }
         }
 
         private void RegistrarRetirada()
@@ -481,7 +488,15 @@ namespace LanchoneteUDV
 
         private void DesmarcarRetiradaButton_Click(object sender, EventArgs e)
         {
-            DesmarcarRetirada();
+            if (PedidosDataGridView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecione um registro!", "ATENÇÃO!", MessageBoxButtons.OK);
+            }
+            else
+            {
+                DesmarcarRetirada();
+            }
+
         }
 
         private void RemoverButton_Click(object sender, EventArgs e)

@@ -90,7 +90,32 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                 "FROM tbEscalas " +
                 "LEFT JOIN tbVendas ON tbEscalas.ID = tbVendas.Escala " +
                 "LEFT JOIN tbVendasPedido ON tbVendas.ID = tbVendasPedido.Venda " +
-                "WHERE tbEscalas.ID = " + idEscala + " " +
+                "INNER JOIN tbProdutos ON tbProdutos.ID = tbVendasPedido.Produto " +
+                "WHERE tbEscalas.ID = " + idEscala + " AND tbProdutos.Categoria <> 15 " +
+                "GROUP BY  tbEscalas.ID, tbEscalas.Descricao, tbEscalas.DataEscala, TipoPagamento,tbEscalas.Finalizada ";
+
+            using (var connection = _connection.Connection())
+            {
+                connection.Open();
+                var result = connection.Query<VendaEscalaResumoVenda>(sql);
+                return result;
+            }
+        }
+
+        public IEnumerable<VendaEscalaResumoVenda> TrazerVendaEscalaResumoVendaChurrasco(int idEscala)
+        {
+            string sql = "SELECT " +
+                "tbEscalas.ID AS IdEscala,  " +
+                "tbEscalas.Descricao, " +
+                "tbEscalas.DataEscala, " +
+                "SUM((tbVendasPedido.PrecoProduto * tbVendasPedido.Quantidade)) AS ResumoVendas, " +
+                "tbEscalas.Finalizada as EscalaFinalizada, " +
+                "TipoPagamento " +
+                "FROM tbEscalas " +
+                "LEFT JOIN tbVendas ON tbEscalas.ID = tbVendas.Escala " +
+                "LEFT JOIN tbVendasPedido ON tbVendas.ID = tbVendasPedido.Venda " +
+                "INNER JOIN tbProdutos ON tbProdutos.ID = tbVendasPedido.Produto " +
+                "WHERE tbEscalas.ID = " + idEscala + " AND tbProdutos.Categoria = 15 " +
                 "GROUP BY  tbEscalas.ID, tbEscalas.Descricao, tbEscalas.DataEscala, TipoPagamento,tbEscalas.Finalizada ";
 
             using (var connection = _connection.Connection())
@@ -129,7 +154,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                     "FROM tbProdutos " +
                     "INNER JOIN tbEstoqueEscala ON tbProdutos.ID = tbEstoqueEscala.Produto " +
                     "LEFT JOIN tbVendasPedido ON tbProdutos.ID = tbVendasPedido.Produto " +
-                    "WHERE Escala =" + idEscala + " AND tbProdutos.Categoria<>10 " +
+                    "WHERE Escala =" + idEscala + " AND tbProdutos.Categoria<>10 AND tbProdutos.Categoria<>15 " +
                     "ORDER BY 1;";
 
             using (var connection = _connection.Connection())
@@ -152,7 +177,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                     "FROM tbProdutos " +
                     "INNER JOIN tbEstoqueEscala ON tbProdutos.ID = tbEstoqueEscala.Produto " +
                     "LEFT JOIN tbVendasPedido ON tbProdutos.ID = tbVendasPedido.Produto " +
-                    "WHERE Escala =" + idEscala + " AND tbProdutos.Categoria=10 " +
+                    "WHERE Escala =" + idEscala + " AND tbProdutos.Categoria IN(10,15) " +
                     "ORDER BY 1;";
 
             using (var connection = _connection.Connection())

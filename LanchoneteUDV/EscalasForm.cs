@@ -221,7 +221,7 @@ namespace LanchoneteUDV
 
         private void AbrirEscalaButton_Click(object sender, EventArgs e)
         {
-            VendasForm vendasForm = new VendasForm(_vendaService, _produtoService, _socioService, _estoqueEscalaService, _vendasPedidoService);
+            VendasForm vendasForm = new VendasForm(_vendaService, _produtoService, _socioService, _estoqueEscalaService, _vendasPedidoService,_escalaService);
             vendasForm.Tag = IdTextBox.Text;
             vendasForm.ShowDialog();
 

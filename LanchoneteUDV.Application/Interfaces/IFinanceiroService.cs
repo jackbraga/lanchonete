@@ -9,5 +9,7 @@ namespace LanchoneteUDV.Application.Interfaces
         IEnumerable<VendaRepasseFinanceiroDTO> ListarVendasRepasseFinanceiro(int idEscala);
 
         void AtualizaEmailDisparado(int idVenda);
+
+        bool GerarListaRepasseFinanceiroExcel(int idEscala);
     }
 }

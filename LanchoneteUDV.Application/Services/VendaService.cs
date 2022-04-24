@@ -54,6 +54,12 @@ namespace LanchoneteUDV.Application.Services
             return _mapper.Map<IEnumerable<VendaEscalaResumoVendaDTO>>(estoques);
         }
 
+        public IEnumerable<VendaEscalaResumoVendaDTO> TrazerVendaEscalaResumoVendaChurrasco(int idEscala)
+        {
+            var estoques = _vendaRepository.TrazerVendaEscalaResumoVendaChurrasco(idEscala);
+            return _mapper.Map<IEnumerable<VendaEscalaResumoVendaDTO>>(estoques);
+        }
+
         public IEnumerable<VendaEscalaSocioDTO> TrazerVendaEscalaSocio(int idEscala, int idSocio)
         {
             var estoques = _vendaRepository.TrazerVendaEscalaSocio(idEscala,idSocio);

@@ -98,8 +98,20 @@ namespace LanchoneteUDV.Infra.Data.Repositories
 
         public Escala GetById(int? id)
         {
-            throw new NotImplementedException();
-        }
+
+        string sql = "SELECT  A.ID, A.Descricao,A.DataEscala, A.Finalizada, A.Observacao, A.TipoSessao, A.RepasseTesouraria " +
+           "FROM tbEscalas A with(nolock)" +
+           "WHERE A.ID =@id";
+
+            using (var connection = _connection.Connection())
+            {
+                connection.Open();
+                return connection.QuerySingle<Escala>(sql, new
+                {
+                    id = id
+                });                
+            }
+    }
 
         public IEnumerable<Escala> GetByName(string texto)
         {

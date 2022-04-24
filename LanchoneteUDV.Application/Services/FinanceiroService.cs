@@ -13,12 +13,14 @@ namespace LanchoneteUDV.Application.Services
     public class FinanceiroService : IFinanceiroService
     {
         private readonly IFinanceiroRepository _financeiroRepository;
+        private readonly IExcelService _excelService;
         private readonly IMapper _mapper;
 
-        public FinanceiroService(IFinanceiroRepository financeiroRepository, IMapper mapper)
+        public FinanceiroService(IFinanceiroRepository financeiroRepository, IMapper mapper,IExcelService excelService)
         {
             _financeiroRepository = financeiroRepository;
             _mapper = mapper;
+            _excelService = excelService;
         }
         public void AtualizaEmailDisparado(int idVenda)
         {
@@ -35,6 +37,13 @@ namespace LanchoneteUDV.Application.Services
         {
             var lista = _financeiroRepository.ListarVendasRepasseFinanceiro(idEscala);
             return _mapper.Map<IEnumerable<VendaRepasseFinanceiroDTO>>(lista);
+        }
+
+        public bool GerarListaRepasseFinanceiroExcel(int idEscala)
+        {
+            var lista = _financeiroRepository.GerarListaRepasseFinanceiroExcel(idEscala);
+            var listaDto = _mapper.Map<IEnumerable<RepasseFinanceiroExcelDTO>>(lista);
+            return _excelService.CriarPlanilhaRepasse(listaDto);
         }
     }
 }

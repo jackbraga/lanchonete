@@ -36,7 +36,8 @@ namespace LanchoneteUDV.Application.Services
 
         public EscalaDTO GetById(int? id)
         {
-            throw new NotImplementedException();
+            var escala = _escalaRepository.GetById(id);
+            return _mapper.Map<EscalaDTO>(escala);
         }
 
         public IEnumerable<EscalaDTO> GetByName(string texto)

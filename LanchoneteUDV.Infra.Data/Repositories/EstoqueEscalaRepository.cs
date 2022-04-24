@@ -38,22 +38,28 @@ namespace LanchoneteUDV.Infra.Data.Repositories
 
         public void CompletarEstoqueEscala(int idEscala)
         {
-            string sql = "INSERT INTO tbEstoqueEscala(Escala, Produto, QtdVenda, Observacao) " +
-            "SELECT DISTINCT " +
-            "@escala AS ESCALA, " +
-            "A.ID, " +
-            "(ISNULL(EstoqueInicial, 0) + ISNULL((SELECT SUM(tbCompras.Quantidade) FROM tbCompras WHERE Produto = A.ID), 0) - ISNULL((SELECT SUM(tbVendasPedido.Quantidade) FROM tbVendasPedido WHERE Produto = A.ID),0)) AS Estoque, " +
-            "'CARGA COMPLETA' AS Observacao " +
-            "FROM tbProdutos AS A " +
-            "LEFT JOIN tbCompras AS B ON A.ID = B.Produto " +
-            "LEFT JOIN tbVendasPedido AS C ON A.ID = C.Produto " +
-            "WHERE A.ProdutoVenda = 1  and " +
-            "(ISNULL(EstoqueInicial, 0) + ISNULL((SELECT SUM(tbCompras.Quantidade) FROM tbCompras WHERE Produto = A.ID), 0) - ISNULL((SELECT SUM(tbVendasPedido.Quantidade) FROM tbVendasPedido WHERE Produto = A.ID),0)) > 0 " +
-            "GROUP BY A.ID, A.Descricao, A.PrecoVenda, A.EstoqueInicial ";
+            string sqlDelete = "DELETE FROM tbEstoqueEscala WHERE Escala = @escala ";
+            string sql = 
+                        "INSERT INTO tbEstoqueEscala(Escala, Produto, QtdVenda, Observacao) " +
+                        "SELECT DISTINCT " +
+                        "@escala AS ESCALA, " +
+                        "A.ID, " +
+                        "(ISNULL(EstoqueInicial, 0) + ISNULL((SELECT SUM(tbCompras.Quantidade) FROM tbCompras WHERE Produto = A.ID), 0) - ISNULL((SELECT SUM(tbVendasPedido.Quantidade) FROM tbVendasPedido WHERE Produto = A.ID),0)) AS Estoque, " +
+                        "'CARGA COMPLETA' AS Observacao " +
+                        "FROM tbProdutos AS A " +
+                        "LEFT JOIN tbCompras AS B ON A.ID = B.Produto " +
+                        "LEFT JOIN tbVendasPedido AS C ON A.ID = C.Produto " +
+                        "WHERE A.ProdutoVenda = 1 AND A.Categoria <> 10 and " +
+                        "(ISNULL(EstoqueInicial, 0) + ISNULL((SELECT SUM(tbCompras.Quantidade) FROM tbCompras WHERE Produto = A.ID), 0) - ISNULL((SELECT SUM(tbVendasPedido.Quantidade) FROM tbVendasPedido WHERE Produto = A.ID),0)) > 0 " +
+                        "GROUP BY A.ID, A.Descricao, A.PrecoVenda, A.EstoqueInicial ";
 
             using (var connection = _connection.Connection())
             {
                 connection.Open();
+                connection.Execute(sqlDelete, new
+                {
+                    escala = idEscala
+                });
                 connection.Execute(sql, new
                 {
                     escala = idEscala
@@ -97,6 +103,23 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                     "WHERE A.ProdutoVenda = 1 " +
                     "GROUP BY A.ID, A.Descricao, A.PrecoVenda, A.EstoqueInicial " +
                     "ORDER BY A.Descricao ;";
+
+            using (var connection = _connection.Connection())
+            {
+                connection.Open();
+                var result = connection.Query<Estoque>(sql);
+                return result;
+
+            }
+        }
+
+        public IEnumerable<Estoque> ListarEstoqueComboProdutos(int idEscala)
+        {
+            string sql = "SELECT A.ID AS IdProduto, A.Descricao AS DescricaoProduto,(ISNULL(EstoqueInicial,0) + ISNULL((SELECT SUM(tbCompras.Quantidade) FROM tbCompras WHERE Produto = A.ID),0) - ISNULL((SELECT SUM(tbVendasPedido.Quantidade) FROM tbVendasPedido WHERE Produto = A.ID),0)) AS QtdEstoque " +
+                         "FROM tbProdutos AS A WITH(NOLOCK) " +
+                         "LEFT JOIN tbEstoqueEscala AS B WITH(NOLOCK) ON B.Produto = A.ID AND B.Escala = " + idEscala  + " " +
+                         "WHERE B.Produto IS NULL AND A.ProdutoVenda = 1 AND " +
+                         "(ISNULL(EstoqueInicial, 0) + ISNULL((SELECT SUM(tbCompras.Quantidade) FROM tbCompras WHERE Produto = A.ID), 0) - ISNULL((SELECT SUM(tbVendasPedido.Quantidade) FROM tbVendasPedido WHERE Produto = A.ID),0)) > 0";
 
             using (var connection = _connection.Connection())
             {

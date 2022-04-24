@@ -10,6 +10,8 @@ namespace LanchoneteUDV.Domain.Interfaces
 
         public IEnumerable<VendaEscalaResumoVenda> TrazerVendaEscalaResumoVenda(int idEscala);
 
+        public IEnumerable<VendaEscalaResumoVenda> TrazerVendaEscalaResumoVendaChurrasco(int idEscala);
+
         public IEnumerable<VendaEscalaSocio> TrazerVendaEscalaSocio(int idEscala, int idSocio);
 
          Task<IEnumerable<EstoquePorEscala>> ListarEstoquePorEscala(int idEscala);

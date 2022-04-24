@@ -8,13 +8,13 @@ namespace LanchoneteUDV
         //FinanceiroBLL _bllFinanceiro = new FinanceiroBLL();
 
         private readonly IVendaService _vendaService;
-        private readonly IFinanceiroService _financeiroService;        
+        private readonly IFinanceiroService _financeiroService;
         private readonly IEscalaService _escalaService;
         Helper _helper = new Helper();
         public int IDEscala { get; set; }
 
 
-        public RepasseTesourariaVendaForm(IEscalaService escalaService,IFinanceiroService financeiroService, IVendaService vendaService)
+        public RepasseTesourariaVendaForm(IEscalaService escalaService, IFinanceiroService financeiroService, IVendaService vendaService)
         {
             _escalaService = escalaService;
             _financeiroService = financeiroService;
@@ -27,13 +27,13 @@ namespace LanchoneteUDV
             //DataTable dados = _bllVendas.TrazerEscala(Convert.ToInt32(IDEscala));
             //DataRow row = dados.Rows[0];
 
-            var escala = _vendaService.TrazerVendaEscalaResumoVenda(Convert.ToInt32(IDEscala)).FirstOrDefault();
+            //var escala = _vendaService.TrazerVendaEscalaResumoVenda(Convert.ToInt32(IDEscala)).FirstOrDefault();
+            var escala = _escalaService.GetById(IDEscala);
 
-
-            IdTextBox.Text = escala.IdEscala.ToString();//row["ID"].ToString();
+            IdTextBox.Text = escala.Id.ToString();//row["ID"].ToString();
             DescricaoEscalaTextBox.Text = escala.Descricao;//row["Descricao"].ToString();
             DataEscalaDateTimePicker.Value = escala.DataEscala; //Convert.ToDateTime(row["DataEscala"]);
-            FinalizadaCheckBox.Checked = escala.EscalaFinalizada;// Convert.ToBoolean(row["Finalizada"]);
+            FinalizadaCheckBox.Checked = escala.Finalizada;// Convert.ToBoolean(row["Finalizada"]);
 
             if (FinalizadaCheckBox.Checked)
             {
@@ -55,7 +55,7 @@ namespace LanchoneteUDV
 
             if (escala != null)
             {
-                ResumoVendasTextBox.Text = "R$ " + String.Format("{0:N2}",escala.ResumoVendas);
+                ResumoVendasTextBox.Text = "R$ " + String.Format("{0:N2}", escala.ResumoVendas);
             }
 
             RecarregaGrid();
@@ -151,7 +151,20 @@ namespace LanchoneteUDV
 
         private void GerarRepasseButton_Click(object sender, EventArgs e)
         {
-            EmailProgressBar.Value = 50;
+            if (MessageBox.Show("Deseja realmente gerar a planilha de repasse para essa escala?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                bool retorno = _financeiroService.GerarListaRepasseFinanceiroExcel(IDEscala);
+
+                if (retorno)
+                {
+                    MessageBox.Show("Planilha gerado com sucesso!", "Repasse tesouraria", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Ocorreu um erro ao gerar a planilha!", "Repasse tesouraria", MessageBoxButtons.OK);
+
+                }
+            }
         }
     }
 }

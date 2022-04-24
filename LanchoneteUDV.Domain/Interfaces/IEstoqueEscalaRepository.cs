@@ -11,6 +11,7 @@ namespace LanchoneteUDV.Domain.Interfaces
         public IEnumerable<EstoqueEscala> ListarProdutosEstoqueEscala(int idEscala);
 
         public IEnumerable<Estoque> ListarEstoque();
+        public IEnumerable<Estoque> ListarEstoqueComboProdutos(int idEscala);
 
         public IEnumerable<Estoque> PesquisarEstoque(string pesquisa);
 
