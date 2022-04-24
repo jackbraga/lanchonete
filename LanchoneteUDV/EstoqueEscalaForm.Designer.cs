@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EstoqueEscalaForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EstoqueEscalaForm));
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.CargaCompletaButton = new System.Windows.Forms.Button();
             this.IDTextBox = new System.Windows.Forms.TextBox();
             this.EstoqueComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -54,8 +56,6 @@
             this.ProdutosComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.EstoqueEscalaDataGridView = new System.Windows.Forms.DataGridView();
-            this.CompletoButton = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EstoqueEscalaDataGridView)).BeginInit();
@@ -64,7 +64,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.CompletoButton);
+            this.groupBox3.Controls.Add(this.CargaCompletaButton);
             this.groupBox3.Controls.Add(this.IDTextBox);
             this.groupBox3.Controls.Add(this.EstoqueComboBox);
             this.groupBox3.Controls.Add(this.label3);
@@ -87,10 +87,37 @@
             this.groupBox3.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBox3.Location = new System.Drawing.Point(15, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(520, 226);
+            this.groupBox3.Size = new System.Drawing.Size(520, 232);
             this.groupBox3.TabIndex = 30;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Definição de Estoque";
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(1, 192);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 37);
+            this.label2.TabIndex = 74;
+            this.label2.Text = "Carga Completa";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // CargaCompletaButton
+            // 
+            this.CargaCompletaButton.AutoSize = true;
+            this.CargaCompletaButton.BackColor = System.Drawing.SystemColors.Window;
+            this.CargaCompletaButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CargaCompletaButton.BackgroundImage")));
+            this.CargaCompletaButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.CargaCompletaButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.CargaCompletaButton.FlatAppearance.BorderSize = 0;
+            this.CargaCompletaButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.CargaCompletaButton.Location = new System.Drawing.Point(6, 147);
+            this.CargaCompletaButton.Name = "CargaCompletaButton";
+            this.CargaCompletaButton.Size = new System.Drawing.Size(54, 45);
+            this.CargaCompletaButton.TabIndex = 73;
+            this.CargaCompletaButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.CargaCompletaButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.CargaCompletaButton.UseVisualStyleBackColor = false;
+            this.CargaCompletaButton.Click += new System.EventHandler(this.CargaCompletaButton_Click);
             // 
             // IDTextBox
             // 
@@ -339,7 +366,7 @@
             // 
             this.groupBox1.Controls.Add(this.EstoqueEscalaDataGridView);
             this.groupBox1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox1.Location = new System.Drawing.Point(15, 244);
+            this.groupBox1.Location = new System.Drawing.Point(15, 250);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(520, 487);
             this.groupBox1.TabIndex = 57;
@@ -382,34 +409,6 @@
             this.EstoqueEscalaDataGridView.Size = new System.Drawing.Size(503, 459);
             this.EstoqueEscalaDataGridView.TabIndex = 0;
             this.EstoqueEscalaDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EstoqueEscalaDataGridView_CellDoubleClick);
-            // 
-            // CompletoButton
-            // 
-            this.CompletoButton.AutoSize = true;
-            this.CompletoButton.BackColor = System.Drawing.SystemColors.Window;
-            this.CompletoButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CompletoButton.BackgroundImage")));
-            this.CompletoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.CompletoButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.CompletoButton.FlatAppearance.BorderSize = 0;
-            this.CompletoButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.CompletoButton.Location = new System.Drawing.Point(6, 147);
-            this.CompletoButton.Name = "CompletoButton";
-            this.CompletoButton.Size = new System.Drawing.Size(54, 45);
-            this.CompletoButton.TabIndex = 73;
-            this.CompletoButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.CompletoButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.CompletoButton.UseVisualStyleBackColor = false;
-            this.CompletoButton.Visible = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1, 192);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 18);
-            this.label2.TabIndex = 74;
-            this.label2.Text = "Completo";
-            this.label2.Visible = false;
             // 
             // EstoqueEscalaForm
             // 
@@ -458,6 +457,6 @@
         private ComboBox EstoqueComboBox;
         private TextBox IDTextBox;
         private Label label2;
-        private Button CompletoButton;
+        private Button CargaCompletaButton;
     }
 }

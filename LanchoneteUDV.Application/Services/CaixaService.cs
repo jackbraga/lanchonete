@@ -69,7 +69,13 @@ namespace LanchoneteUDV.Application.Services
 
         public void Update(CaixaDTO objeto)
         {
-            throw new NotImplementedException();
+            var caixa = _mapper.Map<Caixa>(objeto);
+            _caixaRepository.Update(caixa);
+        }
+
+        public void AtualizarDinheiroCaixa(double valor)
+        {            
+            _caixaRepository.AtualizarDinheiroCaixa(valor);
         }
     }
 }

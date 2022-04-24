@@ -34,7 +34,12 @@ namespace LanchoneteUDV.Application.Services
             var estoque = _estoqueEscalaRepository.ListarEstoque();
             return _mapper.Map<IEnumerable<EstoqueDTO>>(estoque);
         }
-
+        public IEnumerable<EstoqueDTO> ListarEstoqueComboProdutos(int idEscala)
+        {
+            var estoque = _estoqueEscalaRepository.ListarEstoqueComboProdutos(idEscala).OrderBy(x=>x.DescricaoProduto);
+            return _mapper.Map<IEnumerable<EstoqueDTO>>(estoque);
+        }
+     
         public IEnumerable<EstoqueEscalaDTO> ListarProdutosEstoqueEscala(int idEscala)
         {
             var estoques = _estoqueEscalaRepository.ListarProdutosEstoqueEscala(idEscala);

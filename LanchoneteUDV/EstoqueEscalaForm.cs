@@ -37,7 +37,7 @@ namespace LanchoneteUDV
             //DataTable dt = new DataTable();
 
             // dt = _bllVendas.ListarEstoque();
-            var estoque = _estoqueEscalaService.ListarEstoque();
+            var estoque = _estoqueEscalaService.ListarEstoqueComboProdutos(IDEscala);
             ProdutosComboBox.DataSource = estoque;
             ProdutosComboBox.DisplayMember = "DescricaoProduto";
             ProdutosComboBox.ValueMember = "IdProduto";
@@ -169,6 +169,7 @@ namespace LanchoneteUDV
 
 
             RecarregaGrid();
+            CarregarCombos();
             LimparButton_Click(sender, e);
             MessageBox.Show("Estoque registrado com sucesso!", "Sucesso!", MessageBoxButtons.OK);
         }
@@ -198,6 +199,7 @@ namespace LanchoneteUDV
                 MessageBox.Show("item removido com sucesso!", "Sucesso!", MessageBoxButtons.OK);
                 LimparButton_Click(sender, e);
                 RecarregaGrid();
+                CarregarCombos();
             }
         }
 
@@ -223,17 +225,30 @@ namespace LanchoneteUDV
             int row = EstoqueEscalaDataGridView.CurrentRow.Index;
 
             IDTextBox.Text = EstoqueEscalaDataGridView.Rows[row].Cells[0].Value.ToString();
-            ProdutosComboBox.SelectedValue = Convert.ToInt32(EstoqueEscalaDataGridView.Rows[row].Cells[1].Value);
-            EstoqueComboBox.SelectedValue = Convert.ToInt32(EstoqueEscalaDataGridView.Rows[row].Cells[1].Value);
-            QtdVendaTextBox.Text = EstoqueEscalaDataGridView.Rows[row].Cells[3].Value.ToString();
+            ProdutosComboBox.SelectedValue = Convert.ToInt32(EstoqueEscalaDataGridView.Rows[row].Cells[2].Value);
+            EstoqueComboBox.SelectedValue = Convert.ToInt32(EstoqueEscalaDataGridView.Rows[row].Cells[2].Value);
+            QtdVendaTextBox.Text = EstoqueEscalaDataGridView.Rows[row].Cells[4].Value.ToString();
 
-            ObservacaoTextBox.Text = EstoqueEscalaDataGridView.Rows[row].Cells[4].Value.ToString();
+            ObservacaoTextBox.Text = EstoqueEscalaDataGridView.Rows[row].Cells[5].Value.ToString();
 
 
             _helper.Desabilita(ProdutosComboBox,
                               QtdVendaTextBox, SalvarButton);
 
             _helper.Habilita(ExcluirButton, EditarButton, NovoButton);
+        }
+
+        private void CargaCompletaButton_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja realmente realizar a carga completa do estoque?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                _estoqueEscalaService.CompletarEstoqueEscala(IDEscala);
+
+                MessageBox.Show("Carga completa realizada!", "Sucesso!", MessageBoxButtons.OK);
+                LimparButton_Click(sender, e);
+                RecarregaGrid();
+                CarregarCombos();
+            }
         }
     }
 }

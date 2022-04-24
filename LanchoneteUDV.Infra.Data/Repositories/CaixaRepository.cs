@@ -39,7 +39,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
 
         public IEnumerable<Caixa> GetAll()
         {
-            string sql = "SELECT A.ID, A.DataEvento, A.TipoEvento, A.Valor,B.Descricao as DescricaoCategoria, A.Observacao " +
+            string sql = "SELECT A.ID, A.DataEvento, A.TipoEvento, A.Valor,B.Descricao as DescricaoCategoria, A.Observacao,B.ID as IDCategoria " +
             "FROM tbCaixa AS A " +
             "INNER JOIN tbCategoriaLancamento AS B ON B.ID=A.CAtegoriaLancamento " +
             "ORDER BY 2 desc; ";
@@ -73,7 +73,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
             }
         }
 
-        public Task<ResumoVendas> ListarResumo()
+        public async Task<ResumoVendas> ListarResumo()
         {
             string sql = "SELECT " +
                             "(SELECT SUM(VALOR) FROM tbCaixa WHERE CategoriaLancamento = 3) AS SaldoInicial, " +
@@ -87,11 +87,11 @@ namespace LanchoneteUDV.Infra.Data.Repositories
             using (var connection = _connection.Connection())
             {
                 connection.Open();
-                return connection.QuerySingleAsync<ResumoVendas>(sql);
+                return await connection.QuerySingleAsync<ResumoVendas>(sql);
             }
         }
 
-        public Task<IEnumerable<ResumoVendas>> ListarResumoMesAMes(int ano)
+        public async Task<IEnumerable<ResumoVendas>> ListarResumoMesAMes(int ano)
         {
             string sql = "select '01' AS Mes, Entradas,Saidas,Faturado,Lucro from RetornaResumoAnoMes(" + ano + ",1) " +
                 "UNION ALL " +
@@ -119,7 +119,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
             using (var connection = _connection.Connection())
             {
                 connection.Open();
-                return connection.QueryAsync<ResumoVendas>(sql);
+                return await connection.QueryAsync<ResumoVendas>(sql);
             }
         }
 
@@ -130,7 +130,38 @@ namespace LanchoneteUDV.Infra.Data.Repositories
 
         public Caixa Update(Caixa classe)
         {
-            throw new NotImplementedException();
+            string sql = "UPDATE tbCaixa SET DataEvento=@data, TipoEvento=@tipoEvento,CategoriaLancamento=@categoria,Valor=@valor,Observacao=@observacao " +
+                "WHERE ID=@id ";
+
+            using (var connection = _connection.Connection())
+            {
+                connection.Open();
+                connection.Query<Caixa>(sql, new
+                {
+                    data = classe.DataEvento,
+                    tipoEvento = classe.TipoEvento,
+                    categoria = classe.IdCategoria,
+                    valor = classe.Valor,
+                    observacao = classe.Observacao,
+                    id = classe.Id
+                }) ;
+                return classe;
+            }
+        }
+
+       public void AtualizarDinheiroCaixa(double valor)
+        {
+            string sql = "UPDATE tbCaixa SET Valor = @valor WHERE CategoriaLancamento = 5";
+
+            using (var connection = _connection.Connection())
+            {
+                connection.Open();
+                connection.Execute(sql, new
+                {
+                    valor = valor
+                });
+                
+            }
         }
     }
 }

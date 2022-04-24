@@ -29,6 +29,8 @@ namespace LanchoneteUDV.Application.Mappings
             CreateMap<CategoriaLancamento, CategoriaLancamentoDTO>().ReverseMap();
             CreateMap<Caixa, CaixaDTO>().ReverseMap();
             CreateMap<ResumoVendas, ResumoVendasDTO>().ReverseMap();
+            CreateMap<RepasseFinanceiroExcel, RepasseFinanceiroExcelDTO>().ReverseMap();
+            
 
         }
     }

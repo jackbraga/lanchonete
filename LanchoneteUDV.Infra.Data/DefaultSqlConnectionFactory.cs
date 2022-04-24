@@ -7,7 +7,7 @@ namespace LanchoneteUDV.Infra.Data
     {
         public IDbConnection Connection()
         {
-            return new SqlConnection("Data Source=.\\Sqlexpress;Initial Catalog=LANCHONETE;Integrated Security=True");
+            return new SqlConnection("Data Source=.\\Sqlexpress;Initial Catalog=LANCHONETE;User Id=sa; Password=lanchonete");
         }
     }
 }

@@ -18,10 +18,10 @@ namespace LanchoneteUDV.Services.Service
         {
             try
             {
-                string conta = "93175";
+                //string conta = "93175";
                 string pessoaq = "1996633";
-                string data_inicio = "2021-12-01";
-                string data_fim = "2021-12-31";
+                string data_inicio = "2021-05-01";
+                string data_fim = "2021-05-31";
 
 
                 //var content = new StringContent("",Encoding.UTF8,"application/json");
@@ -36,7 +36,7 @@ namespace LanchoneteUDV.Services.Service
 
 
                 string url = $"https://api.granatum.com.br/v1/lancamentos?access_token={_token}&" +
-                    $"conta_id={conta}&" +
+                    //$"conta_id={conta}&" +
                     $"pessoa_id={pessoaq}&" +
                     $"data_inicio={data_inicio}&" +
                     $"data_fim={data_fim}&";

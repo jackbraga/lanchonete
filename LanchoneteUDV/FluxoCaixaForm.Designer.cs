@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FluxoCaixaForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.CategoriaComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -60,8 +60,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.FluxoCaixaDataGridView = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.EditaDinheiroButton = new System.Windows.Forms.Button();
+            this.SalvarDinheiroButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.SaldoAtualTextBox = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -343,7 +343,7 @@
             this.PrecoTextBox.MaxLength = 10;
             this.PrecoTextBox.Name = "PrecoTextBox";
             this.PrecoTextBox.Size = new System.Drawing.Size(90, 23);
-            this.PrecoTextBox.TabIndex = 4;
+            this.PrecoTextBox.TabIndex = 7;
             this.PrecoTextBox.Text = "0";
             this.PrecoTextBox.TextChanged += new System.EventHandler(this.PrecoTextBox_TextChanged);
             // 
@@ -531,27 +531,27 @@
             this.FluxoCaixaDataGridView.AllowUserToAddRows = false;
             this.FluxoCaixaDataGridView.AllowUserToDeleteRows = false;
             this.FluxoCaixaDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightCyan;
-            this.FluxoCaixaDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightCyan;
+            this.FluxoCaixaDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.FluxoCaixaDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.FluxoCaixaDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FluxoCaixaDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.FluxoCaixaDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.FluxoCaixaDataGridView.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.FluxoCaixaDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.FluxoCaixaDataGridView.Location = new System.Drawing.Point(6, 68);
             this.FluxoCaixaDataGridView.MultiSelect = false;
             this.FluxoCaixaDataGridView.Name = "FluxoCaixaDataGridView";
@@ -563,11 +563,12 @@
             this.FluxoCaixaDataGridView.Size = new System.Drawing.Size(619, 379);
             this.FluxoCaixaDataGridView.TabIndex = 16;
             this.FluxoCaixaDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.FluxoCaixaDataGridView_CellContentClick);
+            this.FluxoCaixaDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.FluxoCaixaDataGridView_CellContentDoubleClick);
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button2);
-            this.groupBox3.Controls.Add(this.button3);
+            this.groupBox3.Controls.Add(this.EditaDinheiroButton);
+            this.groupBox3.Controls.Add(this.SalvarDinheiroButton);
             this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.SaldoAtualTextBox);
             this.groupBox3.Controls.Add(this.label18);
@@ -592,39 +593,41 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Resumo de Caixa";
             // 
-            // button2
+            // EditaDinheiroButton
             // 
-            this.button2.AutoSize = true;
-            this.button2.BackColor = System.Drawing.SystemColors.Window;
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Location = new System.Drawing.Point(255, 161);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(24, 23);
-            this.button2.TabIndex = 53;
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button2.UseVisualStyleBackColor = false;
+            this.EditaDinheiroButton.AutoSize = true;
+            this.EditaDinheiroButton.BackColor = System.Drawing.SystemColors.Window;
+            this.EditaDinheiroButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("EditaDinheiroButton.BackgroundImage")));
+            this.EditaDinheiroButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.EditaDinheiroButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.EditaDinheiroButton.FlatAppearance.BorderSize = 0;
+            this.EditaDinheiroButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.EditaDinheiroButton.Location = new System.Drawing.Point(255, 161);
+            this.EditaDinheiroButton.Name = "EditaDinheiroButton";
+            this.EditaDinheiroButton.Size = new System.Drawing.Size(24, 23);
+            this.EditaDinheiroButton.TabIndex = 53;
+            this.EditaDinheiroButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.EditaDinheiroButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.EditaDinheiroButton.UseVisualStyleBackColor = false;
+            this.EditaDinheiroButton.Click += new System.EventHandler(this.EditaDinheiroButton_Click);
             // 
-            // button3
+            // SalvarDinheiroButton
             // 
-            this.button3.AutoSize = true;
-            this.button3.BackColor = System.Drawing.SystemColors.Window;
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Location = new System.Drawing.Point(225, 161);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(24, 23);
-            this.button3.TabIndex = 52;
-            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button3.UseVisualStyleBackColor = false;
+            this.SalvarDinheiroButton.AutoSize = true;
+            this.SalvarDinheiroButton.BackColor = System.Drawing.SystemColors.Window;
+            this.SalvarDinheiroButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SalvarDinheiroButton.BackgroundImage")));
+            this.SalvarDinheiroButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SalvarDinheiroButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.SalvarDinheiroButton.FlatAppearance.BorderSize = 0;
+            this.SalvarDinheiroButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.SalvarDinheiroButton.Location = new System.Drawing.Point(225, 161);
+            this.SalvarDinheiroButton.Name = "SalvarDinheiroButton";
+            this.SalvarDinheiroButton.Size = new System.Drawing.Size(24, 23);
+            this.SalvarDinheiroButton.TabIndex = 52;
+            this.SalvarDinheiroButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.SalvarDinheiroButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.SalvarDinheiroButton.UseVisualStyleBackColor = false;
+            this.SalvarDinheiroButton.Click += new System.EventHandler(this.SalvarDinheiroButton_Click);
             // 
             // button1
             // 
@@ -2124,8 +2127,8 @@
         private Label label17;
         private TextBox SaldoAtualTextBox;
         private Label label18;
-        private Button button2;
-        private Button button3;
+        private Button EditaDinheiroButton;
+        private Button SalvarDinheiroButton;
         private Button button1;
         private GroupBox groupBox4;
         private GroupBox groupBox16;

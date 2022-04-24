@@ -159,6 +159,7 @@
             this.gerarRecibosToolStripMenuItem.Name = "gerarRecibosToolStripMenuItem";
             this.gerarRecibosToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
             this.gerarRecibosToolStripMenuItem.Text = "Recibos";
+            this.gerarRecibosToolStripMenuItem.Click += new System.EventHandler(this.gerarRecibosToolStripMenuItem_Click);
             // 
             // PrincipalForm
             // 

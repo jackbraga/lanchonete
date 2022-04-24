@@ -14,5 +14,7 @@ namespace LanchoneteUDV.Domain.Interfaces
         IEnumerable<VendaRepasseFinanceiro> ListarVendasRepasseFinanceiro(int idEscala);
 
         void AtualizaEmailDisparado(int idVenda);
+
+        IEnumerable<RepasseFinanceiroExcel> GerarListaRepasseFinanceiroExcel(int idEscala);
     }
 }

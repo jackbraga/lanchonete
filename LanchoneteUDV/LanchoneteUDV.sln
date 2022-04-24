@@ -5,21 +5,15 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanchoneteUDV", "LanchoneteUDV.csproj", "{B5A2B0A7-A94A-45CE-8596-93CABB91708B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanchoneteUDV.Database", "..\LanchoneteUDV.Database\LanchoneteUDV.Database.csproj", "{A517F744-634F-4A7E-A133-A93C83956B58}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanchoneteUDV.DataObject", "..\LanchoneteUDV.DataObject\LanchoneteUDV.DataObject.csproj", "{92DA6891-D36F-489F-9281-2BD9E0E85BF7}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanchoneteUDV.Business", "..\LanchoneteUDV.Business\LanchoneteUDV.Business.csproj", "{B3F58BFB-8FEF-4C74-8FB6-2444808F4435}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanchoneteUDV.Services", "..\LanchoneteUDV.Services\LanchoneteUDV.Services.csproj", "{A945D85E-D943-4426-BB4A-8CA5D9D81233}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanchoneteUDV.Domain", "..\LanchoneteUDV.Domain\LanchoneteUDV.Domain.csproj", "{937B00EB-EB36-4D2C-8FBD-B8721EB2E5D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanchoneteUDV.Infra.Data", "..\LanchoneteUDV.Infra.Data\LanchoneteUDV.Infra.Data.csproj", "{3347F8FF-FD89-408B-B79A-73D820F117D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanchoneteUDV.Infra.Data", "..\LanchoneteUDV.Infra.Data\LanchoneteUDV.Infra.Data.csproj", "{3347F8FF-FD89-408B-B79A-73D820F117D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanchoneteUDV.Application", "..\LanchoneteUDV.Application\LanchoneteUDV.Application.csproj", "{44479C76-62F8-4EEC-9BEC-5E754891A970}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanchoneteUDV.Application", "..\LanchoneteUDV.Application\LanchoneteUDV.Application.csproj", "{44479C76-62F8-4EEC-9BEC-5E754891A970}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanchoneteUDV.Infra.IoC", "..\LanchoneteUDV.Infra.IoC\LanchoneteUDV.Infra.IoC.csproj", "{66080B99-3746-4EEA-B736-AA0556004B5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanchoneteUDV.Infra.IoC", "..\LanchoneteUDV.Infra.IoC\LanchoneteUDV.Infra.IoC.csproj", "{66080B99-3746-4EEA-B736-AA0556004B5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,30 +31,6 @@ Global
 		{B5A2B0A7-A94A-45CE-8596-93CABB91708B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B5A2B0A7-A94A-45CE-8596-93CABB91708B}.Release|x64.ActiveCfg = Release|x64
 		{B5A2B0A7-A94A-45CE-8596-93CABB91708B}.Release|x64.Build.0 = Release|x64
-		{A517F744-634F-4A7E-A133-A93C83956B58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A517F744-634F-4A7E-A133-A93C83956B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A517F744-634F-4A7E-A133-A93C83956B58}.Debug|x64.ActiveCfg = Debug|x64
-		{A517F744-634F-4A7E-A133-A93C83956B58}.Debug|x64.Build.0 = Debug|x64
-		{A517F744-634F-4A7E-A133-A93C83956B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A517F744-634F-4A7E-A133-A93C83956B58}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A517F744-634F-4A7E-A133-A93C83956B58}.Release|x64.ActiveCfg = Release|x64
-		{A517F744-634F-4A7E-A133-A93C83956B58}.Release|x64.Build.0 = Release|x64
-		{92DA6891-D36F-489F-9281-2BD9E0E85BF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{92DA6891-D36F-489F-9281-2BD9E0E85BF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{92DA6891-D36F-489F-9281-2BD9E0E85BF7}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{92DA6891-D36F-489F-9281-2BD9E0E85BF7}.Debug|x64.Build.0 = Debug|Any CPU
-		{92DA6891-D36F-489F-9281-2BD9E0E85BF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{92DA6891-D36F-489F-9281-2BD9E0E85BF7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{92DA6891-D36F-489F-9281-2BD9E0E85BF7}.Release|x64.ActiveCfg = Release|Any CPU
-		{92DA6891-D36F-489F-9281-2BD9E0E85BF7}.Release|x64.Build.0 = Release|Any CPU
-		{B3F58BFB-8FEF-4C74-8FB6-2444808F4435}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B3F58BFB-8FEF-4C74-8FB6-2444808F4435}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B3F58BFB-8FEF-4C74-8FB6-2444808F4435}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{B3F58BFB-8FEF-4C74-8FB6-2444808F4435}.Debug|x64.Build.0 = Debug|Any CPU
-		{B3F58BFB-8FEF-4C74-8FB6-2444808F4435}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B3F58BFB-8FEF-4C74-8FB6-2444808F4435}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B3F58BFB-8FEF-4C74-8FB6-2444808F4435}.Release|x64.ActiveCfg = Release|Any CPU
-		{B3F58BFB-8FEF-4C74-8FB6-2444808F4435}.Release|x64.Build.0 = Release|Any CPU
 		{A945D85E-D943-4426-BB4A-8CA5D9D81233}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A945D85E-D943-4426-BB4A-8CA5D9D81233}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A945D85E-D943-4426-BB4A-8CA5D9D81233}.Debug|x64.ActiveCfg = Debug|Any CPU

@@ -9,5 +9,7 @@ namespace LanchoneteUDV.Domain.Interfaces
         Task<ResumoVendas> ListarResumo();
 
         Task<IEnumerable<ResumoVendas>> ListarResumoMesAMes(int ano);
+
+        void AtualizarDinheiroCaixa(double valor);
     }
 }

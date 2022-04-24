@@ -23,12 +23,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="EPPlus" Version="6.0.3" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LanchoneteUDV.Business\LanchoneteUDV.Business.csproj" />
     <ProjectReference Include="..\LanchoneteUDV.Infra.IoC\LanchoneteUDV.Infra.IoC.csproj" />
+    <ProjectReference Include="..\LanchoneteUDV.Services\LanchoneteUDV.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

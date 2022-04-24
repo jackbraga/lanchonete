@@ -1,6 +1,5 @@
 ﻿using LanchoneteUDV.Application.DTO;
 using LanchoneteUDV.Application.Interfaces;
-using System.Data;
 
 namespace LanchoneteUDV
 {
@@ -51,7 +50,7 @@ namespace LanchoneteUDV
                 Valor = TipoEventoComboBox.Text == "Entrada" ? Convert.ToDouble(PrecoTextBox.Text) : Convert.ToDouble(PrecoTextBox.Text) * -1
             };
 
-            if (caixa.Id>0)
+            if (caixa.Id > 0)
             {
                 _caixaService.Update(caixa);
             }
@@ -69,7 +68,7 @@ namespace LanchoneteUDV
             //    caixa.Valor = Convert.ToDouble(PrecoTextBox.Text) * -1;
             //}
 
-         
+
 
             //_bllFinanceiro.AdicionarEventoCaixa(caixa);
             //_caixaService.Add(caixa);
@@ -120,9 +119,9 @@ namespace LanchoneteUDV
             CategoriaComboBox.SelectedValue = -1;
             AnoComboBox.Text = DateTime.Now.Year.ToString();
             RecarregarTela();
-            
+
             CarregarMesaMes(DateTime.Now.Year);
-            
+
 
         }
 
@@ -131,8 +130,6 @@ namespace LanchoneteUDV
             RecarregarGrid();
             CarregarResumo();
         }
-
-
 
         private void RecarregarGrid()
         {
@@ -235,25 +232,17 @@ namespace LanchoneteUDV
         private async void CarregarResumo()
         {
             //DataTable dados = _caixaService.ListarResumo();// _bllFinanceiro.ListarResumo();
-
             var resumo = await _caixaService.ListarResumo();
-            if (resumo!= null)
+
+            if (resumo != null)
             {
-                SaldoInicialTextBox.Text = "R$ " + String.Format("{0:N2}",(resumo.SaldoInicial));
+                SaldoInicialTextBox.Text = "R$ " + String.Format("{0:N2}", (resumo.SaldoInicial));
                 EntradasTextBox.Text = "R$ " + String.Format("{0:N2}", resumo.Entradas);
                 SaidasTextBox.Text = "R$ " + String.Format("{0:N2}", resumo.Saidas);
                 FaturadoTextBox.Text = "R$ " + String.Format("{0:N2}", resumo.Faturado);
                 LucroTextBox.Text = "R$ " + String.Format("{0:N2}", resumo.Lucro);
                 DinheiroTextBox.Text = "R$ " + String.Format("{0:N2}", resumo.Dinheiro);
                 SaldoAtualTextBox.Text = "R$ " + String.Format("{0:N2}", resumo.Saldo);
-                //  DataRow row = dados.Rows[0];
-                //SaldoInicialTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["SaldoInicial"].ToString()));
-                //EntradasTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Entradas"].ToString()));
-                //SaidasTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Saidas"].ToString()));
-                //FaturadoTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Faturado"].ToString()));
-                //LucroTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Lucro"].ToString()));
-                //DinheiroTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Dinheiro"].ToString()));
-                //SaldoAtualTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Saldo"].ToString()));
             }
         }
 
@@ -275,7 +264,7 @@ namespace LanchoneteUDV
                 CarregaCamposMesAMes(meses[6], JulEntradasTextBox, JulSaidasTextBox, JulFaturadoTextBox, JulLucroTextBox);
                 CarregaCamposMesAMes(meses[7], AgoEntradasTextBox, AgoSaidasTextBox, AgoFaturadoTextBox, AgoLucroTextBox);
                 CarregaCamposMesAMes(meses[8], SetEntradasTextBox, SetSaidasTextBox, SetFaturadoTextBox, SetLucroTextBox);
-                CarregaCamposMesAMes(meses[9], OutEntradasTextBox, OutSaidasTextBox, OutFaturadoTextBox, OutLucroTextBox);                
+                CarregaCamposMesAMes(meses[9], OutEntradasTextBox, OutSaidasTextBox, OutFaturadoTextBox, OutLucroTextBox);
                 CarregaCamposMesAMes(meses[10], NovEntradasTextBox, NovSaidasTextBox, NovFaturadoTextBox, NovLucroTextBox);
                 CarregaCamposMesAMes(meses[11], DezEntradasTextBox, DezSaidasTextBox, DezFaturadoTextBox, DezLucroTextBox);
             }
@@ -298,6 +287,44 @@ namespace LanchoneteUDV
         private void AnoComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
             CarregarMesaMes(Convert.ToInt32(AnoComboBox.Text));
+        }
+
+        private void EditaDinheiroButton_Click(object sender, EventArgs e)
+        {
+            _helper.Habilita(DinheiroTextBox);
+        }
+
+        private void SalvarDinheiroButton_Click(object sender, EventArgs e)
+        {
+            _caixaService.AtualizarDinheiroCaixa(double.Parse(DinheiroTextBox.Text));
+            DinheiroTextBox.Text = "R$ " + String.Format("{0:N2}", DinheiroTextBox.Text);
+            _helper.Desabilita(DinheiroTextBox);
+        }
+
+        private void FluxoCaixaDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int row = FluxoCaixaDataGridView.CurrentRow.Index;
+
+            IdTextBox.Text = FluxoCaixaDataGridView.Rows[row].Cells[0].Value.ToString();
+            DataEventoDateTimePicker.Value = (DateTime)FluxoCaixaDataGridView.Rows[row].Cells[1].Value;
+            TipoEventoComboBox.Text = FluxoCaixaDataGridView.Rows[row].Cells[2].Value.ToString();
+
+            ObservacaoTextBox.Text = FluxoCaixaDataGridView.Rows[row].Cells[5].Value.ToString();
+
+            CategoriaComboBox.SelectedValue = (Int32)FluxoCaixaDataGridView.Rows[row].Cells[6].Value;
+
+            double valor = (Double)FluxoCaixaDataGridView.Rows[row].Cells[3].Value;
+            PrecoTextBox.Text = (valor < 0 ? valor * -1 : valor).ToString();
+
+
+
+            //NomeTextBox.Text = SociosDataGridView.Rows[row].Cells[1].Value.ToString();
+            //EmailTextBox.Text = SociosDataGridView.Rows[row].Cells[2].Value.ToString();
+            //ResponsavelFinanceiroComboBox.SelectedValue = Convert.ToInt32(SociosDataGridView.Rows[row].Cells[3].Value);
+            _helper.Desabilita(DataEventoDateTimePicker, SalvarButton, NovoButton,
+                                TipoEventoComboBox, PrecoTextBox, ObservacaoTextBox, CategoriaComboBox);
+
+            _helper.Habilita(ExcluirButton, EditarButton);
         }
     }
 }
