@@ -21,9 +21,9 @@ namespace LanchoneteUDV.Infra.Data.Repositories
         public void Add(VendasPedido vendaPedido)
         {
             string sql = "INSERT INTO tbVendasPedido" +
-                    "(Venda,Produto,Quantidade,PrecoProduto,Observacao,Retirado,DataHoraPedido) " +
+                    "(Venda,Produto,Quantidade,PrecoProduto,Observacao,Retirado,DataHoraPedido,TipoPagamento) " +
                 "VALUES" +
-                    "(@idVenda,@idProduto,@quantidade,@precoProduto,@observacao,@retirado,@dataHoraPedido)";
+                    "(@idVenda,@idProduto,@quantidade,@precoProduto,@observacao,@retirado,@dataHoraPedido, @tipoPagamento)";
 
             using (var connection = _connection.Connection())
             {
@@ -36,7 +36,8 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                     precoProduto = vendaPedido.PrecoProduto,
                     observacao = vendaPedido.Observacao,
                     retirado = vendaPedido.Retirado,
-                    dataHoraPedido = vendaPedido.DataHoraPedido
+                    dataHoraPedido = vendaPedido.DataHoraPedido,
+                    tipoPagamento = vendaPedido.TipoPagamento
                 });
             }
         }
@@ -59,7 +60,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
 
         public IEnumerable<VendasPedidoEscala> ListarTodosVendasPedido(int idEscala)
         {
-            string sql = "SELECT tbVendasPedido.ID,tbVendasPedido.DataHoraPedido, tbSocios.Nome, tbProdutos.Descricao, " +
+            string sql = "SELECT tbVendasPedido.ID,tbVendasPedido.DataHoraPedido, tbSocios.Nome, tbProdutos.Descricao, tbVendasPedido.TipoPagamento " +
                         "tbVendasPedido.Quantidade, tbVendasPedido.Retirado, tbVendasPedido.Observacao " +
                         "FROM tbProdutos " +
                         "INNER JOIN(tbSocios " +
@@ -80,7 +81,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
         public IEnumerable<VendasPedidoSocio> ListarVendasPedido(int idVenda)
         {
             string sql = "SELECT tbVendasPedido.ID, tbProdutos.Descricao,tbVendasPedido.PrecoProduto ,tbVendasPedido.Quantidade, " +
-            "(tbVendasPedido.Quantidade * tbVendasPedido.PrecoProduto) AS Total, tbVendasPedido.Observacao, tbVendasPedido.Retirado, tbVendasPedido.DataHoraPedido " +
+            "(tbVendasPedido.Quantidade * tbVendasPedido.PrecoProduto) AS Total, tbVendasPedido.Observacao, tbVendasPedido.Retirado, tbVendasPedido.DataHoraPedido,  tbVendasPedido.TipoPagamento  " +
             "FROM tbProdutos INNER JOIN tbVendasPedido ON tbProdutos.ID = tbVendasPedido.Produto " +
             "WHERE tbVendasPedido.Venda=" + idVenda + " " +
             "ORDER BY tbVendasPedido.Retirado desc, tbProdutos.Descricao;";

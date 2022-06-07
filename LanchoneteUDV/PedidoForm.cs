@@ -85,22 +85,14 @@ namespace LanchoneteUDV
             {
                 Id = IdVenda,
                 IdEscala = IdEscala,
-                IdSocio = Convert.ToInt32(SocioComboBox.SelectedValue),
-                TipoPagamento = PagamentoComboBox.Text,
-
-
-
+                IdSocio = Convert.ToInt32(SocioComboBox.SelectedValue)
+                //TipoPagamento = PagamentoComboBox.Text,
             };
-            if (venda.Id > 0)
-            {
-                _vendaService.Update(venda);
-            }
-            else
+            if (venda.Id == 0)
             {
                 IdVenda = _vendaService.Add(venda);
-
+                //_vendaService.Update(venda);
             }
-
 
 
             //VendasPedidoDTO vendaPedido = new VendasPedidoDTO();
@@ -128,7 +120,8 @@ namespace LanchoneteUDV
                 DataHoraPedido = DateTime.Now,
                 PrecoProduto = Double.Parse(PrecoComboBox.Text.Replace("R$ ", "")),
                 Quantidade = 1,
-                Retirado = RetiradoCheckBox.Checked
+                Retirado = RetiradoCheckBox.Checked,
+                TipoPagamento = PagamentoComboBox.Text
             };
 
             for (int i = 0; i < Convert.ToInt32(QuantidadeTextBox.Text); i++)
@@ -181,11 +174,11 @@ namespace LanchoneteUDV
             CalcularSubtotal();
         }
 
-        private void EditarButton_Click(object sender, EventArgs e)
-        {
-            _helper.Habilita(PagamentoComboBox, SalvarButton);
-            _helper.Desabilita(EditarButton);
-        }
+        //private void EditarButton_Click(object sender, EventArgs e)
+        //{
+        //    _helper.Habilita(PagamentoComboBox, SalvarButton);
+        //    _helper.Desabilita(EditarButton);
+        //}
 
         private void SalvarButton_Click(object sender, EventArgs e)
         {
@@ -225,8 +218,8 @@ namespace LanchoneteUDV
             // IdVenda = _bllVendas.SalvarVenda(venda);
 
 
-            _helper.Desabilita(SalvarButton, PagamentoComboBox);
-            _helper.Habilita(EditarButton);
+            //_helper.Desabilita(SalvarButton);
+            //_helper.Habilita(EditarButton);
 
         }
 
@@ -315,18 +308,15 @@ namespace LanchoneteUDV
             if (vendas.Count() > 0)
             {
                 var venda1 = vendas.First();
-                PagamentoComboBox.Text = venda1.TipoPagamento;//row["TipoPagamento"].ToString();
+                //PagamentoComboBox.Text = venda1.TipoPagamento;//row["TipoPagamento"].ToString();
                 TotalConsumidoTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(venda1.TotalConsumido.ToString()));
                 IdVenda = Convert.ToInt32(venda1.IdVenda);
 
-
-                _helper.Desabilita(PagamentoComboBox, SalvarButton);
-                _helper.Habilita(EditarButton);
             }
             else
             {
-                _helper.Habilita(PagamentoComboBox, SalvarButton);
-                _helper.Desabilita(EditarButton);
+                //_helper.Habilita( SalvarButton);
+                //_helper.Desabilita(EditarButton);
                 IdVenda = 0;
                 TotalConsumidoTextBox.Text = "R$ 0,00";
 
@@ -359,6 +349,7 @@ namespace LanchoneteUDV
             PedidosDataGridView.Columns[6].HeaderText = "Retirado";
             PedidosDataGridView.Columns[6].Width = 60;
             PedidosDataGridView.Columns[7].HeaderText = "Data/Hora";
+            PedidosDataGridView.Columns[8].HeaderText = "Pagamento";
 
             PedidosDataGridView.ClearSelection();
             ColorirRetirada();
@@ -434,7 +425,7 @@ namespace LanchoneteUDV
             ObservacaoTextBox.Clear();
             QuantidadeTextBox.Text = "0";
             PagamentoComboBox.Text = "";
-            _helper.Desabilita(SalvarButton);
+            //_helper.Desabilita(SalvarButton);
 
         }
 

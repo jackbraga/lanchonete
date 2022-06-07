@@ -41,18 +41,33 @@ namespace LanchoneteUDV
             BindingSource bs = new BindingSource();
             bs.DataSource = listaSort;   // Bind to the sortable list
             VendasDataGridView.DataSource = bs;
+            FormatarGrid();
+            //// VendasDataGridView.DataSource = _vendaService.ListarVendasEscala(Convert.ToInt32(this.Tag)); //_bllVendas.ListarVendas(Convert.ToInt32(this.Tag));
+            //VendasDataGridView.Columns[0].Visible = false;
+            //VendasDataGridView.Columns[1].Visible = false;
+            //VendasDataGridView.Columns[2].HeaderText = "Socio";
+            //VendasDataGridView.Columns[2].Width = 310;
+            //VendasDataGridView.Columns[3].HeaderText = "Pagamento";
+            //VendasDataGridView.Columns[3].Visible = false;
+            //VendasDataGridView.Columns[4].DefaultCellStyle.Format = "R$ 0.00##";
+            //VendasDataGridView.Columns[4].HeaderText = "Valor Total";
+            //VendasDataGridView.Columns[5].HeaderText = "Itens para Retirar";
+            //VendasDataGridView.ClearSelection();
 
-           // VendasDataGridView.DataSource = _vendaService.ListarVendasEscala(Convert.ToInt32(this.Tag)); //_bllVendas.ListarVendas(Convert.ToInt32(this.Tag));
+        }
+
+        private void FormatarGrid()
+        {
             VendasDataGridView.Columns[0].Visible = false;
             VendasDataGridView.Columns[1].Visible = false;
             VendasDataGridView.Columns[2].HeaderText = "Socio";
-            VendasDataGridView.Columns[2].Width = 310;
+            VendasDataGridView.Columns[2].Width = 400;
             VendasDataGridView.Columns[3].HeaderText = "Pagamento";
+            VendasDataGridView.Columns[3].Visible = false;
             VendasDataGridView.Columns[4].DefaultCellStyle.Format = "R$ 0.00##";
             VendasDataGridView.Columns[4].HeaderText = "Valor Total";
             VendasDataGridView.Columns[5].HeaderText = "Itens para Retirar";
             VendasDataGridView.ClearSelection();
-
         }
 
         private void FormataGridResumo()
@@ -78,6 +93,8 @@ namespace LanchoneteUDV
             ResumoVendasChurrascoDataGridView.Columns[5].HeaderText = "Pagamento";
 
         }
+
+
 
         #endregion
 
@@ -179,18 +196,17 @@ namespace LanchoneteUDV
         private void PesquisaTextBox_KeyUp(object sender, KeyEventArgs e)
         {
             VendasDataGridView.DataSource = _vendaService.ListarVendasPesquisa(Convert.ToInt32(this.Tag), PesquisaTextBox.Text); //_bllVendas.ListarVendasPesquisa(Convert.ToInt32(this.Tag),PesquisaTextBox.Text);
-            VendasDataGridView.Columns[0].Visible = false;
-            VendasDataGridView.Columns[1].Visible = false;
-            VendasDataGridView.Columns[2].HeaderText = "Socio";
-            VendasDataGridView.Columns[2].Width = 210;
-            VendasDataGridView.Columns[3].HeaderText = "Pagamento";
-            VendasDataGridView.Columns[4].DefaultCellStyle.Format = "R$ 0.00##";
-            VendasDataGridView.Columns[4].HeaderText = "Valor Total";
-            VendasDataGridView.Columns[5].HeaderText = "Itens para Retirar";
-            VendasDataGridView.ClearSelection();
+            FormatarGrid();
 
-
-
+            //VendasDataGridView.Columns[0].Visible = false;
+            //VendasDataGridView.Columns[1].Visible = false;
+            //VendasDataGridView.Columns[2].HeaderText = "Socio";
+            //VendasDataGridView.Columns[2].Width = 310;
+            //VendasDataGridView.Columns[3].HeaderText = "Pagamento";
+            //VendasDataGridView.Columns[4].DefaultCellStyle.Format = "R$ 0.00##";
+            //VendasDataGridView.Columns[4].HeaderText = "Valor Total";
+            //VendasDataGridView.Columns[5].HeaderText = "Itens para Retirar";
+            //VendasDataGridView.ClearSelection();
         }
 
     }
