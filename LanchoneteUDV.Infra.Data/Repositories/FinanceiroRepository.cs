@@ -40,7 +40,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                             "INNER JOIN (tbProdutos AS C " +
                             "INNER JOIN (tbVendas AS D " +
                             "INNER JOIN tbVendasPedido AS E ON D.ID = E.Venda) ON C.ID = E.Produto) ON B.ID = D.Socio) ON A.ID = D.Escala " +
-                            "WHERE A.ID =" + idEscala + " AND B.ID = " + idSocio + " " +
+                            "WHERE A.ID =" + idEscala + " AND B.ID = " + idSocio + " AND E.TipoPagamento='BOLETO' " +
                             "GROUP BY A.DataEscala,A.Descricao, B.Nome,C.ID, C.Descricao, E.PrecoProduto ;";
 
             using (var connection = _connection.Connection())
@@ -55,7 +55,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
 
         public IEnumerable<VendaRepasseFinanceiro> ListarVendasRepasseFinanceiro(int idEscala)
         {
-            string sql = "SELECT tbVendas.ID as IdVenda, tbSocios.ID as IdSocio,  tbSocios.Nome, tbVendas.TipoPagamento, SUM(tbVendasPedido.Quantidade * tbVendasPedido.PrecoProduto) AS Total, ISNULL(tbVendas.EmailDisparado,0) AS EmailDisparado, tbSocios.Email  " +
+            string sql = "SELECT tbVendas.ID as IdVenda, tbSocios.ID as IdSocio,  tbSocios.Nome, SUM(tbVendasPedido.Quantidade * tbVendasPedido.PrecoProduto) AS Total, ISNULL(tbVendas.EmailDisparado,0) AS EmailDisparado, tbSocios.Email  " +
                         "FROM tbSocios " +
                         "INNER JOIN(tbEscalas " +
                         "INNER JOIN (tbVendas " +
@@ -64,8 +64,8 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                         "ON tbEscalas.ID = tbVendas.Escala) " +
                         "ON tbSocios.ID = tbVendas.Socio " +
                         "WHERE tbEscalas.ID=" + idEscala + " " +
-                        "AND tbVendas.TipoPagamento='BOLETO' " +
-                        "GROUP BY  tbVendas.ID, tbSocios.ID,  tbSocios.Nome, tbVendas.TipoPagamento, ISNULL(tbVendas.EmailDisparado,0), tbSocios.Email " +
+                        "AND tbVendasPedido.TipoPagamento='BOLETO' " +
+                        "GROUP BY  tbVendas.ID, tbSocios.ID,  tbSocios.Nome, ISNULL(tbVendas.EmailDisparado,0), tbSocios.Email " +
                         "ORDER BY tbSocios.Nome ; ";
 
             using (var connection = _connection.Connection())
@@ -81,28 +81,28 @@ namespace LanchoneteUDV.Infra.Data.Repositories
             string sql =
 	"SELECT B.Nome,A.DataEscala,A.Descricao,A.TipoPagamento,'CHURRASCO' AS Frente, SUM(Valor) AS VALOR " +
     "FROM ( " +
-    "SELECT ISNULL(C.ResponsavelFinanceiro,C.ID) AS ID, B.Descricao,B.DataEscala, A.TipoPagamento ,SUM(D.Quantidade * D.PrecoProduto) AS Valor " +
+    "SELECT ISNULL(C.ResponsavelFinanceiro,C.ID) AS ID, B.Descricao,B.DataEscala, D.TipoPagamento ,SUM(D.Quantidade * D.PrecoProduto) AS Valor " +
     "FROM		tbVendas	AS A " +
     "INNER JOIN	tbEscalas	AS B ON B.ID=A.Escala " +
 	"INNER JOIN	tbSocios	AS C ON C.ID=A.Socio " +
 	"INNER JOIN	tbVendasPedido AS D ON D.Venda=A.ID	" +
 	"INNER JOIN  tbProdutos AS E ON E.ID=D.Produto " +
 	"WHERE E.Categoria=15 AND B.ID=" + idEscala + " " +
-	"GROUP BY  ISNULL(C.ResponsavelFinanceiro,C.ID),NOME,B.Descricao,B.DataEscala,A.TipoPagamento " +
+	"GROUP BY  ISNULL(C.ResponsavelFinanceiro,C.ID),NOME,B.Descricao,B.DataEscala,D.TipoPagamento " +
 	") AS A " +
 	"INNER JOIN tbSocios as B ON B.ID=A.ID " +
 	"GROUP BY NOME, A.DataEscala, A.Descricao,A.TipoPagamento " +
     "UNION ALL " +
 	"SELECT B.Nome,A.DataEscala,A.Descricao,A.TipoPagamento,'LANCHONETE', SUM(Valor) AS VALOR " +
 	"FROM ( " +
-	"SELECT ISNULL(C.ResponsavelFinanceiro,C.ID) AS ID, B.Descricao,B.DataEscala, A.TipoPagamento ,SUM(D.Quantidade * D.PrecoProduto) AS Valor " +
+	"SELECT ISNULL(C.ResponsavelFinanceiro,C.ID) AS ID, B.Descricao,B.DataEscala, D.TipoPagamento ,SUM(D.Quantidade * D.PrecoProduto) AS Valor " +
     "FROM		tbVendas	AS A " +
     "INNER JOIN	tbEscalas	AS B ON B.ID=A.Escala " +
     "INNER JOIN	tbSocios	AS C ON C.ID=A.Socio " +
     "INNER JOIN	tbVendasPedido AS D ON D.Venda=A.ID	 " +
     "INNER JOIN  tbProdutos AS E ON E.ID=D.Produto " +
     "WHERE E.Categoria<>15 AND B.ID=" +idEscala + " " +
-    "GROUP BY  ISNULL(C.ResponsavelFinanceiro,C.ID),NOME,B.Descricao,B.DataEscala,A.TipoPagamento " +
+    "GROUP BY  ISNULL(C.ResponsavelFinanceiro,C.ID),NOME,B.Descricao,B.DataEscala,D.TipoPagamento " +
     ") AS A " +
     "INNER JOIN tbSocios as B ON B.ID=A.ID " +
     "GROUP BY NOME, A.DataEscala, A.Descricao,A.TipoPagamento " +

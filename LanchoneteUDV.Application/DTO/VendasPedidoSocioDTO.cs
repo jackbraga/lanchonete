@@ -17,6 +17,7 @@ namespace LanchoneteUDV.Application.DTO
         public bool Retirado { get; set; }
         public DateTime DataHoraPedido { get; set; }
 
+        public string TipoPagamento { get; set; }
 
 
     }

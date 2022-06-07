@@ -69,6 +69,7 @@ namespace LanchoneteUDV
             VendasDataGridView.Columns[2].HeaderText = "Socio";
             VendasDataGridView.Columns[2].Width = 210;
             VendasDataGridView.Columns[3].HeaderText = "Pagamento";
+            VendasDataGridView.Columns[3].Visible = false;
             VendasDataGridView.Columns[4].DefaultCellStyle.Format = "R$ 0.00##";
             VendasDataGridView.Columns[4].HeaderText = "Valor Total";
             VendasDataGridView.Columns[5].HeaderText = "Email Disparado";

@@ -2,6 +2,13 @@ using LanchoneteUDV.Infra.IoC;
 
 namespace LanchoneteUDV
 {
+
+    public class Global
+    {
+        public static bool ExibeChurrasco { get; set; }
+        public static bool ExibeSalgados { get; set; }
+    }
+
     internal static class Program
     {
 

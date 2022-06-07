@@ -91,7 +91,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(6, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(632, 192);
+            this.groupBox1.Size = new System.Drawing.Size(672, 237);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cadastro de Pedidos";
@@ -102,7 +102,7 @@
             this.TotalChurrascoTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
             this.TotalChurrascoTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.TotalChurrascoTextBox.Enabled = false;
-            this.TotalChurrascoTextBox.Location = new System.Drawing.Point(460, 162);
+            this.TotalChurrascoTextBox.Location = new System.Drawing.Point(480, 208);
             this.TotalChurrascoTextBox.MaxLength = 150;
             this.TotalChurrascoTextBox.Name = "TotalChurrascoTextBox";
             this.TotalChurrascoTextBox.Size = new System.Drawing.Size(106, 23);
@@ -114,7 +114,7 @@
             this.TotalLanchoneteTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
             this.TotalLanchoneteTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.TotalLanchoneteTextBox.Enabled = false;
-            this.TotalLanchoneteTextBox.Location = new System.Drawing.Point(288, 162);
+            this.TotalLanchoneteTextBox.Location = new System.Drawing.Point(289, 208);
             this.TotalLanchoneteTextBox.MaxLength = 150;
             this.TotalLanchoneteTextBox.Name = "TotalLanchoneteTextBox";
             this.TotalLanchoneteTextBox.Size = new System.Drawing.Size(106, 23);
@@ -146,7 +146,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ResumoVendasChurrascoDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ResumoVendasChurrascoDataGridView.Location = new System.Drawing.Point(460, 43);
+            this.ResumoVendasChurrascoDataGridView.Location = new System.Drawing.Point(480, 43);
             this.ResumoVendasChurrascoDataGridView.MultiSelect = false;
             this.ResumoVendasChurrascoDataGridView.Name = "ResumoVendasChurrascoDataGridView";
             this.ResumoVendasChurrascoDataGridView.ReadOnly = true;
@@ -154,13 +154,13 @@
             this.ResumoVendasChurrascoDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ResumoVendasChurrascoDataGridView.RowTemplate.Height = 25;
             this.ResumoVendasChurrascoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ResumoVendasChurrascoDataGridView.Size = new System.Drawing.Size(165, 116);
+            this.ResumoVendasChurrascoDataGridView.Size = new System.Drawing.Size(186, 159);
             this.ResumoVendasChurrascoDataGridView.TabIndex = 55;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(460, 22);
+            this.label4.Location = new System.Drawing.Point(480, 22);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 18);
             this.label4.TabIndex = 54;
@@ -200,17 +200,18 @@
             this.ResumoVendasDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ResumoVendasDataGridView.RowTemplate.Height = 25;
             this.ResumoVendasDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ResumoVendasDataGridView.Size = new System.Drawing.Size(165, 116);
+            this.ResumoVendasDataGridView.Size = new System.Drawing.Size(185, 159);
             this.ResumoVendasDataGridView.TabIndex = 16;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(188, 162);
+            this.label6.Location = new System.Drawing.Point(188, 186);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(94, 18);
             this.label6.TabIndex = 52;
             this.label6.Text = "Estoque Escala";
+            
             // 
             // EstoqueEscalaButton
             // 
@@ -221,7 +222,7 @@
             this.EstoqueEscalaButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.EstoqueEscalaButton.FlatAppearance.BorderSize = 0;
             this.EstoqueEscalaButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.EstoqueEscalaButton.Location = new System.Drawing.Point(207, 118);
+            this.EstoqueEscalaButton.Location = new System.Drawing.Point(207, 142);
             this.EstoqueEscalaButton.Name = "EstoqueEscalaButton";
             this.EstoqueEscalaButton.Size = new System.Drawing.Size(46, 41);
             this.EstoqueEscalaButton.TabIndex = 51;
@@ -248,7 +249,7 @@
             this.FilaButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.FilaButton.FlatAppearance.BorderSize = 0;
             this.FilaButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.FilaButton.Location = new System.Drawing.Point(109, 118);
+            this.FilaButton.Location = new System.Drawing.Point(109, 142);
             this.FilaButton.Name = "FilaButton";
             this.FilaButton.Size = new System.Drawing.Size(46, 41);
             this.FilaButton.TabIndex = 48;
@@ -283,7 +284,7 @@
             this.NovoButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.NovoButton.FlatAppearance.BorderSize = 0;
             this.NovoButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.NovoButton.Location = new System.Drawing.Point(7, 118);
+            this.NovoButton.Location = new System.Drawing.Point(5, 142);
             this.NovoButton.Name = "NovoButton";
             this.NovoButton.Size = new System.Drawing.Size(46, 41);
             this.NovoButton.TabIndex = 47;
@@ -304,7 +305,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(86, 162);
+            this.label8.Location = new System.Drawing.Point(86, 186);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(96, 18);
             this.label8.TabIndex = 32;
@@ -326,7 +327,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Location = new System.Drawing.Point(1, 162);
+            this.label14.Location = new System.Drawing.Point(1, 184);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(79, 18);
             this.label14.TabIndex = 27;
@@ -390,9 +391,9 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.IdTextBox);
             this.groupBox2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.Location = new System.Drawing.Point(6, 200);
+            this.groupBox2.Location = new System.Drawing.Point(6, 245);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(632, 447);
+            this.groupBox2.Size = new System.Drawing.Size(672, 470);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Histórico de Pedidos";
@@ -449,7 +450,7 @@
             this.VendasDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.VendasDataGridView.RowTemplate.Height = 25;
             this.VendasDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.VendasDataGridView.Size = new System.Drawing.Size(619, 368);
+            this.VendasDataGridView.Size = new System.Drawing.Size(660, 392);
             this.VendasDataGridView.TabIndex = 0;
             this.VendasDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.VendasDataGridView_CellDoubleClick);
             // 
@@ -458,7 +459,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(644, 652);
+            this.ClientSize = new System.Drawing.Size(683, 717);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.EstoqueButton);

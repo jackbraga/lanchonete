@@ -19,7 +19,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
         }
         public IEnumerable<VendaEscala> ListarVendasEscala(int idEscala)
         {
-            string sql = "SELECT tbVendas.ID AS IdVenda, tbSocios.ID AS IdSocio,  tbSocios.Nome AS NomeSocio, tbVendas.TipoPagamento, " +
+            string sql = "SELECT tbVendas.ID AS IdVenda, tbSocios.ID AS IdSocio,  tbSocios.Nome AS NomeSocio, " +
                         "SUM(tbVendasPedido.Quantidade * tbVendasPedido.PrecoProduto) AS TotalVenda," +
                         "(SELECT COUNT(*) FROM tbVendasPedido WHERE Venda = tbVendas.ID AND Retirado = 0) AS PendenteRetirada " +
                         "FROM tbSocios " +
@@ -30,8 +30,8 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                         "ON tbEscalas.ID = tbVendas.Escala) " +
                         "ON tbSocios.ID = tbVendas.Socio " +
                         "WHERE tbEscalas.ID=" + idEscala + " " +
-                        "GROUP BY  tbVendas.ID, tbSocios.ID,  tbSocios.Nome, tbVendas.TipoPagamento " +
-                        "ORDER BY 6 desc,tbSocios.Nome ; ";
+                        "GROUP BY  tbVendas.ID, tbSocios.ID,  tbSocios.Nome " +
+                        "ORDER BY 5 desc,tbSocios.Nome ; ";
 
             using (var connection = _connection.Connection())
             {
@@ -86,13 +86,13 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                 "tbEscalas.DataEscala, " +
                 "SUM((tbVendasPedido.PrecoProduto * tbVendasPedido.Quantidade)) AS ResumoVendas, " +
                 "tbEscalas.Finalizada as EscalaFinalizada, " +
-                "TipoPagamento " +
+                "tbVendasPedido.TipoPagamento " +
                 "FROM tbEscalas " +
                 "LEFT JOIN tbVendas ON tbEscalas.ID = tbVendas.Escala " +
                 "LEFT JOIN tbVendasPedido ON tbVendas.ID = tbVendasPedido.Venda " +
                 "INNER JOIN tbProdutos ON tbProdutos.ID = tbVendasPedido.Produto " +
                 "WHERE tbEscalas.ID = " + idEscala + " AND tbProdutos.Categoria <> 15 " +
-                "GROUP BY  tbEscalas.ID, tbEscalas.Descricao, tbEscalas.DataEscala, TipoPagamento,tbEscalas.Finalizada ";
+                "GROUP BY  tbEscalas.ID, tbEscalas.Descricao, tbEscalas.DataEscala, tbVendasPedido.TipoPagamento,tbEscalas.Finalizada ";
 
             using (var connection = _connection.Connection())
             {
@@ -110,13 +110,13 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                 "tbEscalas.DataEscala, " +
                 "SUM((tbVendasPedido.PrecoProduto * tbVendasPedido.Quantidade)) AS ResumoVendas, " +
                 "tbEscalas.Finalizada as EscalaFinalizada, " +
-                "TipoPagamento " +
+                "tbVendasPedido.TipoPagamento " +
                 "FROM tbEscalas " +
                 "LEFT JOIN tbVendas ON tbEscalas.ID = tbVendas.Escala " +
                 "LEFT JOIN tbVendasPedido ON tbVendas.ID = tbVendasPedido.Venda " +
                 "INNER JOIN tbProdutos ON tbProdutos.ID = tbVendasPedido.Produto " +
                 "WHERE tbEscalas.ID = " + idEscala + " AND tbProdutos.Categoria = 15 " +
-                "GROUP BY  tbEscalas.ID, tbEscalas.Descricao, tbEscalas.DataEscala, TipoPagamento,tbEscalas.Finalizada ";
+                "GROUP BY  tbEscalas.ID, tbEscalas.Descricao, tbEscalas.DataEscala, tbVendasPedido.TipoPagamento,tbEscalas.Finalizada ";
 
             using (var connection = _connection.Connection())
             {
@@ -128,11 +128,11 @@ namespace LanchoneteUDV.Infra.Data.Repositories
 
         public IEnumerable<VendaEscalaSocio> TrazerVendaEscalaSocio(int idEscala, int idSocio)
         {
-            string sql = "SELECT tbVendas.ID as IdVenda, tbVendas.TipoPagamento, SUM(tbVendasPedido.Quantidade * tbVendasPedido.PrecoProduto) AS TotalConsumido " +
+            string sql = "SELECT tbVendas.ID as IdVenda, SUM(tbVendasPedido.Quantidade * tbVendasPedido.PrecoProduto) AS TotalConsumido " +
                 "FROM tbVendas " +
                 "INNER JOIN tbVendasPedido ON tbVendasPedido.Venda=tbVendas.ID " +
                 "WHERE Escala=" + idEscala + " AND Socio=" + idSocio + " " +
-                "GROUP BY tbVendas.ID, tbVendas.TipoPagamento ;";
+                "GROUP BY tbVendas.ID ;";
 
             using (var connection = _connection.Connection())
             {
@@ -193,10 +193,10 @@ namespace LanchoneteUDV.Infra.Data.Repositories
         public int Add(Venda classe)
         {
             string sql = "INSERT INTO tbVendas" +
-                    "(Escala,Socio,TipoPagamento) " +
+                    "(Escala,Socio) " +
                     "OUTPUT INSERTED.ID " +
                 "VALUES" +
-                    "(@idEscala,@idSocio,@tipoPagamento)";
+                    "(@idEscala,@idSocio)";
 
             using (var connection = _connection.Connection())
             {
@@ -204,8 +204,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                 var result = connection.ExecuteScalar<int>(sql, new
                 {
                     idEscala = classe.IdEscala,
-                    idSocio = classe.IdSocio,
-                    tipoPagamento = classe.TipoPagamento
+                    idSocio = classe.IdSocio
                 });
                 return result;
             }
