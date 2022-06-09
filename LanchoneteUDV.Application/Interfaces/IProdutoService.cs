@@ -10,6 +10,6 @@ namespace LanchoneteUDV.Application.Interfaces
     public interface IProdutoService :IBaseService<ProdutoDTO>
     {
         IEnumerable<ProdutoDTO> ListarProdutosParaVenda();
-        IEnumerable<ProdutoDTO> ListarProdutosParaVendaPorEscala(int idEscala);
+        IEnumerable<ProdutoDTO> ListarProdutosParaVendaPorEscala(int idEscala, bool exibeSalgados, bool exibeChurrasco);
     }
 }

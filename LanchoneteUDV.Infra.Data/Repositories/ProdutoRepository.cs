@@ -116,12 +116,14 @@ namespace LanchoneteUDV.Infra.Data.Repositories
             }
         }
 
-        public IEnumerable<Produto> ListarProdutosParaVendaPorEscala(int idEscala)
+        public IEnumerable<Produto> ListarProdutosParaVendaPorEscala(int idEscala, bool exibeSalgados, bool exibeChurrasco)
         {
             string sql = "SELECT A.ID,A.Descricao,A.PrecoVenda " +
                            "FROM tbProdutos AS A " +
                            "INNER JOIN tbEstoqueEscala AS B ON B.Produto=A.ID " +
                            "WHERE A.ProdutoVenda=1 AND B.Escala=@idEscala " +
+                           (exibeChurrasco == false ? " AND  A.Categoria <> 15  " : " ") +
+                           (exibeSalgados == false ? " AND  A.Categoria <> 10 " : " ") +
                            "order by Descricao;";
 
 

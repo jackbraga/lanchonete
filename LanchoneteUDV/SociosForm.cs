@@ -6,8 +6,6 @@ namespace LanchoneteUDV
 {
     public partial class SociosForm : Form
     {
-
-        //SociosBLL _bll = new SociosBLL();
         Helper _helper = new Helper();
 
         private readonly ISocioService _socioService;

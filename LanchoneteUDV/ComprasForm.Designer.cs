@@ -78,10 +78,15 @@
             this.groupBox2.Controls.Add(this.PesquisaTextBox);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.ComprasDataGridView);
+            this.groupBox2.Controls.Add(this.FixarNomecheckBox);
+            this.groupBox2.Controls.Add(this.CompradoPorTextBox);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.PrecoTextBox);
+            this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.Location = new System.Drawing.Point(12, 334);
+            this.groupBox2.Location = new System.Drawing.Point(12, 270);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(723, 383);
+            this.groupBox2.Size = new System.Drawing.Size(723, 456);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Consulta";
@@ -157,7 +162,7 @@
             this.ComprasDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ComprasDataGridView.RowTemplate.Height = 25;
             this.ComprasDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ComprasDataGridView.Size = new System.Drawing.Size(711, 295);
+            this.ComprasDataGridView.Size = new System.Drawing.Size(711, 372);
             this.ComprasDataGridView.TabIndex = 0;
             this.ComprasDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ComprasDataGridView_CellDoubleClick);
             // 
@@ -168,17 +173,12 @@
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.TipoEntradaComboBox);
             this.groupBox1.Controls.Add(this.NomeLabel);
-            this.groupBox1.Controls.Add(this.FixarNomecheckBox);
             this.groupBox1.Controls.Add(this.IdTextBox);
             this.groupBox1.Controls.Add(this.DataCompraDateTimePicker);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.NovoButton);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.QuantidadeTextBox);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.CompradoPorTextBox);
-            this.groupBox1.Controls.Add(this.PrecoTextBox);
-            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.ProdutoComboBox);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
@@ -193,7 +193,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(723, 316);
+            this.groupBox1.Size = new System.Drawing.Size(723, 252);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registro de Compras/Entradas no Estoque";
@@ -201,7 +201,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(9, 148);
+            this.label11.Location = new System.Drawing.Point(291, 89);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(76, 18);
             this.label11.TabIndex = 35;
@@ -211,11 +211,11 @@
             // 
             this.ObservacaoTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.ObservacaoTextBox.Enabled = false;
-            this.ObservacaoTextBox.Location = new System.Drawing.Point(9, 169);
+            this.ObservacaoTextBox.Location = new System.Drawing.Point(291, 110);
             this.ObservacaoTextBox.MaxLength = 200;
             this.ObservacaoTextBox.Multiline = true;
             this.ObservacaoTextBox.Name = "ObservacaoTextBox";
-            this.ObservacaoTextBox.Size = new System.Drawing.Size(708, 54);
+            this.ObservacaoTextBox.Size = new System.Drawing.Size(426, 54);
             this.ObservacaoTextBox.TabIndex = 6;
             // 
             // label10
@@ -241,13 +241,13 @@
             "Ajuste no Estoque"});
             this.TipoEntradaComboBox.Location = new System.Drawing.Point(9, 110);
             this.TipoEntradaComboBox.Name = "TipoEntradaComboBox";
-            this.TipoEntradaComboBox.Size = new System.Drawing.Size(152, 26);
+            this.TipoEntradaComboBox.Size = new System.Drawing.Size(168, 26);
             this.TipoEntradaComboBox.TabIndex = 2;
             // 
             // NomeLabel
             // 
             this.NomeLabel.AutoSize = true;
-            this.NomeLabel.Location = new System.Drawing.Point(546, 264);
+            this.NomeLabel.Location = new System.Drawing.Point(546, 203);
             this.NomeLabel.Name = "NomeLabel";
             this.NomeLabel.Size = new System.Drawing.Size(49, 18);
             this.NomeLabel.TabIndex = 31;
@@ -258,12 +258,13 @@
             // 
             this.FixarNomecheckBox.AutoSize = true;
             this.FixarNomecheckBox.Font = new System.Drawing.Font("Trebuchet MS", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.FixarNomecheckBox.Location = new System.Drawing.Point(316, 135);
+            this.FixarNomecheckBox.Location = new System.Drawing.Point(411, 168);
             this.FixarNomecheckBox.Name = "FixarNomecheckBox";
             this.FixarNomecheckBox.Size = new System.Drawing.Size(75, 19);
             this.FixarNomecheckBox.TabIndex = 30;
             this.FixarNomecheckBox.Text = "Fixar nome";
             this.FixarNomecheckBox.UseVisualStyleBackColor = true;
+            this.FixarNomecheckBox.Visible = false;
             // 
             // IdTextBox
             // 
@@ -284,7 +285,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(219, 289);
+            this.label14.Location = new System.Drawing.Point(219, 228);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(37, 18);
             this.label14.TabIndex = 27;
@@ -299,7 +300,7 @@
             this.NovoButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.NovoButton.FlatAppearance.BorderSize = 0;
             this.NovoButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.NovoButton.Location = new System.Drawing.Point(212, 241);
+            this.NovoButton.Location = new System.Drawing.Point(212, 180);
             this.NovoButton.Name = "NovoButton";
             this.NovoButton.Size = new System.Drawing.Size(54, 45);
             this.NovoButton.TabIndex = 7;
@@ -311,7 +312,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(536, 89);
+            this.label12.Location = new System.Drawing.Point(181, 89);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(75, 18);
             this.label12.TabIndex = 23;
@@ -321,11 +322,11 @@
             // 
             this.QuantidadeTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.QuantidadeTextBox.Enabled = false;
-            this.QuantidadeTextBox.Location = new System.Drawing.Point(536, 110);
+            this.QuantidadeTextBox.Location = new System.Drawing.Point(183, 110);
             this.QuantidadeTextBox.MaxLength = 4;
             this.QuantidadeTextBox.Name = "QuantidadeTextBox";
             this.QuantidadeTextBox.ShortcutsEnabled = false;
-            this.QuantidadeTextBox.Size = new System.Drawing.Size(94, 23);
+            this.QuantidadeTextBox.Size = new System.Drawing.Size(102, 23);
             this.QuantidadeTextBox.TabIndex = 5;
             this.QuantidadeTextBox.Text = "0";
             this.QuantidadeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.QuantidadeTextBox_KeyPress);
@@ -333,11 +334,12 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(167, 89);
+            this.label13.Location = new System.Drawing.Point(262, 122);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(133, 18);
             this.label13.TabIndex = 21;
             this.label13.Text = "Comprado/Doado por";
+            this.label13.Visible = false;
             // 
             // CompradoPorTextBox
             // 
@@ -345,32 +347,35 @@
             this.CompradoPorTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
             this.CompradoPorTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.CompradoPorTextBox.Enabled = false;
-            this.CompradoPorTextBox.Location = new System.Drawing.Point(167, 110);
+            this.CompradoPorTextBox.Location = new System.Drawing.Point(262, 143);
             this.CompradoPorTextBox.MaxLength = 150;
             this.CompradoPorTextBox.Name = "CompradoPorTextBox";
             this.CompradoPorTextBox.Size = new System.Drawing.Size(255, 23);
             this.CompradoPorTextBox.TabIndex = 3;
+            this.CompradoPorTextBox.Visible = false;
             // 
             // PrecoTextBox
             // 
             this.PrecoTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.PrecoTextBox.Enabled = false;
-            this.PrecoTextBox.Location = new System.Drawing.Point(440, 110);
+            this.PrecoTextBox.Location = new System.Drawing.Point(535, 143);
             this.PrecoTextBox.MaxLength = 10;
             this.PrecoTextBox.Name = "PrecoTextBox";
             this.PrecoTextBox.Size = new System.Drawing.Size(90, 23);
             this.PrecoTextBox.TabIndex = 4;
             this.PrecoTextBox.Text = "0";
+            this.PrecoTextBox.Visible = false;
             this.PrecoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PrecoTextBox_KeyPress);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(440, 89);
+            this.label8.Location = new System.Drawing.Point(535, 122);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(90, 18);
             this.label8.TabIndex = 13;
             this.label8.Text = "Preço Unitário";
+            this.label8.Visible = false;
             // 
             // ProdutoComboBox
             // 
@@ -388,7 +393,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(456, 289);
+            this.label7.Location = new System.Drawing.Point(456, 228);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 18);
             this.label7.TabIndex = 11;
@@ -397,7 +402,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(396, 289);
+            this.label6.Location = new System.Drawing.Point(396, 228);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 18);
             this.label6.TabIndex = 10;
@@ -406,7 +411,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(337, 289);
+            this.label5.Location = new System.Drawing.Point(337, 228);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 18);
             this.label5.TabIndex = 9;
@@ -415,7 +420,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(278, 289);
+            this.label4.Location = new System.Drawing.Point(278, 228);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 18);
             this.label4.TabIndex = 8;
@@ -429,7 +434,7 @@
             this.LimparButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.LimparButton.FlatAppearance.BorderSize = 0;
             this.LimparButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.LimparButton.Location = new System.Drawing.Point(452, 241);
+            this.LimparButton.Location = new System.Drawing.Point(452, 180);
             this.LimparButton.Name = "LimparButton";
             this.LimparButton.Size = new System.Drawing.Size(54, 45);
             this.LimparButton.TabIndex = 10;
@@ -446,7 +451,7 @@
             this.ExcluirButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.ExcluirButton.FlatAppearance.BorderSize = 0;
             this.ExcluirButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ExcluirButton.Location = new System.Drawing.Point(392, 241);
+            this.ExcluirButton.Location = new System.Drawing.Point(392, 180);
             this.ExcluirButton.Name = "ExcluirButton";
             this.ExcluirButton.Size = new System.Drawing.Size(54, 45);
             this.ExcluirButton.TabIndex = 9;
@@ -464,7 +469,7 @@
             this.EditarButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.EditarButton.FlatAppearance.BorderSize = 0;
             this.EditarButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.EditarButton.Location = new System.Drawing.Point(332, 241);
+            this.EditarButton.Location = new System.Drawing.Point(332, 180);
             this.EditarButton.Name = "EditarButton";
             this.EditarButton.Size = new System.Drawing.Size(54, 45);
             this.EditarButton.TabIndex = 8;
@@ -482,7 +487,7 @@
             this.SalvarButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.SalvarButton.FlatAppearance.BorderSize = 0;
             this.SalvarButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.SalvarButton.Location = new System.Drawing.Point(272, 241);
+            this.SalvarButton.Location = new System.Drawing.Point(272, 180);
             this.SalvarButton.Name = "SalvarButton";
             this.SalvarButton.Size = new System.Drawing.Size(54, 45);
             this.SalvarButton.TabIndex = 7;

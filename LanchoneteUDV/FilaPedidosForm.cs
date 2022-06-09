@@ -5,7 +5,6 @@ namespace LanchoneteUDV
 {
     public partial class FilaPedidosForm : Form
     {
-        //VendasPedidoBLL _bllVendasPedido = new VendasPedidoBLL();
         private readonly IVendasPedidoService _pedidoService;
         public FilaPedidosForm(IVendasPedidoService pedidoService)
         {
@@ -24,9 +23,6 @@ namespace LanchoneteUDV
             BindingSource bs = new BindingSource();
             bs.DataSource = listaSort;   // Bind to the sortable list
             PedidosDataGridView.DataSource = bs;
-
-
-            //PedidosDataGridView.DataSource = _pedidoService.ListarTodosVendasPedido(Convert.ToInt32(this.Tag));//_bllVendasPedido.ListarTodosVendasPedido(Convert.ToInt32(this.Tag));
 
             PedidosDataGridView.Columns[0].Visible = false;
             PedidosDataGridView.Columns[1].HeaderText = "Data/Hora Pedido";
@@ -60,7 +56,6 @@ namespace LanchoneteUDV
         {
             int row = PedidosDataGridView.CurrentRow.Index;
             _pedidoService.RegistrarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
-            //_bllVendasPedido.RegistrarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
             RecarregarGrid();
             MessageBox.Show("Retirada registrada!", "Atenção!", MessageBoxButtons.OK);
 
@@ -71,7 +66,6 @@ namespace LanchoneteUDV
             int row = PedidosDataGridView.CurrentRow.Index;
 
             _pedidoService.DesmarcarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
-            //_bllVendasPedido.DesmarcarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
             RecarregarGrid();
             MessageBox.Show("Desmarcada retirada!", "Atenção!", MessageBoxButtons.OK);
 

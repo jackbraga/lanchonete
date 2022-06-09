@@ -24,21 +24,11 @@ namespace LanchoneteUDV
 
         private void SalvarButton_Click(object sender, EventArgs e)
         {
-            //NomeLabel.Text = CompradoPorTextBox.Text;
-            //CaixaDTO caixa = new CaixaDTO();
-
-            //caixa.ID = Convert.ToInt32(IdTextBox.Text);
 
             if (!ValidaCamposParaSalvar())
             {
                 return;
             }
-
-            //caixa.DataEvento = DataEventoDateTimePicker.Value;
-            //caixa.TipoEvento = TipoEventoComboBox.Text;
-            //caixa.Categoria = Convert.ToInt32(CategoriaComboBox.SelectedValue);
-            //caixa.Observacao = ObservacaoTextBox.Text.Trim();
-
 
             var caixa = new CaixaDTO
             {
@@ -59,21 +49,6 @@ namespace LanchoneteUDV
                 _caixaService.Add(caixa);
             }
 
-            //if (TipoEventoComboBox.Text == "Entrada")
-            //{
-            //    caixa.Valor = Convert.ToDouble(PrecoTextBox.Text);
-            //}
-            //else
-            //{
-            //    caixa.Valor = Convert.ToDouble(PrecoTextBox.Text) * -1;
-            //}
-
-
-
-            //_bllFinanceiro.AdicionarEventoCaixa(caixa);
-            //_caixaService.Add(caixa);
-
-
             RecarregarTela();
             LimparButton_Click(sender, e);
             MessageBox.Show("Evento registrado com sucesso!", "Sucesso!", MessageBoxButtons.OK);
@@ -82,8 +57,6 @@ namespace LanchoneteUDV
         private bool ValidaCamposParaSalvar()
         {
             bool valido = true;
-
-            //ValidaComZero(QuantidadeTextBox, PrecoTextBox);
 
             if (DataEventoDateTimePicker.Value.Date > DateTime.Now.Date)
             {
@@ -113,16 +86,13 @@ namespace LanchoneteUDV
 
         private void FluxoCaixaForm_Load(object sender, EventArgs e)
         {
-            CategoriaComboBox.DataSource = _caixaService.ListarCategoriaLancamento();// _bllFinanceiro.ListarCategoriaLancamento();
+            CategoriaComboBox.DataSource = _caixaService.ListarCategoriaLancamento();
             CategoriaComboBox.DisplayMember = "Descricao";
             CategoriaComboBox.ValueMember = "ID";
             CategoriaComboBox.SelectedValue = -1;
             AnoComboBox.Text = DateTime.Now.Year.ToString();
             RecarregarTela();
-
             CarregarMesaMes(DateTime.Now.Year);
-
-
         }
 
         private void RecarregarTela()
@@ -134,7 +104,7 @@ namespace LanchoneteUDV
         private void RecarregarGrid()
         {
 
-            FluxoCaixaDataGridView.DataSource = _caixaService.GetAll();// _bllFinanceiro.ListarCaixa();
+            FluxoCaixaDataGridView.DataSource = _caixaService.GetAll();
             FluxoCaixaDataGridView.Columns[0].Visible = false;
 
             FluxoCaixaDataGridView.Columns[1].HeaderText = "Data do Evento";
@@ -142,13 +112,8 @@ namespace LanchoneteUDV
 
             FluxoCaixaDataGridView.Columns[2].HeaderText = "Tipo do Evento";
 
-            // FluxoCaixaDataGridView.Columns[2].Width = 230;
-
-
             FluxoCaixaDataGridView.Columns[3].HeaderText = "Valor";
             FluxoCaixaDataGridView.Columns[3].DefaultCellStyle.Format = "R$ 0.00##";
-
-
 
             FluxoCaixaDataGridView.Columns[4].HeaderText = "Categoria";
             FluxoCaixaDataGridView.Columns[4].Width = 150;
@@ -179,9 +144,7 @@ namespace LanchoneteUDV
             TipoEventoComboBox.Text = "";
             CategoriaComboBox.SelectedIndex = -1;
             PrecoTextBox.Clear();
-
             ObservacaoTextBox.Clear();
-
         }
 
         private void LimparButton_Click(object sender, EventArgs e)
@@ -199,7 +162,6 @@ namespace LanchoneteUDV
         {
             if (MessageBox.Show("Deseja realmente excluir o lançamento?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                // _bllFinanceiro.ExcluirLancamento(new CompraDTO { ID = Convert.ToInt32(IdTextBox.Text) });
                 MessageBox.Show("Sócio removido com sucesso!", "Sucesso!", MessageBoxButtons.OK);
                 LimparButton_Click(sender, e);
                 RecarregarGrid();
@@ -231,7 +193,6 @@ namespace LanchoneteUDV
 
         private async void CarregarResumo()
         {
-            //DataTable dados = _caixaService.ListarResumo();// _bllFinanceiro.ListarResumo();
             var resumo = await _caixaService.ListarResumo();
 
             if (resumo != null)
@@ -248,10 +209,8 @@ namespace LanchoneteUDV
 
         private async void CarregarMesaMes(int ano)
         {
-            //DataTable dados = //_bllFinanceiro.ListarMesAMes(ano);
 
             var meses = (await _caixaService.ListarResumoMesAMes(ano)).ToList();
-
 
             if (meses.Count() > 0)
             {
@@ -296,7 +255,7 @@ namespace LanchoneteUDV
 
         private void SalvarDinheiroButton_Click(object sender, EventArgs e)
         {
-            _caixaService.AtualizarDinheiroCaixa(double.Parse(DinheiroTextBox.Text));
+            _caixaService.AtualizarDinheiroCaixa(double.Parse(DinheiroTextBox.Text.Replace("R$","").Trim()));
             DinheiroTextBox.Text = "R$ " + String.Format("{0:N2}", DinheiroTextBox.Text);
             _helper.Desabilita(DinheiroTextBox);
         }
@@ -316,11 +275,6 @@ namespace LanchoneteUDV
             double valor = (Double)FluxoCaixaDataGridView.Rows[row].Cells[3].Value;
             PrecoTextBox.Text = (valor < 0 ? valor * -1 : valor).ToString();
 
-
-
-            //NomeTextBox.Text = SociosDataGridView.Rows[row].Cells[1].Value.ToString();
-            //EmailTextBox.Text = SociosDataGridView.Rows[row].Cells[2].Value.ToString();
-            //ResponsavelFinanceiroComboBox.SelectedValue = Convert.ToInt32(SociosDataGridView.Rows[row].Cells[3].Value);
             _helper.Desabilita(DataEventoDateTimePicker, SalvarButton, NovoButton,
                                 TipoEventoComboBox, PrecoTextBox, ObservacaoTextBox, CategoriaComboBox);
 

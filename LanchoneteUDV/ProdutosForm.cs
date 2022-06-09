@@ -22,7 +22,6 @@ namespace LanchoneteUDV
 
         private void ProdutosForm_Load(object sender, EventArgs e)
         {
-            //CategoriaComboBox.DataSource = _bll.ListarCategorias();
             CategoriaComboBox.DataSource = _categoriaService.GetCategorias().ToList();
             CategoriaComboBox.DisplayMember = "Descricao";
             CategoriaComboBox.ValueMember = "ID";
@@ -38,7 +37,6 @@ namespace LanchoneteUDV
                 e.Handled = true;
             }
 
-            // only allow one decimal point
             if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
             {
                 e.Handled = true;
@@ -91,9 +89,6 @@ namespace LanchoneteUDV
 
         private void SalvarButton_Click(object sender, EventArgs e)
         {
-       
-            //produto.ID = Convert.ToInt32(IdTextBox.Text);
-
             if (!ValidaCamposParaSalvar())
             {
                 return;
@@ -207,7 +202,6 @@ namespace LanchoneteUDV
 
         private void PesquisaTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            //ProdutosDataGridView.DataSource = _bllProdutos.PesquisarProduto(PesquisaTextBox.Text);
             RecarregaGrid(PesquisaTextBox.Text);
         }
 

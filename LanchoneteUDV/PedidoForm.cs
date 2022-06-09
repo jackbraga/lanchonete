@@ -8,16 +8,11 @@ namespace LanchoneteUDV
 {
     public partial class PedidoForm : Form
     {
-        //SociosBLL _bllSocios = new SociosBLL();
-        //ProdutosBLL _bllProdutos = new ProdutosBLL();
-
         private readonly IProdutoService _produtoService;
         private readonly ISocioService _socioService;
         private readonly IVendaService _vendaService;
         private readonly IVendasPedidoService _vendasPedidoService;
 
-        //VendasBLL _bllVendas = new VendasBLL();
-        //VendasPedidoBLL _bllVendasPedido = new VendasPedidoBLL();
         Helper _helper = new Helper();
         Regex reg = new Regex(@"^-?\d+[.]?\d*$");
 
@@ -40,6 +35,9 @@ namespace LanchoneteUDV
 
         private void PedidoForm_Load(object sender, EventArgs e)
         {
+            checkBoxSalgados.Checked = Global.ExibeSalgados;
+            checkBoxChurrasco.Checked = Global.ExibeChurrasco;
+
             CarregarCombos();
 
             if (IdSocio > 0)
@@ -50,7 +48,7 @@ namespace LanchoneteUDV
 
             }
             RecarregarGridEstoque();
-            RecarregarGridEstoqueSalgados();
+            RecarregarGridEstoqueSalgados();           
 
         }
 
@@ -73,44 +71,16 @@ namespace LanchoneteUDV
                 return;
             }
 
-            //VendasDTO venda = new VendasDTO();
-            //venda.ID = IdVenda;
-            //venda.IDSocio = Convert.ToInt32(SocioComboBox.SelectedValue);
-            //venda.IDEscala = IdEscala;
-            //venda.TipoPagamento = PagamentoComboBox.Text;
-
-            //IdVenda = _bllVendas.SalvarVenda(venda);
-
             var venda = new VendaDTO
             {
                 Id = IdVenda,
                 IdEscala = IdEscala,
                 IdSocio = Convert.ToInt32(SocioComboBox.SelectedValue)
-                //TipoPagamento = PagamentoComboBox.Text,
             };
             if (venda.Id == 0)
             {
                 IdVenda = _vendaService.Add(venda);
-                //_vendaService.Update(venda);
             }
-
-
-            //VendasPedidoDTO vendaPedido = new VendasPedidoDTO();
-
-            //vendaPedido.DataHoraPedidoItem = DateTime.Now;
-            //vendaPedido.IDVenda = IdVenda;
-            //vendaPedido.IDProduto = Convert.ToInt32(ProdutosComboBox.SelectedValue);
-
-            //vendaPedido.PrecoProduto = Double.Parse(PrecoComboBox.Text.Replace("R$ ", ""));
-            //vendaPedido.Observacao = ObservacaoTextBox.Text;
-            //vendaPedido.Retirado = RetiradoCheckBox.Checked;
-            //vendaPedido.Quantidade = 1;
-
-            //for (int i = 0; i < Convert.ToInt32(QuantidadeTextBox.Text); i++)
-            //{
-            //    _bllVendasPedido.AdicionarVendaPedido(vendaPedido);
-            //}
-
 
             var pedido = new VendasPedidoDTO
             {
@@ -127,13 +97,10 @@ namespace LanchoneteUDV
             for (int i = 0; i < Convert.ToInt32(QuantidadeTextBox.Text); i++)
             {
                 _vendasPedidoService.Add(pedido);
-                //_bllVendasPedido.AdicionarVendaPedido(vendaPedido);
             }
 
             QuantidadeTextBox.Text = "0";
             RecarregarVenda();
-            //RecarregarGridEstoque();
-            //RecarregarGridEstoqueSalgados();
         }
 
         private bool ValidaCamposParaAdicionarItens()
@@ -174,20 +141,8 @@ namespace LanchoneteUDV
             CalcularSubtotal();
         }
 
-        //private void EditarButton_Click(object sender, EventArgs e)
-        //{
-        //    _helper.Habilita(PagamentoComboBox, SalvarButton);
-        //    _helper.Desabilita(EditarButton);
-        //}
-
         private void SalvarButton_Click(object sender, EventArgs e)
         {
-            //VendasDTO venda = new VendasDTO();
-            //venda.ID = IdVenda;
-            //venda.IDSocio = Convert.ToInt32(SocioComboBox.SelectedValue);
-            //venda.IDEscala = IdEscala;
-            //venda.TipoPagamento = PagamentoComboBox.Text;
-
             var venda = new VendaDTO
             {
                 Id = IdVenda,
@@ -204,22 +159,6 @@ namespace LanchoneteUDV
             {
                 IdVenda = _vendaService.Add(venda);
             }
-
-
-            //if (IdVenda == 0)
-            //{
-            //    IdVenda = _bllVendas.AdicionarVenda(venda);
-            //}
-            //else
-            //{
-            //    _bllVendas.AtualizarVenda(venda);
-            //}
-
-            // IdVenda = _bllVendas.SalvarVenda(venda);
-
-
-            //_helper.Desabilita(SalvarButton);
-            //_helper.Habilita(EditarButton);
 
         }
 
@@ -238,16 +177,23 @@ namespace LanchoneteUDV
         #region Metodos
         private void CarregarCombos()
         {
-            SocioComboBox.DataSource = _socioService.ListarSociosVenda();//_bllSocios.ListarSociosVenda();
+
+            ComboSocio();
+            ComboProduto();
+        }
+
+        private void ComboSocio()
+        {
+            SocioComboBox.DataSource = _socioService.ListarSociosVenda();
             SocioComboBox.DisplayMember = "Nome";
             SocioComboBox.ValueMember = "ID";
             SocioComboBox.SelectedValue = -1;
+        }
 
-            DataTable dt = new DataTable();
-
-            //dt = _bllProdutos.ListarProdutosParaVendaPorEscala(IdEscala);
-            //ProdutosComboBox.DataSource = dt;
-            var lista = _produtoService.ListarProdutosParaVendaPorEscala(IdEscala);
+        private void ComboProduto()
+        {
+            var lista = _produtoService.ListarProdutosParaVendaPorEscala(IdEscala, Global.ExibeSalgados, Global.ExibeChurrasco);
+            
             ProdutosComboBox.DataSource = lista;
             ProdutosComboBox.DisplayMember = "Descricao";
             ProdutosComboBox.ValueMember = "ID";
@@ -258,8 +204,8 @@ namespace LanchoneteUDV
 
             PrecoComboBox.ValueMember = "ID";
             PrecoComboBox.SelectedValue = -1;
-        }
 
+        }
         private void CalcularSubtotal()
         {
             int quantidade;
@@ -282,41 +228,17 @@ namespace LanchoneteUDV
 
         private void RecarregarVenda()
         {
-            //DataTable dt = _bllVendas.TrazerVenda(IdEscala, Convert.ToInt32(SocioComboBox.SelectedValue));
-
             var vendas = _vendaService.TrazerVendaEscalaSocio(IdEscala, Convert.ToInt32(SocioComboBox.SelectedValue));
 
-            //if (dt.Rows.Count > 0)
-            //{
-            //    DataRow row = dt.Rows[0];
-            //    PagamentoComboBox.Text = row["TipoPagamento"].ToString();
-            //    TotalConsumidoTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["TotalConsumido"].ToString()));
-            //    IdVenda = Convert.ToInt32(row["ID"]);
-
-
-            //    _helper.Desabilita(PagamentoComboBox, SalvarButton);
-            //    _helper.Habilita(EditarButton);
-            //}
-            //else
-            //{
-            //    _helper.Habilita(PagamentoComboBox, SalvarButton);
-            //    _helper.Desabilita(EditarButton);
-            //    IdVenda = 0;
-            //    TotalConsumidoTextBox.Text = "R$ 0,00";
-
-            //}
             if (vendas.Count() > 0)
             {
                 var venda1 = vendas.First();
-                //PagamentoComboBox.Text = venda1.TipoPagamento;//row["TipoPagamento"].ToString();
                 TotalConsumidoTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(venda1.TotalConsumido.ToString()));
                 IdVenda = Convert.ToInt32(venda1.IdVenda);
 
             }
             else
             {
-                //_helper.Habilita( SalvarButton);
-                //_helper.Desabilita(EditarButton);
                 IdVenda = 0;
                 TotalConsumidoTextBox.Text = "R$ 0,00";
 
@@ -331,7 +253,7 @@ namespace LanchoneteUDV
 
         private void RecarregarGrid()
         {
-            PedidosDataGridView.DataSource = _vendasPedidoService.ListarVendasPedido(IdVenda);// _bllVendasPedido.ListarVendasPedido(IdVenda);
+            PedidosDataGridView.DataSource = _vendasPedidoService.ListarVendasPedido(IdVenda);
 
             PedidosDataGridView.Columns[0].Visible = false;
             PedidosDataGridView.Columns[1].HeaderText = "Produto";
@@ -357,8 +279,6 @@ namespace LanchoneteUDV
         }
         private async void RecarregarGridEstoque()
         {
-            //DataTable 
-            //  EstoqueDataGridView.DataSource = _bllVendas.ListarEstoquePorEscala(IdEscala);
             EstoqueDataGridView.DataSource = await _vendaService.ListarEstoquePorEscala(IdEscala);
             EstoqueDataGridView.Columns[0].Width = 200;
             EstoqueDataGridView.Columns[1].DefaultCellStyle.Format = "R$ 0.00##";
@@ -372,8 +292,6 @@ namespace LanchoneteUDV
 
         private async void RecarregarGridEstoqueSalgados()
         {
-            //DataTable 
-            // EstoqueSalgadosDataGridView.DataSource = _bllVendas.ListarEstoqueSalgadosPorEscala(IdEscala);
             EstoqueSalgadosDataGridView.DataSource = await _vendaService.ListarEstoqueSalgadosPorEscala(IdEscala);
             EstoqueSalgadosDataGridView.Columns[0].Width = 200;
             EstoqueSalgadosDataGridView.Columns[1].DefaultCellStyle.Format = "R$ 0.00##";
@@ -414,7 +332,6 @@ namespace LanchoneteUDV
                 }
             }
         }
-
         private void LimparTela()
         {
             PedidosDataGridView.DataSource = null;
@@ -425,7 +342,6 @@ namespace LanchoneteUDV
             ObservacaoTextBox.Clear();
             QuantidadeTextBox.Text = "0";
             PagamentoComboBox.Text = "";
-            //_helper.Desabilita(SalvarButton);
 
         }
 
@@ -448,7 +364,6 @@ namespace LanchoneteUDV
         {
             int row = PedidosDataGridView.CurrentRow.Index;
             _vendasPedidoService.RegistrarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
-            //_bllVendasPedido.RegistrarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
             RecarregarGrid();
             MessageBox.Show("Retirada registrada!", "Atenção!", MessageBoxButtons.OK);
 
@@ -458,7 +373,6 @@ namespace LanchoneteUDV
         {
             int row = PedidosDataGridView.CurrentRow.Index;
             _vendasPedidoService.DesmarcarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
-            //_bllVendasPedido.DesmarcarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
             RecarregarGrid();
             MessageBox.Show("Desmarcada retirada!", "Atenção!", MessageBoxButtons.OK);
 
@@ -512,11 +426,8 @@ namespace LanchoneteUDV
                         row = PedidosDataGridView.CurrentRow.Index;
                     }
 
-                    //_bllVendasPedido.ExcluirItemPedido(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
                     _vendasPedidoService.Remove(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
                     RecarregarVenda();
-                    //  RecarregarGridEstoque();
-                    //RecarregarGridEstoqueSalgados();
 
                 }
             }
@@ -538,5 +449,16 @@ namespace LanchoneteUDV
 
         }
 
+        private void checkBoxSalgados_CheckedChanged(object sender, EventArgs e)
+        {
+            Global.ExibeSalgados = checkBoxSalgados.Checked;
+            ComboProduto();
+        }
+
+        private void checkBoxChurrasco_CheckedChanged(object sender, EventArgs e)
+        {
+            Global.ExibeChurrasco = checkBoxChurrasco.Checked;
+            ComboProduto();
+        }
     }
 }

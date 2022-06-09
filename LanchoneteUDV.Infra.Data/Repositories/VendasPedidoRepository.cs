@@ -60,7 +60,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
 
         public IEnumerable<VendasPedidoEscala> ListarTodosVendasPedido(int idEscala)
         {
-            string sql = "SELECT tbVendasPedido.ID,tbVendasPedido.DataHoraPedido, tbSocios.Nome, tbProdutos.Descricao, tbVendasPedido.TipoPagamento " +
+            string sql = "SELECT tbVendasPedido.ID,tbVendasPedido.DataHoraPedido, tbSocios.Nome, tbProdutos.Descricao, tbVendasPedido.TipoPagamento, " +
                         "tbVendasPedido.Quantidade, tbVendasPedido.Retirado, tbVendasPedido.Observacao " +
                         "FROM tbProdutos " +
                         "INNER JOIN(tbSocios " +

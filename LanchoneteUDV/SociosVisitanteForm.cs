@@ -5,8 +5,6 @@ namespace LanchoneteUDV
 {
     public partial class SociosVisitanteForm : Form
     {
-
-        //SociosBLL _bll = new SociosBLL();
         private readonly ISocioService _socioService;
         Helper _helper = new Helper();
         public SociosVisitanteForm(ISocioService socioService)
@@ -114,11 +112,5 @@ namespace LanchoneteUDV
             SociosDataGridView.Columns[1].MinimumWidth = 250;
             SociosDataGridView.Columns[2].MinimumWidth = 250;
         }
-        //private void PesquisaTextBox_KeyUp(object sender, KeyEventArgs e)
-        //{
-        //    SociosDataGridView.DataSource = _bll.PesquisarSocio(PesquisaTextBox.Text);
-        //}
-
-
     }
 }

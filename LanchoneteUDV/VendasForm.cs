@@ -5,7 +5,6 @@ namespace LanchoneteUDV
 {
     public partial class VendasForm : Form
     {
-        //VendasBLL _bllVendas = new VendasBLL();
         private readonly IVendaService _vendaService;
         private readonly IProdutoService _produtoService;
         private readonly ISocioService _socioService;
@@ -39,21 +38,9 @@ namespace LanchoneteUDV
             var lista = _vendaService.ListarVendasEscala(Convert.ToInt32(this.Tag)).ToList();
             SortableBindingList<VendaEscalaDTO> listaSort = new SortableBindingList<VendaEscalaDTO>(lista);
             BindingSource bs = new BindingSource();
-            bs.DataSource = listaSort;   // Bind to the sortable list
+            bs.DataSource = listaSort; 
             VendasDataGridView.DataSource = bs;
             FormatarGrid();
-            //// VendasDataGridView.DataSource = _vendaService.ListarVendasEscala(Convert.ToInt32(this.Tag)); //_bllVendas.ListarVendas(Convert.ToInt32(this.Tag));
-            //VendasDataGridView.Columns[0].Visible = false;
-            //VendasDataGridView.Columns[1].Visible = false;
-            //VendasDataGridView.Columns[2].HeaderText = "Socio";
-            //VendasDataGridView.Columns[2].Width = 310;
-            //VendasDataGridView.Columns[3].HeaderText = "Pagamento";
-            //VendasDataGridView.Columns[3].Visible = false;
-            //VendasDataGridView.Columns[4].DefaultCellStyle.Format = "R$ 0.00##";
-            //VendasDataGridView.Columns[4].HeaderText = "Valor Total";
-            //VendasDataGridView.Columns[5].HeaderText = "Itens para Retirar";
-            //VendasDataGridView.ClearSelection();
-
         }
 
         private void FormatarGrid()
@@ -94,16 +81,7 @@ namespace LanchoneteUDV
 
         }
 
-
-
         #endregion
-
-        //private void RegistrarRetiradaButton_Click(object sender, EventArgs e)
-        //{
-        //    PedidoForm pedido = new PedidoForm();
-        //    pedido.IdEscala = Convert.ToInt32(IdTextBox.Text);
-        //    pedido.ShowDialog();
-        //}
 
         private void VendasDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -195,18 +173,8 @@ namespace LanchoneteUDV
 
         private void PesquisaTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            VendasDataGridView.DataSource = _vendaService.ListarVendasPesquisa(Convert.ToInt32(this.Tag), PesquisaTextBox.Text); //_bllVendas.ListarVendasPesquisa(Convert.ToInt32(this.Tag),PesquisaTextBox.Text);
+            VendasDataGridView.DataSource = _vendaService.ListarVendasPesquisa(Convert.ToInt32(this.Tag), PesquisaTextBox.Text);
             FormatarGrid();
-
-            //VendasDataGridView.Columns[0].Visible = false;
-            //VendasDataGridView.Columns[1].Visible = false;
-            //VendasDataGridView.Columns[2].HeaderText = "Socio";
-            //VendasDataGridView.Columns[2].Width = 310;
-            //VendasDataGridView.Columns[3].HeaderText = "Pagamento";
-            //VendasDataGridView.Columns[4].DefaultCellStyle.Format = "R$ 0.00##";
-            //VendasDataGridView.Columns[4].HeaderText = "Valor Total";
-            //VendasDataGridView.Columns[5].HeaderText = "Itens para Retirar";
-            //VendasDataGridView.ClearSelection();
         }
 
     }
