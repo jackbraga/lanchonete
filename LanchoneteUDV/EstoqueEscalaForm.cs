@@ -29,14 +29,6 @@ namespace LanchoneteUDV
 
         private void CarregarCombos()
         {
-            //SocioComboBox.DataSource = _bllSocios.ListarSocios();
-            //SocioComboBox.DisplayMember = "Nome";
-            //SocioComboBox.ValueMember = "ID";
-            //SocioComboBox.SelectedValue = -1;
-
-            //DataTable dt = new DataTable();
-
-            // dt = _bllVendas.ListarEstoque();
             var estoque = _estoqueEscalaService.ListarEstoqueComboProdutos(IDEscala);
             ProdutosComboBox.DataSource = estoque;
             ProdutosComboBox.DisplayMember = "DescricaoProduto";
@@ -52,11 +44,10 @@ namespace LanchoneteUDV
 
         private async void RecarregaGrid()
         {
-            EstoqueEscalaDataGridView.DataSource =  _estoqueEscalaService.ListarProdutosEstoqueEscala(IDEscala);//_estoqueEscalaService.ListarEstoqueEscala(IDEscala);// _bllEstoqueEscala.ListarEstoqueEscala(IDEscala);
+            EstoqueEscalaDataGridView.DataSource =  _estoqueEscalaService.ListarProdutosEstoqueEscala(IDEscala);
             EstoqueEscalaDataGridView.Columns[0].Visible = false;
             EstoqueEscalaDataGridView.Columns[1].Visible = false;
             EstoqueEscalaDataGridView.Columns[2].Visible = false;
-
 
             EstoqueEscalaDataGridView.Columns[3].HeaderText = "Produto";
             EstoqueEscalaDataGridView.Columns[3].Width = 200;
@@ -76,7 +67,6 @@ namespace LanchoneteUDV
             EstoqueComboBox.SelectedValue = -1;
             QtdVendaTextBox.Clear();
             ObservacaoTextBox.Clear();
-
 
         }
 
@@ -134,19 +124,10 @@ namespace LanchoneteUDV
         private void SalvarButton_Click(object sender, EventArgs e)
         {
 
-            //EstoqueEscalaDTO estoqueEscala = new EstoqueEscalaDTO();
-
-            //estoqueEscala.ID = Convert.ToInt32(IDTextBox.Text);
-
             if (!ValidaCamposParaSalvar())
             {
                 return;
             }
-
-            //estoqueEscala.IDProduto = Convert.ToInt32(ProdutosComboBox.SelectedValue);
-            //estoqueEscala.QtdVenda = Convert.ToInt32(QtdVendaTextBox.Text);
-            //estoqueEscala.Observacao = ObservacaoTextBox.Text;
-            //estoqueEscala.IDEscala = IDEscala;
 
             var estoqueEscala = new EstoqueEscalaDTO
             {
@@ -165,9 +146,6 @@ namespace LanchoneteUDV
                 _estoqueEscalaService.Add(estoqueEscala);
             }
   
-            //_bllEstoqueEscala.SalvarEstoqueEscala(estoqueEscala);
-
-
             RecarregaGrid();
             CarregarCombos();
             LimparButton_Click(sender, e);
@@ -188,12 +166,6 @@ namespace LanchoneteUDV
 
             if (MessageBox.Show("Deseja realmente excluir o item de estoque da escala?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                //estoque.ID = Convert.ToInt32(IDTextBox.Text);
-                //estoque.QtdVenda = Convert.ToInt32(QtdVendaTextBox.Text);
-                //estoque.IDProduto = Convert.ToInt32(ProdutosComboBox.SelectedValue);
-                //estoque.Observacao = ObservacaoTextBox.Text;
-                //_bllEstoqueEscala.ExcluirEstoqueEscala(estoque);
-
                 _estoqueEscalaService.Remove(Convert.ToInt32(IDTextBox.Text));
 
                 MessageBox.Show("item removido com sucesso!", "Sucesso!", MessageBoxButtons.OK);
@@ -230,7 +202,6 @@ namespace LanchoneteUDV
             QtdVendaTextBox.Text = EstoqueEscalaDataGridView.Rows[row].Cells[4].Value.ToString();
 
             ObservacaoTextBox.Text = EstoqueEscalaDataGridView.Rows[row].Cells[5].Value.ToString();
-
 
             _helper.Desabilita(ProdutosComboBox,
                               QtdVendaTextBox, SalvarButton);

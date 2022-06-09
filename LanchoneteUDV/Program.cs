@@ -5,8 +5,8 @@ namespace LanchoneteUDV
 
     public class Global
     {
-        public static bool ExibeChurrasco { get; set; }
-        public static bool ExibeSalgados { get; set; }
+        public static bool ExibeChurrasco { get; set; } = true;
+        public static bool ExibeSalgados { get; set; } = true;
     }
 
     internal static class Program

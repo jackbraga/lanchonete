@@ -4,7 +4,6 @@ namespace LanchoneteUDV
 {
     public partial class RepasseTesourariaForm : Form
     {
-        //EscalasBLL _bllEscalas = new EscalasBLL();
         Helper _helper = new Helper();
         private readonly IEscalaService _escalaService;
         private readonly IFinanceiroService _financeiroService;

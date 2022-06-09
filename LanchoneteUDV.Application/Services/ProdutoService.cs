@@ -51,9 +51,9 @@ namespace LanchoneteUDV.Application.Services
             return _mapper.Map<IEnumerable<ProdutoDTO>>(produtos);
         }
 
-        public IEnumerable<ProdutoDTO> ListarProdutosParaVendaPorEscala(int idEscala)
+        public IEnumerable<ProdutoDTO> ListarProdutosParaVendaPorEscala(int idEscala,bool exibeSalgados=true, bool exibeChurrasco=true)
         {
-            var produtos = _produtoRepository.ListarProdutosParaVendaPorEscala(idEscala);
+            var produtos = _produtoRepository.ListarProdutosParaVendaPorEscala(idEscala, exibeSalgados, exibeChurrasco);
             return _mapper.Map<IEnumerable<ProdutoDTO>>(produtos);
         }
 

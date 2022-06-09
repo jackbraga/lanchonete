@@ -4,7 +4,6 @@ namespace LanchoneteUDV
 {
     public partial class EstoqueForm : Form
     {
-        //VendasBLL _bllVendas = new VendasBLL();
         private readonly IEstoqueEscalaService _estoqueEscalaService;
         Helper _helper = new Helper();
 
@@ -19,7 +18,7 @@ namespace LanchoneteUDV
         private void RecarregaGrid()
         {
 
-            EstoqueDataGridView.DataSource = _estoqueEscalaService.ListarEstoque(); //_bllVendas.ListarEstoque();
+            EstoqueDataGridView.DataSource = _estoqueEscalaService.ListarEstoque();
             EstoqueDataGridView.Columns[0].Visible = false;
 
             EstoqueDataGridView.Columns[1].HeaderText = "Produto";

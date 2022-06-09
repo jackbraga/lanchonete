@@ -7,7 +7,6 @@ namespace LanchoneteUDV
 
     public partial class ComprasForm : Form
     {
-        //ComprasBLL _bllCompras = new ComprasBLL();
         Helper _helper = new Helper();
         Regex reg = new Regex(@"^-?\d+[.]?\d*$");
 
@@ -151,7 +150,6 @@ namespace LanchoneteUDV
             DataCompraDateTimePicker.Value = Convert.ToDateTime(ComprasDataGridView.Rows[row].Cells[1].Value);
             ProdutoComboBox.SelectedValue = (Int32)ComprasDataGridView.Rows[row].Cells[6].Value;
             QuantidadeTextBox.Text = ComprasDataGridView.Rows[row].Cells[3].Value.ToString();
-            //PrecoTextBox.Text = ComprasDataGridView.Rows[row].Cells[4].Value.ToString();
             PrecoTextBox.Text = String.Format("{0:N2}", double.Parse(ComprasDataGridView.Rows[row].Cells[4].Value.ToString()));
             CompradoPorTextBox.Text = ComprasDataGridView.Rows[row].Cells[5].Value.ToString();
             TipoEntradaComboBox.Text = ComprasDataGridView.Rows[row].Cells[7].Value.ToString();
@@ -191,12 +189,12 @@ namespace LanchoneteUDV
 
         private void RecarregaGrid()
         {
-            ComprasDataGridView.DataSource = _compraService.GetAll();//_bllCompras.ListarCompras();
+            ComprasDataGridView.DataSource = _compraService.GetAll();
             FormatarGrid();
         }
         private void RecarregaGrid(string texto)
         {
-            ComprasDataGridView.DataSource = _compraService.GetByName(texto);//_bllCompras.ListarCompras();
+            ComprasDataGridView.DataSource = _compraService.GetByName(texto);
             FormatarGrid();
         }
 

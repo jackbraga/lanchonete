@@ -24,16 +24,12 @@ namespace LanchoneteUDV
 
         private void RecarregarTela()
         {
-            //DataTable dados = _bllVendas.TrazerEscala(Convert.ToInt32(IDEscala));
-            //DataRow row = dados.Rows[0];
-
-            //var escala = _vendaService.TrazerVendaEscalaResumoVenda(Convert.ToInt32(IDEscala)).FirstOrDefault();
             var escala = _escalaService.GetById(IDEscala);
 
-            IdTextBox.Text = escala.Id.ToString();//row["ID"].ToString();
-            DescricaoEscalaTextBox.Text = escala.Descricao;//row["Descricao"].ToString();
-            DataEscalaDateTimePicker.Value = escala.DataEscala; //Convert.ToDateTime(row["DataEscala"]);
-            FinalizadaCheckBox.Checked = escala.Finalizada;// Convert.ToBoolean(row["Finalizada"]);
+            IdTextBox.Text = escala.Id.ToString();
+            DescricaoEscalaTextBox.Text = escala.Descricao;
+            DataEscalaDateTimePicker.Value = escala.DataEscala; 
+            FinalizadaCheckBox.Checked = escala.Finalizada;
 
             if (FinalizadaCheckBox.Checked)
             {
@@ -46,13 +42,6 @@ namespace LanchoneteUDV
                 _helper.Habilita(FinalizarEscalaButton);
             }
 
-
-
-            //if (!string.IsNullOrEmpty(row["Resumo"].ToString()))
-            //{
-            //    ResumoVendasTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Resumo"].ToString()));
-            //}
-
             if (escala != null)
             {
                 ResumoVendasTextBox.Text = "R$ " + String.Format("{0:N2}", escala.ResumoVendas);
@@ -63,9 +52,7 @@ namespace LanchoneteUDV
 
         private void RecarregaGrid()
         {
-            VendasDataGridView.DataSource = _financeiroService.ListarVendasRepasseFinanceiro(Convert.ToInt32(IDEscala));// _//bllFinanceiro.ListarVendasRepasse(Convert.ToInt32(IDEscala));
-            //VendasDataGridView.Columns[0].Visible = false;
-            //VendasDataGridView.Columns[1].Visible = false;
+            VendasDataGridView.DataSource = _financeiroService.ListarVendasRepasseFinanceiro(Convert.ToInt32(IDEscala));
             VendasDataGridView.Columns[2].HeaderText = "Socio";
             VendasDataGridView.Columns[2].Width = 210;
             VendasDataGridView.Columns[3].HeaderText = "Pagamento";
@@ -135,10 +122,8 @@ namespace LanchoneteUDV
                         string emailSocio = row.Cells[6].Value.ToString();
 
                         email.EnviarEmail(IDEscala, idSocio, emailSocio);
-                        //_bllFinanceiro.AtualizaEmailDisparado(idVenda);
                         _financeiroService.AtualizaEmailDisparado(idVenda);
                     }
-                    //System.Threading.Thread.Sleep(1000);
 
                     EmailProgressBar.Value = EmailProgressBar.Value + 1;
                 }

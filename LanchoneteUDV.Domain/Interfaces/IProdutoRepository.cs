@@ -10,6 +10,6 @@ namespace LanchoneteUDV.Domain.Interfaces
     public interface IProdutoRepository : IBaseRepository<Produto>
     {
         IEnumerable<Produto> ListarProdutosParaVenda();
-        IEnumerable<Produto> ListarProdutosParaVendaPorEscala(int idEscala);
+        IEnumerable<Produto> ListarProdutosParaVendaPorEscala(int idEscala, bool exibeSalgados, bool exibeChurrasco);
     }
 }
