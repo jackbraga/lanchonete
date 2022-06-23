@@ -1,0 +1,9 @@
+CREATE TABLE tbParceriasProduto
+(
+	ID INT PRIMARY KEY IDENTITY,
+	IDParceira INT FOREIGN KEY REFERENCES tbParceria(ID),
+	IDProduto INT FOREIGN KEY REFERENCES tbProdutos(ID),
+)
+
+INSERT INTO tbParceriasProduto VALUES(1,197)
+INSERT INTO tbParceriasProduto VALUES(1,198)

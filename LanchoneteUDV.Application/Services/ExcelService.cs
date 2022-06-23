@@ -13,55 +13,27 @@ namespace LanchoneteUDV.Application.Services
     public class ExcelService : IExcelService
     {
 
-        public bool CriarPlanilhaRepasse(IEnumerable<RepasseFinanceiroExcelDTO> repasses)
+        public bool CriarPlanilhaRepasse(List<IEnumerable<RepasseFinanceiroExcelDTO>> planilhas)
         {
             try
             {
-                var dataEscala = repasses.First().DataEscala.ToString("yyyy_MM_dd");
 
-                string caminho = String.Format(@"C:\Lanchonete\RepasseTesouraria\Vendas_Lanchonete_{0}.xlsx", dataEscala);
+                var nomeArquivo = planilhas[0].First().DataEscala.ToString("yyyy_MM_dd");
+                var dataEscala = planilhas[0].First().DataEscala.ToString("dd_MM_yyyy");
+
+                string caminho = String.Format(@"C:\Lanchonete\RepasseTesouraria\Vendas_Lanchonete_{0}.xlsx", nomeArquivo);
 
                 ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
                 ExcelPackage excel = new ExcelPackage();
 
-                var workSheet = excel.Workbook.Worksheets.Add(repasses.First().DataEscala.ToString("dd_MM_yyyy"));
-
-                //workSheet.TabColor = System.Drawing.Color.Black;
-                //workSheet.DefaultRowHeight = 12;
-
-                //workSheet.Row(1).Height = 20;
-                workSheet.Row(1).Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
-                workSheet.Row(1).Style.Font.Bold = true;
-
-                workSheet.Cells[1, 1].Value = "Socio";
-                workSheet.Cells[1, 2].Value = "Pagamento";
-                workSheet.Cells[1, 3].Value = "Frente";
-                workSheet.Cells[1, 4].Value = "Valor";
-                workSheet.Cells["D:D"].Style.Numberformat.Format =  "R$#,##0.00";
-                workSheet.Cells["A:D"].Style.Font.Name = "Trebuchet MS";
-                workSheet.Cells["A:D"].Style.Font.Size = 10;
-                workSheet.Cells["A:D"].Style.Border.Top.Style = ExcelBorderStyle.Thin;
-                workSheet.Cells["A:D"].Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                
+                var workSheet = Planilha(planilhas[0],excel.Workbook.Worksheets.Add("Vendas - " + dataEscala));
+                var workSheetParceria = Planilha(planilhas[1], excel.Workbook.Worksheets.Add("Parcerias - " + dataEscala));
 
 
-                //workSheet.Cells["C"].
-
-                int indice = 2;
-                foreach (var repasse in repasses)
-                {
-                    workSheet.Cells[indice, 1].Value = repasse.Nome;
-                    workSheet.Cells[indice, 2].Value = repasse.TipoPagamento;
-                    workSheet.Cells[indice, 3].Value = repasse.Frente;
-                    workSheet.Cells[indice, 4].Value = repasse.Valor;
-                    indice++;
-                }
-                workSheet.Cells["A:D"].AutoFitColumns();
                 if (File.Exists(caminho))
                 {
                     File.Delete(caminho);
                 }
-
 
                 FileStream objFileStrm = File.Create(caminho);
                 objFileStrm.Close();
@@ -77,5 +49,40 @@ namespace LanchoneteUDV.Application.Services
                 return false;
             }
         }
+
+        private ExcelWorksheet Planilha(IEnumerable<RepasseFinanceiroExcelDTO> repasses, ExcelWorksheet workSheet)
+        {
+            workSheet.Row(1).Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+            workSheet.Row(1).Style.Font.Bold = true;
+
+            workSheet.Cells[1, 1].Value = "Socio";
+            workSheet.Cells[1, 2].Value = "Pagamento";
+            workSheet.Cells[1, 3].Value = "Frente";
+            workSheet.Cells[1, 4].Value = "Valor";
+            workSheet.Cells[1, 5].Value = "Texto Granatum";
+            workSheet.Cells["D:D"].Style.Numberformat.Format = "R$#,##0.00";
+            workSheet.Cells["A:E"].Style.Font.Name = "Trebuchet MS";
+            workSheet.Cells["A:E"].Style.Font.Size = 10;
+            workSheet.Cells["A:E"].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+            workSheet.Cells["A:E"].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+
+            //workSheet.Cells["C"].
+
+            int indice = 2;
+            foreach (var repasse in repasses)
+            {
+                workSheet.Cells[indice, 1].Value = repasse.Nome;
+                workSheet.Cells[indice, 2].Value = repasse.TipoPagamento;
+                workSheet.Cells[indice, 3].Value = repasse.Frente;
+                workSheet.Cells[indice, 4].Value = repasse.Valor;
+                workSheet.Cells[indice, 5].Value = (string.IsNullOrEmpty(repasse.Parceria) ? repasse.Frente : repasse.Parceria) + " - " + repasse.DataEscala.ToString("dd/MM/yyyy"); ;
+                indice++;
+            }
+
+            workSheet.Cells["A:E"].AutoFitColumns();
+
+            return workSheet;
+        }
+
     }
 }

@@ -25,7 +25,7 @@ namespace LanchoneteUDV
             mail.Body = htmlBody;
             SmtpServer.Port = 587;
             SmtpServer.UseDefaultCredentials = false;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("lanchonete.nsjb@gmail.com", "lanchonete.udv");
+            SmtpServer.Credentials = new System.Net.NetworkCredential("lanchonete.nsjb@gmail.com", "jszalbddctcqzaqf");
             SmtpServer.EnableSsl = true;
 
             try

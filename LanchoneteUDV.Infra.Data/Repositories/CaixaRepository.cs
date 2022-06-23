@@ -125,7 +125,15 @@ namespace LanchoneteUDV.Infra.Data.Repositories
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+            string sql = "DELETE FROM tbCaixa WHERE ID=@id";
+            using (var connection = _connection.Connection())
+            {
+                connection.Open();
+                connection.Execute(sql, new
+                {
+                    id = id
+                });
+            }
         }
 
         public Caixa Update(Caixa classe)

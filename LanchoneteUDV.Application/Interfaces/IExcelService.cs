@@ -4,6 +4,6 @@ namespace LanchoneteUDV.Application.Interfaces
 {
     public interface IExcelService
     {
-        bool CriarPlanilhaRepasse(IEnumerable<RepasseFinanceiroExcelDTO> repasses);
+        bool CriarPlanilhaRepasse(List<IEnumerable<RepasseFinanceiroExcelDTO>> repasses);
     }
 }
