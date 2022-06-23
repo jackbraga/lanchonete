@@ -64,7 +64,7 @@ namespace LanchoneteUDV.Application.Services
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+            _caixaRepository.Remove(id);
         }
 
         public void Update(CaixaDTO objeto)

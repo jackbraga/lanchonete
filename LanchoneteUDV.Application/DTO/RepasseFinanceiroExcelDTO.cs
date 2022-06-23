@@ -13,5 +13,6 @@ namespace LanchoneteUDV.Application.DTO
         public string TipoPagamento { get; set; }
         public string Frente { get; set; }
         public double Valor { get; set; }
+        public string Parceria { get; set; }
     }
 }

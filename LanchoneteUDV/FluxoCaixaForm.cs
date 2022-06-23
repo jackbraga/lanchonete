@@ -162,7 +162,8 @@ namespace LanchoneteUDV
         {
             if (MessageBox.Show("Deseja realmente excluir o lançamento?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                MessageBox.Show("Sócio removido com sucesso!", "Sucesso!", MessageBoxButtons.OK);
+                _caixaService.Remove(Convert.ToInt32(IdTextBox.Text));
+                MessageBox.Show("Lançamento removido com sucesso!", "Sucesso!", MessageBoxButtons.OK);
                 LimparButton_Click(sender, e);
                 RecarregarGrid();
             }

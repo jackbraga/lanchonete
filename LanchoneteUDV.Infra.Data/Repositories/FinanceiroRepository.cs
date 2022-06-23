@@ -79,7 +79,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
         public IEnumerable<RepasseFinanceiroExcel> GerarListaRepasseFinanceiroExcel(int idEscala)
         {
             string sql =
-	"SELECT B.Nome,A.DataEscala,A.Descricao,A.TipoPagamento,'CHURRASCO' AS Frente, SUM(Valor) AS VALOR " +
+	"SELECT B.Nome,A.DataEscala,A.Descricao,A.TipoPagamento,'Churrasco' AS Frente, SUM(Valor) AS VALOR " +
     "FROM ( " +
     "SELECT ISNULL(C.ResponsavelFinanceiro,C.ID) AS ID, B.Descricao,B.DataEscala, D.TipoPagamento ,SUM(D.Quantidade * D.PrecoProduto) AS Valor " +
     "FROM		tbVendas	AS A " +
@@ -93,7 +93,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
 	"INNER JOIN tbSocios as B ON B.ID=A.ID " +
 	"GROUP BY NOME, A.DataEscala, A.Descricao,A.TipoPagamento " +
     "UNION ALL " +
-	"SELECT B.Nome,A.DataEscala,A.Descricao,A.TipoPagamento,'LANCHONETE', SUM(Valor) AS VALOR " +
+	"SELECT B.Nome,A.DataEscala,A.Descricao,A.TipoPagamento,'Lanchonete', SUM(Valor) AS VALOR " +
 	"FROM ( " +
 	"SELECT ISNULL(C.ResponsavelFinanceiro,C.ID) AS ID, B.Descricao,B.DataEscala, D.TipoPagamento ,SUM(D.Quantidade * D.PrecoProduto) AS Valor " +
     "FROM		tbVendas	AS A " +
@@ -101,12 +101,40 @@ namespace LanchoneteUDV.Infra.Data.Repositories
     "INNER JOIN	tbSocios	AS C ON C.ID=A.Socio " +
     "INNER JOIN	tbVendasPedido AS D ON D.Venda=A.ID	 " +
     "INNER JOIN  tbProdutos AS E ON E.ID=D.Produto " +
-    "WHERE E.Categoria<>15 AND B.ID=" +idEscala + " " +
+    "WHERE E.Categoria<>15 AND E.Categoria<>16 AND B.ID=" + idEscala + " " +
     "GROUP BY  ISNULL(C.ResponsavelFinanceiro,C.ID),NOME,B.Descricao,B.DataEscala,D.TipoPagamento " +
     ") AS A " +
     "INNER JOIN tbSocios as B ON B.ID=A.ID " +
     "GROUP BY NOME, A.DataEscala, A.Descricao,A.TipoPagamento " +
     "ORDER BY DataEscala DESC, B.Nome ";
+
+            using (var connection = _connection.Connection())
+            {
+                connection.Open();
+                var result = connection.Query<RepasseFinanceiroExcel>(sql);
+                return result;
+            }
+        }
+
+        public IEnumerable<RepasseFinanceiroExcel> GerarListaRepasseFinanceiroParceriaExcel(int idEscala)
+        {
+            string sql =
+                "SELECT B.Nome,A.DataEscala,A.Descricao,A.TipoPagamento,'Lanchonete' AS Frente,SUM(Valor) AS VALOR , A.Parceria " +
+                "FROM( " +
+                "SELECT ISNULL(C.ResponsavelFinanceiro, C.ID) AS ID, B.Descricao, B.DataEscala, D.TipoPagamento, G.Descricao AS Parceria, SUM(D.Quantidade * D.PrecoProduto) AS Valor " +
+                "FROM        tbVendas    AS A " +
+                "INNER JOIN  tbEscalas   AS B ON B.ID = A.Escala " +
+                "INNER JOIN  tbSocios    AS C ON C.ID = A.Socio " +
+                "INNER JOIN  tbVendasPedido AS D ON D.Venda = A.ID " +
+                "INNER JOIN  tbProdutos AS E ON E.ID = D.Produto " +
+                "INNER JOIN  tbParceriasProduto AS F ON F.IDProduto = E.ID " +
+                "INNER JOIN  tbParcerias        AS G ON G.ID = F.IDParceira " +
+                "WHERE E.Categoria = 16 AND B.ID = " + idEscala  + " " +
+                "GROUP BY  ISNULL(C.ResponsavelFinanceiro, C.ID), NOME, B.Descricao, B.DataEscala, D.TipoPagamento, G.Descricao " +
+                ") AS A " +
+                "INNER JOIN tbSocios as B ON B.ID = A.ID " +
+                "GROUP BY NOME, A.DataEscala, A.Descricao,A.TipoPagamento, A.Parceria " +
+                "ORDER BY DataEscala DESC, B.Nome  ";
 
             using (var connection = _connection.Connection())
             {

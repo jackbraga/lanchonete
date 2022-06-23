@@ -16,7 +16,7 @@ namespace LanchoneteUDV.Application.Services
         private readonly IExcelService _excelService;
         private readonly IMapper _mapper;
 
-        public FinanceiroService(IFinanceiroRepository financeiroRepository, IMapper mapper,IExcelService excelService)
+        public FinanceiroService(IFinanceiroRepository financeiroRepository, IMapper mapper, IExcelService excelService)
         {
             _financeiroRepository = financeiroRepository;
             _mapper = mapper;
@@ -41,9 +41,17 @@ namespace LanchoneteUDV.Application.Services
 
         public bool GerarListaRepasseFinanceiroExcel(int idEscala)
         {
+            List<IEnumerable<RepasseFinanceiroExcelDTO>> planilhas = new List<IEnumerable<RepasseFinanceiroExcelDTO>>();
+
             var lista = _financeiroRepository.GerarListaRepasseFinanceiroExcel(idEscala);
             var listaDto = _mapper.Map<IEnumerable<RepasseFinanceiroExcelDTO>>(lista);
-            return _excelService.CriarPlanilhaRepasse(listaDto);
+
+            var listaParceria = _financeiroRepository.GerarListaRepasseFinanceiroParceriaExcel(idEscala);
+            var listaParceriaDto = _mapper.Map<IEnumerable<RepasseFinanceiroExcelDTO>>(listaParceria);
+
+            planilhas.Add(listaDto);
+            planilhas.Add(listaParceriaDto);
+            return _excelService.CriarPlanilhaRepasse(planilhas);
         }
     }
 }
