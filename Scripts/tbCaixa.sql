@@ -7,6 +7,8 @@ CREATE TABLE tbCaixa
 	TipoEvento VARCHAR(30),
 	Valor	   DECIMAL(10,2),
 	Observacao VARCHAR(200),
-	CategoriaLancamento INT  FOREIGN KEY REFERENCES tbCategoriaLancamento(ID)
+	CategoriaLancamento INT  FOREIGN KEY REFERENCES tbCategoriaLancamento(ID),
+	EspecieMoeda VARCHAR(30),
+	Frente	VARCHAR(30)
 )
 

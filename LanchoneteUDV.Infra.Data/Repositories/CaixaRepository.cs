@@ -19,8 +19,8 @@ namespace LanchoneteUDV.Infra.Data.Repositories
         }
         public Caixa Add(Caixa classe)
         {
-            string sql = "INSERT INTO tbCaixa(DataEvento, TipoEvento,CategoriaLancamento,Valor,Observacao) " +
-                "VALUES(@data,@tipoEvento,@categoria,@valor,@observacao) ";
+            string sql = "INSERT INTO tbCaixa(DataEvento, TipoEvento,CategoriaLancamento,Valor,Observacao,EspecieMoeda) " +
+                "VALUES(@data,@tipoEvento,@categoria,@valor,@observacao,@moeda) ";
 
             using (var connection = _connection.Connection())
             {
@@ -29,6 +29,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                 {
                     data = classe.DataEvento,
                     tipoEvento = classe.TipoEvento,
+                    moeda=classe.EspecieMoeda,
                     categoria = classe.IdCategoria,
                     valor = classe.Valor,
                     observacao = classe.Observacao
@@ -39,7 +40,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
 
         public IEnumerable<Caixa> GetAll()
         {
-            string sql = "SELECT A.ID, A.DataEvento, A.TipoEvento, A.Valor,B.Descricao as DescricaoCategoria, A.Observacao,B.ID as IDCategoria " +
+            string sql = "SELECT A.ID, A.DataEvento, A.TipoEvento, A.Valor,B.Descricao as DescricaoCategoria, A.Observacao,B.ID as IDCategoria, ISNULL(A.EspecieMoeda,'Nao Definido') AS EspecieMoeda " +
             "FROM tbCaixa AS A " +
             "INNER JOIN tbCategoriaLancamento AS B ON B.ID=A.CAtegoriaLancamento " +
             "ORDER BY 2 desc; ";
@@ -76,13 +77,15 @@ namespace LanchoneteUDV.Infra.Data.Repositories
         public async Task<ResumoVendas> ListarResumo()
         {
             string sql = "SELECT " +
-                            "(SELECT SUM(VALOR) FROM tbCaixa WHERE CategoriaLancamento = 3) AS SaldoInicial, " +
                             "(SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Entrada') AS Entradas, " +
                             "(SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Saida') AS Saidas, " +
                             "(SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Entrada' AND CategoriaLancamento NOT IN(3, 4)) AS Faturado, " +
                             "((SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Entrada' AND CategoriaLancamento NOT IN(3, 4)) + (SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Saida') ) AS Lucro, " +
-                            "(SELECT SUM(VALOR) AS Dinheiro FROM tbCaixa WHERE CategoriaLancamento = 5) AS Dinheiro, " +
-                            "((SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Entrada') + (SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Saida')) AS Saldo ";
+                            "(SELECT SUM(VALOR) AS Dinheiro FROM tbCaixa WHERE EspecieMoeda = 'DINHEIRO') AS Dinheiro, " +
+                            "(SELECT SUM(VALOR) AS CARTAO FROM tbCaixa WHERE EspecieMoeda = 'CARTAO') AS Cartao, " +
+                            "(SELECT SUM(VALOR) AS BOLETO FROM tbCaixa WHERE EspecieMoeda = 'BOLETO/PIX') AS BOLETO, " +
+                            "((SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Entrada') + (SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Saida')) AS Saldo, " +
+                            "(SELECT SUM(VALOR) AS PARCERIA FROM tbCaixa WHERE CategoriaLancamento = 6) AS PARCERIA ";
 
             using (var connection = _connection.Connection())
             {
@@ -138,7 +141,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
 
         public Caixa Update(Caixa classe)
         {
-            string sql = "UPDATE tbCaixa SET DataEvento=@data, TipoEvento=@tipoEvento,CategoriaLancamento=@categoria,Valor=@valor,Observacao=@observacao " +
+            string sql = "UPDATE tbCaixa SET DataEvento=@data, TipoEvento=@tipoEvento,CategoriaLancamento=@categoria,Valor=@valor,Observacao=@observacao, EspecieMoeda=@moeda " +
                 "WHERE ID=@id ";
 
             using (var connection = _connection.Connection())
@@ -151,6 +154,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                     categoria = classe.IdCategoria,
                     valor = classe.Valor,
                     observacao = classe.Observacao,
+                    moeda = classe.EspecieMoeda,
                     id = classe.Id
                 }) ;
                 return classe;
