@@ -17,6 +17,7 @@ namespace LanchoneteUDV.Domain.Entidades
         public int IdCategoria { get; set; }
 
         public string EspecieMoeda { get; set; }
+        public string Frente { get; set; }
 
     }
 }

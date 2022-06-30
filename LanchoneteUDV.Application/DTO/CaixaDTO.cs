@@ -18,5 +18,7 @@ namespace LanchoneteUDV.Application.DTO
         public int IdCategoria { get; set; }
 
         public string EspecieMoeda { get; set; }
+
+        public string Frente { get; set; }
     }
 }

@@ -50,11 +50,13 @@ namespace LanchoneteUDV.Application.Services
             return _mapper.Map<IEnumerable<CategoriaLancamentoDTO>>(lista);
         }
 
-        public async Task<ResumoVendasDTO> ListarResumo()
+        public async Task<ResumoVendasDTO> ListarResumo(string frente)
         {
-            var lista = await _caixaRepository.ListarResumo();
+            var lista = await _caixaRepository.ListarResumo(frente);
             return _mapper.Map<ResumoVendasDTO>(lista);
         }
+ 
+
 
         public async Task<IEnumerable<ResumoVendasDTO>> ListarResumoMesAMes(int ano)
         {

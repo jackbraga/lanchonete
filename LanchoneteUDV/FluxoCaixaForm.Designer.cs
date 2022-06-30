@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FluxoCaixaForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.FrenteComboBox = new System.Windows.Forms.ComboBox();
+            this.label79 = new System.Windows.Forms.Label();
             this.EspecieMoedaComboBox = new System.Windows.Forms.ComboBox();
             this.label68 = new System.Windows.Forms.Label();
             this.CategoriaComboBox = new System.Windows.Forms.ComboBox();
@@ -230,6 +232,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.FrenteComboBox);
+            this.groupBox1.Controls.Add(this.label79);
             this.groupBox1.Controls.Add(this.EspecieMoedaComboBox);
             this.groupBox1.Controls.Add(this.label68);
             this.groupBox1.Controls.Add(this.CategoriaComboBox);
@@ -264,6 +268,31 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Fluxo de Caixa";
             // 
+            // FrenteComboBox
+            // 
+            this.FrenteComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.FrenteComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.FrenteComboBox.BackColor = System.Drawing.SystemColors.Info;
+            this.FrenteComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FrenteComboBox.Enabled = false;
+            this.FrenteComboBox.FormattingEnabled = true;
+            this.FrenteComboBox.Items.AddRange(new object[] {
+            "LANCHONETE",
+            "CHURRASCO"});
+            this.FrenteComboBox.Location = new System.Drawing.Point(287, 132);
+            this.FrenteComboBox.Name = "FrenteComboBox";
+            this.FrenteComboBox.Size = new System.Drawing.Size(293, 26);
+            this.FrenteComboBox.TabIndex = 6;
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Location = new System.Drawing.Point(287, 112);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(46, 18);
+            this.label79.TabIndex = 48;
+            this.label79.Text = "Frente";
+            // 
             // EspecieMoedaComboBox
             // 
             this.EspecieMoedaComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
@@ -277,15 +306,15 @@
             "CARTAO",
             "CONTA",
             "DINHEIRO"});
-            this.EspecieMoedaComboBox.Location = new System.Drawing.Point(361, 135);
+            this.EspecieMoedaComboBox.Location = new System.Drawing.Point(287, 84);
             this.EspecieMoedaComboBox.Name = "EspecieMoedaComboBox";
-            this.EspecieMoedaComboBox.Size = new System.Drawing.Size(253, 26);
-            this.EspecieMoedaComboBox.TabIndex = 38;
+            this.EspecieMoedaComboBox.Size = new System.Drawing.Size(293, 26);
+            this.EspecieMoedaComboBox.TabIndex = 4;
             // 
             // label68
             // 
             this.label68.AutoSize = true;
-            this.label68.Location = new System.Drawing.Point(361, 114);
+            this.label68.Location = new System.Drawing.Point(287, 65);
             this.label68.Name = "label68";
             this.label68.Size = new System.Drawing.Size(94, 18);
             this.label68.TabIndex = 39;
@@ -299,15 +328,15 @@
             this.CategoriaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CategoriaComboBox.Enabled = false;
             this.CategoriaComboBox.FormattingEnabled = true;
-            this.CategoriaComboBox.Location = new System.Drawing.Point(361, 85);
+            this.CategoriaComboBox.Location = new System.Drawing.Point(9, 133);
             this.CategoriaComboBox.Name = "CategoriaComboBox";
-            this.CategoriaComboBox.Size = new System.Drawing.Size(253, 26);
-            this.CategoriaComboBox.TabIndex = 36;
+            this.CategoriaComboBox.Size = new System.Drawing.Size(272, 26);
+            this.CategoriaComboBox.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(361, 67);
+            this.label3.Location = new System.Drawing.Point(9, 115);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 18);
             this.label3.TabIndex = 37;
@@ -316,7 +345,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(9, 65);
+            this.label11.Location = new System.Drawing.Point(287, 17);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(64, 18);
             this.label11.TabIndex = 35;
@@ -326,12 +355,12 @@
             // 
             this.ObservacaoTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.ObservacaoTextBox.Enabled = false;
-            this.ObservacaoTextBox.Location = new System.Drawing.Point(9, 86);
+            this.ObservacaoTextBox.Location = new System.Drawing.Point(287, 38);
             this.ObservacaoTextBox.MaxLength = 200;
             this.ObservacaoTextBox.Multiline = true;
             this.ObservacaoTextBox.Name = "ObservacaoTextBox";
-            this.ObservacaoTextBox.Size = new System.Drawing.Size(346, 23);
-            this.ObservacaoTextBox.TabIndex = 6;
+            this.ObservacaoTextBox.Size = new System.Drawing.Size(293, 23);
+            this.ObservacaoTextBox.TabIndex = 1;
             // 
             // NomeLabel
             // 
@@ -356,7 +385,7 @@
             this.DataEventoDateTimePicker.Enabled = false;
             this.DataEventoDateTimePicker.Location = new System.Drawing.Point(9, 39);
             this.DataEventoDateTimePicker.Name = "DataEventoDateTimePicker";
-            this.DataEventoDateTimePicker.Size = new System.Drawing.Size(346, 23);
+            this.DataEventoDateTimePicker.Size = new System.Drawing.Size(272, 23);
             this.DataEventoDateTimePicker.TabIndex = 0;
             // 
             // label14
@@ -412,18 +441,18 @@
             // 
             this.PrecoTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.PrecoTextBox.Enabled = false;
-            this.PrecoTextBox.Location = new System.Drawing.Point(9, 133);
+            this.PrecoTextBox.Location = new System.Drawing.Point(586, 38);
             this.PrecoTextBox.MaxLength = 10;
             this.PrecoTextBox.Name = "PrecoTextBox";
-            this.PrecoTextBox.Size = new System.Drawing.Size(90, 23);
-            this.PrecoTextBox.TabIndex = 7;
+            this.PrecoTextBox.Size = new System.Drawing.Size(139, 23);
+            this.PrecoTextBox.TabIndex = 2;
             this.PrecoTextBox.Text = "0";
             this.PrecoTextBox.TextChanged += new System.EventHandler(this.PrecoTextBox_TextChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 112);
+            this.label8.Location = new System.Drawing.Point(586, 17);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(36, 18);
             this.label8.TabIndex = 13;
@@ -440,10 +469,10 @@
             this.TipoEventoComboBox.Items.AddRange(new object[] {
             "Entrada",
             "Saida"});
-            this.TipoEventoComboBox.Location = new System.Drawing.Point(361, 38);
+            this.TipoEventoComboBox.Location = new System.Drawing.Point(9, 83);
             this.TipoEventoComboBox.Name = "TipoEventoComboBox";
-            this.TipoEventoComboBox.Size = new System.Drawing.Size(253, 26);
-            this.TipoEventoComboBox.TabIndex = 1;
+            this.TipoEventoComboBox.Size = new System.Drawing.Size(272, 26);
+            this.TipoEventoComboBox.TabIndex = 3;
             // 
             // label7
             // 
@@ -554,7 +583,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(361, 17);
+            this.label2.Location = new System.Drawing.Point(9, 65);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(95, 18);
             this.label2.TabIndex = 3;
@@ -604,27 +633,27 @@
             this.FluxoCaixaDataGridView.AllowUserToAddRows = false;
             this.FluxoCaixaDataGridView.AllowUserToDeleteRows = false;
             this.FluxoCaixaDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightCyan;
-            this.FluxoCaixaDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightCyan;
+            this.FluxoCaixaDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.FluxoCaixaDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.FluxoCaixaDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FluxoCaixaDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.FluxoCaixaDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.FluxoCaixaDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.FluxoCaixaDataGridView.DefaultCellStyle = dataGridViewCellStyle6;
             this.FluxoCaixaDataGridView.Location = new System.Drawing.Point(6, 68);
             this.FluxoCaixaDataGridView.MultiSelect = false;
             this.FluxoCaixaDataGridView.Name = "FluxoCaixaDataGridView";
@@ -2480,5 +2509,7 @@
         private TextBox SaldoChurrascoTextBox;
         private TextBox ParceriasTextBox;
         private Label label78;
+        private ComboBox FrenteComboBox;
+        private Label label79;
     }
 }
