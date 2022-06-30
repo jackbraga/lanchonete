@@ -19,8 +19,8 @@ namespace LanchoneteUDV.Infra.Data.Repositories
         }
         public Caixa Add(Caixa classe)
         {
-            string sql = "INSERT INTO tbCaixa(DataEvento, TipoEvento,CategoriaLancamento,Valor,Observacao,EspecieMoeda) " +
-                "VALUES(@data,@tipoEvento,@categoria,@valor,@observacao,@moeda) ";
+            string sql = "INSERT INTO tbCaixa(DataEvento, TipoEvento,CategoriaLancamento,Valor,Observacao,EspecieMoeda,Frente) " +
+                "VALUES(@data,@tipoEvento,@categoria,@valor,@observacao,@moeda,@frente) ";
 
             using (var connection = _connection.Connection())
             {
@@ -32,7 +32,8 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                     moeda=classe.EspecieMoeda,
                     categoria = classe.IdCategoria,
                     valor = classe.Valor,
-                    observacao = classe.Observacao
+                    observacao = classe.Observacao,
+                    frente = classe.Frente
                 });
                 return classe;
             }
@@ -40,7 +41,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
 
         public IEnumerable<Caixa> GetAll()
         {
-            string sql = "SELECT A.ID, A.DataEvento, A.TipoEvento, A.Valor,B.Descricao as DescricaoCategoria, A.Observacao,B.ID as IDCategoria, ISNULL(A.EspecieMoeda,'Nao Definido') AS EspecieMoeda " +
+            string sql = "SELECT A.ID, A.DataEvento, A.TipoEvento, A.Valor,B.Descricao as DescricaoCategoria, A.Observacao,B.ID as IDCategoria, ISNULL(A.EspecieMoeda,'Nao Definido') AS EspecieMoeda, A.Frente " +
             "FROM tbCaixa AS A " +
             "INNER JOIN tbCategoriaLancamento AS B ON B.ID=A.CAtegoriaLancamento " +
             "ORDER BY 2 desc; ";
@@ -74,18 +75,18 @@ namespace LanchoneteUDV.Infra.Data.Repositories
             }
         }
 
-        public async Task<ResumoVendas> ListarResumo()
+        public async Task<ResumoVendas> ListarResumo(string frente)
         {
             string sql = "SELECT " +
-                            "(SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Entrada') AS Entradas, " +
-                            "(SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Saida') AS Saidas, " +
-                            "(SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Entrada' AND CategoriaLancamento NOT IN(3, 4)) AS Faturado, " +
-                            "((SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Entrada' AND CategoriaLancamento NOT IN(3, 4)) + (SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Saida') ) AS Lucro, " +
-                            "(SELECT SUM(VALOR) AS Dinheiro FROM tbCaixa WHERE EspecieMoeda = 'DINHEIRO') AS Dinheiro, " +
-                            "(SELECT SUM(VALOR) AS CARTAO FROM tbCaixa WHERE EspecieMoeda = 'CARTAO') AS Cartao, " +
-                            "(SELECT SUM(VALOR) AS BOLETO FROM tbCaixa WHERE EspecieMoeda = 'BOLETO/PIX') AS BOLETO, " +
-                            "((SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Entrada') + (SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Saida')) AS Saldo, " +
-                            "(SELECT SUM(VALOR) AS PARCERIA FROM tbCaixa WHERE CategoriaLancamento = 6) AS PARCERIA ";
+                            "(SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Entrada' AND Frente='" + frente + "') AS Entradas, " +
+                            "(SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Saida' AND Frente='" + frente + "') AS Saidas, " +
+                            "(SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Entrada' AND CategoriaLancamento NOT IN(3, 4)  AND Frente='" + frente + "') AS Faturado, " +
+                            "((SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Entrada' AND CategoriaLancamento NOT IN(3, 4) AND Frente='" + frente + "') + (SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Saida' AND Frente='" + frente + "') ) AS Lucro, " +
+                            "(SELECT SUM(VALOR) AS Dinheiro FROM tbCaixa WHERE EspecieMoeda = 'DINHEIRO' AND Frente='" + frente + "') AS Dinheiro, " +
+                            "(SELECT SUM(VALOR) AS CARTAO FROM tbCaixa WHERE EspecieMoeda = 'CARTAO' AND Frente='" + frente + "') AS Cartao, " +
+                            "(SELECT SUM(VALOR) AS BOLETO FROM tbCaixa WHERE EspecieMoeda = 'BOLETO/PIX' AND Frente='" + frente + "') AS BOLETO, " +
+                            "((SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Entrada' AND Frente='" + frente + "') + (SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Saida' AND Frente='" + frente + "')) AS Saldo, " +
+                            "(SELECT SUM(VALOR) AS PARCERIA FROM tbCaixa WHERE CategoriaLancamento = 6 AND Frente='" + frente + "') AS PARCERIA ";
 
             using (var connection = _connection.Connection())
             {
@@ -141,7 +142,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
 
         public Caixa Update(Caixa classe)
         {
-            string sql = "UPDATE tbCaixa SET DataEvento=@data, TipoEvento=@tipoEvento,CategoriaLancamento=@categoria,Valor=@valor,Observacao=@observacao, EspecieMoeda=@moeda " +
+            string sql = "UPDATE tbCaixa SET DataEvento=@data, TipoEvento=@tipoEvento,CategoriaLancamento=@categoria,Valor=@valor,Observacao=@observacao, EspecieMoeda=@moeda, Frente=@frente " +
                 "WHERE ID=@id ";
 
             using (var connection = _connection.Connection())
@@ -155,6 +156,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                     valor = classe.Valor,
                     observacao = classe.Observacao,
                     moeda = classe.EspecieMoeda,
+                    frente = classe.Frente,
                     id = classe.Id
                 }) ;
                 return classe;

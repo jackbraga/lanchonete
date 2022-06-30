@@ -11,7 +11,7 @@ namespace LanchoneteUDV.Application.Interfaces
     {
         IEnumerable<CategoriaLancamentoDTO> ListarCategoriaLancamento();
 
-        Task<ResumoVendasDTO> ListarResumo();
+        Task<ResumoVendasDTO> ListarResumo(string frente);
 
         Task<IEnumerable<ResumoVendasDTO>> ListarResumoMesAMes(int ano);
 

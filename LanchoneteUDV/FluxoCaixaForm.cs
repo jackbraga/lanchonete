@@ -38,6 +38,7 @@ namespace LanchoneteUDV
                 Observacao = ObservacaoTextBox.Text.Trim(),
                 TipoEvento = TipoEventoComboBox.Text,
                 EspecieMoeda = EspecieMoedaComboBox.Text,
+                Frente = FrenteComboBox.Text,
                 Valor = TipoEventoComboBox.Text == "Entrada" ? Convert.ToDouble(PrecoTextBox.Text) : Convert.ToDouble(PrecoTextBox.Text) * -1
             };
 
@@ -74,6 +75,16 @@ namespace LanchoneteUDV
                 MessageBox.Show("É necessário informar a categoria do Lançamento!", "Atenção!", MessageBoxButtons.OK);
                 valido = false;
             }
+            else if (string.IsNullOrEmpty(EspecieMoedaComboBox.Text))
+            {
+                MessageBox.Show("É necessário informar a especie da moeda do Lançamento!", "Atenção!", MessageBoxButtons.OK);
+                valido = false;
+            }
+            else if (string.IsNullOrEmpty(FrenteComboBox.Text))
+            {
+                MessageBox.Show("É necessário informar a frente do Lançamento!", "Atenção!", MessageBoxButtons.OK);
+                valido = false;
+            }
             else if (Convert.ToDouble(PrecoTextBox.Text) <= 0)
             {
                 MessageBox.Show("É necessário informar valor válido!", "Atenção!", MessageBoxButtons.OK);
@@ -100,6 +111,7 @@ namespace LanchoneteUDV
         {
             RecarregarGrid();
             CarregarResumo();
+            CarregarResumoChurrasco();
         }
 
         private void RecarregarGrid()
@@ -135,11 +147,12 @@ namespace LanchoneteUDV
 
         private void NovoButton_Click(object sender, EventArgs e)
         {
-            _helper.Habilita(DataEventoDateTimePicker, TipoEventoComboBox, CategoriaComboBox, PrecoTextBox, ObservacaoTextBox, PrecoTextBox, EspecieMoedaComboBox,
+            _helper.Habilita(DataEventoDateTimePicker, TipoEventoComboBox, CategoriaComboBox, PrecoTextBox, ObservacaoTextBox, PrecoTextBox, EspecieMoedaComboBox,FrenteComboBox,
             SalvarButton);
 
             _helper.Desabilita(NovoButton, EditarButton, ExcluirButton);
             LimparCampos();
+            DataEventoDateTimePicker.Focus();
         }
 
         private void LimparCampos()
@@ -148,6 +161,7 @@ namespace LanchoneteUDV
             TipoEventoComboBox.SelectedIndex = -1;
             CategoriaComboBox.SelectedIndex = -1;
             EspecieMoedaComboBox.SelectedIndex = -1;
+            FrenteComboBox.SelectedIndex = -1;
             PrecoTextBox.Clear();
             ObservacaoTextBox.Clear();
         }
@@ -170,7 +184,7 @@ namespace LanchoneteUDV
                 _caixaService.Remove(Convert.ToInt32(IdTextBox.Text));
                 MessageBox.Show("Lançamento removido com sucesso!", "Sucesso!", MessageBoxButtons.OK);
                 LimparButton_Click(sender, e);
-                RecarregarGrid();
+                RecarregarTela();
             }
         }
 
@@ -199,7 +213,7 @@ namespace LanchoneteUDV
 
         private async void CarregarResumo()
         {
-            var resumo = await _caixaService.ListarResumo();
+            var resumo = await _caixaService.ListarResumo("LANCHONETE");
 
             if (resumo != null)
             {
@@ -213,6 +227,25 @@ namespace LanchoneteUDV
                 BoletoTextBox.Text = "R$ " + String.Format("{0:N2}", resumo.Boleto);
                 SaldoAtualTextBox.Text = "R$ " + String.Format("{0:N2}", resumo.Saldo);
                 ParceriasTextBox.Text = "R$ " + String.Format("{0:N2}", resumo.Parceria);
+            }
+        }
+
+        private async void CarregarResumoChurrasco()
+        {
+            var resumo = await _caixaService.ListarResumo("CHURRASCO");
+
+
+            if (resumo != null)
+            {
+
+                EntradasChurrascoTextBox.Text = "R$ " + String.Format("{0:N2}", resumo.Entradas);
+                SaidasChurrascoTextBox.Text = "R$ " + String.Format("{0:N2}", resumo.Saidas);
+                FaturadoChurrascoTextBox.Text = "R$ " + String.Format("{0:N2}", resumo.Faturado);
+                LucroChurrascoTextBox.Text = "R$ " + String.Format("{0:N2}", resumo.Lucro);
+                DinheiroChurrascoTextBox.Text = "R$ " + String.Format("{0:N2}", resumo.Dinheiro);
+                CartaoChurrascoTextBox.Text = "R$ " + String.Format("{0:N2}", resumo.Cartao);
+                BoletoChurrascoTextBox.Text = "R$ " + String.Format("{0:N2}", resumo.Boleto);
+                SaldoChurrascoTextBox.Text = "R$ " + String.Format("{0:N2}", resumo.Saldo);
             }
         }
 
@@ -281,12 +314,13 @@ namespace LanchoneteUDV
 
             CategoriaComboBox.SelectedValue = (Int32)FluxoCaixaDataGridView.Rows[row].Cells[6].Value;
             EspecieMoedaComboBox.Text = FluxoCaixaDataGridView.Rows[row].Cells[7].Value.ToString();
+            FrenteComboBox.Text = FluxoCaixaDataGridView.Rows[row].Cells[8].Value.ToString();
 
             double valor = (Double)FluxoCaixaDataGridView.Rows[row].Cells[3].Value;
             PrecoTextBox.Text = (valor < 0 ? valor * -1 : valor).ToString();
 
             _helper.Desabilita(DataEventoDateTimePicker, SalvarButton, NovoButton,
-                                TipoEventoComboBox, PrecoTextBox, ObservacaoTextBox, CategoriaComboBox);
+                                TipoEventoComboBox, PrecoTextBox, ObservacaoTextBox, CategoriaComboBox, EspecieMoedaComboBox, FrenteComboBox);
 
             _helper.Habilita(ExcluirButton, EditarButton);
         }
