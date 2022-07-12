@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jacks\\OneDrive\\UDV\\Sistema\\lanchonete\\LanchoneteUDV.Domain\\LanchoneteUDV.Domain.csproj",
+      "projectUniqueName": "C:\\UDV\\lanchonete\\LanchoneteUDV.Domain\\LanchoneteUDV.Domain.csproj",
       "projectName": "LanchoneteUDV.Domain",
-      "projectPath": "C:\\Users\\jacks\\OneDrive\\UDV\\Sistema\\lanchonete\\LanchoneteUDV.Domain\\LanchoneteUDV.Domain.csproj",
+      "projectPath": "C:\\UDV\\lanchonete\\LanchoneteUDV.Domain\\LanchoneteUDV.Domain.csproj",
       "packagesPath": "C:\\Users\\jacks\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jacks\\OneDrive\\UDV\\Sistema\\lanchonete\\LanchoneteUDV.Domain\\obj\\",
+      "outputPath": "C:\\UDV\\lanchonete\\LanchoneteUDV.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -2324,11 +2324,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jacks\\OneDrive\\UDV\\Sistema\\lanchonete\\LanchoneteUDV\\LanchoneteUDV.csproj",
+      "projectUniqueName": "C:\\UDV\\lanchonete\\LanchoneteUDV\\LanchoneteUDV.csproj",
       "projectName": "LanchoneteUDV",
-      "projectPath": "C:\\Users\\jacks\\OneDrive\\UDV\\Sistema\\lanchonete\\LanchoneteUDV\\LanchoneteUDV.csproj",
+      "projectPath": "C:\\UDV\\lanchonete\\LanchoneteUDV\\LanchoneteUDV.csproj",
       "packagesPath": "C:\\Users\\jacks\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jacks\\OneDrive\\UDV\\Sistema\\lanchonete\\LanchoneteUDV\\obj\\",
+      "outputPath": "C:\\UDV\\lanchonete\\LanchoneteUDV\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2349,11 +2349,11 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\jacks\\OneDrive\\UDV\\Sistema\\lanchonete\\LanchoneteUDV.Infra.IoC\\LanchoneteUDV.Infra.IoC.csproj": {
-              "projectPath": "C:\\Users\\jacks\\OneDrive\\UDV\\Sistema\\lanchonete\\LanchoneteUDV.Infra.IoC\\LanchoneteUDV.Infra.IoC.csproj"
+            "C:\\UDV\\lanchonete\\LanchoneteUDV.Infra.IoC\\LanchoneteUDV.Infra.IoC.csproj": {
+              "projectPath": "C:\\UDV\\lanchonete\\LanchoneteUDV.Infra.IoC\\LanchoneteUDV.Infra.IoC.csproj"
             },
-            "C:\\Users\\jacks\\OneDrive\\UDV\\Sistema\\lanchonete\\LanchoneteUDV.Services\\LanchoneteUDV.Services.csproj": {
-              "projectPath": "C:\\Users\\jacks\\OneDrive\\UDV\\Sistema\\lanchonete\\LanchoneteUDV.Services\\LanchoneteUDV.Services.csproj"
+            "C:\\UDV\\lanchonete\\LanchoneteUDV.Services\\LanchoneteUDV.Services.csproj": {
+              "projectPath": "C:\\UDV\\lanchonete\\LanchoneteUDV.Services\\LanchoneteUDV.Services.csproj"
             }
           }
         }

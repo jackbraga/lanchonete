@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rDBhamm+x7Sqh6huHvHePU2CtnY9wD/3rHs/Uk8w39m4dTDBKIcQt67uG7xcG1EWR9NYDjRRInpf3126o97bZg==",
+  "dgSpecHash": "zCxYXD19VyAAWasFzpInYcAkfs+8wHT///c/vhmbw/j/pSGSaekv7qdJhPpyR4r0n1UIFkY7nphDMRci+NQnZQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jacks\\OneDrive\\UDV\\Sistema\\lanchonete\\LanchoneteUDV\\LanchoneteUDV.csproj",
+  "projectFilePath": "C:\\UDV\\lanchonete\\LanchoneteUDV\\LanchoneteUDV.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jacks\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\jacks\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",

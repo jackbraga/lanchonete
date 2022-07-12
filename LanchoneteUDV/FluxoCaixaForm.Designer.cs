@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FluxoCaixaForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.FrenteComboBox = new System.Windows.Forms.ComboBox();
             this.label79 = new System.Windows.Forms.Label();
@@ -305,7 +305,8 @@
             "BOLETO/PIX",
             "CARTAO",
             "CONTA",
-            "DINHEIRO"});
+            "DINHEIRO",
+            "PARCERIA"});
             this.EspecieMoedaComboBox.Location = new System.Drawing.Point(287, 84);
             this.EspecieMoedaComboBox.Name = "EspecieMoedaComboBox";
             this.EspecieMoedaComboBox.Size = new System.Drawing.Size(293, 26);
@@ -606,7 +607,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBox2.Location = new System.Drawing.Point(12, 240);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(729, 450);
+            this.groupBox2.Size = new System.Drawing.Size(852, 450);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Fluxo de Caixa";
@@ -633,27 +634,27 @@
             this.FluxoCaixaDataGridView.AllowUserToAddRows = false;
             this.FluxoCaixaDataGridView.AllowUserToDeleteRows = false;
             this.FluxoCaixaDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightCyan;
-            this.FluxoCaixaDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightCyan;
+            this.FluxoCaixaDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.FluxoCaixaDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.FluxoCaixaDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FluxoCaixaDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.FluxoCaixaDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.FluxoCaixaDataGridView.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.FluxoCaixaDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.FluxoCaixaDataGridView.Location = new System.Drawing.Point(6, 68);
             this.FluxoCaixaDataGridView.MultiSelect = false;
             this.FluxoCaixaDataGridView.Name = "FluxoCaixaDataGridView";
@@ -662,7 +663,7 @@
             this.FluxoCaixaDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FluxoCaixaDataGridView.RowTemplate.Height = 25;
             this.FluxoCaixaDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.FluxoCaixaDataGridView.Size = new System.Drawing.Size(717, 379);
+            this.FluxoCaixaDataGridView.Size = new System.Drawing.Size(840, 379);
             this.FluxoCaixaDataGridView.TabIndex = 16;
             this.FluxoCaixaDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.FluxoCaixaDataGridView_CellContentClick);
             this.FluxoCaixaDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.FluxoCaixaDataGridView_CellContentDoubleClick);
@@ -870,9 +871,9 @@
             this.groupBox4.Controls.Add(this.AnoComboBox);
             this.groupBox4.Controls.Add(this.groupBox16);
             this.groupBox4.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox4.Location = new System.Drawing.Point(747, 242);
+            this.groupBox4.Location = new System.Drawing.Point(870, 249);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(605, 445);
+            this.groupBox4.Size = new System.Drawing.Size(482, 445);
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Resumo de Caixa Mês a Mês";
@@ -887,10 +888,10 @@
             this.groupBox15.Controls.Add(this.label60);
             this.groupBox15.Controls.Add(this.label61);
             this.groupBox15.Controls.Add(this.label62);
-            this.groupBox15.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox15.Location = new System.Drawing.Point(6, 64);
+            this.groupBox15.Font = new System.Drawing.Font("Trebuchet MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox15.Location = new System.Drawing.Point(8, 66);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(293, 58);
+            this.groupBox15.Size = new System.Drawing.Size(230, 58);
             this.groupBox15.TabIndex = 72;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Janeiro";
@@ -899,10 +900,10 @@
             // 
             this.JanLucroTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.JanLucroTextBox.Enabled = false;
-            this.JanLucroTextBox.Location = new System.Drawing.Point(216, 34);
+            this.JanLucroTextBox.Location = new System.Drawing.Point(170, 34);
             this.JanLucroTextBox.MaxLength = 10;
             this.JanLucroTextBox.Name = "JanLucroTextBox";
-            this.JanLucroTextBox.Size = new System.Drawing.Size(70, 20);
+            this.JanLucroTextBox.Size = new System.Drawing.Size(54, 18);
             this.JanLucroTextBox.TabIndex = 48;
             this.JanLucroTextBox.Text = "0";
             // 
@@ -910,10 +911,10 @@
             // 
             this.JanFaturadoTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.JanFaturadoTextBox.Enabled = false;
-            this.JanFaturadoTextBox.Location = new System.Drawing.Point(145, 34);
+            this.JanFaturadoTextBox.Location = new System.Drawing.Point(114, 34);
             this.JanFaturadoTextBox.MaxLength = 10;
             this.JanFaturadoTextBox.Name = "JanFaturadoTextBox";
-            this.JanFaturadoTextBox.Size = new System.Drawing.Size(70, 20);
+            this.JanFaturadoTextBox.Size = new System.Drawing.Size(54, 18);
             this.JanFaturadoTextBox.TabIndex = 47;
             this.JanFaturadoTextBox.Text = "0";
             // 
@@ -921,10 +922,10 @@
             // 
             this.JanSaidasTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.JanSaidasTextBox.Enabled = false;
-            this.JanSaidasTextBox.Location = new System.Drawing.Point(74, 34);
+            this.JanSaidasTextBox.Location = new System.Drawing.Point(59, 34);
             this.JanSaidasTextBox.MaxLength = 10;
             this.JanSaidasTextBox.Name = "JanSaidasTextBox";
-            this.JanSaidasTextBox.Size = new System.Drawing.Size(70, 20);
+            this.JanSaidasTextBox.Size = new System.Drawing.Size(53, 18);
             this.JanSaidasTextBox.TabIndex = 46;
             this.JanSaidasTextBox.Text = "0";
             // 
@@ -933,7 +934,7 @@
             this.label59.AutoSize = true;
             this.label59.Location = new System.Drawing.Point(1, 16);
             this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(52, 16);
+            this.label59.Size = new System.Drawing.Size(45, 15);
             this.label59.TabIndex = 35;
             this.label59.Text = "Entradas";
             // 
@@ -944,34 +945,34 @@
             this.JanEntradasTextBox.Location = new System.Drawing.Point(3, 34);
             this.JanEntradasTextBox.MaxLength = 10;
             this.JanEntradasTextBox.Name = "JanEntradasTextBox";
-            this.JanEntradasTextBox.Size = new System.Drawing.Size(70, 20);
+            this.JanEntradasTextBox.Size = new System.Drawing.Size(55, 18);
             this.JanEntradasTextBox.TabIndex = 39;
             this.JanEntradasTextBox.Text = "0";
             // 
             // label60
             // 
             this.label60.AutoSize = true;
-            this.label60.Location = new System.Drawing.Point(74, 16);
+            this.label60.Location = new System.Drawing.Point(58, 16);
             this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(38, 16);
+            this.label60.Size = new System.Drawing.Size(33, 15);
             this.label60.TabIndex = 38;
             this.label60.Text = "Saídas";
             // 
             // label61
             // 
             this.label61.AutoSize = true;
-            this.label61.Location = new System.Drawing.Point(145, 16);
+            this.label61.Location = new System.Drawing.Point(114, 16);
             this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(53, 16);
+            this.label61.Size = new System.Drawing.Size(46, 15);
             this.label61.TabIndex = 41;
             this.label61.Text = "Faturado";
             // 
             // label62
             // 
             this.label62.AutoSize = true;
-            this.label62.Location = new System.Drawing.Point(216, 16);
+            this.label62.Location = new System.Drawing.Point(170, 16);
             this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(36, 16);
+            this.label62.Size = new System.Drawing.Size(31, 15);
             this.label62.TabIndex = 45;
             this.label62.Text = "Lucro";
             // 
@@ -985,10 +986,10 @@
             this.groupBox8.Controls.Add(this.label32);
             this.groupBox8.Controls.Add(this.label33);
             this.groupBox8.Controls.Add(this.label34);
-            this.groupBox8.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox8.Location = new System.Drawing.Point(6, 128);
+            this.groupBox8.Font = new System.Drawing.Font("Trebuchet MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox8.Location = new System.Drawing.Point(8, 130);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(293, 58);
+            this.groupBox8.Size = new System.Drawing.Size(230, 58);
             this.groupBox8.TabIndex = 71;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Fevereiro";
@@ -997,10 +998,10 @@
             // 
             this.FevLucroTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.FevLucroTextBox.Enabled = false;
-            this.FevLucroTextBox.Location = new System.Drawing.Point(216, 34);
+            this.FevLucroTextBox.Location = new System.Drawing.Point(156, 34);
             this.FevLucroTextBox.MaxLength = 10;
             this.FevLucroTextBox.Name = "FevLucroTextBox";
-            this.FevLucroTextBox.Size = new System.Drawing.Size(70, 20);
+            this.FevLucroTextBox.Size = new System.Drawing.Size(49, 18);
             this.FevLucroTextBox.TabIndex = 48;
             this.FevLucroTextBox.Text = "0";
             // 
@@ -1008,10 +1009,10 @@
             // 
             this.FevFaturadoTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.FevFaturadoTextBox.Enabled = false;
-            this.FevFaturadoTextBox.Location = new System.Drawing.Point(145, 34);
+            this.FevFaturadoTextBox.Location = new System.Drawing.Point(105, 34);
             this.FevFaturadoTextBox.MaxLength = 10;
             this.FevFaturadoTextBox.Name = "FevFaturadoTextBox";
-            this.FevFaturadoTextBox.Size = new System.Drawing.Size(70, 20);
+            this.FevFaturadoTextBox.Size = new System.Drawing.Size(49, 18);
             this.FevFaturadoTextBox.TabIndex = 47;
             this.FevFaturadoTextBox.Text = "0";
             // 
@@ -1019,10 +1020,10 @@
             // 
             this.FevSaidasTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.FevSaidasTextBox.Enabled = false;
-            this.FevSaidasTextBox.Location = new System.Drawing.Point(74, 34);
+            this.FevSaidasTextBox.Location = new System.Drawing.Point(54, 34);
             this.FevSaidasTextBox.MaxLength = 10;
             this.FevSaidasTextBox.Name = "FevSaidasTextBox";
-            this.FevSaidasTextBox.Size = new System.Drawing.Size(70, 20);
+            this.FevSaidasTextBox.Size = new System.Drawing.Size(49, 18);
             this.FevSaidasTextBox.TabIndex = 46;
             this.FevSaidasTextBox.Text = "0";
             // 
@@ -1031,7 +1032,7 @@
             this.label31.AutoSize = true;
             this.label31.Location = new System.Drawing.Point(1, 16);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(52, 16);
+            this.label31.Size = new System.Drawing.Size(45, 15);
             this.label31.TabIndex = 35;
             this.label31.Text = "Entradas";
             // 
@@ -1042,34 +1043,34 @@
             this.FevEntradasTextBox.Location = new System.Drawing.Point(3, 34);
             this.FevEntradasTextBox.MaxLength = 10;
             this.FevEntradasTextBox.Name = "FevEntradasTextBox";
-            this.FevEntradasTextBox.Size = new System.Drawing.Size(70, 20);
+            this.FevEntradasTextBox.Size = new System.Drawing.Size(49, 18);
             this.FevEntradasTextBox.TabIndex = 39;
             this.FevEntradasTextBox.Text = "0";
             // 
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(74, 16);
+            this.label32.Location = new System.Drawing.Point(54, 16);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(38, 16);
+            this.label32.Size = new System.Drawing.Size(33, 15);
             this.label32.TabIndex = 38;
             this.label32.Text = "Saídas";
             // 
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(145, 16);
+            this.label33.Location = new System.Drawing.Point(105, 16);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(53, 16);
+            this.label33.Size = new System.Drawing.Size(46, 15);
             this.label33.TabIndex = 41;
             this.label33.Text = "Faturado";
             // 
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(216, 16);
+            this.label34.Location = new System.Drawing.Point(156, 16);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(36, 16);
+            this.label34.Size = new System.Drawing.Size(31, 15);
             this.label34.TabIndex = 45;
             this.label34.Text = "Lucro";
             // 
@@ -1083,10 +1084,10 @@
             this.groupBox7.Controls.Add(this.label28);
             this.groupBox7.Controls.Add(this.label29);
             this.groupBox7.Controls.Add(this.label30);
-            this.groupBox7.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox7.Location = new System.Drawing.Point(6, 192);
+            this.groupBox7.Font = new System.Drawing.Font("Trebuchet MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox7.Location = new System.Drawing.Point(8, 194);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(293, 58);
+            this.groupBox7.Size = new System.Drawing.Size(230, 58);
             this.groupBox7.TabIndex = 70;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Março";
@@ -1095,10 +1096,10 @@
             // 
             this.MarLucroTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.MarLucroTextBox.Enabled = false;
-            this.MarLucroTextBox.Location = new System.Drawing.Point(216, 34);
+            this.MarLucroTextBox.Location = new System.Drawing.Point(156, 34);
             this.MarLucroTextBox.MaxLength = 10;
             this.MarLucroTextBox.Name = "MarLucroTextBox";
-            this.MarLucroTextBox.Size = new System.Drawing.Size(70, 20);
+            this.MarLucroTextBox.Size = new System.Drawing.Size(49, 18);
             this.MarLucroTextBox.TabIndex = 48;
             this.MarLucroTextBox.Text = "0";
             // 
@@ -1106,10 +1107,10 @@
             // 
             this.MarFaturadoTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.MarFaturadoTextBox.Enabled = false;
-            this.MarFaturadoTextBox.Location = new System.Drawing.Point(145, 34);
+            this.MarFaturadoTextBox.Location = new System.Drawing.Point(105, 34);
             this.MarFaturadoTextBox.MaxLength = 10;
             this.MarFaturadoTextBox.Name = "MarFaturadoTextBox";
-            this.MarFaturadoTextBox.Size = new System.Drawing.Size(70, 20);
+            this.MarFaturadoTextBox.Size = new System.Drawing.Size(49, 18);
             this.MarFaturadoTextBox.TabIndex = 47;
             this.MarFaturadoTextBox.Text = "0";
             // 
@@ -1117,10 +1118,10 @@
             // 
             this.MarSaidasTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.MarSaidasTextBox.Enabled = false;
-            this.MarSaidasTextBox.Location = new System.Drawing.Point(74, 34);
+            this.MarSaidasTextBox.Location = new System.Drawing.Point(54, 34);
             this.MarSaidasTextBox.MaxLength = 10;
             this.MarSaidasTextBox.Name = "MarSaidasTextBox";
-            this.MarSaidasTextBox.Size = new System.Drawing.Size(70, 20);
+            this.MarSaidasTextBox.Size = new System.Drawing.Size(49, 18);
             this.MarSaidasTextBox.TabIndex = 46;
             this.MarSaidasTextBox.Text = "0";
             // 
@@ -1129,7 +1130,7 @@
             this.label27.AutoSize = true;
             this.label27.Location = new System.Drawing.Point(1, 16);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(52, 16);
+            this.label27.Size = new System.Drawing.Size(45, 15);
             this.label27.TabIndex = 35;
             this.label27.Text = "Entradas";
             // 
@@ -1140,34 +1141,34 @@
             this.MarEntradasTextBox.Location = new System.Drawing.Point(3, 34);
             this.MarEntradasTextBox.MaxLength = 10;
             this.MarEntradasTextBox.Name = "MarEntradasTextBox";
-            this.MarEntradasTextBox.Size = new System.Drawing.Size(70, 20);
+            this.MarEntradasTextBox.Size = new System.Drawing.Size(49, 18);
             this.MarEntradasTextBox.TabIndex = 39;
             this.MarEntradasTextBox.Text = "0";
             // 
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(74, 16);
+            this.label28.Location = new System.Drawing.Point(54, 16);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(38, 16);
+            this.label28.Size = new System.Drawing.Size(33, 15);
             this.label28.TabIndex = 38;
             this.label28.Text = "Saídas";
             // 
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(145, 16);
+            this.label29.Location = new System.Drawing.Point(105, 16);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(53, 16);
+            this.label29.Size = new System.Drawing.Size(46, 15);
             this.label29.TabIndex = 41;
             this.label29.Text = "Faturado";
             // 
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(216, 16);
+            this.label30.Location = new System.Drawing.Point(156, 16);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(36, 16);
+            this.label30.Size = new System.Drawing.Size(31, 15);
             this.label30.TabIndex = 45;
             this.label30.Text = "Lucro";
             // 
@@ -1181,10 +1182,10 @@
             this.groupBox6.Controls.Add(this.label24);
             this.groupBox6.Controls.Add(this.label25);
             this.groupBox6.Controls.Add(this.label26);
-            this.groupBox6.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox6.Location = new System.Drawing.Point(6, 256);
+            this.groupBox6.Font = new System.Drawing.Font("Trebuchet MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox6.Location = new System.Drawing.Point(8, 258);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(293, 58);
+            this.groupBox6.Size = new System.Drawing.Size(230, 58);
             this.groupBox6.TabIndex = 69;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Abril";
@@ -1193,10 +1194,10 @@
             // 
             this.AbrLucroTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.AbrLucroTextBox.Enabled = false;
-            this.AbrLucroTextBox.Location = new System.Drawing.Point(216, 34);
+            this.AbrLucroTextBox.Location = new System.Drawing.Point(156, 34);
             this.AbrLucroTextBox.MaxLength = 10;
             this.AbrLucroTextBox.Name = "AbrLucroTextBox";
-            this.AbrLucroTextBox.Size = new System.Drawing.Size(70, 20);
+            this.AbrLucroTextBox.Size = new System.Drawing.Size(49, 18);
             this.AbrLucroTextBox.TabIndex = 48;
             this.AbrLucroTextBox.Text = "0";
             // 
@@ -1204,10 +1205,10 @@
             // 
             this.AbrFaturadoTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.AbrFaturadoTextBox.Enabled = false;
-            this.AbrFaturadoTextBox.Location = new System.Drawing.Point(145, 34);
+            this.AbrFaturadoTextBox.Location = new System.Drawing.Point(105, 34);
             this.AbrFaturadoTextBox.MaxLength = 10;
             this.AbrFaturadoTextBox.Name = "AbrFaturadoTextBox";
-            this.AbrFaturadoTextBox.Size = new System.Drawing.Size(70, 20);
+            this.AbrFaturadoTextBox.Size = new System.Drawing.Size(49, 18);
             this.AbrFaturadoTextBox.TabIndex = 47;
             this.AbrFaturadoTextBox.Text = "0";
             // 
@@ -1215,10 +1216,10 @@
             // 
             this.AbrSaidasTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.AbrSaidasTextBox.Enabled = false;
-            this.AbrSaidasTextBox.Location = new System.Drawing.Point(74, 34);
+            this.AbrSaidasTextBox.Location = new System.Drawing.Point(54, 34);
             this.AbrSaidasTextBox.MaxLength = 10;
             this.AbrSaidasTextBox.Name = "AbrSaidasTextBox";
-            this.AbrSaidasTextBox.Size = new System.Drawing.Size(70, 20);
+            this.AbrSaidasTextBox.Size = new System.Drawing.Size(49, 18);
             this.AbrSaidasTextBox.TabIndex = 46;
             this.AbrSaidasTextBox.Text = "0";
             // 
@@ -1227,7 +1228,7 @@
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(1, 16);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(52, 16);
+            this.label23.Size = new System.Drawing.Size(45, 15);
             this.label23.TabIndex = 35;
             this.label23.Text = "Entradas";
             // 
@@ -1238,34 +1239,34 @@
             this.AbrEntradasTextBox.Location = new System.Drawing.Point(3, 34);
             this.AbrEntradasTextBox.MaxLength = 10;
             this.AbrEntradasTextBox.Name = "AbrEntradasTextBox";
-            this.AbrEntradasTextBox.Size = new System.Drawing.Size(70, 20);
+            this.AbrEntradasTextBox.Size = new System.Drawing.Size(49, 18);
             this.AbrEntradasTextBox.TabIndex = 39;
             this.AbrEntradasTextBox.Text = "0";
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(74, 16);
+            this.label24.Location = new System.Drawing.Point(54, 16);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(38, 16);
+            this.label24.Size = new System.Drawing.Size(33, 15);
             this.label24.TabIndex = 38;
             this.label24.Text = "Saídas";
             // 
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(145, 16);
+            this.label25.Location = new System.Drawing.Point(105, 16);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(53, 16);
+            this.label25.Size = new System.Drawing.Size(46, 15);
             this.label25.TabIndex = 41;
             this.label25.Text = "Faturado";
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(216, 16);
+            this.label26.Location = new System.Drawing.Point(156, 16);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(36, 16);
+            this.label26.Size = new System.Drawing.Size(31, 15);
             this.label26.TabIndex = 45;
             this.label26.Text = "Lucro";
             // 
@@ -1279,10 +1280,10 @@
             this.groupBox5.Controls.Add(this.label19);
             this.groupBox5.Controls.Add(this.label20);
             this.groupBox5.Controls.Add(this.label21);
-            this.groupBox5.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox5.Location = new System.Drawing.Point(6, 320);
+            this.groupBox5.Font = new System.Drawing.Font("Trebuchet MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox5.Location = new System.Drawing.Point(8, 322);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(293, 58);
+            this.groupBox5.Size = new System.Drawing.Size(230, 58);
             this.groupBox5.TabIndex = 68;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Maio";
@@ -1291,10 +1292,10 @@
             // 
             this.MaiLucroTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.MaiLucroTextBox.Enabled = false;
-            this.MaiLucroTextBox.Location = new System.Drawing.Point(216, 34);
+            this.MaiLucroTextBox.Location = new System.Drawing.Point(156, 34);
             this.MaiLucroTextBox.MaxLength = 10;
             this.MaiLucroTextBox.Name = "MaiLucroTextBox";
-            this.MaiLucroTextBox.Size = new System.Drawing.Size(70, 20);
+            this.MaiLucroTextBox.Size = new System.Drawing.Size(49, 18);
             this.MaiLucroTextBox.TabIndex = 48;
             this.MaiLucroTextBox.Text = "0";
             // 
@@ -1302,10 +1303,10 @@
             // 
             this.MaiFaturadoTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.MaiFaturadoTextBox.Enabled = false;
-            this.MaiFaturadoTextBox.Location = new System.Drawing.Point(145, 34);
+            this.MaiFaturadoTextBox.Location = new System.Drawing.Point(105, 34);
             this.MaiFaturadoTextBox.MaxLength = 10;
             this.MaiFaturadoTextBox.Name = "MaiFaturadoTextBox";
-            this.MaiFaturadoTextBox.Size = new System.Drawing.Size(70, 20);
+            this.MaiFaturadoTextBox.Size = new System.Drawing.Size(49, 18);
             this.MaiFaturadoTextBox.TabIndex = 47;
             this.MaiFaturadoTextBox.Text = "0";
             // 
@@ -1313,10 +1314,10 @@
             // 
             this.MaiSaidasTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.MaiSaidasTextBox.Enabled = false;
-            this.MaiSaidasTextBox.Location = new System.Drawing.Point(74, 34);
+            this.MaiSaidasTextBox.Location = new System.Drawing.Point(54, 34);
             this.MaiSaidasTextBox.MaxLength = 10;
             this.MaiSaidasTextBox.Name = "MaiSaidasTextBox";
-            this.MaiSaidasTextBox.Size = new System.Drawing.Size(70, 20);
+            this.MaiSaidasTextBox.Size = new System.Drawing.Size(49, 18);
             this.MaiSaidasTextBox.TabIndex = 46;
             this.MaiSaidasTextBox.Text = "0";
             // 
@@ -1325,7 +1326,7 @@
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(1, 16);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(52, 16);
+            this.label13.Size = new System.Drawing.Size(45, 15);
             this.label13.TabIndex = 35;
             this.label13.Text = "Entradas";
             // 
@@ -1336,34 +1337,34 @@
             this.MaiEntradasTextBox.Location = new System.Drawing.Point(3, 34);
             this.MaiEntradasTextBox.MaxLength = 10;
             this.MaiEntradasTextBox.Name = "MaiEntradasTextBox";
-            this.MaiEntradasTextBox.Size = new System.Drawing.Size(70, 20);
+            this.MaiEntradasTextBox.Size = new System.Drawing.Size(49, 18);
             this.MaiEntradasTextBox.TabIndex = 39;
             this.MaiEntradasTextBox.Text = "0";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(74, 16);
+            this.label19.Location = new System.Drawing.Point(54, 16);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(38, 16);
+            this.label19.Size = new System.Drawing.Size(33, 15);
             this.label19.TabIndex = 38;
             this.label19.Text = "Saídas";
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(145, 16);
+            this.label20.Location = new System.Drawing.Point(105, 16);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(53, 16);
+            this.label20.Size = new System.Drawing.Size(46, 15);
             this.label20.TabIndex = 41;
             this.label20.Text = "Faturado";
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(216, 16);
+            this.label21.Location = new System.Drawing.Point(156, 16);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(36, 16);
+            this.label21.Size = new System.Drawing.Size(31, 15);
             this.label21.TabIndex = 45;
             this.label21.Text = "Lucro";
             // 
@@ -1377,10 +1378,10 @@
             this.groupBox13.Controls.Add(this.label52);
             this.groupBox13.Controls.Add(this.label53);
             this.groupBox13.Controls.Add(this.label54);
-            this.groupBox13.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox13.Location = new System.Drawing.Point(305, 63);
+            this.groupBox13.Font = new System.Drawing.Font("Trebuchet MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox13.Location = new System.Drawing.Point(247, 66);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(293, 58);
+            this.groupBox13.Size = new System.Drawing.Size(225, 58);
             this.groupBox13.TabIndex = 66;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Julho";
@@ -1389,10 +1390,10 @@
             // 
             this.JulLucroTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.JulLucroTextBox.Enabled = false;
-            this.JulLucroTextBox.Location = new System.Drawing.Point(216, 34);
+            this.JulLucroTextBox.Location = new System.Drawing.Point(170, 34);
             this.JulLucroTextBox.MaxLength = 10;
             this.JulLucroTextBox.Name = "JulLucroTextBox";
-            this.JulLucroTextBox.Size = new System.Drawing.Size(70, 20);
+            this.JulLucroTextBox.Size = new System.Drawing.Size(53, 18);
             this.JulLucroTextBox.TabIndex = 48;
             this.JulLucroTextBox.Text = "0";
             // 
@@ -1400,10 +1401,10 @@
             // 
             this.JulFaturadoTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.JulFaturadoTextBox.Enabled = false;
-            this.JulFaturadoTextBox.Location = new System.Drawing.Point(145, 34);
+            this.JulFaturadoTextBox.Location = new System.Drawing.Point(114, 34);
             this.JulFaturadoTextBox.MaxLength = 10;
             this.JulFaturadoTextBox.Name = "JulFaturadoTextBox";
-            this.JulFaturadoTextBox.Size = new System.Drawing.Size(70, 20);
+            this.JulFaturadoTextBox.Size = new System.Drawing.Size(53, 18);
             this.JulFaturadoTextBox.TabIndex = 47;
             this.JulFaturadoTextBox.Text = "0";
             // 
@@ -1411,10 +1412,10 @@
             // 
             this.JulSaidasTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.JulSaidasTextBox.Enabled = false;
-            this.JulSaidasTextBox.Location = new System.Drawing.Point(74, 34);
+            this.JulSaidasTextBox.Location = new System.Drawing.Point(58, 34);
             this.JulSaidasTextBox.MaxLength = 10;
             this.JulSaidasTextBox.Name = "JulSaidasTextBox";
-            this.JulSaidasTextBox.Size = new System.Drawing.Size(70, 20);
+            this.JulSaidasTextBox.Size = new System.Drawing.Size(53, 18);
             this.JulSaidasTextBox.TabIndex = 46;
             this.JulSaidasTextBox.Text = "0";
             // 
@@ -1423,7 +1424,7 @@
             this.label51.AutoSize = true;
             this.label51.Location = new System.Drawing.Point(1, 16);
             this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(52, 16);
+            this.label51.Size = new System.Drawing.Size(45, 15);
             this.label51.TabIndex = 35;
             this.label51.Text = "Entradas";
             // 
@@ -1434,34 +1435,34 @@
             this.JulEntradasTextBox.Location = new System.Drawing.Point(3, 34);
             this.JulEntradasTextBox.MaxLength = 10;
             this.JulEntradasTextBox.Name = "JulEntradasTextBox";
-            this.JulEntradasTextBox.Size = new System.Drawing.Size(70, 20);
+            this.JulEntradasTextBox.Size = new System.Drawing.Size(53, 18);
             this.JulEntradasTextBox.TabIndex = 39;
             this.JulEntradasTextBox.Text = "0";
             // 
             // label52
             // 
             this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(74, 16);
+            this.label52.Location = new System.Drawing.Point(58, 16);
             this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(38, 16);
+            this.label52.Size = new System.Drawing.Size(33, 15);
             this.label52.TabIndex = 38;
             this.label52.Text = "Saídas";
             // 
             // label53
             // 
             this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(145, 16);
+            this.label53.Location = new System.Drawing.Point(114, 16);
             this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(53, 16);
+            this.label53.Size = new System.Drawing.Size(46, 15);
             this.label53.TabIndex = 41;
             this.label53.Text = "Faturado";
             // 
             // label54
             // 
             this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(216, 16);
+            this.label54.Location = new System.Drawing.Point(170, 16);
             this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(36, 16);
+            this.label54.Size = new System.Drawing.Size(31, 15);
             this.label54.TabIndex = 45;
             this.label54.Text = "Lucro";
             // 
@@ -1475,10 +1476,10 @@
             this.groupBox12.Controls.Add(this.label48);
             this.groupBox12.Controls.Add(this.label49);
             this.groupBox12.Controls.Add(this.label50);
-            this.groupBox12.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox12.Location = new System.Drawing.Point(305, 128);
+            this.groupBox12.Font = new System.Drawing.Font("Trebuchet MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox12.Location = new System.Drawing.Point(247, 131);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(293, 58);
+            this.groupBox12.Size = new System.Drawing.Size(225, 58);
             this.groupBox12.TabIndex = 66;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Agosto";
@@ -1487,10 +1488,10 @@
             // 
             this.AgoLucroTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.AgoLucroTextBox.Enabled = false;
-            this.AgoLucroTextBox.Location = new System.Drawing.Point(216, 34);
+            this.AgoLucroTextBox.Location = new System.Drawing.Point(156, 34);
             this.AgoLucroTextBox.MaxLength = 10;
             this.AgoLucroTextBox.Name = "AgoLucroTextBox";
-            this.AgoLucroTextBox.Size = new System.Drawing.Size(70, 20);
+            this.AgoLucroTextBox.Size = new System.Drawing.Size(49, 18);
             this.AgoLucroTextBox.TabIndex = 48;
             this.AgoLucroTextBox.Text = "0";
             // 
@@ -1498,10 +1499,10 @@
             // 
             this.AgoFaturadoTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.AgoFaturadoTextBox.Enabled = false;
-            this.AgoFaturadoTextBox.Location = new System.Drawing.Point(145, 34);
+            this.AgoFaturadoTextBox.Location = new System.Drawing.Point(105, 34);
             this.AgoFaturadoTextBox.MaxLength = 10;
             this.AgoFaturadoTextBox.Name = "AgoFaturadoTextBox";
-            this.AgoFaturadoTextBox.Size = new System.Drawing.Size(70, 20);
+            this.AgoFaturadoTextBox.Size = new System.Drawing.Size(49, 18);
             this.AgoFaturadoTextBox.TabIndex = 47;
             this.AgoFaturadoTextBox.Text = "0";
             // 
@@ -1509,10 +1510,10 @@
             // 
             this.AgoSaidasTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.AgoSaidasTextBox.Enabled = false;
-            this.AgoSaidasTextBox.Location = new System.Drawing.Point(74, 34);
+            this.AgoSaidasTextBox.Location = new System.Drawing.Point(54, 34);
             this.AgoSaidasTextBox.MaxLength = 10;
             this.AgoSaidasTextBox.Name = "AgoSaidasTextBox";
-            this.AgoSaidasTextBox.Size = new System.Drawing.Size(70, 20);
+            this.AgoSaidasTextBox.Size = new System.Drawing.Size(49, 18);
             this.AgoSaidasTextBox.TabIndex = 46;
             this.AgoSaidasTextBox.Text = "0";
             // 
@@ -1521,7 +1522,7 @@
             this.label47.AutoSize = true;
             this.label47.Location = new System.Drawing.Point(1, 16);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(52, 16);
+            this.label47.Size = new System.Drawing.Size(45, 15);
             this.label47.TabIndex = 35;
             this.label47.Text = "Entradas";
             // 
@@ -1532,34 +1533,34 @@
             this.AgoEntradasTextBox.Location = new System.Drawing.Point(3, 34);
             this.AgoEntradasTextBox.MaxLength = 10;
             this.AgoEntradasTextBox.Name = "AgoEntradasTextBox";
-            this.AgoEntradasTextBox.Size = new System.Drawing.Size(70, 20);
+            this.AgoEntradasTextBox.Size = new System.Drawing.Size(49, 18);
             this.AgoEntradasTextBox.TabIndex = 39;
             this.AgoEntradasTextBox.Text = "0";
             // 
             // label48
             // 
             this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(74, 16);
+            this.label48.Location = new System.Drawing.Point(54, 16);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(38, 16);
+            this.label48.Size = new System.Drawing.Size(33, 15);
             this.label48.TabIndex = 38;
             this.label48.Text = "Saídas";
             // 
             // label49
             // 
             this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(145, 16);
+            this.label49.Location = new System.Drawing.Point(105, 16);
             this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(53, 16);
+            this.label49.Size = new System.Drawing.Size(46, 15);
             this.label49.TabIndex = 41;
             this.label49.Text = "Faturado";
             // 
             // label50
             // 
             this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(216, 16);
+            this.label50.Location = new System.Drawing.Point(156, 16);
             this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(36, 16);
+            this.label50.Size = new System.Drawing.Size(31, 15);
             this.label50.TabIndex = 45;
             this.label50.Text = "Lucro";
             // 
@@ -1573,10 +1574,10 @@
             this.groupBox11.Controls.Add(this.label44);
             this.groupBox11.Controls.Add(this.label45);
             this.groupBox11.Controls.Add(this.label46);
-            this.groupBox11.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox11.Location = new System.Drawing.Point(305, 192);
+            this.groupBox11.Font = new System.Drawing.Font("Trebuchet MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox11.Location = new System.Drawing.Point(247, 195);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(293, 58);
+            this.groupBox11.Size = new System.Drawing.Size(225, 58);
             this.groupBox11.TabIndex = 66;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Setembro";
@@ -1585,10 +1586,10 @@
             // 
             this.SetLucroTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.SetLucroTextBox.Enabled = false;
-            this.SetLucroTextBox.Location = new System.Drawing.Point(216, 34);
+            this.SetLucroTextBox.Location = new System.Drawing.Point(156, 34);
             this.SetLucroTextBox.MaxLength = 10;
             this.SetLucroTextBox.Name = "SetLucroTextBox";
-            this.SetLucroTextBox.Size = new System.Drawing.Size(70, 20);
+            this.SetLucroTextBox.Size = new System.Drawing.Size(49, 18);
             this.SetLucroTextBox.TabIndex = 48;
             this.SetLucroTextBox.Text = "0";
             // 
@@ -1596,10 +1597,10 @@
             // 
             this.SetFaturadoTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.SetFaturadoTextBox.Enabled = false;
-            this.SetFaturadoTextBox.Location = new System.Drawing.Point(145, 34);
+            this.SetFaturadoTextBox.Location = new System.Drawing.Point(105, 34);
             this.SetFaturadoTextBox.MaxLength = 10;
             this.SetFaturadoTextBox.Name = "SetFaturadoTextBox";
-            this.SetFaturadoTextBox.Size = new System.Drawing.Size(70, 20);
+            this.SetFaturadoTextBox.Size = new System.Drawing.Size(49, 18);
             this.SetFaturadoTextBox.TabIndex = 47;
             this.SetFaturadoTextBox.Text = "0";
             // 
@@ -1607,10 +1608,10 @@
             // 
             this.SetSaidasTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.SetSaidasTextBox.Enabled = false;
-            this.SetSaidasTextBox.Location = new System.Drawing.Point(74, 34);
+            this.SetSaidasTextBox.Location = new System.Drawing.Point(54, 34);
             this.SetSaidasTextBox.MaxLength = 10;
             this.SetSaidasTextBox.Name = "SetSaidasTextBox";
-            this.SetSaidasTextBox.Size = new System.Drawing.Size(70, 20);
+            this.SetSaidasTextBox.Size = new System.Drawing.Size(49, 18);
             this.SetSaidasTextBox.TabIndex = 46;
             this.SetSaidasTextBox.Text = "0";
             // 
@@ -1619,7 +1620,7 @@
             this.label43.AutoSize = true;
             this.label43.Location = new System.Drawing.Point(1, 16);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(52, 16);
+            this.label43.Size = new System.Drawing.Size(45, 15);
             this.label43.TabIndex = 35;
             this.label43.Text = "Entradas";
             // 
@@ -1630,34 +1631,34 @@
             this.SetEntradasTextBox.Location = new System.Drawing.Point(3, 34);
             this.SetEntradasTextBox.MaxLength = 10;
             this.SetEntradasTextBox.Name = "SetEntradasTextBox";
-            this.SetEntradasTextBox.Size = new System.Drawing.Size(70, 20);
+            this.SetEntradasTextBox.Size = new System.Drawing.Size(49, 18);
             this.SetEntradasTextBox.TabIndex = 39;
             this.SetEntradasTextBox.Text = "0";
             // 
             // label44
             // 
             this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(74, 16);
+            this.label44.Location = new System.Drawing.Point(54, 16);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(38, 16);
+            this.label44.Size = new System.Drawing.Size(33, 15);
             this.label44.TabIndex = 38;
             this.label44.Text = "Saídas";
             // 
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(145, 16);
+            this.label45.Location = new System.Drawing.Point(105, 16);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(53, 16);
+            this.label45.Size = new System.Drawing.Size(46, 15);
             this.label45.TabIndex = 41;
             this.label45.Text = "Faturado";
             // 
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(216, 16);
+            this.label46.Location = new System.Drawing.Point(156, 16);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(36, 16);
+            this.label46.Size = new System.Drawing.Size(31, 15);
             this.label46.TabIndex = 45;
             this.label46.Text = "Lucro";
             // 
@@ -1671,10 +1672,10 @@
             this.groupBox10.Controls.Add(this.label40);
             this.groupBox10.Controls.Add(this.label41);
             this.groupBox10.Controls.Add(this.label42);
-            this.groupBox10.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox10.Location = new System.Drawing.Point(305, 256);
+            this.groupBox10.Font = new System.Drawing.Font("Trebuchet MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox10.Location = new System.Drawing.Point(247, 259);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(293, 58);
+            this.groupBox10.Size = new System.Drawing.Size(225, 58);
             this.groupBox10.TabIndex = 67;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Outubro";
@@ -1683,10 +1684,10 @@
             // 
             this.OutLucroTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.OutLucroTextBox.Enabled = false;
-            this.OutLucroTextBox.Location = new System.Drawing.Point(216, 34);
+            this.OutLucroTextBox.Location = new System.Drawing.Point(156, 34);
             this.OutLucroTextBox.MaxLength = 10;
             this.OutLucroTextBox.Name = "OutLucroTextBox";
-            this.OutLucroTextBox.Size = new System.Drawing.Size(70, 20);
+            this.OutLucroTextBox.Size = new System.Drawing.Size(49, 18);
             this.OutLucroTextBox.TabIndex = 48;
             this.OutLucroTextBox.Text = "0";
             // 
@@ -1694,10 +1695,10 @@
             // 
             this.OutFaturadoTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.OutFaturadoTextBox.Enabled = false;
-            this.OutFaturadoTextBox.Location = new System.Drawing.Point(145, 34);
+            this.OutFaturadoTextBox.Location = new System.Drawing.Point(105, 34);
             this.OutFaturadoTextBox.MaxLength = 10;
             this.OutFaturadoTextBox.Name = "OutFaturadoTextBox";
-            this.OutFaturadoTextBox.Size = new System.Drawing.Size(70, 20);
+            this.OutFaturadoTextBox.Size = new System.Drawing.Size(49, 18);
             this.OutFaturadoTextBox.TabIndex = 47;
             this.OutFaturadoTextBox.Text = "0";
             // 
@@ -1705,10 +1706,10 @@
             // 
             this.OutSaidasTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.OutSaidasTextBox.Enabled = false;
-            this.OutSaidasTextBox.Location = new System.Drawing.Point(74, 34);
+            this.OutSaidasTextBox.Location = new System.Drawing.Point(54, 34);
             this.OutSaidasTextBox.MaxLength = 10;
             this.OutSaidasTextBox.Name = "OutSaidasTextBox";
-            this.OutSaidasTextBox.Size = new System.Drawing.Size(70, 20);
+            this.OutSaidasTextBox.Size = new System.Drawing.Size(49, 18);
             this.OutSaidasTextBox.TabIndex = 46;
             this.OutSaidasTextBox.Text = "0";
             // 
@@ -1717,7 +1718,7 @@
             this.label39.AutoSize = true;
             this.label39.Location = new System.Drawing.Point(1, 16);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(52, 16);
+            this.label39.Size = new System.Drawing.Size(45, 15);
             this.label39.TabIndex = 35;
             this.label39.Text = "Entradas";
             // 
@@ -1728,34 +1729,34 @@
             this.OutEntradasTextBox.Location = new System.Drawing.Point(3, 34);
             this.OutEntradasTextBox.MaxLength = 10;
             this.OutEntradasTextBox.Name = "OutEntradasTextBox";
-            this.OutEntradasTextBox.Size = new System.Drawing.Size(70, 20);
+            this.OutEntradasTextBox.Size = new System.Drawing.Size(49, 18);
             this.OutEntradasTextBox.TabIndex = 39;
             this.OutEntradasTextBox.Text = "0";
             // 
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(74, 16);
+            this.label40.Location = new System.Drawing.Point(54, 16);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(38, 16);
+            this.label40.Size = new System.Drawing.Size(33, 15);
             this.label40.TabIndex = 38;
             this.label40.Text = "Saídas";
             // 
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(145, 16);
+            this.label41.Location = new System.Drawing.Point(105, 16);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(53, 16);
+            this.label41.Size = new System.Drawing.Size(46, 15);
             this.label41.TabIndex = 41;
             this.label41.Text = "Faturado";
             // 
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(216, 16);
+            this.label42.Location = new System.Drawing.Point(156, 16);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(36, 16);
+            this.label42.Size = new System.Drawing.Size(31, 15);
             this.label42.TabIndex = 45;
             this.label42.Text = "Lucro";
             // 
@@ -1769,10 +1770,10 @@
             this.groupBox9.Controls.Add(this.label36);
             this.groupBox9.Controls.Add(this.label37);
             this.groupBox9.Controls.Add(this.label38);
-            this.groupBox9.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox9.Location = new System.Drawing.Point(6, 381);
+            this.groupBox9.Font = new System.Drawing.Font("Trebuchet MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox9.Location = new System.Drawing.Point(8, 383);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(293, 58);
+            this.groupBox9.Size = new System.Drawing.Size(230, 58);
             this.groupBox9.TabIndex = 66;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Junho";
@@ -1781,10 +1782,10 @@
             // 
             this.JunLucroTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.JunLucroTextBox.Enabled = false;
-            this.JunLucroTextBox.Location = new System.Drawing.Point(216, 34);
+            this.JunLucroTextBox.Location = new System.Drawing.Point(156, 34);
             this.JunLucroTextBox.MaxLength = 10;
             this.JunLucroTextBox.Name = "JunLucroTextBox";
-            this.JunLucroTextBox.Size = new System.Drawing.Size(70, 20);
+            this.JunLucroTextBox.Size = new System.Drawing.Size(49, 18);
             this.JunLucroTextBox.TabIndex = 48;
             this.JunLucroTextBox.Text = "0";
             // 
@@ -1792,10 +1793,10 @@
             // 
             this.JunFaturadoTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.JunFaturadoTextBox.Enabled = false;
-            this.JunFaturadoTextBox.Location = new System.Drawing.Point(145, 34);
+            this.JunFaturadoTextBox.Location = new System.Drawing.Point(105, 34);
             this.JunFaturadoTextBox.MaxLength = 10;
             this.JunFaturadoTextBox.Name = "JunFaturadoTextBox";
-            this.JunFaturadoTextBox.Size = new System.Drawing.Size(70, 20);
+            this.JunFaturadoTextBox.Size = new System.Drawing.Size(49, 18);
             this.JunFaturadoTextBox.TabIndex = 47;
             this.JunFaturadoTextBox.Text = "0";
             // 
@@ -1803,10 +1804,10 @@
             // 
             this.JunSaidasTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.JunSaidasTextBox.Enabled = false;
-            this.JunSaidasTextBox.Location = new System.Drawing.Point(74, 34);
+            this.JunSaidasTextBox.Location = new System.Drawing.Point(54, 34);
             this.JunSaidasTextBox.MaxLength = 10;
             this.JunSaidasTextBox.Name = "JunSaidasTextBox";
-            this.JunSaidasTextBox.Size = new System.Drawing.Size(70, 20);
+            this.JunSaidasTextBox.Size = new System.Drawing.Size(49, 18);
             this.JunSaidasTextBox.TabIndex = 46;
             this.JunSaidasTextBox.Text = "0";
             // 
@@ -1815,7 +1816,7 @@
             this.label35.AutoSize = true;
             this.label35.Location = new System.Drawing.Point(1, 16);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(52, 16);
+            this.label35.Size = new System.Drawing.Size(45, 15);
             this.label35.TabIndex = 35;
             this.label35.Text = "Entradas";
             // 
@@ -1826,34 +1827,34 @@
             this.JunEntradasTextBox.Location = new System.Drawing.Point(3, 34);
             this.JunEntradasTextBox.MaxLength = 10;
             this.JunEntradasTextBox.Name = "JunEntradasTextBox";
-            this.JunEntradasTextBox.Size = new System.Drawing.Size(70, 20);
+            this.JunEntradasTextBox.Size = new System.Drawing.Size(49, 18);
             this.JunEntradasTextBox.TabIndex = 39;
             this.JunEntradasTextBox.Text = "0";
             // 
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(74, 16);
+            this.label36.Location = new System.Drawing.Point(54, 16);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(38, 16);
+            this.label36.Size = new System.Drawing.Size(33, 15);
             this.label36.TabIndex = 38;
             this.label36.Text = "Saídas";
             // 
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(145, 16);
+            this.label37.Location = new System.Drawing.Point(105, 16);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(53, 16);
+            this.label37.Size = new System.Drawing.Size(46, 15);
             this.label37.TabIndex = 41;
             this.label37.Text = "Faturado";
             // 
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(216, 16);
+            this.label38.Location = new System.Drawing.Point(156, 16);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(36, 16);
+            this.label38.Size = new System.Drawing.Size(31, 15);
             this.label38.TabIndex = 45;
             this.label38.Text = "Lucro";
             // 
@@ -1867,10 +1868,10 @@
             this.groupBox14.Controls.Add(this.label56);
             this.groupBox14.Controls.Add(this.label57);
             this.groupBox14.Controls.Add(this.label58);
-            this.groupBox14.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox14.Location = new System.Drawing.Point(305, 320);
+            this.groupBox14.Font = new System.Drawing.Font("Trebuchet MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox14.Location = new System.Drawing.Point(247, 323);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(293, 58);
+            this.groupBox14.Size = new System.Drawing.Size(225, 58);
             this.groupBox14.TabIndex = 65;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Novembro";
@@ -1879,10 +1880,10 @@
             // 
             this.NovLucroTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.NovLucroTextBox.Enabled = false;
-            this.NovLucroTextBox.Location = new System.Drawing.Point(216, 34);
+            this.NovLucroTextBox.Location = new System.Drawing.Point(156, 34);
             this.NovLucroTextBox.MaxLength = 10;
             this.NovLucroTextBox.Name = "NovLucroTextBox";
-            this.NovLucroTextBox.Size = new System.Drawing.Size(70, 20);
+            this.NovLucroTextBox.Size = new System.Drawing.Size(49, 18);
             this.NovLucroTextBox.TabIndex = 48;
             this.NovLucroTextBox.Text = "0";
             // 
@@ -1890,10 +1891,10 @@
             // 
             this.NovFaturadoTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.NovFaturadoTextBox.Enabled = false;
-            this.NovFaturadoTextBox.Location = new System.Drawing.Point(145, 34);
+            this.NovFaturadoTextBox.Location = new System.Drawing.Point(105, 34);
             this.NovFaturadoTextBox.MaxLength = 10;
             this.NovFaturadoTextBox.Name = "NovFaturadoTextBox";
-            this.NovFaturadoTextBox.Size = new System.Drawing.Size(70, 20);
+            this.NovFaturadoTextBox.Size = new System.Drawing.Size(49, 18);
             this.NovFaturadoTextBox.TabIndex = 47;
             this.NovFaturadoTextBox.Text = "0";
             // 
@@ -1901,10 +1902,10 @@
             // 
             this.NovSaidasTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.NovSaidasTextBox.Enabled = false;
-            this.NovSaidasTextBox.Location = new System.Drawing.Point(74, 34);
+            this.NovSaidasTextBox.Location = new System.Drawing.Point(54, 34);
             this.NovSaidasTextBox.MaxLength = 10;
             this.NovSaidasTextBox.Name = "NovSaidasTextBox";
-            this.NovSaidasTextBox.Size = new System.Drawing.Size(70, 20);
+            this.NovSaidasTextBox.Size = new System.Drawing.Size(49, 18);
             this.NovSaidasTextBox.TabIndex = 46;
             this.NovSaidasTextBox.Text = "0";
             // 
@@ -1913,7 +1914,7 @@
             this.label55.AutoSize = true;
             this.label55.Location = new System.Drawing.Point(1, 16);
             this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(52, 16);
+            this.label55.Size = new System.Drawing.Size(45, 15);
             this.label55.TabIndex = 35;
             this.label55.Text = "Entradas";
             // 
@@ -1924,41 +1925,41 @@
             this.NovEntradasTextBox.Location = new System.Drawing.Point(3, 34);
             this.NovEntradasTextBox.MaxLength = 10;
             this.NovEntradasTextBox.Name = "NovEntradasTextBox";
-            this.NovEntradasTextBox.Size = new System.Drawing.Size(70, 20);
+            this.NovEntradasTextBox.Size = new System.Drawing.Size(49, 18);
             this.NovEntradasTextBox.TabIndex = 39;
             this.NovEntradasTextBox.Text = "0";
             // 
             // label56
             // 
             this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(74, 16);
+            this.label56.Location = new System.Drawing.Point(54, 16);
             this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(38, 16);
+            this.label56.Size = new System.Drawing.Size(33, 15);
             this.label56.TabIndex = 38;
             this.label56.Text = "Saídas";
             // 
             // label57
             // 
             this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(145, 16);
+            this.label57.Location = new System.Drawing.Point(105, 16);
             this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(53, 16);
+            this.label57.Size = new System.Drawing.Size(46, 15);
             this.label57.TabIndex = 41;
             this.label57.Text = "Faturado";
             // 
             // label58
             // 
             this.label58.AutoSize = true;
-            this.label58.Location = new System.Drawing.Point(216, 16);
+            this.label58.Location = new System.Drawing.Point(156, 16);
             this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(36, 16);
+            this.label58.Size = new System.Drawing.Size(31, 15);
             this.label58.TabIndex = 45;
             this.label58.Text = "Lucro";
             // 
             // label67
             // 
             this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(12, 17);
+            this.label67.Location = new System.Drawing.Point(8, 19);
             this.label67.Name = "label67";
             this.label67.Size = new System.Drawing.Size(30, 18);
             this.label67.TabIndex = 64;
@@ -1975,7 +1976,7 @@
             "2021",
             "2022",
             "2023"});
-            this.AnoComboBox.Location = new System.Drawing.Point(5, 38);
+            this.AnoComboBox.Location = new System.Drawing.Point(8, 37);
             this.AnoComboBox.Name = "AnoComboBox";
             this.AnoComboBox.Size = new System.Drawing.Size(85, 26);
             this.AnoComboBox.TabIndex = 63;
@@ -1991,10 +1992,10 @@
             this.groupBox16.Controls.Add(this.label64);
             this.groupBox16.Controls.Add(this.label65);
             this.groupBox16.Controls.Add(this.label66);
-            this.groupBox16.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox16.Location = new System.Drawing.Point(304, 381);
+            this.groupBox16.Font = new System.Drawing.Font("Trebuchet MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox16.Location = new System.Drawing.Point(246, 384);
             this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(293, 58);
+            this.groupBox16.Size = new System.Drawing.Size(226, 58);
             this.groupBox16.TabIndex = 62;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Dezembro";
@@ -2003,10 +2004,10 @@
             // 
             this.DezLucroTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.DezLucroTextBox.Enabled = false;
-            this.DezLucroTextBox.Location = new System.Drawing.Point(216, 34);
+            this.DezLucroTextBox.Location = new System.Drawing.Point(156, 34);
             this.DezLucroTextBox.MaxLength = 10;
             this.DezLucroTextBox.Name = "DezLucroTextBox";
-            this.DezLucroTextBox.Size = new System.Drawing.Size(70, 20);
+            this.DezLucroTextBox.Size = new System.Drawing.Size(49, 18);
             this.DezLucroTextBox.TabIndex = 48;
             this.DezLucroTextBox.Text = "0";
             // 
@@ -2014,10 +2015,10 @@
             // 
             this.DezFaturadoTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.DezFaturadoTextBox.Enabled = false;
-            this.DezFaturadoTextBox.Location = new System.Drawing.Point(145, 34);
+            this.DezFaturadoTextBox.Location = new System.Drawing.Point(105, 34);
             this.DezFaturadoTextBox.MaxLength = 10;
             this.DezFaturadoTextBox.Name = "DezFaturadoTextBox";
-            this.DezFaturadoTextBox.Size = new System.Drawing.Size(70, 20);
+            this.DezFaturadoTextBox.Size = new System.Drawing.Size(49, 18);
             this.DezFaturadoTextBox.TabIndex = 47;
             this.DezFaturadoTextBox.Text = "0";
             // 
@@ -2025,10 +2026,10 @@
             // 
             this.DezSaidasTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.DezSaidasTextBox.Enabled = false;
-            this.DezSaidasTextBox.Location = new System.Drawing.Point(74, 34);
+            this.DezSaidasTextBox.Location = new System.Drawing.Point(54, 34);
             this.DezSaidasTextBox.MaxLength = 10;
             this.DezSaidasTextBox.Name = "DezSaidasTextBox";
-            this.DezSaidasTextBox.Size = new System.Drawing.Size(70, 20);
+            this.DezSaidasTextBox.Size = new System.Drawing.Size(49, 18);
             this.DezSaidasTextBox.TabIndex = 46;
             this.DezSaidasTextBox.Text = "0";
             // 
@@ -2037,7 +2038,7 @@
             this.label63.AutoSize = true;
             this.label63.Location = new System.Drawing.Point(1, 16);
             this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(52, 16);
+            this.label63.Size = new System.Drawing.Size(45, 15);
             this.label63.TabIndex = 35;
             this.label63.Text = "Entradas";
             // 
@@ -2048,34 +2049,34 @@
             this.DezEntradasTextBox.Location = new System.Drawing.Point(3, 34);
             this.DezEntradasTextBox.MaxLength = 10;
             this.DezEntradasTextBox.Name = "DezEntradasTextBox";
-            this.DezEntradasTextBox.Size = new System.Drawing.Size(70, 20);
+            this.DezEntradasTextBox.Size = new System.Drawing.Size(49, 18);
             this.DezEntradasTextBox.TabIndex = 39;
             this.DezEntradasTextBox.Text = "0";
             // 
             // label64
             // 
             this.label64.AutoSize = true;
-            this.label64.Location = new System.Drawing.Point(74, 16);
+            this.label64.Location = new System.Drawing.Point(54, 16);
             this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(38, 16);
+            this.label64.Size = new System.Drawing.Size(33, 15);
             this.label64.TabIndex = 38;
             this.label64.Text = "Saídas";
             // 
             // label65
             // 
             this.label65.AutoSize = true;
-            this.label65.Location = new System.Drawing.Point(145, 16);
+            this.label65.Location = new System.Drawing.Point(105, 16);
             this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(53, 16);
+            this.label65.Size = new System.Drawing.Size(46, 15);
             this.label65.TabIndex = 41;
             this.label65.Text = "Faturado";
             // 
             // label66
             // 
             this.label66.AutoSize = true;
-            this.label66.Location = new System.Drawing.Point(216, 16);
+            this.label66.Location = new System.Drawing.Point(156, 16);
             this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(36, 16);
+            this.label66.Size = new System.Drawing.Size(31, 15);
             this.label66.TabIndex = 45;
             this.label66.Text = "Lucro";
             // 

@@ -988,11 +988,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jacks\\OneDrive\\UDV\\Sistema\\lanchonete\\LanchoneteUDV.Services\\LanchoneteUDV.Services.csproj",
+      "projectUniqueName": "C:\\UDV\\lanchonete\\LanchoneteUDV.Services\\LanchoneteUDV.Services.csproj",
       "projectName": "LanchoneteUDV.Services",
-      "projectPath": "C:\\Users\\jacks\\OneDrive\\UDV\\Sistema\\lanchonete\\LanchoneteUDV.Services\\LanchoneteUDV.Services.csproj",
+      "projectPath": "C:\\UDV\\lanchonete\\LanchoneteUDV.Services\\LanchoneteUDV.Services.csproj",
       "packagesPath": "C:\\Users\\jacks\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jacks\\OneDrive\\UDV\\Sistema\\lanchonete\\LanchoneteUDV.Services\\obj\\",
+      "outputPath": "C:\\UDV\\lanchonete\\LanchoneteUDV.Services\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1013,8 +1013,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\jacks\\OneDrive\\UDV\\Sistema\\lanchonete\\LanchoneteUDV.Application\\LanchoneteUDV.Application.csproj": {
-              "projectPath": "C:\\Users\\jacks\\OneDrive\\UDV\\Sistema\\lanchonete\\LanchoneteUDV.Application\\LanchoneteUDV.Application.csproj"
+            "C:\\UDV\\lanchonete\\LanchoneteUDV.Application\\LanchoneteUDV.Application.csproj": {
+              "projectPath": "C:\\UDV\\lanchonete\\LanchoneteUDV.Application\\LanchoneteUDV.Application.csproj"
             }
           }
         }
