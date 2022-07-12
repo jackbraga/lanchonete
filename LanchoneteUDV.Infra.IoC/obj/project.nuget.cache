@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wFPle3igakSc1GOt0tnqtLHQA/EZFqAJHKcaFkkJhwtrUNAISy0Iho1v9dNB3giZXrXojRJzwwTfeerpxQSAcg==",
+  "dgSpecHash": "4BlEwIE5zQLznHvh72Pm4VP10rOqVSwE3S8F15Zb6dhG4q4YQKwdKhYcBcvoPxFyeKEETtTu2VjXwQcWFjYtFg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jacks\\OneDrive\\UDV\\Sistema\\lanchonete\\LanchoneteUDV.Infra.IoC\\LanchoneteUDV.Infra.IoC.csproj",
+  "projectFilePath": "C:\\UDV\\lanchonete\\LanchoneteUDV.Infra.IoC\\LanchoneteUDV.Infra.IoC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jacks\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\jacks\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
