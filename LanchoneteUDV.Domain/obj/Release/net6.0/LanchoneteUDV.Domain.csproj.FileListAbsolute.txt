@@ -10,3 +10,15 @@ C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Domain\obj\Release\
 C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Domain\obj\Release\net6.0\LanchoneteUDV.Domain.dll
 C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Domain\obj\Release\net6.0\ref\LanchoneteUDV.Domain.dll
 C:\Users\jacks\OneDrive\UDV\Sistema\lanchonete\LanchoneteUDV.Domain\obj\Release\net6.0\LanchoneteUDV.Domain.pdb
+C:\UDV\lanchonete\LanchoneteUDV.Domain\bin\Release\net6.0\LanchoneteUDV.Domain.deps.json
+C:\UDV\lanchonete\LanchoneteUDV.Domain\bin\Release\net6.0\LanchoneteUDV.Domain.dll
+C:\UDV\lanchonete\LanchoneteUDV.Domain\bin\Release\net6.0\ref\LanchoneteUDV.Domain.dll
+C:\UDV\lanchonete\LanchoneteUDV.Domain\bin\Release\net6.0\LanchoneteUDV.Domain.pdb
+C:\UDV\lanchonete\LanchoneteUDV.Domain\obj\Release\net6.0\LanchoneteUDV.Domain.csproj.AssemblyReference.cache
+C:\UDV\lanchonete\LanchoneteUDV.Domain\obj\Release\net6.0\LanchoneteUDV.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\UDV\lanchonete\LanchoneteUDV.Domain\obj\Release\net6.0\LanchoneteUDV.Domain.AssemblyInfoInputs.cache
+C:\UDV\lanchonete\LanchoneteUDV.Domain\obj\Release\net6.0\LanchoneteUDV.Domain.AssemblyInfo.cs
+C:\UDV\lanchonete\LanchoneteUDV.Domain\obj\Release\net6.0\LanchoneteUDV.Domain.csproj.CoreCompileInputs.cache
+C:\UDV\lanchonete\LanchoneteUDV.Domain\obj\Release\net6.0\LanchoneteUDV.Domain.dll
+C:\UDV\lanchonete\LanchoneteUDV.Domain\obj\Release\net6.0\ref\LanchoneteUDV.Domain.dll
+C:\UDV\lanchonete\LanchoneteUDV.Domain\obj\Release\net6.0\LanchoneteUDV.Domain.pdb
