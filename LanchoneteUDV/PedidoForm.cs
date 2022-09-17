@@ -279,14 +279,23 @@ namespace LanchoneteUDV
         }
         private async void RecarregarGridEstoque()
         {
-            EstoqueDataGridView.DataSource = await _vendaService.ListarEstoquePorEscala(IdEscala);
-            EstoqueDataGridView.Columns[0].Width = 200;
-            EstoqueDataGridView.Columns[1].DefaultCellStyle.Format = "R$ 0.00##";
-            EstoqueDataGridView.Columns[2].Visible = false;
-            EstoqueDataGridView.Columns[3].Visible = false;
+            try
+            {
+                EstoqueDataGridView.DataSource = await _vendaService.ListarEstoquePorEscala(IdEscala);
+                EstoqueDataGridView.Columns[0].Width = 200;
+                EstoqueDataGridView.Columns[1].DefaultCellStyle.Format = "R$ 0.00##";
+                EstoqueDataGridView.Columns[2].Visible = false;
+                EstoqueDataGridView.Columns[3].Visible = false;
 
-            EstoqueDataGridView.ClearSelection();
-            ColorirSemEstoque();
+                EstoqueDataGridView.ClearSelection();
+                ColorirSemEstoque();
+            }
+            catch 
+            {
+
+                
+            }
+     
 
         }
 
