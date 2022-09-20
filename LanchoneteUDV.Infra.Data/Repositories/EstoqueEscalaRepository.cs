@@ -115,6 +115,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
 
         public IEnumerable<Estoque> ListarEstoqueComboProdutos(int idEscala)
         {
+            //string todosProdutos = todos ? " NOT " : "";
             string sql = "SELECT A.ID AS IdProduto, A.Descricao AS DescricaoProduto,(ISNULL(EstoqueInicial,0) + ISNULL((SELECT SUM(tbCompras.Quantidade) FROM tbCompras WHERE Produto = A.ID),0) - ISNULL((SELECT SUM(tbVendasPedido.Quantidade) FROM tbVendasPedido WHERE Produto = A.ID),0)) AS QtdEstoque " +
                          "FROM tbProdutos AS A WITH(NOLOCK) " +
                          "LEFT JOIN tbEstoqueEscala AS B WITH(NOLOCK) ON B.Produto = A.ID AND B.Escala = " + idEscala  + " " +

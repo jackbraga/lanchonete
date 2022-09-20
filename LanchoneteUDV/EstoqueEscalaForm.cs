@@ -197,9 +197,9 @@ namespace LanchoneteUDV
             int row = EstoqueEscalaDataGridView.CurrentRow.Index;
 
             IDTextBox.Text = EstoqueEscalaDataGridView.Rows[row].Cells[0].Value.ToString();
-            ProdutosComboBox.SelectedValue = Convert.ToInt32(EstoqueEscalaDataGridView.Rows[row].Cells[2].Value);
-            EstoqueComboBox.SelectedValue = Convert.ToInt32(EstoqueEscalaDataGridView.Rows[row].Cells[2].Value);
-            QtdVendaTextBox.Text = EstoqueEscalaDataGridView.Rows[row].Cells[4].Value.ToString();
+            ProdutosComboBox.SelectedValue = Convert.ToInt32(EstoqueEscalaDataGridView.Rows[row].Cells[4].Value);
+            EstoqueComboBox.SelectedValue = Convert.ToInt32(EstoqueEscalaDataGridView.Rows[row].Cells[4].Value);
+            QtdVendaTextBox.Text = EstoqueEscalaDataGridView.Rows[row].Cells[2].Value.ToString();
 
             ObservacaoTextBox.Text = EstoqueEscalaDataGridView.Rows[row].Cells[5].Value.ToString();
 
