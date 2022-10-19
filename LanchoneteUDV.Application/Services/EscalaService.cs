@@ -18,19 +18,21 @@ namespace LanchoneteUDV.Application.Services
 
         public EscalaService(IEscalaRepository escalaRepository, IMapper mapper)
         {
-            _escalaRepository= escalaRepository;
-            _mapper=mapper;
+            _escalaRepository = escalaRepository;
+            _mapper = mapper;
         }
 
-        public void Add(EscalaDTO escala)
+        public EscalaDTO Add(EscalaDTO escala)
         {
             var escalaDTO = _mapper.Map<Escala>(escala);
-             _escalaRepository.Add(escalaDTO);
+            var retorno = _escalaRepository.Add(escalaDTO);
+            return _mapper.Map<EscalaDTO>(retorno);
+
         }
 
         public IEnumerable<EscalaDTO> GetAll()
         {
-            var escalas =  _escalaRepository.GetAll().OrderByDescending(x=>x.DataEscala);
+            var escalas = _escalaRepository.GetAll().OrderByDescending(x => x.DataEscala);
             return _mapper.Map<IEnumerable<EscalaDTO>>(escalas);
         }
 
@@ -42,19 +44,19 @@ namespace LanchoneteUDV.Application.Services
 
         public IEnumerable<EscalaDTO> GetByName(string texto)
         {
-            var escalas =  _escalaRepository.GetByName(texto);
+            var escalas = _escalaRepository.GetByName(texto);
             return _mapper.Map<IEnumerable<EscalaDTO>>(escalas);
         }
 
         public void Remove(int idEscala)
         {
-             _escalaRepository.Remove(idEscala);
+            _escalaRepository.Remove(idEscala);
         }
 
-        public void  Update(EscalaDTO escala)
+        public void Update(EscalaDTO escala)
         {
             var escalaDTO = _mapper.Map<Escala>(escala);
-             _escalaRepository.Update(escalaDTO);
+            _escalaRepository.Update(escalaDTO);
         }
 
         public void FinalizarEscala(int idEscala)

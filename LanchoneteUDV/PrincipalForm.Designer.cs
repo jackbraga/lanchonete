@@ -39,6 +39,8 @@
             this.estoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sociosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastroSociosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.parceriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadastroDeParceirosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fluxoDeCaixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fluxoDeCaixaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.gerarRepasseTesourariaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,6 +55,7 @@
             this.vendasToolStripMenuItem,
             this.produtosToolStripMenuItem,
             this.sociosToolStripMenuItem,
+            this.parceriasToolStripMenuItem,
             this.fluxoDeCaixaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -130,6 +133,21 @@
             this.cadastroSociosToolStripMenuItem.Text = "Cadastro Socios";
             this.cadastroSociosToolStripMenuItem.Click += new System.EventHandler(this.cadastroSociosToolStripMenuItem_Click);
             // 
+            // parceriasToolStripMenuItem
+            // 
+            this.parceriasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cadastroDeParceirosToolStripMenuItem});
+            this.parceriasToolStripMenuItem.Name = "parceriasToolStripMenuItem";
+            this.parceriasToolStripMenuItem.Size = new System.Drawing.Size(86, 26);
+            this.parceriasToolStripMenuItem.Text = "Parcerias";
+            // 
+            // cadastroDeParceirosToolStripMenuItem
+            // 
+            this.cadastroDeParceirosToolStripMenuItem.Name = "cadastroDeParceirosToolStripMenuItem";
+            this.cadastroDeParceirosToolStripMenuItem.Size = new System.Drawing.Size(235, 26);
+            this.cadastroDeParceirosToolStripMenuItem.Text = "Cadastro de Parceiros";
+            this.cadastroDeParceirosToolStripMenuItem.Click += new System.EventHandler(this.cadastroDeParceirosToolStripMenuItem_Click);
+            // 
             // fluxoDeCaixaToolStripMenuItem
             // 
             this.fluxoDeCaixaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -200,5 +218,7 @@
         private ToolStripMenuItem fluxoDeCaixaToolStripMenuItem1;
         private ToolStripMenuItem gerarRepasseTesourariaToolStripMenuItem;
         private ToolStripMenuItem gerarRecibosToolStripMenuItem;
+        private ToolStripMenuItem parceriasToolStripMenuItem;
+        private ToolStripMenuItem cadastroDeParceirosToolStripMenuItem;
     }
 }

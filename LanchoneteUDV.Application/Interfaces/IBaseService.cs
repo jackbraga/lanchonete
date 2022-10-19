@@ -14,7 +14,7 @@ namespace LanchoneteUDV.Application.Interfaces
 
         T GetById(int? id);
 
-        void Add(T objeto);
+        T Add(T objeto);
         void Update(T objeto);
         void Remove(int id);
     }

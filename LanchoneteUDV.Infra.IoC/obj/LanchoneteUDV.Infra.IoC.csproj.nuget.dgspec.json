@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\UDV\\lanchonete\\LanchoneteUDV.Infra.IoC\\LanchoneteUDV.Infra.IoC.csproj": {}
+    "C:\\Github\\lanchonete\\LanchoneteUDV.Infra.IoC\\LanchoneteUDV.Infra.IoC.csproj": {}
   },
   "projects": {
-    "C:\\UDV\\lanchonete\\LanchoneteUDV.Application\\LanchoneteUDV.Application.csproj": {
+    "C:\\Github\\lanchonete\\LanchoneteUDV.Application\\LanchoneteUDV.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\UDV\\lanchonete\\LanchoneteUDV.Application\\LanchoneteUDV.Application.csproj",
+        "projectUniqueName": "C:\\Github\\lanchonete\\LanchoneteUDV.Application\\LanchoneteUDV.Application.csproj",
         "projectName": "LanchoneteUDV.Application",
-        "projectPath": "C:\\UDV\\lanchonete\\LanchoneteUDV.Application\\LanchoneteUDV.Application.csproj",
+        "projectPath": "C:\\Github\\lanchonete\\LanchoneteUDV.Application\\LanchoneteUDV.Application.csproj",
         "packagesPath": "C:\\Users\\jacks\\.nuget\\packages\\",
-        "outputPath": "C:\\UDV\\lanchonete\\LanchoneteUDV.Application\\obj\\",
+        "outputPath": "C:\\Github\\lanchonete\\LanchoneteUDV.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\UDV\\lanchonete\\LanchoneteUDV.Domain\\LanchoneteUDV.Domain.csproj": {
-                "projectPath": "C:\\UDV\\lanchonete\\LanchoneteUDV.Domain\\LanchoneteUDV.Domain.csproj"
+              "C:\\Github\\lanchonete\\LanchoneteUDV.Domain\\LanchoneteUDV.Domain.csproj": {
+                "projectPath": "C:\\Github\\lanchonete\\LanchoneteUDV.Domain\\LanchoneteUDV.Domain.csproj"
               }
             }
           }
@@ -73,18 +73,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\UDV\\lanchonete\\LanchoneteUDV.Domain\\LanchoneteUDV.Domain.csproj": {
+    "C:\\Github\\lanchonete\\LanchoneteUDV.Domain\\LanchoneteUDV.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\UDV\\lanchonete\\LanchoneteUDV.Domain\\LanchoneteUDV.Domain.csproj",
+        "projectUniqueName": "C:\\Github\\lanchonete\\LanchoneteUDV.Domain\\LanchoneteUDV.Domain.csproj",
         "projectName": "LanchoneteUDV.Domain",
-        "projectPath": "C:\\UDV\\lanchonete\\LanchoneteUDV.Domain\\LanchoneteUDV.Domain.csproj",
+        "projectPath": "C:\\Github\\lanchonete\\LanchoneteUDV.Domain\\LanchoneteUDV.Domain.csproj",
         "packagesPath": "C:\\Users\\jacks\\.nuget\\packages\\",
-        "outputPath": "C:\\UDV\\lanchonete\\LanchoneteUDV.Domain\\obj\\",
+        "outputPath": "C:\\Github\\lanchonete\\LanchoneteUDV.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -132,18 +132,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\UDV\\lanchonete\\LanchoneteUDV.Infra.Data\\LanchoneteUDV.Infra.Data.csproj": {
+    "C:\\Github\\lanchonete\\LanchoneteUDV.Infra.Data\\LanchoneteUDV.Infra.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\UDV\\lanchonete\\LanchoneteUDV.Infra.Data\\LanchoneteUDV.Infra.Data.csproj",
+        "projectUniqueName": "C:\\Github\\lanchonete\\LanchoneteUDV.Infra.Data\\LanchoneteUDV.Infra.Data.csproj",
         "projectName": "LanchoneteUDV.Infra.Data",
-        "projectPath": "C:\\UDV\\lanchonete\\LanchoneteUDV.Infra.Data\\LanchoneteUDV.Infra.Data.csproj",
+        "projectPath": "C:\\Github\\lanchonete\\LanchoneteUDV.Infra.Data\\LanchoneteUDV.Infra.Data.csproj",
         "packagesPath": "C:\\Users\\jacks\\.nuget\\packages\\",
-        "outputPath": "C:\\UDV\\lanchonete\\LanchoneteUDV.Infra.Data\\obj\\",
+        "outputPath": "C:\\Github\\lanchonete\\LanchoneteUDV.Infra.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -164,8 +164,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\UDV\\lanchonete\\LanchoneteUDV.Domain\\LanchoneteUDV.Domain.csproj": {
-                "projectPath": "C:\\UDV\\lanchonete\\LanchoneteUDV.Domain\\LanchoneteUDV.Domain.csproj"
+              "C:\\Github\\lanchonete\\LanchoneteUDV.Domain\\LanchoneteUDV.Domain.csproj": {
+                "projectPath": "C:\\Github\\lanchonete\\LanchoneteUDV.Domain\\LanchoneteUDV.Domain.csproj"
               }
             }
           }
@@ -205,18 +205,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\UDV\\lanchonete\\LanchoneteUDV.Infra.IoC\\LanchoneteUDV.Infra.IoC.csproj": {
+    "C:\\Github\\lanchonete\\LanchoneteUDV.Infra.IoC\\LanchoneteUDV.Infra.IoC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\UDV\\lanchonete\\LanchoneteUDV.Infra.IoC\\LanchoneteUDV.Infra.IoC.csproj",
+        "projectUniqueName": "C:\\Github\\lanchonete\\LanchoneteUDV.Infra.IoC\\LanchoneteUDV.Infra.IoC.csproj",
         "projectName": "LanchoneteUDV.Infra.IoC",
-        "projectPath": "C:\\UDV\\lanchonete\\LanchoneteUDV.Infra.IoC\\LanchoneteUDV.Infra.IoC.csproj",
+        "projectPath": "C:\\Github\\lanchonete\\LanchoneteUDV.Infra.IoC\\LanchoneteUDV.Infra.IoC.csproj",
         "packagesPath": "C:\\Users\\jacks\\.nuget\\packages\\",
-        "outputPath": "C:\\UDV\\lanchonete\\LanchoneteUDV.Infra.IoC\\obj\\",
+        "outputPath": "C:\\Github\\lanchonete\\LanchoneteUDV.Infra.IoC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -237,14 +237,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\UDV\\lanchonete\\LanchoneteUDV.Application\\LanchoneteUDV.Application.csproj": {
-                "projectPath": "C:\\UDV\\lanchonete\\LanchoneteUDV.Application\\LanchoneteUDV.Application.csproj"
+              "C:\\Github\\lanchonete\\LanchoneteUDV.Application\\LanchoneteUDV.Application.csproj": {
+                "projectPath": "C:\\Github\\lanchonete\\LanchoneteUDV.Application\\LanchoneteUDV.Application.csproj"
               },
-              "C:\\UDV\\lanchonete\\LanchoneteUDV.Domain\\LanchoneteUDV.Domain.csproj": {
-                "projectPath": "C:\\UDV\\lanchonete\\LanchoneteUDV.Domain\\LanchoneteUDV.Domain.csproj"
+              "C:\\Github\\lanchonete\\LanchoneteUDV.Domain\\LanchoneteUDV.Domain.csproj": {
+                "projectPath": "C:\\Github\\lanchonete\\LanchoneteUDV.Domain\\LanchoneteUDV.Domain.csproj"
               },
-              "C:\\UDV\\lanchonete\\LanchoneteUDV.Infra.Data\\LanchoneteUDV.Infra.Data.csproj": {
-                "projectPath": "C:\\UDV\\lanchonete\\LanchoneteUDV.Infra.Data\\LanchoneteUDV.Infra.Data.csproj"
+              "C:\\Github\\lanchonete\\LanchoneteUDV.Infra.Data\\LanchoneteUDV.Infra.Data.csproj": {
+                "projectPath": "C:\\Github\\lanchonete\\LanchoneteUDV.Infra.Data\\LanchoneteUDV.Infra.Data.csproj"
               }
             }
           }
@@ -288,7 +288,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

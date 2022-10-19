@@ -301,7 +301,7 @@ namespace LanchoneteUDV
 
         private async void RecarregarGridEstoqueSalgados()
         {
-            EstoqueSalgadosDataGridView.DataSource = await _vendaService.ListarEstoqueSalgadosPorEscala(IdEscala);
+            EstoqueSalgadosDataGridView.DataSource = await _vendaService.ListarEstoqueSalgadosPorEscala(IdEscala, checkBoxSalgados.Checked, checkBoxChurrasco.Checked);
             EstoqueSalgadosDataGridView.Columns[0].Width = 200;
             EstoqueSalgadosDataGridView.Columns[1].DefaultCellStyle.Format = "R$ 0.00##";
             EstoqueSalgadosDataGridView.Columns[2].Visible = false;
@@ -461,12 +461,14 @@ namespace LanchoneteUDV
         private void checkBoxSalgados_CheckedChanged(object sender, EventArgs e)
         {
             Global.ExibeSalgados = checkBoxSalgados.Checked;
+            RecarregarGridEstoqueSalgados();
             ComboProduto();
         }
 
         private void checkBoxChurrasco_CheckedChanged(object sender, EventArgs e)
         {
             Global.ExibeChurrasco = checkBoxChurrasco.Checked;
+            RecarregarGridEstoqueSalgados();
             ComboProduto();
         }
     }

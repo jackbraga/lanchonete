@@ -34,3 +34,15 @@ C:\UDV\lanchonete\LanchoneteUDV.Domain\obj\Debug\net6.0\LanchoneteUDV.Domain.csp
 C:\UDV\lanchonete\LanchoneteUDV.Domain\obj\Debug\net6.0\LanchoneteUDV.Domain.dll
 C:\UDV\lanchonete\LanchoneteUDV.Domain\obj\Debug\net6.0\ref\LanchoneteUDV.Domain.dll
 C:\UDV\lanchonete\LanchoneteUDV.Domain\obj\Debug\net6.0\LanchoneteUDV.Domain.pdb
+C:\Github\lanchonete\LanchoneteUDV.Domain\bin\Debug\net6.0\LanchoneteUDV.Domain.deps.json
+C:\Github\lanchonete\LanchoneteUDV.Domain\bin\Debug\net6.0\LanchoneteUDV.Domain.dll
+C:\Github\lanchonete\LanchoneteUDV.Domain\bin\Debug\net6.0\LanchoneteUDV.Domain.pdb
+C:\Github\lanchonete\LanchoneteUDV.Domain\obj\Debug\net6.0\LanchoneteUDV.Domain.csproj.AssemblyReference.cache
+C:\Github\lanchonete\LanchoneteUDV.Domain\obj\Debug\net6.0\LanchoneteUDV.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Github\lanchonete\LanchoneteUDV.Domain\obj\Debug\net6.0\LanchoneteUDV.Domain.AssemblyInfoInputs.cache
+C:\Github\lanchonete\LanchoneteUDV.Domain\obj\Debug\net6.0\LanchoneteUDV.Domain.AssemblyInfo.cs
+C:\Github\lanchonete\LanchoneteUDV.Domain\obj\Debug\net6.0\LanchoneteUDV.Domain.csproj.CoreCompileInputs.cache
+C:\Github\lanchonete\LanchoneteUDV.Domain\obj\Debug\net6.0\LanchoneteUDV.Domain.dll
+C:\Github\lanchonete\LanchoneteUDV.Domain\obj\Debug\net6.0\refint\LanchoneteUDV.Domain.dll
+C:\Github\lanchonete\LanchoneteUDV.Domain\obj\Debug\net6.0\LanchoneteUDV.Domain.pdb
+C:\Github\lanchonete\LanchoneteUDV.Domain\obj\Debug\net6.0\ref\LanchoneteUDV.Domain.dll

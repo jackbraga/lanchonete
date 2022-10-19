@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0CU5TCrYr86LRR5Ds2wv2e7nWDv9TYk2jfkcfx2xTW4zQ6M4nIhWi3eGLzMs7DX7dlKwzc0suVSHoixjACABEQ==",
+  "dgSpecHash": "WzMRV9KtpmyFbYOVygwpmoIXkpPrXdmikeenJvNJAFxvJKMsHR0Q5x04eIiO2J6aodVROoUJqZZQdviE+QAM3g==",
   "success": true,
-  "projectFilePath": "C:\\UDV\\lanchonete\\LanchoneteUDV.Services\\LanchoneteUDV.Services.csproj",
+  "projectFilePath": "C:\\Github\\lanchonete\\LanchoneteUDV.Services\\LanchoneteUDV.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jacks\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\jacks\\.nuget\\packages\\epplus\\6.0.3\\epplus.6.0.3.nupkg.sha512",

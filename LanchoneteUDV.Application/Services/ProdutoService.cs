@@ -22,10 +22,11 @@ namespace LanchoneteUDV.Application.Services
             _mapper = mapper;
         }
 
-        public void Add(ProdutoDTO produtoDTO)
+        public ProdutoDTO Add(ProdutoDTO produtoDTO)
         {
             var produto = _mapper.Map<Produto>(produtoDTO);
-            _produtoRepository.Add(produto);
+            var retorno = _produtoRepository.Add(produto);
+            return _mapper.Map<ProdutoDTO>(retorno);
         }
 
         public IEnumerable<ProdutoDTO> GetAll()

@@ -21,10 +21,11 @@ namespace LanchoneteUDV.Application.Services
             _socioRepository = socioRepository;
             _mapper=mapper;
         }
-        public void Add(SocioDTO socioDTO)
+        public SocioDTO Add(SocioDTO socioDTO)
         {
             var produto = _mapper.Map<Socio>(socioDTO);
-            _socioRepository.Add(produto);
+            var retorno = _socioRepository.Add(produto);
+            return _mapper.Map<SocioDTO>(retorno);
         }
 
         public IEnumerable<SocioDTO> GetAll()

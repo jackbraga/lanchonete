@@ -16,7 +16,7 @@ namespace LanchoneteUDV.Application.Interfaces
 
         public Task<IEnumerable<EstoquePorEscalaDTO>> ListarEstoquePorEscala(int idEscala);
 
-        public Task<IEnumerable<EstoquePorEscalaDTO>> ListarEstoqueSalgadosPorEscala(int idEscala);
+        public Task<IEnumerable<EstoquePorEscalaDTO>> ListarEstoqueSalgadosPorEscala(int idEscala, bool exibeSalgados, bool exibeChurrasco);
 
         public int Add(VendaDTO classe);
 
