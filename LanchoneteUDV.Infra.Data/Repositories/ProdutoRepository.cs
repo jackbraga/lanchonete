@@ -21,13 +21,16 @@ namespace LanchoneteUDV.Infra.Data.Repositories
 
         public Produto Add(Produto classe)
         {
+            int idRetorno;
             string sql = "INSERT INTO tbProdutos" +
                     "(Descricao,Categoria,PrecoCustoCaixa,QtdPorCaixa,PrecoCustoUnitario,PrecoVenda,EstoqueInicial,ProdutoVenda) " +
-                    "VALUES(@descricao,@categoria, @precoCustoCaixa, @qtdPorCaixa, @precoCustoUnitario, @precoVenda, @estoqueInicial,@produtoVenda)";
+                    "OUTPUT INSERTED.Id " +
+                    "VALUES(@descricao,@categoria, @precoCustoCaixa, @qtdPorCaixa, @precoCustoUnitario, @precoVenda, @estoqueInicial,@produtoVenda);";
             using (var connection = _connection.Connection())
             {
                 connection.Open();
-                connection.Execute(sql, new
+                idRetorno =
+                connection.QuerySingle<int>(sql, new
                 {
                     descricao = classe.Descricao,
                     categoria = classe.CategoriaId,
@@ -39,6 +42,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                     produtoVenda = classe.ProdutoVenda
                 });
             }
+            classe.Id = idRetorno;
             return classe;
         }
 
@@ -140,7 +144,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
 
         public void Remove(int id)
         {
-            string sql = "DELETE FROM tbProdutos WHERE ID=@id";
+            string sql = "DELETE FROM tbParceriasProduto WHERE IDProduto=@id; DELETE FROM tbProdutos WHERE ID=@id";
             using (var connection = _connection.Connection())
             {
                 connection.Open();

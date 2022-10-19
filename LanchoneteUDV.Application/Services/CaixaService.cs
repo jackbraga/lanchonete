@@ -22,10 +22,11 @@ namespace LanchoneteUDV.Application.Services
             _mapper = mapper;
         }
 
-        public void Add(CaixaDTO caixaDTO)
+        public CaixaDTO Add(CaixaDTO caixaDTO)
         {
             var caixa = _mapper.Map<Caixa>(caixaDTO);
-            _caixaRepository.Add(caixa);
+            var retorno = _caixaRepository.Add(caixa);
+            return _mapper.Map<CaixaDTO>(retorno);
         }
 
         public IEnumerable<CaixaDTO> GetAll()

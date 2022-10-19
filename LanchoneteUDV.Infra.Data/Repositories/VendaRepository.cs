@@ -166,8 +166,12 @@ namespace LanchoneteUDV.Infra.Data.Repositories
             }
         }
 
-        public async Task<IEnumerable<EstoquePorEscala>> ListarEstoqueSalgadosPorEscala(int idEscala)
+        public async Task<IEnumerable<EstoquePorEscala>> ListarEstoqueSalgadosPorEscala(int idEscala, bool exibeSalgados, bool exibeChurrasco)
         {
+            int idSalgado = exibeSalgados ? 10 : 0;
+            int idChurrasco = exibeChurrasco ? 15 : 0;
+            
+
             string sql = "SELECT DISTINCT " +
                     "tbProdutos.Descricao as DescricaoProduto, " +
                     "tbProdutos.PrecoVenda, " +
@@ -177,7 +181,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                     "FROM tbProdutos " +
                     "INNER JOIN tbEstoqueEscala ON tbProdutos.ID = tbEstoqueEscala.Produto " +
                     "LEFT JOIN tbVendasPedido ON tbProdutos.ID = tbVendasPedido.Produto " +
-                    "WHERE Escala =" + idEscala + " AND tbProdutos.Categoria IN(10,15) " +
+                    "WHERE Escala =" + idEscala + " AND tbProdutos.Categoria IN(" + idSalgado +  "," + idChurrasco + ") " + 
                     "ORDER BY 1;";
 
             using (var connection = _connection.Connection())

@@ -35,6 +35,10 @@ namespace LanchoneteUDV.Infra.IoC
             Bind(typeof(IFinanceiroService)).To(typeof(FinanceiroService));
             Bind(typeof(IExcelService)).To(typeof(ExcelService));
 
+            Bind(typeof(IParceriasRepository)).To(typeof(ParceriasRepository));
+            Bind(typeof(IParceriasService)).To(typeof(ParceriasService));
+
+
             Bind(typeof(IConnectionFactory)).To(typeof(DefaultSqlConnectionFactory));
             var mapperConfiguration = new MapperConfiguration(cfg => { cfg.AddProfile<DomaintToDTOMappingProfile>(); });
             this.Bind<IMapper>().ToConstructor(c => new Mapper(mapperConfiguration)).InSingletonScope();

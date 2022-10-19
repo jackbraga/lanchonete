@@ -39,10 +39,11 @@ namespace LanchoneteUDV.Application.Services
             throw new NotImplementedException();
         }
 
-        public void Add(CompraDTO compraDTO)
+        public CompraDTO Add(CompraDTO compraDTO)
         {
             var compra = _mapper.Map<Compra>(compraDTO);
-            _compraRepository.Add(compra);
+            var retorno = _compraRepository.Add(compra);
+            return _mapper.Map<CompraDTO>(retorno);
         }
 
         public void Update(CompraDTO compraDTO)

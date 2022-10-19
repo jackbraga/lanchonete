@@ -30,9 +30,9 @@ namespace LanchoneteUDV.Application.Services
             return _mapper.Map<IEnumerable<EstoquePorEscalaDTO>>(estoques);
         }
 
-        public async Task<IEnumerable<EstoquePorEscalaDTO>> ListarEstoqueSalgadosPorEscala(int idEscala)
+        public async Task<IEnumerable<EstoquePorEscalaDTO>> ListarEstoqueSalgadosPorEscala(int idEscala, bool exibeSalgados, bool exibeChurrasco)
         {
-            var estoques = await _vendaRepository.ListarEstoqueSalgadosPorEscala(idEscala);
+            var estoques = await _vendaRepository.ListarEstoqueSalgadosPorEscala(idEscala, exibeSalgados, exibeChurrasco);
             return _mapper.Map<IEnumerable<EstoquePorEscalaDTO>>(estoques);
         }
 
