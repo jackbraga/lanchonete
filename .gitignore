@@ -21,18 +21,18 @@
 mono_crash.*
 
 # Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
+LanchoneteUDV/[Dd]ebug/
+LanchoneteUDV/[Dd]ebugPublic/
+LanchoneteUDV/[Rr]elease/
+LanchoneteUDV/[Rr]eleases/
 x64/
 x86/
 [Ww][Ii][Nn]32/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
-[Bb]in/
-[Oo]bj/
+LanchoneteUDV/[Bb]in/
+LanchoneteUDV/[Oo]bj/
 [Ll]og/
 [Ll]ogs/
 

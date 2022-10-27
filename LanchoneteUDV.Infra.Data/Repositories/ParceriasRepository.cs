@@ -127,5 +127,95 @@ namespace LanchoneteUDV.Infra.Data.Repositories
             }
             return produto;
         }
+
+        public IEnumerable<VendasParceriaEscala> BuscarParceriaEscala(int idParceria)
+        {
+            string sql = @"SELECT A.DataEscala ,A.Descricao AS DescricaoEscala,  
+                            G.TipoComissao, G.Comissao, 
+                            SUM(C.Quantidade) AS QtdVendidos, SUM(C.Quantidade * C.PrecoProduto) AS Total, 
+                            G.ID AS IDParceria,
+                            A.ID AS IDEscala,
+                            ISNULL(H.Repasse,0) AS RepasseFeito
+                            FROM		tbEscalas AS A
+                            INNER JOIN	tbVendas  AS B ON B.Escala=A.ID
+                            INNER JOIN  tbVendasPedido AS C ON C.Venda=B.ID
+                            INNER JOIN	tbProdutos AS D ON D.ID=C.Produto
+                            INNER JOIN	tbSocios	AS E ON E.ID=B.Socio
+                            INNER JOIN	tbParceriasProduto AS F ON F.IDProduto=D.ID
+                            INNER JOIN	tbParcerias	AS G ON G.ID=F.IDParceira
+                            LEFT  JOIN	tbRepasseParceriaEscala AS H ON H.IDEscala=A.ID AND H.IDParceria=G.ID
+                            WHERE F.IDParceira=@id
+                            GROUP BY A.DataEscala, A.Descricao,G.TipoComissao,G.Comissao, H.Repasse, G.ID, A.ID
+                            ORDER BY A.DataEscala DESC";
+
+            using (var connection = _connection.Connection())
+            {
+                connection.Open();
+                var result = connection.Query<VendasParceriaEscala>(sql, new
+                {
+                    id = idParceria
+                });
+
+                return result;
+
+            }
+        }
+
+        public IEnumerable<VendasParceriaProduto> BuscarVendasProdutosParceria(int idParceria, bool retirados)
+        {
+            string sql = @"SELECT A.DataEscala, A.Descricao AS DescricaoEscala,E.Nome AS NomeSocio, D.Descricao AS DescricaoProduto, C.Quantidade, C.PrecoProduto, C.Retirado,C.id as IdRetirado
+                            FROM		tbEscalas AS A
+                            INNER JOIN	tbVendas  AS B ON B.Escala=A.ID
+                            INNER JOIN  tbVendasPedido AS C ON C.Venda=B.ID
+                            INNER JOIN	tbProdutos AS D ON D.ID=C.Produto
+                            INNER JOIN	tbSocios	AS E ON E.ID=B.Socio
+                            INNER JOIN	tbParceriasProduto AS F ON F.IDProduto=D.ID
+                            WHERE F.IDParceira=@id AND C.Retirado=@retirado
+                            ORDER BY A.DataEscala DESC";
+
+            using (var connection = _connection.Connection())
+            {
+                connection.Open();
+                var result = connection.Query<VendasParceriaProduto>(sql, new
+                {
+                    id = idParceria,
+                    retirado = retirados
+                });
+
+                return result;
+
+            }
+        }
+
+        public void RegistraRepasseParceria(int idEscala, int idParceria, bool repasse)
+        {
+            string sql = @"INSERT INTO tbRepasseParceriaEscala(IDEscala, IDParceria,Repasse) 
+                            VALUES(@idescala,@idparceria,@repasse);";
+            using (var connection = _connection.Connection())
+            {
+                connection.Open();
+                connection.Execute(sql, new
+                {
+                    idescala = idEscala,
+                    idparceria = idParceria,
+                    repasse = repasse
+                });
+            }
+        }
+
+        public void DesregistraRepasseParceria(int idEscala, int idParceria)
+        {
+            string sql = @"DELETE FROM tbRepasseParceriaEscala
+                           WHERE IDEscala=@idescala AND IDParceria=@idparceria";
+            using (var connection = _connection.Connection())
+            {
+                connection.Open();
+                connection.Execute(sql, new
+                {
+                    idescala = idEscala,
+                    idparceria = idParceria
+                });
+            }
+        }
     }
 }

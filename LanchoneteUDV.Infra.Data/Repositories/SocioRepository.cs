@@ -62,7 +62,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
             string sql = "SELECT A.ID,A.Nome, A.Email, ISNULL(A.ResponsavelFinanceiro,A.ID) AS ResponsavelFinanceiro,ISNULL(B.Nome,A.NOME) AS NomeResponsavel " +
                            "FROM tbSocios AS A " +
                            "LEFT JOIN   tbSocios AS B ON B.ID = A.ResponsavelFinanceiro " +
-                           "WHERE A.TipoSocio = 1 AND Nome LIKE '" + texto + "%' ORDER BY NOME";
+                           "WHERE A.TipoSocio = 1 AND A.Nome LIKE '" + texto + "%' ORDER BY NOME";
 
             using (var connection = _connection.Connection())
             {
