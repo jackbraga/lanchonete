@@ -95,7 +95,7 @@ namespace LanchoneteUDV
 
         private void cadastroDeParceirosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ParceirosForm sc = new ParceirosForm(_parceriasService, _produtoService);
+            ParceirosForm sc = new ParceirosForm(_parceriasService, _produtoService,_vendasPedidoService);
             sc.Show();
         }
     }

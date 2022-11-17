@@ -417,6 +417,7 @@
             this.ParceirosDataGridView.ReadOnly = true;
             this.ParceirosDataGridView.RowHeadersVisible = false;
             this.ParceirosDataGridView.RowTemplate.Height = 25;
+            this.ParceirosDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ParceirosDataGridView.Size = new System.Drawing.Size(611, 295);
             this.ParceirosDataGridView.TabIndex = 0;
             this.ParceirosDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ParceirosDataGridView_CellClick);

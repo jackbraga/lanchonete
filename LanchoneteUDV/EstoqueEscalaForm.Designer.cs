@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ProdutoTextBox = new System.Windows.Forms.TextBox();
+            this.ExibeSemEstoqueCheckBox = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.CargaCompletaButton = new System.Windows.Forms.Button();
             this.IDTextBox = new System.Windows.Forms.TextBox();
@@ -63,6 +65,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.ProdutoTextBox);
+            this.groupBox3.Controls.Add(this.ExibeSemEstoqueCheckBox);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.CargaCompletaButton);
             this.groupBox3.Controls.Add(this.IDTextBox);
@@ -85,16 +89,38 @@
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.ProdutosComboBox);
             this.groupBox3.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox3.Location = new System.Drawing.Point(15, 12);
+            this.groupBox3.Location = new System.Drawing.Point(1, 2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(520, 232);
+            this.groupBox3.Size = new System.Drawing.Size(520, 277);
             this.groupBox3.TabIndex = 30;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Definição de Estoque";
             // 
+            // ProdutoTextBox
+            // 
+            this.ProdutoTextBox.BackColor = System.Drawing.SystemColors.Info;
+            this.ProdutoTextBox.Enabled = false;
+            this.ProdutoTextBox.Location = new System.Drawing.Point(6, 51);
+            this.ProdutoTextBox.Name = "ProdutoTextBox";
+            this.ProdutoTextBox.Size = new System.Drawing.Size(259, 23);
+            this.ProdutoTextBox.TabIndex = 76;
+            this.ProdutoTextBox.Visible = false;
+            // 
+            // ExibeSemEstoqueCheckBox
+            // 
+            this.ExibeSemEstoqueCheckBox.AutoSize = true;
+            this.ExibeSemEstoqueCheckBox.Enabled = false;
+            this.ExibeSemEstoqueCheckBox.Location = new System.Drawing.Point(6, 80);
+            this.ExibeSemEstoqueCheckBox.Name = "ExibeSemEstoqueCheckBox";
+            this.ExibeSemEstoqueCheckBox.Size = new System.Drawing.Size(185, 22);
+            this.ExibeSemEstoqueCheckBox.TabIndex = 75;
+            this.ExibeSemEstoqueCheckBox.Text = "Exibir mesmo sem estoque";
+            this.ExibeSemEstoqueCheckBox.UseVisualStyleBackColor = true;
+            this.ExibeSemEstoqueCheckBox.CheckedChanged += new System.EventHandler(this.CheckBoxExibeSemEstoque_CheckedChanged);
+            // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(1, 192);
+            this.label2.Location = new System.Drawing.Point(1, 230);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 37);
             this.label2.TabIndex = 74;
@@ -110,7 +136,7 @@
             this.CargaCompletaButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.CargaCompletaButton.FlatAppearance.BorderSize = 0;
             this.CargaCompletaButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.CargaCompletaButton.Location = new System.Drawing.Point(6, 147);
+            this.CargaCompletaButton.Location = new System.Drawing.Point(6, 185);
             this.CargaCompletaButton.Name = "CargaCompletaButton";
             this.CargaCompletaButton.Size = new System.Drawing.Size(54, 45);
             this.CargaCompletaButton.TabIndex = 73;
@@ -121,7 +147,7 @@
             // 
             // IDTextBox
             // 
-            this.IDTextBox.Location = new System.Drawing.Point(409, 192);
+            this.IDTextBox.Location = new System.Drawing.Point(409, 230);
             this.IDTextBox.Name = "IDTextBox";
             this.IDTextBox.Size = new System.Drawing.Size(100, 23);
             this.IDTextBox.TabIndex = 72;
@@ -156,7 +182,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(349, 195);
+            this.label8.Location = new System.Drawing.Point(349, 233);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(47, 18);
             this.label8.TabIndex = 68;
@@ -172,7 +198,7 @@
             this.ExcluirButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.ExcluirButton.FlatAppearance.BorderSize = 0;
             this.ExcluirButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ExcluirButton.Location = new System.Drawing.Point(345, 147);
+            this.ExcluirButton.Location = new System.Drawing.Point(345, 185);
             this.ExcluirButton.Name = "ExcluirButton";
             this.ExcluirButton.Size = new System.Drawing.Size(54, 45);
             this.ExcluirButton.TabIndex = 67;
@@ -184,7 +210,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(112, 195);
+            this.label14.Location = new System.Drawing.Point(112, 233);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(37, 18);
             this.label14.TabIndex = 66;
@@ -199,7 +225,7 @@
             this.NovoButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.NovoButton.FlatAppearance.BorderSize = 0;
             this.NovoButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.NovoButton.Location = new System.Drawing.Point(105, 147);
+            this.NovoButton.Location = new System.Drawing.Point(105, 185);
             this.NovoButton.Name = "NovoButton";
             this.NovoButton.Size = new System.Drawing.Size(54, 45);
             this.NovoButton.TabIndex = 65;
@@ -211,7 +237,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(289, 195);
+            this.label7.Location = new System.Drawing.Point(289, 233);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 18);
             this.label7.TabIndex = 64;
@@ -220,7 +246,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(230, 195);
+            this.label4.Location = new System.Drawing.Point(230, 233);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 18);
             this.label4.TabIndex = 62;
@@ -229,7 +255,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(171, 195);
+            this.label6.Location = new System.Drawing.Point(171, 233);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 18);
             this.label6.TabIndex = 60;
@@ -243,7 +269,7 @@
             this.LimparButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.LimparButton.FlatAppearance.BorderSize = 0;
             this.LimparButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.LimparButton.Location = new System.Drawing.Point(285, 147);
+            this.LimparButton.Location = new System.Drawing.Point(285, 185);
             this.LimparButton.Name = "LimparButton";
             this.LimparButton.Size = new System.Drawing.Size(54, 45);
             this.LimparButton.TabIndex = 63;
@@ -262,7 +288,7 @@
             this.EditarButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.EditarButton.FlatAppearance.BorderSize = 0;
             this.EditarButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.EditarButton.Location = new System.Drawing.Point(225, 147);
+            this.EditarButton.Location = new System.Drawing.Point(225, 185);
             this.EditarButton.Name = "EditarButton";
             this.EditarButton.Size = new System.Drawing.Size(54, 45);
             this.EditarButton.TabIndex = 61;
@@ -281,7 +307,7 @@
             this.SalvarButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.SalvarButton.FlatAppearance.BorderSize = 0;
             this.SalvarButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.SalvarButton.Location = new System.Drawing.Point(165, 147);
+            this.SalvarButton.Location = new System.Drawing.Point(165, 185);
             this.SalvarButton.Name = "SalvarButton";
             this.SalvarButton.Size = new System.Drawing.Size(54, 45);
             this.SalvarButton.TabIndex = 59;
@@ -293,7 +319,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 82);
+            this.label5.Location = new System.Drawing.Point(6, 119);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(76, 18);
             this.label5.TabIndex = 58;
@@ -305,7 +331,7 @@
             this.ObservacaoTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
             this.ObservacaoTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.ObservacaoTextBox.Enabled = false;
-            this.ObservacaoTextBox.Location = new System.Drawing.Point(6, 102);
+            this.ObservacaoTextBox.Location = new System.Drawing.Point(6, 140);
             this.ObservacaoTextBox.MaxLength = 150;
             this.ObservacaoTextBox.Multiline = true;
             this.ObservacaoTextBox.Name = "ObservacaoTextBox";
@@ -366,9 +392,9 @@
             // 
             this.groupBox1.Controls.Add(this.EstoqueEscalaDataGridView);
             this.groupBox1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox1.Location = new System.Drawing.Point(15, 250);
+            this.groupBox1.Location = new System.Drawing.Point(1, 285);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(520, 487);
+            this.groupBox1.Size = new System.Drawing.Size(520, 474);
             this.groupBox1.TabIndex = 57;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Estoque da Escala";
@@ -406,7 +432,7 @@
             this.EstoqueEscalaDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.EstoqueEscalaDataGridView.RowTemplate.Height = 25;
             this.EstoqueEscalaDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.EstoqueEscalaDataGridView.Size = new System.Drawing.Size(503, 459);
+            this.EstoqueEscalaDataGridView.Size = new System.Drawing.Size(508, 444);
             this.EstoqueEscalaDataGridView.TabIndex = 0;
             this.EstoqueEscalaDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EstoqueEscalaDataGridView_CellDoubleClick);
             // 
@@ -415,7 +441,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(543, 743);
+            this.ClientSize = new System.Drawing.Size(527, 763);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -458,5 +484,7 @@
         private TextBox IDTextBox;
         private Label label2;
         private Button CargaCompletaButton;
+        private CheckBox ExibeSemEstoqueCheckBox;
+        private TextBox ProdutoTextBox;
     }
 }

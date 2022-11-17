@@ -6,6 +6,8 @@ namespace LanchoneteUDV
     public partial class FilaPedidosForm : Form
     {
         private readonly IVendasPedidoService _pedidoService;
+
+        private string _filtro="Todos";
         public FilaPedidosForm(IVendasPedidoService pedidoService)
         {
             _pedidoService=pedidoService;
@@ -18,7 +20,8 @@ namespace LanchoneteUDV
         }
         private void RecarregarGrid()
         {
-            var lista = _pedidoService.ListarTodosVendasPedido(Convert.ToInt32(this.Tag)).ToList();
+       
+            var lista = _pedidoService.ListarTodosVendasPedido(Convert.ToInt32(this.Tag), _filtro).ToList();
             SortableBindingList<VendasPedidoEscalaDTO> listaSort = new SortableBindingList<VendasPedidoEscalaDTO>(lista);
             BindingSource bs = new BindingSource();
             bs.DataSource = listaSort;   // Bind to the sortable list
@@ -58,6 +61,8 @@ namespace LanchoneteUDV
             _pedidoService.RegistrarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
             RecarregarGrid();
             MessageBox.Show("Retirada registrada!", "Atenção!", MessageBoxButtons.OK);
+            PedidosDataGridView.Rows[row].Selected = true;
+            PedidosDataGridView.FirstDisplayedScrollingRowIndex = row;
 
         }
 
@@ -68,6 +73,8 @@ namespace LanchoneteUDV
             _pedidoService.DesmarcarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
             RecarregarGrid();
             MessageBox.Show("Desmarcada retirada!", "Atenção!", MessageBoxButtons.OK);
+            PedidosDataGridView.Rows[row].Selected = true;
+            PedidosDataGridView.FirstDisplayedScrollingRowIndex = row;
 
         }
 
@@ -91,6 +98,31 @@ namespace LanchoneteUDV
 
         private void AtualizaButton_Click(object sender, EventArgs e)
         {
+            RecarregarGrid();
+        }
+
+
+        private void TudoRadioButton_Click(object sender, EventArgs e)
+        {
+            _filtro = "Todos";
+            RecarregarGrid();
+        }
+
+        private void SalgadosRadioButton_Click(object sender, EventArgs e)
+        {
+            _filtro = "Salgados";
+            RecarregarGrid();
+        }
+
+        private void ChurrascoRadioButton_Click(object sender, EventArgs e)
+        {
+            _filtro = "Churrasco";
+            RecarregarGrid();
+        }
+
+        private void ParceriasRadioButton_Click(object sender, EventArgs e)
+        {
+            _filtro = "Parcerias";
             RecarregarGrid();
         }
     }

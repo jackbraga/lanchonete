@@ -18,5 +18,7 @@ namespace LanchoneteUDV.Domain.Entidades
         public DateTime DataHoraPedido { get; set; }
 
         public string TipoPagamento { get; set; }
+
+        public bool ItemPago { get; set; }
     }
 }

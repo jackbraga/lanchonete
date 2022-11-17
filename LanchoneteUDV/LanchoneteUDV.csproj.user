@@ -55,5 +55,8 @@
     <Compile Update="PedidoForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="VendasParceriasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

@@ -21,12 +21,14 @@ namespace LanchoneteUDV
 
         private readonly IParceriasService _parceriasService;
         private readonly IProdutoService _produtoService;
+        private readonly IVendasPedidoService _vendasPedidoService;
 
-        public ParceirosForm(IParceriasService parceriasService, IProdutoService produtoService)
+        public ParceirosForm(IParceriasService parceriasService, IProdutoService produtoService,IVendasPedidoService vendasPedidoService)
         {
             _parceriasService = parceriasService;
             InitializeComponent();
             _produtoService = produtoService;
+            _vendasPedidoService = vendasPedidoService;
         }
 
         private void RecarregaGrid()
@@ -133,10 +135,17 @@ namespace LanchoneteUDV
         private void AbrirParceiroButton_Click(object sender, EventArgs e)
         {
 
-            ProdutosParceiroForm produtosParceiroForm = new ProdutosParceiroForm(_parceriasService, _produtoService);
-            produtosParceiroForm.Id = Convert.ToInt32(IdTextBox.Text);
-            produtosParceiroForm.Descricao = DescricaoTextBox.Text;
-            produtosParceiroForm.ShowDialog();
+            VendasParceriasForm vendasParceiro = new VendasParceriasForm(_produtoService, _parceriasService,_vendasPedidoService);
+            vendasParceiro.Id = Convert.ToInt32(IdTextBox.Text);
+            vendasParceiro.Descricao = DescricaoTextBox.Text;
+            vendasParceiro.ShowDialog();
+
+
+
+            //ProdutosParceiroForm produtosParceiroForm = new ProdutosParceiroForm(_parceriasService, _produtoService);
+            //produtosParceiroForm.Id = Convert.ToInt32(IdTextBox.Text);
+            //produtosParceiroForm.Descricao = DescricaoTextBox.Text;
+            //produtosParceiroForm.ShowDialog();
         }
 
         private void ParceirosDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)

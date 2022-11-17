@@ -30,14 +30,24 @@ namespace LanchoneteUDV.Application.Services
 
         }
 
+        public void AtualizaFormaPagamentoItem(int idVendaPedido, string tipoPagamento)
+        {
+            _vendasPedido.AtualizaFormaPagamentoItem(idVendaPedido,tipoPagamento);
+        }
+
+        public void DesmarcarPagamentoItem(int idVendaPedido)
+        {
+            _vendasPedido.DesmarcarPagamentoItem(idVendaPedido);
+        }
+
         public void DesmarcarRetirada(int idVendaPedido)
         {
             _vendasPedido.DesmarcarRetirada(idVendaPedido);
         }
 
-        public IEnumerable<VendasPedidoEscalaDTO> ListarTodosVendasPedido(int idEscala)
+        public IEnumerable<VendasPedidoEscalaDTO> ListarTodosVendasPedido(int idEscala, string filtro)
         {
-            var pedidos = _vendasPedido.ListarTodosVendasPedido(idEscala);
+            var pedidos = _vendasPedido.ListarTodosVendasPedido(idEscala, filtro);
             return _mapper.Map<IEnumerable<VendasPedidoEscalaDTO>>(pedidos);
         }
 
@@ -46,6 +56,17 @@ namespace LanchoneteUDV.Application.Services
             var pedidos = _vendasPedido.ListarVendasPedido(idVenda);
             return _mapper.Map<IEnumerable<VendasPedidoSocioDTO>>(pedidos);
         }
+
+        public void RegistrarPagamentoItem(int idVendaPedido)
+        {
+            _vendasPedido.RegistrarPagamentoItem(idVendaPedido);
+        }
+
+        //public IEnumerable<VendasPedidoSocioDTO> ListarVendasPedidoPago(int idVenda)
+        //{
+        //    var pedidos = _vendasPedido.ListarVendasPedidoPago(idVenda);
+        //    return _mapper.Map<IEnumerable<VendasPedidoSocioDTO>>(pedidos);
+        //}
 
         public void RegistrarRetirada(int idVendaPedido)
         {

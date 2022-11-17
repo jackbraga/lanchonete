@@ -29,16 +29,21 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PedidoForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.TotalAPagarTextBox = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.VisitanteButton = new System.Windows.Forms.Button();
             this.IdEscalaLabel = new System.Windows.Forms.Label();
@@ -52,6 +57,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.DescontoTextBox = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.checkBoxChurrasco = new System.Windows.Forms.CheckBox();
             this.checkBoxSalgados = new System.Windows.Forms.CheckBox();
             this.RetiradoCheckBox = new System.Windows.Forms.CheckBox();
@@ -67,6 +74,8 @@
             this.ProdutosComboBox = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.RegistrarPagamentoButton = new System.Windows.Forms.Button();
             this.FilaButton = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -92,6 +101,14 @@
             this.label23 = new System.Windows.Forms.Label();
             this.EstoqueSalgadosDataGridView = new System.Windows.Forms.DataGridView();
             this.button6 = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.DesmarcarPagamentoButton = new System.Windows.Forms.Button();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.DesmarcarRetiradaPagoButton = new System.Windows.Forms.Button();
+            this.RegistrarRetiradaPagoButton = new System.Windows.Forms.Button();
+            this.PedidosPagosDataGridView = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -100,16 +117,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.EstoqueDataGridView)).BeginInit();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EstoqueSalgadosDataGridView)).BeginInit();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PedidosPagosDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.TotalAPagarTextBox);
             this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.VisitanteButton);
             this.groupBox1.Controls.Add(this.IdEscalaLabel);
             this.groupBox1.Controls.Add(this.IDVendaLabel);
             this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.TotalConsumidoTextBox);
             this.groupBox1.Controls.Add(this.SocioComboBox);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -119,6 +138,28 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cliente";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(710, 160);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(67, 18);
+            this.label27.TabIndex = 55;
+            this.label27.Text = "Total Pago";
+            // 
+            // TotalAPagarTextBox
+            // 
+            this.TotalAPagarTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.TotalAPagarTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
+            this.TotalAPagarTextBox.BackColor = System.Drawing.SystemColors.Info;
+            this.TotalAPagarTextBox.Enabled = false;
+            this.TotalAPagarTextBox.Location = new System.Drawing.Point(490, 40);
+            this.TotalAPagarTextBox.MaxLength = 150;
+            this.TotalAPagarTextBox.Name = "TotalAPagarTextBox";
+            this.TotalAPagarTextBox.Size = new System.Drawing.Size(171, 23);
+            this.TotalAPagarTextBox.TabIndex = 54;
+            this.TotalAPagarTextBox.Text = "R$ 0,00";
             // 
             // label20
             // 
@@ -170,11 +211,11 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(530, 19);
+            this.label13.Location = new System.Drawing.Point(490, 19);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(102, 18);
+            this.label13.Size = new System.Drawing.Size(83, 18);
             this.label13.TabIndex = 40;
-            this.label13.Text = "Total consumido";
+            this.label13.Text = "Total a Pagar";
             // 
             // TotalConsumidoTextBox
             // 
@@ -182,10 +223,10 @@
             this.TotalConsumidoTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
             this.TotalConsumidoTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.TotalConsumidoTextBox.Enabled = false;
-            this.TotalConsumidoTextBox.Location = new System.Drawing.Point(530, 43);
+            this.TotalConsumidoTextBox.Location = new System.Drawing.Point(710, 181);
             this.TotalConsumidoTextBox.MaxLength = 150;
             this.TotalConsumidoTextBox.Name = "TotalConsumidoTextBox";
-            this.TotalConsumidoTextBox.Size = new System.Drawing.Size(174, 23);
+            this.TotalConsumidoTextBox.Size = new System.Drawing.Size(105, 23);
             this.TotalConsumidoTextBox.TabIndex = 39;
             this.TotalConsumidoTextBox.Text = "R$ 0,00";
             // 
@@ -202,7 +243,7 @@
             "Extra"});
             this.SocioComboBox.Location = new System.Drawing.Point(11, 40);
             this.SocioComboBox.Name = "SocioComboBox";
-            this.SocioComboBox.Size = new System.Drawing.Size(513, 26);
+            this.SocioComboBox.Size = new System.Drawing.Size(473, 26);
             this.SocioComboBox.TabIndex = 1;
             this.SocioComboBox.SelectionChangeCommitted += new System.EventHandler(this.SocioComboBox_SelectionChangeCommitted);
             // 
@@ -228,7 +269,7 @@
             "CARTAO",
             "DINHEIRO",
             "PIX"});
-            this.PagamentoComboBox.Location = new System.Drawing.Point(11, 149);
+            this.PagamentoComboBox.Location = new System.Drawing.Point(11, 138);
             this.PagamentoComboBox.Name = "PagamentoComboBox";
             this.PagamentoComboBox.Size = new System.Drawing.Size(205, 26);
             this.PagamentoComboBox.TabIndex = 37;
@@ -236,7 +277,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 128);
+            this.label1.Location = new System.Drawing.Point(11, 117);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 18);
             this.label1.TabIndex = 38;
@@ -254,7 +295,7 @@
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(762, 136);
+            this.label4.Location = new System.Drawing.Point(707, 70);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 39);
             this.label4.TabIndex = 8;
@@ -263,6 +304,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.DescontoTextBox);
+            this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.checkBoxChurrasco);
             this.groupBox2.Controls.Add(this.checkBoxSalgados);
             this.groupBox2.Controls.Add(this.RetiradoCheckBox);
@@ -281,18 +324,42 @@
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.Location = new System.Drawing.Point(12, 87);
+            this.groupBox2.Location = new System.Drawing.Point(12, 81);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(838, 181);
+            this.groupBox2.Size = new System.Drawing.Size(838, 168);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Produtos";
+            // 
+            // DescontoTextBox
+            // 
+            this.DescontoTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.DescontoTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
+            this.DescontoTextBox.BackColor = System.Drawing.SystemColors.Info;
+            this.DescontoTextBox.Location = new System.Drawing.Point(333, 89);
+            this.DescontoTextBox.MaxLength = 3;
+            this.DescontoTextBox.Name = "DescontoTextBox";
+            this.DescontoTextBox.ShortcutsEnabled = false;
+            this.DescontoTextBox.Size = new System.Drawing.Size(129, 23);
+            this.DescontoTextBox.TabIndex = 54;
+            this.DescontoTextBox.Text = "0";
+            this.DescontoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DescontoTextBox_KeyPress);
+            this.DescontoTextBox.Leave += new System.EventHandler(this.DescontoTextBox_Leave);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(333, 68);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(111, 18);
+            this.label12.TabIndex = 53;
+            this.label12.Text = "Desconto unitário";
             // 
             // checkBoxChurrasco
             // 
             this.checkBoxChurrasco.AutoSize = true;
             this.checkBoxChurrasco.BackColor = System.Drawing.Color.Transparent;
-            this.checkBoxChurrasco.Location = new System.Drawing.Point(204, 80);
+            this.checkBoxChurrasco.Location = new System.Drawing.Point(204, 71);
             this.checkBoxChurrasco.Name = "checkBoxChurrasco";
             this.checkBoxChurrasco.Size = new System.Drawing.Size(123, 22);
             this.checkBoxChurrasco.TabIndex = 52;
@@ -304,7 +371,7 @@
             // 
             this.checkBoxSalgados.AutoSize = true;
             this.checkBoxSalgados.BackColor = System.Drawing.Color.Transparent;
-            this.checkBoxSalgados.Location = new System.Drawing.Point(11, 80);
+            this.checkBoxSalgados.Location = new System.Drawing.Point(11, 71);
             this.checkBoxSalgados.Name = "checkBoxSalgados";
             this.checkBoxSalgados.Size = new System.Drawing.Size(116, 22);
             this.checkBoxSalgados.TabIndex = 51;
@@ -315,7 +382,7 @@
             // RetiradoCheckBox
             // 
             this.RetiradoCheckBox.AutoSize = true;
-            this.RetiradoCheckBox.Location = new System.Drawing.Point(710, 48);
+            this.RetiradoCheckBox.Location = new System.Drawing.Point(710, 39);
             this.RetiradoCheckBox.Name = "RetiradoCheckBox";
             this.RetiradoCheckBox.Size = new System.Drawing.Size(76, 22);
             this.RetiradoCheckBox.TabIndex = 50;
@@ -333,7 +400,7 @@
             "Anual",
             "Escala",
             "Extra"});
-            this.PrecoComboBox.Location = new System.Drawing.Point(333, 48);
+            this.PrecoComboBox.Location = new System.Drawing.Point(333, 39);
             this.PrecoComboBox.Name = "PrecoComboBox";
             this.PrecoComboBox.Size = new System.Drawing.Size(129, 26);
             this.PrecoComboBox.TabIndex = 49;
@@ -348,7 +415,7 @@
             this.AdicionarButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.AdicionarButton.FlatAppearance.BorderSize = 0;
             this.AdicionarButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.AdicionarButton.Location = new System.Drawing.Point(710, 134);
+            this.AdicionarButton.Location = new System.Drawing.Point(655, 68);
             this.AdicionarButton.Name = "AdicionarButton";
             this.AdicionarButton.Size = new System.Drawing.Size(46, 41);
             this.AdicionarButton.TabIndex = 48;
@@ -360,7 +427,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(333, 27);
+            this.label11.Location = new System.Drawing.Point(333, 18);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(39, 18);
             this.label11.TabIndex = 47;
@@ -369,7 +436,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(222, 128);
+            this.label7.Location = new System.Drawing.Point(222, 117);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(76, 18);
             this.label7.TabIndex = 45;
@@ -383,7 +450,7 @@
             this.ObservacaoTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.ObservacaoTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.ObservacaoTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.ObservacaoTextBox.Location = new System.Drawing.Point(222, 149);
+            this.ObservacaoTextBox.Location = new System.Drawing.Point(222, 138);
             this.ObservacaoTextBox.MaxLength = 150;
             this.ObservacaoTextBox.Name = "ObservacaoTextBox";
             this.ObservacaoTextBox.Size = new System.Drawing.Size(482, 23);
@@ -394,7 +461,7 @@
             this.QuantidadeTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.QuantidadeTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
             this.QuantidadeTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.QuantidadeTextBox.Location = new System.Drawing.Point(468, 48);
+            this.QuantidadeTextBox.Location = new System.Drawing.Point(468, 39);
             this.QuantidadeTextBox.MaxLength = 3;
             this.QuantidadeTextBox.Name = "QuantidadeTextBox";
             this.QuantidadeTextBox.ShortcutsEnabled = false;
@@ -407,7 +474,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(579, 27);
+            this.label3.Location = new System.Drawing.Point(576, 18);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(36, 18);
             this.label3.TabIndex = 40;
@@ -419,7 +486,7 @@
             this.TotalTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
             this.TotalTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.TotalTextBox.Enabled = false;
-            this.TotalTextBox.Location = new System.Drawing.Point(579, 48);
+            this.TotalTextBox.Location = new System.Drawing.Point(576, 39);
             this.TotalTextBox.MaxLength = 150;
             this.TotalTextBox.Name = "TotalTextBox";
             this.TotalTextBox.Size = new System.Drawing.Size(125, 23);
@@ -429,7 +496,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(468, 27);
+            this.label8.Location = new System.Drawing.Point(468, 18);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(75, 18);
             this.label8.TabIndex = 38;
@@ -446,7 +513,7 @@
             "Anual",
             "Escala",
             "Extra"});
-            this.ProdutosComboBox.Location = new System.Drawing.Point(11, 48);
+            this.ProdutosComboBox.Location = new System.Drawing.Point(11, 39);
             this.ProdutosComboBox.Name = "ProdutosComboBox";
             this.ProdutosComboBox.Size = new System.Drawing.Size(316, 26);
             this.ProdutosComboBox.TabIndex = 1;
@@ -455,7 +522,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(11, 27);
+            this.label9.Location = new System.Drawing.Point(11, 18);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(52, 18);
             this.label9.TabIndex = 3;
@@ -463,6 +530,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label15);
+            this.groupBox3.Controls.Add(this.RegistrarPagamentoButton);
             this.groupBox3.Controls.Add(this.FilaButton);
             this.groupBox3.Controls.Add(this.label19);
             this.groupBox3.Controls.Add(this.label10);
@@ -473,12 +542,39 @@
             this.groupBox3.Controls.Add(this.RegistrarRetiradaButton);
             this.groupBox3.Controls.Add(this.PedidosDataGridView);
             this.groupBox3.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox3.Location = new System.Drawing.Point(12, 274);
+            this.groupBox3.Location = new System.Drawing.Point(12, 252);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(838, 403);
+            this.groupBox3.Size = new System.Drawing.Size(838, 319);
             this.groupBox3.TabIndex = 29;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Produtos do Pedido";
+            // 
+            // label15
+            // 
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Location = new System.Drawing.Point(763, 164);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(84, 41);
+            this.label15.TabIndex = 58;
+            this.label15.Text = "Registrar Pagamento";
+            // 
+            // RegistrarPagamentoButton
+            // 
+            this.RegistrarPagamentoButton.AutoSize = true;
+            this.RegistrarPagamentoButton.BackColor = System.Drawing.SystemColors.Window;
+            this.RegistrarPagamentoButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RegistrarPagamentoButton.BackgroundImage")));
+            this.RegistrarPagamentoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.RegistrarPagamentoButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.RegistrarPagamentoButton.FlatAppearance.BorderSize = 0;
+            this.RegistrarPagamentoButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.RegistrarPagamentoButton.Location = new System.Drawing.Point(710, 163);
+            this.RegistrarPagamentoButton.Name = "RegistrarPagamentoButton";
+            this.RegistrarPagamentoButton.Size = new System.Drawing.Size(46, 41);
+            this.RegistrarPagamentoButton.TabIndex = 57;
+            this.RegistrarPagamentoButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.RegistrarPagamentoButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.RegistrarPagamentoButton.UseVisualStyleBackColor = false;
+            this.RegistrarPagamentoButton.Click += new System.EventHandler(this.RegistrarPagamentoButton_Click);
             // 
             // FilaButton
             // 
@@ -489,7 +585,7 @@
             this.FilaButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.FilaButton.FlatAppearance.BorderSize = 0;
             this.FilaButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.FilaButton.Location = new System.Drawing.Point(710, 191);
+            this.FilaButton.Location = new System.Drawing.Point(710, 238);
             this.FilaButton.Name = "FilaButton";
             this.FilaButton.Size = new System.Drawing.Size(46, 41);
             this.FilaButton.TabIndex = 56;
@@ -501,7 +597,7 @@
             // label19
             // 
             this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.Location = new System.Drawing.Point(762, 191);
+            this.label19.Location = new System.Drawing.Point(761, 238);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(84, 41);
             this.label19.TabIndex = 55;
@@ -594,26 +690,26 @@
             this.PedidosDataGridView.AllowUserToAddRows = false;
             this.PedidosDataGridView.AllowUserToDeleteRows = false;
             this.PedidosDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightCyan;
-            this.PedidosDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.LightCyan;
+            this.PedidosDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.PedidosDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PedidosDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PedidosDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.PedidosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.PedidosDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.PedidosDataGridView.DefaultCellStyle = dataGridViewCellStyle15;
             this.PedidosDataGridView.Location = new System.Drawing.Point(6, 22);
             this.PedidosDataGridView.MultiSelect = false;
             this.PedidosDataGridView.Name = "PedidosDataGridView";
@@ -622,7 +718,7 @@
             this.PedidosDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PedidosDataGridView.RowTemplate.Height = 25;
             this.PedidosDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PedidosDataGridView.Size = new System.Drawing.Size(698, 374);
+            this.PedidosDataGridView.Size = new System.Drawing.Size(698, 291);
             this.PedidosDataGridView.TabIndex = 0;
             this.PedidosDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PedidosDataGridView_CellDoubleClick);
             // 
@@ -638,7 +734,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBox4.Location = new System.Drawing.Point(857, 316);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(434, 361);
+            this.groupBox4.Size = new System.Drawing.Size(434, 469);
             this.groupBox4.TabIndex = 30;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Estoque da escala";
@@ -712,27 +808,27 @@
             this.EstoqueDataGridView.AllowUserToAddRows = false;
             this.EstoqueDataGridView.AllowUserToDeleteRows = false;
             this.EstoqueDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightCyan;
-            this.EstoqueDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.LightCyan;
+            this.EstoqueDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
             this.EstoqueDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.EstoqueDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.EstoqueDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.EstoqueDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.EstoqueDataGridView.DefaultCellStyle = dataGridViewCellStyle6;
-            this.EstoqueDataGridView.Location = new System.Drawing.Point(6, 22);
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.EstoqueDataGridView.DefaultCellStyle = dataGridViewCellStyle18;
+            this.EstoqueDataGridView.Location = new System.Drawing.Point(5, 22);
             this.EstoqueDataGridView.MultiSelect = false;
             this.EstoqueDataGridView.Name = "EstoqueDataGridView";
             this.EstoqueDataGridView.ReadOnly = true;
@@ -740,7 +836,7 @@
             this.EstoqueDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.EstoqueDataGridView.RowTemplate.Height = 25;
             this.EstoqueDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.EstoqueDataGridView.Size = new System.Drawing.Size(422, 333);
+            this.EstoqueDataGridView.Size = new System.Drawing.Size(422, 441);
             this.EstoqueDataGridView.TabIndex = 0;
             // 
             // button3
@@ -846,26 +942,26 @@
             this.EstoqueSalgadosDataGridView.AllowUserToAddRows = false;
             this.EstoqueSalgadosDataGridView.AllowUserToDeleteRows = false;
             this.EstoqueSalgadosDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.LightCyan;
-            this.EstoqueSalgadosDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.LightCyan;
+            this.EstoqueSalgadosDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle19;
             this.EstoqueSalgadosDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.EstoqueSalgadosDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.EstoqueSalgadosDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.EstoqueSalgadosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.EstoqueSalgadosDataGridView.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.EstoqueSalgadosDataGridView.DefaultCellStyle = dataGridViewCellStyle21;
             this.EstoqueSalgadosDataGridView.Location = new System.Drawing.Point(6, 22);
             this.EstoqueSalgadosDataGridView.MultiSelect = false;
             this.EstoqueSalgadosDataGridView.Name = "EstoqueSalgadosDataGridView";
@@ -894,12 +990,150 @@
             this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.button6.UseVisualStyleBackColor = false;
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.label27);
+            this.groupBox6.Controls.Add(this.label24);
+            this.groupBox6.Controls.Add(this.DesmarcarPagamentoButton);
+            this.groupBox6.Controls.Add(this.label25);
+            this.groupBox6.Controls.Add(this.label26);
+            this.groupBox6.Controls.Add(this.DesmarcarRetiradaPagoButton);
+            this.groupBox6.Controls.Add(this.RegistrarRetiradaPagoButton);
+            this.groupBox6.Controls.Add(this.TotalConsumidoTextBox);
+            this.groupBox6.Controls.Add(this.PedidosPagosDataGridView);
+            this.groupBox6.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox6.Location = new System.Drawing.Point(12, 571);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(838, 214);
+            this.groupBox6.TabIndex = 32;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Itens que já foram pagos";
+            // 
+            // label24
+            // 
+            this.label24.BackColor = System.Drawing.Color.Transparent;
+            this.label24.Location = new System.Drawing.Point(763, 117);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(84, 41);
+            this.label24.TabIndex = 60;
+            this.label24.Text = "Desmarcar Pagamento";
+            // 
+            // DesmarcarPagamentoButton
+            // 
+            this.DesmarcarPagamentoButton.AutoSize = true;
+            this.DesmarcarPagamentoButton.BackColor = System.Drawing.SystemColors.Window;
+            this.DesmarcarPagamentoButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DesmarcarPagamentoButton.BackgroundImage")));
+            this.DesmarcarPagamentoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.DesmarcarPagamentoButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.DesmarcarPagamentoButton.FlatAppearance.BorderSize = 0;
+            this.DesmarcarPagamentoButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.DesmarcarPagamentoButton.Location = new System.Drawing.Point(710, 116);
+            this.DesmarcarPagamentoButton.Name = "DesmarcarPagamentoButton";
+            this.DesmarcarPagamentoButton.Size = new System.Drawing.Size(46, 41);
+            this.DesmarcarPagamentoButton.TabIndex = 59;
+            this.DesmarcarPagamentoButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.DesmarcarPagamentoButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.DesmarcarPagamentoButton.UseVisualStyleBackColor = false;
+            this.DesmarcarPagamentoButton.Click += new System.EventHandler(this.DesmarcarPagamentoButton_Click);
+            // 
+            // label25
+            // 
+            this.label25.Location = new System.Drawing.Point(762, 69);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(71, 39);
+            this.label25.TabIndex = 52;
+            this.label25.Text = "Desmarcar Retirada";
+            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label26
+            // 
+            this.label26.Location = new System.Drawing.Point(762, 22);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(63, 39);
+            this.label26.TabIndex = 51;
+            this.label26.Text = "Registrar Retirada";
+            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // DesmarcarRetiradaPagoButton
+            // 
+            this.DesmarcarRetiradaPagoButton.AutoSize = true;
+            this.DesmarcarRetiradaPagoButton.BackColor = System.Drawing.SystemColors.Window;
+            this.DesmarcarRetiradaPagoButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DesmarcarRetiradaPagoButton.BackgroundImage")));
+            this.DesmarcarRetiradaPagoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.DesmarcarRetiradaPagoButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.DesmarcarRetiradaPagoButton.FlatAppearance.BorderSize = 0;
+            this.DesmarcarRetiradaPagoButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.DesmarcarRetiradaPagoButton.Location = new System.Drawing.Point(710, 69);
+            this.DesmarcarRetiradaPagoButton.Name = "DesmarcarRetiradaPagoButton";
+            this.DesmarcarRetiradaPagoButton.Size = new System.Drawing.Size(46, 41);
+            this.DesmarcarRetiradaPagoButton.TabIndex = 50;
+            this.DesmarcarRetiradaPagoButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.DesmarcarRetiradaPagoButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.DesmarcarRetiradaPagoButton.UseVisualStyleBackColor = false;
+            this.DesmarcarRetiradaPagoButton.Click += new System.EventHandler(this.DesmarcarRetiradaPagoButton_Click);
+            // 
+            // RegistrarRetiradaPagoButton
+            // 
+            this.RegistrarRetiradaPagoButton.AutoSize = true;
+            this.RegistrarRetiradaPagoButton.BackColor = System.Drawing.SystemColors.Window;
+            this.RegistrarRetiradaPagoButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RegistrarRetiradaPagoButton.BackgroundImage")));
+            this.RegistrarRetiradaPagoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.RegistrarRetiradaPagoButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.RegistrarRetiradaPagoButton.FlatAppearance.BorderSize = 0;
+            this.RegistrarRetiradaPagoButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.RegistrarRetiradaPagoButton.Location = new System.Drawing.Point(710, 22);
+            this.RegistrarRetiradaPagoButton.Name = "RegistrarRetiradaPagoButton";
+            this.RegistrarRetiradaPagoButton.Size = new System.Drawing.Size(46, 41);
+            this.RegistrarRetiradaPagoButton.TabIndex = 49;
+            this.RegistrarRetiradaPagoButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.RegistrarRetiradaPagoButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.RegistrarRetiradaPagoButton.UseVisualStyleBackColor = false;
+            this.RegistrarRetiradaPagoButton.Click += new System.EventHandler(this.RegistrarRetiradaPagoButton_Click);
+            // 
+            // PedidosPagosDataGridView
+            // 
+            this.PedidosPagosDataGridView.AllowUserToAddRows = false;
+            this.PedidosPagosDataGridView.AllowUserToDeleteRows = false;
+            this.PedidosPagosDataGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.LightCyan;
+            this.PedidosPagosDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle22;
+            this.PedidosPagosDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PedidosPagosDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
+            this.PedidosPagosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.PedidosPagosDataGridView.DefaultCellStyle = dataGridViewCellStyle24;
+            this.PedidosPagosDataGridView.Location = new System.Drawing.Point(6, 22);
+            this.PedidosPagosDataGridView.MultiSelect = false;
+            this.PedidosPagosDataGridView.Name = "PedidosPagosDataGridView";
+            this.PedidosPagosDataGridView.ReadOnly = true;
+            this.PedidosPagosDataGridView.RowHeadersVisible = false;
+            this.PedidosPagosDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PedidosPagosDataGridView.RowTemplate.Height = 25;
+            this.PedidosPagosDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.PedidosPagosDataGridView.Size = new System.Drawing.Size(698, 186);
+            this.PedidosPagosDataGridView.TabIndex = 0;
+            this.PedidosPagosDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PedidosPagosDataGridView_CellDoubleClick);
+            // 
             // PedidoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1296, 682);
+            this.ClientSize = new System.Drawing.Size(1296, 787);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -907,10 +1141,12 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label14);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.KeyPreview = true;
             this.Name = "PedidoForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pedido";
             this.Load += new System.EventHandler(this.PedidoForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PedidoForm_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -924,6 +1160,9 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EstoqueSalgadosDataGridView)).EndInit();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PedidosPagosDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -985,5 +1224,19 @@
         private Button button6;
         private CheckBox checkBoxSalgados;
         private CheckBox checkBoxChurrasco;
+        private TextBox DescontoTextBox;
+        private Label label12;
+        private GroupBox groupBox6;
+        private Label label25;
+        private Label label26;
+        private Button DesmarcarRetiradaPagoButton;
+        private Button RegistrarRetiradaPagoButton;
+        private DataGridView PedidosPagosDataGridView;
+        private Label label15;
+        private Button RegistrarPagamentoButton;
+        private Label label24;
+        private Button DesmarcarPagamentoButton;
+        private TextBox TotalAPagarTextBox;
+        private Label label27;
     }
 }

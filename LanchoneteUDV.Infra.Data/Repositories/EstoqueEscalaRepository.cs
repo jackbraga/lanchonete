@@ -113,14 +113,19 @@ namespace LanchoneteUDV.Infra.Data.Repositories
             }
         }
 
-        public IEnumerable<Estoque> ListarEstoqueComboProdutos(int idEscala)
+        public IEnumerable<Estoque> ListarEstoqueComboProdutos(int idEscala, bool exibeMesmoSemEstoque)
         {
             //string todosProdutos = todos ? " NOT " : "";
             string sql = "SELECT A.ID AS IdProduto, A.Descricao AS DescricaoProduto,(ISNULL(EstoqueInicial,0) + ISNULL((SELECT SUM(tbCompras.Quantidade) FROM tbCompras WHERE Produto = A.ID),0) - ISNULL((SELECT SUM(tbVendasPedido.Quantidade) FROM tbVendasPedido WHERE Produto = A.ID),0)) AS QtdEstoque " +
                          "FROM tbProdutos AS A WITH(NOLOCK) " +
-                         "LEFT JOIN tbEstoqueEscala AS B WITH(NOLOCK) ON B.Produto = A.ID AND B.Escala = " + idEscala  + " " +
-                         "WHERE B.Produto IS NULL AND A.ProdutoVenda = 1 AND " +
-                         "(ISNULL(EstoqueInicial, 0) + ISNULL((SELECT SUM(tbCompras.Quantidade) FROM tbCompras WHERE Produto = A.ID), 0) - ISNULL((SELECT SUM(tbVendasPedido.Quantidade) FROM tbVendasPedido WHERE Produto = A.ID),0)) > 0";
+                         "LEFT JOIN tbEstoqueEscala AS B WITH(NOLOCK) ON B.Produto = A.ID AND B.Escala = " + idEscala + " " +
+                         "WHERE B.Produto IS NULL AND A.ProdutoVenda = 1 ";
+
+            if (!exibeMesmoSemEstoque)
+            {
+                sql = sql + "AND (ISNULL(EstoqueInicial, 0) + ISNULL((SELECT SUM(tbCompras.Quantidade) FROM tbCompras WHERE Produto = A.ID), 0) - ISNULL((SELECT SUM(tbVendasPedido.Quantidade) FROM tbVendasPedido WHERE Produto = A.ID),0)) > 0";
+            }
+                         
 
             using (var connection = _connection.Connection())
             {
@@ -170,8 +175,6 @@ namespace LanchoneteUDV.Infra.Data.Repositories
         public EstoqueEscala Update(EstoqueEscala classe)
         {
             string sql = "UPDATE tbEstoqueEscala SET " +
-
-                    "Produto=@produto," +
                     "QtdVenda=@qtdvenda," +
                     "Observacao=@observacao " +
                     "WHERE ID=@idEstoqueEscala;";

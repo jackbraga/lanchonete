@@ -67,5 +67,28 @@ namespace LanchoneteUDV.Application.Services
             var retorno = _parceriasRepository.AdicionaProdutoParceria(produto);
             return _mapper.Map<ParceriasProdutoDTO>(retorno);
         }
+
+        public IEnumerable<VendasParceriaEscalaDTO> BuscarParceriaEscala(int idParceria)
+        {
+            var retorno = _parceriasRepository.BuscarParceriaEscala(idParceria);
+            return _mapper.Map<IEnumerable<VendasParceriaEscalaDTO>>(retorno);
+        }
+
+        public IEnumerable<VendasParceriaProdutoDTO> BuscarVendasProdutosParceria(int idParceria, bool retirados)
+        {
+            var retorno = _parceriasRepository.BuscarVendasProdutosParceria(idParceria, retirados);
+            return _mapper.Map<IEnumerable<VendasParceriaProdutoDTO>>(retorno);
+        }
+
+        public void RegistraRepasseParceria(int idEscala, int idParceria, bool repasse)
+        {
+            _parceriasRepository.RegistraRepasseParceria(idEscala, idParceria, repasse);
+        }
+        public void DesregistraRepasseParceria(int idEscala, int idParceria)
+        {
+            _parceriasRepository.DesregistraRepasseParceria(idEscala, idParceria);
+        }
+
+
     }
 }

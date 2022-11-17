@@ -1,0 +1,15 @@
+C:\Github\lanchonete\LanchoneteUDV.Infra.Data\bin\Release\net6.0\LanchoneteUDV.Infra.Data.deps.json
+C:\Github\lanchonete\LanchoneteUDV.Infra.Data\bin\Release\net6.0\LanchoneteUDV.Infra.Data.dll
+C:\Github\lanchonete\LanchoneteUDV.Infra.Data\bin\Release\net6.0\LanchoneteUDV.Infra.Data.pdb
+C:\Github\lanchonete\LanchoneteUDV.Infra.Data\bin\Release\net6.0\LanchoneteUDV.Domain.dll
+C:\Github\lanchonete\LanchoneteUDV.Infra.Data\bin\Release\net6.0\LanchoneteUDV.Domain.pdb
+C:\Github\lanchonete\LanchoneteUDV.Infra.Data\obj\Release\net6.0\LanchoneteUDV.Infra.Data.csproj.AssemblyReference.cache
+C:\Github\lanchonete\LanchoneteUDV.Infra.Data\obj\Release\net6.0\LanchoneteUDV.Infra.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Github\lanchonete\LanchoneteUDV.Infra.Data\obj\Release\net6.0\LanchoneteUDV.Infra.Data.AssemblyInfoInputs.cache
+C:\Github\lanchonete\LanchoneteUDV.Infra.Data\obj\Release\net6.0\LanchoneteUDV.Infra.Data.AssemblyInfo.cs
+C:\Github\lanchonete\LanchoneteUDV.Infra.Data\obj\Release\net6.0\LanchoneteUDV.Infra.Data.csproj.CoreCompileInputs.cache
+C:\Github\lanchonete\LanchoneteUDV.Infra.Data\obj\Release\net6.0\LanchoneteUDV.Infra.Data.csproj.CopyComplete
+C:\Github\lanchonete\LanchoneteUDV.Infra.Data\obj\Release\net6.0\LanchoneteUDV.Infra.Data.dll
+C:\Github\lanchonete\LanchoneteUDV.Infra.Data\obj\Release\net6.0\refint\LanchoneteUDV.Infra.Data.dll
+C:\Github\lanchonete\LanchoneteUDV.Infra.Data\obj\Release\net6.0\LanchoneteUDV.Infra.Data.pdb
+C:\Github\lanchonete\LanchoneteUDV.Infra.Data\obj\Release\net6.0\ref\LanchoneteUDV.Infra.Data.dll

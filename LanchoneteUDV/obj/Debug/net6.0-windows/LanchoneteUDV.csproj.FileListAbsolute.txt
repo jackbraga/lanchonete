@@ -250,12 +250,14 @@ C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\LanchoneteUDV.Parcei
 C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\LanchoneteUDV.PedidoForm.resources
 C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\LanchoneteUDV.PrincipalForm.resources
 C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\LanchoneteUDV.ProdutosForm.resources
+C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\LanchoneteUDV.ProdutosParceiroForm.resources
 C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\LanchoneteUDV.Properties.Resources.resources
 C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\LanchoneteUDV.RepasseTesourariaForm.resources
 C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\LanchoneteUDV.RepasseTesourariaVendaForm.resources
 C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\LanchoneteUDV.SociosForm.resources
 C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\LanchoneteUDV.SociosVisitanteForm.resources
 C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\LanchoneteUDV.VendasForm.resources
+C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\LanchoneteUDV.VendasParceriasForm.resources
 C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\LanchoneteUDV.csproj.GenerateResource.cache
 C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\LanchoneteUDV.GeneratedMSBuildEditorConfig.editorconfig
 C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\LanchoneteUDV.AssemblyInfoInputs.cache
@@ -267,4 +269,3 @@ C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\refint\LanchoneteUDV
 C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\LanchoneteUDV.pdb
 C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\LanchoneteUDV.genruntimeconfig.cache
 C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\ref\LanchoneteUDV.dll
-C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\LanchoneteUDV.ProdutosParceiroForm.resources
