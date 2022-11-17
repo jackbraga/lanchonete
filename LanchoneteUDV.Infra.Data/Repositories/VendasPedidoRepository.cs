@@ -3,6 +3,7 @@ using LanchoneteUDV.Domain.Entidades;
 using LanchoneteUDV.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,6 +43,39 @@ namespace LanchoneteUDV.Infra.Data.Repositories
             }
         }
 
+        public void AtualizaFormaPagamentoItem(int idVendaPedido, string tipoPagamento)
+        {
+            string sql = "UPDATE tbVendasPedido " +
+                          "SET TipoPagamento=@pagamento " +
+                          "WHERE ID=@id;";
+
+            using (var connection = _connection.Connection())
+            {
+                connection.Open();
+                connection.Execute(sql, new
+                {
+                    pagamento = tipoPagamento,
+                    id = idVendaPedido
+                });
+            }
+        }
+
+        public void DesmarcarPagamentoItem(int idVendaPedido)
+        {
+            string sql = "UPDATE tbVendasPedido " +
+                   "SET ItemPago=0 " +
+                   "WHERE ID=@id;";
+
+            using (var connection = _connection.Connection())
+            {
+                connection.Open();
+                connection.Execute(sql, new
+                {
+                    id = idVendaPedido
+                });
+            }
+        }
+
         public void DesmarcarRetirada(int idVendaPedido)
         {
             string sql = "UPDATE tbVendasPedido " +
@@ -58,8 +92,15 @@ namespace LanchoneteUDV.Infra.Data.Repositories
             }
         }
 
-        public IEnumerable<VendasPedidoEscala> ListarTodosVendasPedido(int idEscala)
+        public IEnumerable<VendasPedidoEscala> ListarTodosVendasPedido(int idEscala, string filtro)
         {
+            string sqlFiltro = "";
+
+            if (!filtro.Equals("Todos"))
+            {
+                 sqlFiltro =  $"AND tbCategorias.Descricao='{filtro}' ";
+            }
+
             string sql = "SELECT tbVendasPedido.ID,tbVendasPedido.DataHoraPedido, tbSocios.Nome, tbProdutos.Descricao, tbVendasPedido.TipoPagamento, " +
                         "tbVendasPedido.Quantidade, tbVendasPedido.Retirado, tbVendasPedido.Observacao " +
                         "FROM tbProdutos " +
@@ -67,7 +108,8 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                         "INNER JOIN((tbEscalas " +
                         "INNER JOIN tbVendas ON tbEscalas.ID = tbVendas.Escala) " +
                         "INNER JOIN tbVendasPedido ON tbVendas.ID = tbVendasPedido.Venda) ON tbSocios.ID = tbVendas.Socio) ON tbProdutos.ID = tbVendasPedido.Produto " +
-                        "WHERE tbEscalas.ID =" + idEscala + " " +
+                        "INNER JOIN tbCategorias ON tbCategorias.ID=tbProdutos.Categoria " +
+                        "WHERE tbEscalas.ID =" + idEscala + " " + sqlFiltro + 
                         "ORDER BY tbVendasPedido.Retirado asc, tbVendasPedido.DataHoraPedido; ";
 
             using (var connection = _connection.Connection())
@@ -78,10 +120,12 @@ namespace LanchoneteUDV.Infra.Data.Repositories
             }
         }
 
+
+
         public IEnumerable<VendasPedidoSocio> ListarVendasPedido(int idVenda)
         {
             string sql = "SELECT tbVendasPedido.ID, tbProdutos.Descricao,tbVendasPedido.PrecoProduto ,tbVendasPedido.Quantidade, " +
-            "(tbVendasPedido.Quantidade * tbVendasPedido.PrecoProduto) AS Total, tbVendasPedido.Observacao, tbVendasPedido.Retirado, tbVendasPedido.DataHoraPedido,  tbVendasPedido.TipoPagamento  " +
+            "(tbVendasPedido.Quantidade * tbVendasPedido.PrecoProduto) AS Total, tbVendasPedido.Observacao, tbVendasPedido.Retirado, tbVendasPedido.DataHoraPedido,  tbVendasPedido.TipoPagamento, ISNULL(tbVendasPedido.ItemPago,0) AS ItemPago  " +
             "FROM tbProdutos INNER JOIN tbVendasPedido ON tbProdutos.ID = tbVendasPedido.Produto " +
             "WHERE tbVendasPedido.Venda=" + idVenda + " " +
             "ORDER BY tbVendasPedido.Retirado desc, tbProdutos.Descricao;";
@@ -91,6 +135,22 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                 connection.Open();
                 var result = connection.Query<VendasPedidoSocio>(sql);
                 return result;
+            }
+        }
+
+        public void RegistrarPagamentoItem(int idVendaPedido)
+        {
+            string sql = "UPDATE tbVendasPedido " +
+                         "SET ItemPago=1 " +
+                         "WHERE ID=@id;";
+
+            using (var connection = _connection.Connection())
+            {
+                connection.Open();
+                connection.Execute(sql, new
+                {
+                    id = idVendaPedido
+                });
             }
         }
 
@@ -124,5 +184,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                 });
             }
         }
+
+
     }
 }

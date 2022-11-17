@@ -11,5 +11,7 @@ namespace LanchoneteUDV.Application.DTO
         public int IdVenda { get; set; }
         public string TipoPagamento { get; set; }
         public double TotalConsumido { get; set; }
+
+        public bool ItemPago { get; set; }
     }
 }

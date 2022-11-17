@@ -29,10 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FilaPedidosForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ChurrascoRadioButton = new System.Windows.Forms.RadioButton();
+            this.ParceriasRadioButton = new System.Windows.Forms.RadioButton();
+            this.SalgadosRadioButton = new System.Windows.Forms.RadioButton();
+            this.TudoRadioButton = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.AtualizaButton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -46,6 +50,10 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.ChurrascoRadioButton);
+            this.groupBox3.Controls.Add(this.ParceriasRadioButton);
+            this.groupBox3.Controls.Add(this.SalgadosRadioButton);
+            this.groupBox3.Controls.Add(this.TudoRadioButton);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.AtualizaButton);
             this.groupBox3.Controls.Add(this.label6);
@@ -60,6 +68,59 @@
             this.groupBox3.TabIndex = 30;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Fila";
+            // 
+            // ChurrascoRadioButton
+            // 
+            this.ChurrascoRadioButton.AutoSize = true;
+            this.ChurrascoRadioButton.Location = new System.Drawing.Point(931, 263);
+            this.ChurrascoRadioButton.Name = "ChurrascoRadioButton";
+            this.ChurrascoRadioButton.Size = new System.Drawing.Size(102, 22);
+            this.ChurrascoRadioButton.TabIndex = 55;
+            this.ChurrascoRadioButton.TabStop = true;
+            this.ChurrascoRadioButton.Text = "Só Churrasco";
+            this.ChurrascoRadioButton.UseVisualStyleBackColor = true;
+            
+            this.ChurrascoRadioButton.Click += new System.EventHandler(this.ChurrascoRadioButton_Click);
+            // 
+            // ParceriasRadioButton
+            // 
+            this.ParceriasRadioButton.AutoSize = true;
+            this.ParceriasRadioButton.Location = new System.Drawing.Point(931, 303);
+            this.ParceriasRadioButton.Name = "ParceriasRadioButton";
+            this.ParceriasRadioButton.Size = new System.Drawing.Size(97, 22);
+            this.ParceriasRadioButton.TabIndex = 54;
+            this.ParceriasRadioButton.TabStop = true;
+            this.ParceriasRadioButton.Text = "Só Parcerias";
+            this.ParceriasRadioButton.UseVisualStyleBackColor = true;
+            
+            this.ParceriasRadioButton.Click += new System.EventHandler(this.ParceriasRadioButton_Click);
+            // 
+            // SalgadosRadioButton
+            // 
+            this.SalgadosRadioButton.AutoSize = true;
+            this.SalgadosRadioButton.Location = new System.Drawing.Point(931, 220);
+            this.SalgadosRadioButton.Name = "SalgadosRadioButton";
+            this.SalgadosRadioButton.Size = new System.Drawing.Size(95, 22);
+            this.SalgadosRadioButton.TabIndex = 53;
+            this.SalgadosRadioButton.TabStop = true;
+            this.SalgadosRadioButton.Text = "Só Salgados";
+            this.SalgadosRadioButton.UseVisualStyleBackColor = true;
+            
+            this.SalgadosRadioButton.Click += new System.EventHandler(this.SalgadosRadioButton_Click);
+            // 
+            // TudoRadioButton
+            // 
+            this.TudoRadioButton.AutoSize = true;
+            this.TudoRadioButton.Checked = true;
+            this.TudoRadioButton.Location = new System.Drawing.Point(931, 179);
+            this.TudoRadioButton.Name = "TudoRadioButton";
+            this.TudoRadioButton.Size = new System.Drawing.Size(89, 22);
+            this.TudoRadioButton.TabIndex = 52;
+            this.TudoRadioButton.TabStop = true;
+            this.TudoRadioButton.Text = "Exibe Tudo";
+            this.TudoRadioButton.UseVisualStyleBackColor = true;
+            
+            this.TudoRadioButton.Click += new System.EventHandler(this.TudoRadioButton_Click);
             // 
             // label1
             // 
@@ -150,26 +211,26 @@
             this.PedidosDataGridView.AllowUserToAddRows = false;
             this.PedidosDataGridView.AllowUserToDeleteRows = false;
             this.PedidosDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightCyan;
-            this.PedidosDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightCyan;
+            this.PedidosDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.PedidosDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PedidosDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PedidosDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.PedidosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.PedidosDataGridView.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.PedidosDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.PedidosDataGridView.Location = new System.Drawing.Point(6, 22);
             this.PedidosDataGridView.MultiSelect = false;
             this.PedidosDataGridView.Name = "PedidosDataGridView";
@@ -211,5 +272,9 @@
         private DataGridView PedidosDataGridView;
         private Label label1;
         private Button AtualizaButton;
+        private RadioButton ParceriasRadioButton;
+        private RadioButton SalgadosRadioButton;
+        private RadioButton TudoRadioButton;
+        private RadioButton ChurrascoRadioButton;
     }
 }

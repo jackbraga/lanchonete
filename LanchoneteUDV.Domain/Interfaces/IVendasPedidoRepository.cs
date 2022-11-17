@@ -11,7 +11,9 @@ namespace LanchoneteUDV.Domain.Interfaces
     {
         IEnumerable<VendasPedidoSocio> ListarVendasPedido(int idVenda);
 
-        IEnumerable<VendasPedidoEscala> ListarTodosVendasPedido(int idEscala);
+        //IEnumerable<VendasPedidoSocio> ListarVendasPedidoPago(int idVenda);
+
+        IEnumerable<VendasPedidoEscala> ListarTodosVendasPedido(int idEscala, string filtro);
 
         void Add(VendasPedido vendaPedido);
 
@@ -20,6 +22,14 @@ namespace LanchoneteUDV.Domain.Interfaces
         void DesmarcarRetirada(int idVendaPedido);
 
         void Remove(int idVendaPedido);
+
+        void AtualizaFormaPagamentoItem(int idVendaPedido, string tipoPagamento);
+
+        void RegistrarPagamentoItem(int idVendaPedido);
+
+        void DesmarcarPagamentoItem(int idVendaPedido);
+
+
     }
 }
 

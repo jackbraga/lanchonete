@@ -19,6 +19,8 @@ namespace LanchoneteUDV.Application.DTO
 
         public string TipoPagamento { get; set; }
 
+        public bool ItemPago { get; set; }
+
 
     }
 }

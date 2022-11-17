@@ -128,11 +128,11 @@ namespace LanchoneteUDV.Infra.Data.Repositories
 
         public IEnumerable<VendaEscalaSocio> TrazerVendaEscalaSocio(int idEscala, int idSocio)
         {
-            string sql = "SELECT tbVendas.ID as IdVenda, SUM(tbVendasPedido.Quantidade * tbVendasPedido.PrecoProduto) AS TotalConsumido " +
+            string sql = "SELECT tbVendas.ID as IdVenda, SUM(tbVendasPedido.Quantidade * tbVendasPedido.PrecoProduto) AS TotalConsumido,ISNULL(tbVendasPedido.ItemPago,0) AS ItemPago  " +
                 "FROM tbVendas " +
                 "INNER JOIN tbVendasPedido ON tbVendasPedido.Venda=tbVendas.ID " +
                 "WHERE Escala=" + idEscala + " AND Socio=" + idSocio + " " +
-                "GROUP BY tbVendas.ID ;";
+                "GROUP BY tbVendas.ID, tbVendasPedido.ItemPago ;";
 
             using (var connection = _connection.Connection())
             {

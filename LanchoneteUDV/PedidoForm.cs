@@ -21,7 +21,6 @@ namespace LanchoneteUDV
 
         public int IdVenda { get; set; }
 
-
         public PedidoForm(IProdutoService produtoService, ISocioService socioService, IVendaService vendaService, IVendasPedidoService vendasPedido)
         {
             _produtoService = produtoService;
@@ -45,10 +44,10 @@ namespace LanchoneteUDV
                 SocioComboBox.SelectedValue = IdSocio;
                 _helper.Habilita(AdicionarButton);
                 RecarregarVenda();
-
+ 
             }
             RecarregarGridEstoque();
-            RecarregarGridEstoqueSalgados();           
+            RecarregarGridEstoqueSalgados();
 
         }
 
@@ -57,6 +56,18 @@ namespace LanchoneteUDV
             if (char.IsControl(e.KeyChar)) return;
             if (!reg.IsMatch(QuantidadeTextBox.Text.Insert(QuantidadeTextBox.SelectionStart, e.KeyChar.ToString()) + "1")) e.Handled = true;
 
+        }
+
+        private void DescontoTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar)) return;
+            if (!reg.IsMatch(DescontoTextBox.Text.Insert(DescontoTextBox.SelectionStart, e.KeyChar.ToString()) + "1")) e.Handled = true;
+
+        }
+
+        private void DescontoTextBox_Leave(object sender, EventArgs e)
+        {
+            CalcularSubtotal();
         }
 
         private void QuantidadeTextBox_Leave(object sender, EventArgs e)
@@ -88,7 +99,8 @@ namespace LanchoneteUDV
                 IdProduto = Convert.ToInt32(ProdutosComboBox.SelectedValue),
                 Observacao = ObservacaoTextBox.Text,
                 DataHoraPedido = DateTime.Now,
-                PrecoProduto = Double.Parse(PrecoComboBox.Text.Replace("R$ ", "")),
+                PrecoProduto =
+                Double.Parse(PrecoComboBox.Text.Replace("R$ ", "")) - Double.Parse(DescontoTextBox.Text),
                 Quantidade = 1,
                 Retirado = RetiradoCheckBox.Checked,
                 TipoPagamento = PagamentoComboBox.Text
@@ -100,6 +112,7 @@ namespace LanchoneteUDV
             }
 
             QuantidadeTextBox.Text = "0";
+            DescontoTextBox.Text = "0";
             RecarregarVenda();
         }
 
@@ -133,7 +146,6 @@ namespace LanchoneteUDV
 
             return valido;
         }
-
 
         private void ProdutosComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -171,192 +183,6 @@ namespace LanchoneteUDV
             IdSocio = Convert.ToInt32(SocioComboBox.SelectedValue);
         }
 
-        #endregion
-
-
-        #region Metodos
-        private void CarregarCombos()
-        {
-
-            ComboSocio();
-            ComboProduto();
-        }
-
-        private void ComboSocio()
-        {
-            SocioComboBox.DataSource = _socioService.ListarSociosVenda();
-            SocioComboBox.DisplayMember = "Nome";
-            SocioComboBox.ValueMember = "ID";
-            SocioComboBox.SelectedValue = -1;
-        }
-
-        private void ComboProduto()
-        {
-            var lista = _produtoService.ListarProdutosParaVendaPorEscala(IdEscala, Global.ExibeSalgados, Global.ExibeChurrasco);
-            
-            ProdutosComboBox.DataSource = lista;
-            ProdutosComboBox.DisplayMember = "Descricao";
-            ProdutosComboBox.ValueMember = "ID";
-            ProdutosComboBox.SelectedValue = -1;
-
-            PrecoComboBox.DataSource = lista;
-            PrecoComboBox.DisplayMember = "PrecoVenda";
-
-            PrecoComboBox.ValueMember = "ID";
-            PrecoComboBox.SelectedValue = -1;
-
-        }
-        private void CalcularSubtotal()
-        {
-            int quantidade;
-            double preco;
-            double total;
-
-            if (string.IsNullOrEmpty(QuantidadeTextBox.Text))
-            {
-                QuantidadeTextBox.Text = "0";
-            }
-            if (string.IsNullOrEmpty(PrecoComboBox.Text))
-            {
-                PrecoComboBox.Text = "0";
-            }
-            quantidade = Convert.ToInt32(QuantidadeTextBox.Text);
-            preco = Convert.ToDouble(PrecoComboBox.Text.Replace("R$ ", ""));
-            total = preco * quantidade;
-            TotalTextBox.Text = total.ToString("R$ 0.00##");
-        }
-
-        private void RecarregarVenda()
-        {
-            var vendas = _vendaService.TrazerVendaEscalaSocio(IdEscala, Convert.ToInt32(SocioComboBox.SelectedValue));
-
-            if (vendas.Count() > 0)
-            {
-                var venda1 = vendas.First();
-                TotalConsumidoTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(venda1.TotalConsumido.ToString()));
-                IdVenda = Convert.ToInt32(venda1.IdVenda);
-
-            }
-            else
-            {
-                IdVenda = 0;
-                TotalConsumidoTextBox.Text = "R$ 0,00";
-
-            }
-
-
-
-            RecarregarGrid();
-            RecarregarGridEstoque();
-            RecarregarGridEstoqueSalgados();
-        }
-
-        private void RecarregarGrid()
-        {
-            PedidosDataGridView.DataSource = _vendasPedidoService.ListarVendasPedido(IdVenda);
-
-            PedidosDataGridView.Columns[0].Visible = false;
-            PedidosDataGridView.Columns[1].HeaderText = "Produto";
-            PedidosDataGridView.Columns[1].Width = 170;
-            PedidosDataGridView.Columns[2].DefaultCellStyle.Format = "R$ 0.00##";
-            PedidosDataGridView.Columns[2].HeaderText = "Preço Unitario";
-            PedidosDataGridView.Columns[2].Width = 60;
-            PedidosDataGridView.Columns[3].HeaderText = "Qtd";
-            PedidosDataGridView.Columns[3].Width = 50;
-            PedidosDataGridView.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            PedidosDataGridView.Columns[4].HeaderText = "Valor Total";
-            PedidosDataGridView.Columns[4].Width = 60;
-            PedidosDataGridView.Columns[4].DefaultCellStyle.Format = "R$ 0.00##";
-            PedidosDataGridView.Columns[5].HeaderText = "Observacao";
-            PedidosDataGridView.Columns[6].HeaderText = "Retirado";
-            PedidosDataGridView.Columns[6].Width = 60;
-            PedidosDataGridView.Columns[7].HeaderText = "Data/Hora";
-            PedidosDataGridView.Columns[8].HeaderText = "Pagamento";
-
-            PedidosDataGridView.ClearSelection();
-            ColorirRetirada();
-
-        }
-        private async void RecarregarGridEstoque()
-        {
-            try
-            {
-                EstoqueDataGridView.DataSource = await _vendaService.ListarEstoquePorEscala(IdEscala);
-                EstoqueDataGridView.Columns[0].Width = 200;
-                EstoqueDataGridView.Columns[1].DefaultCellStyle.Format = "R$ 0.00##";
-                EstoqueDataGridView.Columns[2].Visible = false;
-                EstoqueDataGridView.Columns[3].Visible = false;
-
-                EstoqueDataGridView.ClearSelection();
-                ColorirSemEstoque();
-            }
-            catch 
-            {
-
-                
-            }
-     
-
-        }
-
-        private async void RecarregarGridEstoqueSalgados()
-        {
-            EstoqueSalgadosDataGridView.DataSource = await _vendaService.ListarEstoqueSalgadosPorEscala(IdEscala, checkBoxSalgados.Checked, checkBoxChurrasco.Checked);
-            EstoqueSalgadosDataGridView.Columns[0].Width = 200;
-            EstoqueSalgadosDataGridView.Columns[1].DefaultCellStyle.Format = "R$ 0.00##";
-            EstoqueSalgadosDataGridView.Columns[2].Visible = false;
-            EstoqueSalgadosDataGridView.Columns[3].Visible = false;
-
-            EstoqueSalgadosDataGridView.ClearSelection();
-            ColorirSemEstoque();
-
-        }
-
-        private void ColorirSemEstoque()
-        {
-            foreach (DataGridViewRow row in EstoqueDataGridView.Rows)
-            {
-                if (Convert.ToInt32(row.Cells[4].Value) <= 0)
-                {
-                    row.DefaultCellStyle.BackColor = Color.LightPink;
-                }
-            }
-
-            foreach (DataGridViewRow row in EstoqueSalgadosDataGridView.Rows)
-            {
-                if (Convert.ToInt32(row.Cells[4].Value) <= 0)
-                {
-                    row.DefaultCellStyle.BackColor = Color.LightPink;
-                }
-            }
-        }
-
-        private void ColorirRetirada()
-        {
-            foreach (DataGridViewRow row in PedidosDataGridView.Rows)
-            {
-                if (Convert.ToBoolean(row.Cells[6].Value))
-                {
-                    row.DefaultCellStyle.BackColor = Color.DarkSeaGreen;
-                }
-            }
-        }
-        private void LimparTela()
-        {
-            PedidosDataGridView.DataSource = null;
-            TotalConsumidoTextBox.Text = "R$ 0,00";
-            ProdutosComboBox.SelectedValue = -1;
-            PrecoComboBox.SelectedValue = -1;
-            TotalTextBox.Text = "R$ 0,00";
-            ObservacaoTextBox.Clear();
-            QuantidadeTextBox.Text = "0";
-            PagamentoComboBox.Text = "";
-
-        }
-
-
-        #endregion
-
         private void RegistrarRetiradaButton_Click(object sender, EventArgs e)
         {
             if (PedidosDataGridView.SelectedRows.Count == 0)
@@ -365,38 +191,23 @@ namespace LanchoneteUDV
             }
             else
             {
-                RegistrarRetirada();
+                int row = PedidosDataGridView.CurrentRow.Index;
+                int idPedido = Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value);
+                RegistrarRetirada(idPedido);
             }
-        }
-
-        private void RegistrarRetirada()
-        {
-            int row = PedidosDataGridView.CurrentRow.Index;
-            _vendasPedidoService.RegistrarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
-            RecarregarGrid();
-            MessageBox.Show("Retirada registrada!", "Atenção!", MessageBoxButtons.OK);
-
-        }
-
-        private void DesmarcarRetirada()
-        {
-            int row = PedidosDataGridView.CurrentRow.Index;
-            _vendasPedidoService.DesmarcarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
-            RecarregarGrid();
-            MessageBox.Show("Desmarcada retirada!", "Atenção!", MessageBoxButtons.OK);
-
         }
 
         private void PedidosDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int row = PedidosDataGridView.CurrentRow.Index;
+            int idPedido = Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value);
             if (!Convert.ToBoolean(PedidosDataGridView.Rows[row].Cells[6].Value))
             {
-                RegistrarRetirada();
+                RegistrarRetirada(idPedido);
             }
             else
             {
-                DesmarcarRetirada();
+                DesmarcarRetirada(idPedido);
             }
         }
 
@@ -408,7 +219,9 @@ namespace LanchoneteUDV
             }
             else
             {
-                DesmarcarRetirada();
+                int row = PedidosDataGridView.CurrentRow.Index;
+                int idPedido = Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value);
+                DesmarcarRetirada(idPedido);
             }
 
         }
@@ -470,6 +283,397 @@ namespace LanchoneteUDV
             Global.ExibeChurrasco = checkBoxChurrasco.Checked;
             RecarregarGridEstoqueSalgados();
             ComboProduto();
+        }
+
+        private void PedidoForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.C:
+                        AtualizarFormaPagamentoItem("CARTAO");
+                        break;
+                    case Keys.B:
+                        AtualizarFormaPagamentoItem("BOLETO");
+                        break;
+                    case Keys.P:
+                        AtualizarFormaPagamentoItem("PIX");
+                        break;
+                    case Keys.D:
+                        AtualizarFormaPagamentoItem("DINHEIRO");
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+
+        }
+
+        private void RegistrarPagamentoButton_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Apenas os itens com a forma pagamento CARTAO, DINHEIRO ou PIX terão a venda registrada\n\n" +
+                "Deseja realmente prosseguir?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+
+            {
+                foreach (DataGridViewRow row in PedidosDataGridView.Rows)
+                {
+                    if (row.Cells[8].Value.ToString() != "BOLETO")
+                    {
+                        _vendasPedidoService.RegistrarPagamentoItem(Convert.ToInt32(row.Cells[0].Value));
+                    }
+                }
+
+                MessageBox.Show("Pagamento dos itens registrado! ", "ATENÇÃO!", MessageBoxButtons.OK);
+                RecarregarVenda();
+            }
+        }
+
+        private void RegistrarRetiradaPagoButton_Click(object sender, EventArgs e)
+        {
+            if (PedidosPagosDataGridView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecione um registro! ", "ATENÇÃO!", MessageBoxButtons.OK);
+            }
+            else
+            {
+
+                int row = PedidosPagosDataGridView.CurrentRow.Index;
+                int idPedido = Convert.ToInt32(PedidosPagosDataGridView.Rows[row].Cells[0].Value);
+                //_vendasPedidoService.RegistrarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
+
+                RegistrarRetirada(idPedido);
+            }
+        }
+
+        private void DesmarcarRetiradaPagoButton_Click(object sender, EventArgs e)
+        {
+            if (PedidosPagosDataGridView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecione um registro!", "ATENÇÃO!", MessageBoxButtons.OK);
+            }
+            else
+            {
+                int row = PedidosPagosDataGridView.CurrentRow.Index;
+                int idPedido = Convert.ToInt32(PedidosPagosDataGridView.Rows[row].Cells[0].Value);
+                DesmarcarRetirada(idPedido);
+            }
+        }
+
+        private void PedidosPagosDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int row = PedidosPagosDataGridView.CurrentRow.Index;
+            int idPedido = Convert.ToInt32(PedidosPagosDataGridView.Rows[row].Cells[0].Value);
+            if (!Convert.ToBoolean(PedidosPagosDataGridView.Rows[row].Cells[6].Value))
+            {
+                RegistrarRetirada(idPedido);
+            }
+            else
+            {
+                DesmarcarRetirada(idPedido);
+            }
+        }
+
+
+        #endregion
+
+        #region Metodos
+        private void CarregarCombos()
+        {
+
+            ComboSocio();
+            ComboProduto();
+        }
+
+        private void ComboSocio()
+        {
+            SocioComboBox.DataSource = _socioService.ListarSociosVenda();
+            SocioComboBox.DisplayMember = "Nome";
+            SocioComboBox.ValueMember = "ID";
+            SocioComboBox.SelectedValue = -1;
+        }
+
+        private void ComboProduto()
+        {
+            var lista = _produtoService.ListarProdutosParaVendaPorEscala(IdEscala, Global.ExibeSalgados, Global.ExibeChurrasco);
+
+            ProdutosComboBox.DataSource = lista;
+            ProdutosComboBox.DisplayMember = "Descricao";
+            ProdutosComboBox.ValueMember = "ID";
+            ProdutosComboBox.SelectedValue = -1;
+
+            PrecoComboBox.DataSource = lista;
+            PrecoComboBox.DisplayMember = "PrecoVenda";
+
+            PrecoComboBox.ValueMember = "ID";
+            PrecoComboBox.SelectedValue = -1;
+
+        }
+        private void CalcularSubtotal()
+        {
+            int quantidade;
+            double preco;
+            double total;
+            double desconto;
+
+            if (string.IsNullOrEmpty(QuantidadeTextBox.Text))
+            {
+                QuantidadeTextBox.Text = "0";
+            }
+            if (string.IsNullOrEmpty(PrecoComboBox.Text))
+            {
+                PrecoComboBox.Text = "0";
+            }
+
+            if (string.IsNullOrEmpty(DescontoTextBox.Text))
+            {
+                DescontoTextBox.Text = "0";
+            }
+
+            quantidade = Convert.ToInt32(QuantidadeTextBox.Text);
+            preco = Convert.ToDouble(PrecoComboBox.Text.Replace("R$ ", ""));
+            desconto = Convert.ToDouble(DescontoTextBox.Text);
+            total = (preco - desconto) * quantidade;
+            TotalTextBox.Text = total.ToString("R$ 0.00##");
+        }
+
+        private void RecarregarVenda()
+        {
+            var vendas = _vendaService.TrazerVendaEscalaSocio(IdEscala, Convert.ToInt32(SocioComboBox.SelectedValue));
+
+            if (vendas.Count() > 0)
+            {
+                //var vendasPedido = vendas.First();
+
+                var totalPago = vendas.Where(x => x.ItemPago).Sum(y => y.TotalConsumido);
+                var totalAPagar = vendas.Where(x => !x.ItemPago).Sum(y => y.TotalConsumido);
+
+                TotalAPagarTextBox.Text = "R$ " + String.Format("{0:N2}", totalAPagar);
+
+                TotalConsumidoTextBox.Text = "R$ " + String.Format("{0:N2}", totalPago);
+              
+
+
+                IdVenda = Convert.ToInt32(vendas.First().IdVenda);
+
+            }
+            else
+            {
+                IdVenda = 0;
+                TotalConsumidoTextBox.Text = "R$ 0,00";
+
+            }
+
+            RecarregarGrid();
+            RecarregarGridEstoque();
+            RecarregarGridEstoqueSalgados();
+        }
+
+        private void RecarregarTodosGrids()
+        {
+
+        }
+
+        private void RecarregarGrid()
+        {
+
+            var pedidos = _vendasPedidoService.ListarVendasPedido(IdVenda);
+            PedidosDataGridView.DataSource = pedidos.Where(x => !x.ItemPago).ToList(); 
+            PedidosPagosDataGridView.DataSource = pedidos.Where(x => x.ItemPago).ToList();
+            FormatarGridPedidos();
+            FormatarGridPedidosPagos();
+            ColorirRetirada();
+        }
+        private void FormatarGridPedidos()
+        {
+
+            PedidosDataGridView.Columns[0].Visible = false;
+            PedidosDataGridView.Columns[1].HeaderText = "Produto";
+            PedidosDataGridView.Columns[1].Width = 170;
+            PedidosDataGridView.Columns[2].DefaultCellStyle.Format = "R$ 0.00##";
+            PedidosDataGridView.Columns[2].HeaderText = "Preço Unitario";
+            PedidosDataGridView.Columns[2].Width = 60;
+            PedidosDataGridView.Columns[3].HeaderText = "Qtd";
+            PedidosDataGridView.Columns[3].Width = 50;
+            PedidosDataGridView.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            PedidosDataGridView.Columns[4].HeaderText = "Valor Total";
+            PedidosDataGridView.Columns[4].Width = 60;
+            PedidosDataGridView.Columns[4].DefaultCellStyle.Format = "R$ 0.00##";
+            PedidosDataGridView.Columns[5].HeaderText = "Observacao";
+            PedidosDataGridView.Columns[6].HeaderText = "Retirado";
+            PedidosDataGridView.Columns[6].Width = 60;
+            PedidosDataGridView.Columns[7].HeaderText = "Data/Hora";
+            PedidosDataGridView.Columns[8].HeaderText = "Pagamento";
+            PedidosDataGridView.Columns[9].Visible = false;
+
+            PedidosDataGridView.ClearSelection();  
+        }
+
+        private void FormatarGridPedidosPagos()
+        {
+            //PedidosPagosDataGridView.DataSource = _vendasPedidoService.ListarVendasPedido(IdVenda).Where(p => p.ItemPago);
+
+            PedidosPagosDataGridView.Columns[0].Visible = false;
+            PedidosPagosDataGridView.Columns[1].HeaderText = "Produto";
+            PedidosPagosDataGridView.Columns[1].Width = 170;
+            PedidosPagosDataGridView.Columns[2].DefaultCellStyle.Format = "R$ 0.00##";
+            PedidosPagosDataGridView.Columns[2].HeaderText = "Preço Unitario";
+            PedidosPagosDataGridView.Columns[2].Width = 60;
+            PedidosPagosDataGridView.Columns[3].HeaderText = "Qtd";
+            PedidosPagosDataGridView.Columns[3].Width = 50;
+            PedidosPagosDataGridView.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            PedidosPagosDataGridView.Columns[4].HeaderText = "Valor Total";
+            PedidosPagosDataGridView.Columns[4].Width = 60;
+            PedidosPagosDataGridView.Columns[4].DefaultCellStyle.Format = "R$ 0.00##";
+            PedidosPagosDataGridView.Columns[5].Visible = false;
+            PedidosPagosDataGridView.Columns[6].HeaderText = "Retirado";
+            PedidosPagosDataGridView.Columns[6].Width = 60;
+            PedidosPagosDataGridView.Columns[7].HeaderText = "Data/Hora";
+            PedidosPagosDataGridView.Columns[8].HeaderText = "Pagamento";
+            PedidosPagosDataGridView.Columns[9].HeaderText = "Pago";
+
+            PedidosPagosDataGridView.ClearSelection();
+        }
+
+        private async void RecarregarGridEstoque()
+        {
+            try
+            {
+                var estoque = await _vendaService.ListarEstoquePorEscala(IdEscala);
+                EstoqueDataGridView.DataSource = estoque;
+                EstoqueDataGridView.Columns[0].Width = 200;
+                EstoqueDataGridView.Columns[1].DefaultCellStyle.Format = "R$ 0.00##";
+                EstoqueDataGridView.Columns[2].Visible = false;
+                EstoqueDataGridView.Columns[3].Visible = false;
+
+                EstoqueDataGridView.ClearSelection();
+                ColorirSemEstoque();
+                
+            }
+            catch
+            {
+
+
+            }
+
+
+        }
+
+        private async void RecarregarGridEstoqueSalgados()
+        {
+            EstoqueSalgadosDataGridView.DataSource = await _vendaService.ListarEstoqueSalgadosPorEscala(IdEscala, checkBoxSalgados.Checked, checkBoxChurrasco.Checked);
+            EstoqueSalgadosDataGridView.Columns[0].Width = 200;
+            EstoqueSalgadosDataGridView.Columns[1].DefaultCellStyle.Format = "R$ 0.00##";
+            EstoqueSalgadosDataGridView.Columns[2].Visible = false;
+            EstoqueSalgadosDataGridView.Columns[3].Visible = false;
+
+            EstoqueSalgadosDataGridView.ClearSelection();
+            ColorirSemEstoque();
+
+        }
+
+        private void ColorirSemEstoque()
+        {
+            foreach (DataGridViewRow row in EstoqueDataGridView.Rows)
+            {
+                if (Convert.ToInt32(row.Cells[4].Value) <= 0)
+                {
+                    row.DefaultCellStyle.BackColor = Color.LightPink;
+                }
+            }
+
+            foreach (DataGridViewRow row in EstoqueSalgadosDataGridView.Rows)
+            {
+                if (Convert.ToInt32(row.Cells[4].Value) <= 0)
+                {
+                    row.DefaultCellStyle.BackColor = Color.LightPink;
+                }
+            }
+        }
+
+        private void ColorirRetirada()
+        {
+            foreach (DataGridViewRow row in PedidosDataGridView.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells[6].Value))
+                {
+                    row.DefaultCellStyle.BackColor = Color.DarkSeaGreen;
+                }
+            }
+
+            foreach (DataGridViewRow row in PedidosPagosDataGridView.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells[6].Value))
+                {
+                    row.DefaultCellStyle.BackColor = Color.DarkSeaGreen;
+                }
+            }
+        }
+        private void LimparTela()
+        {
+            PedidosDataGridView.DataSource = null;
+            TotalConsumidoTextBox.Text = "R$ 0,00";
+            ProdutosComboBox.SelectedValue = -1;
+            PrecoComboBox.SelectedValue = -1;
+            TotalTextBox.Text = "R$ 0,00";
+            ObservacaoTextBox.Clear();
+            QuantidadeTextBox.Text = "0";
+            PagamentoComboBox.Text = "";
+
+        }
+
+        private void RegistrarRetirada(int idPedido)
+        {
+            //int row = PedidosDataGridView.CurrentRow.Index;
+            //_vendasPedidoService.RegistrarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
+            _vendasPedidoService.RegistrarRetirada(idPedido);
+            RecarregarGrid();
+            MessageBox.Show("Retirada registrada!", "Atenção!", MessageBoxButtons.OK);
+
+        }
+
+        private void DesmarcarRetirada(int idPedido)
+        {
+            // int row = PedidosDataGridView.CurrentRow.Index;
+            _vendasPedidoService.DesmarcarRetirada(idPedido);
+            RecarregarGrid();
+            MessageBox.Show("Desmarcada retirada!", "Atenção!", MessageBoxButtons.OK);
+
+        }
+
+        private void AtualizarFormaPagamentoItem(string pagamento)
+        {
+            if (PedidosDataGridView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecione um registro para atualizar o pagamento! ", "ATENÇÃO!", MessageBoxButtons.OK);
+            }
+            else
+            {
+                int row = PedidosDataGridView.CurrentRow.Index;
+                _vendasPedidoService.AtualizaFormaPagamentoItem(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value), pagamento);
+                RecarregarGrid();
+                MessageBox.Show("Pagamento atualizado!", "Atenção!", MessageBoxButtons.OK);
+
+            }
+        }
+
+        #endregion
+
+        private void DesmarcarPagamentoButton_Click(object sender, EventArgs e)
+        {
+            if (PedidosPagosDataGridView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecione um registro! ", "ATENÇÃO!", MessageBoxButtons.OK);
+            }
+            else
+            {
+                int row = PedidosPagosDataGridView.CurrentRow.Index;
+                int idPedido = Convert.ToInt32(PedidosPagosDataGridView.Rows[row].Cells[0].Value);
+                _vendasPedidoService.DesmarcarPagamentoItem(idPedido);
+                MessageBox.Show("Item desmarcado!", "Atenção!", MessageBoxButtons.OK);
+                RecarregarVenda();
+            }
         }
     }
 }

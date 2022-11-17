@@ -8,6 +8,7 @@ namespace LanchoneteUDV
     public partial class EstoqueEscalaForm : Form
     {
         public int IDEscala { get; set; }
+        public bool ExibeMesmoSemEstoque { get; set; }
 
         //VendasBLL _bllVendas = new VendasBLL();
         //EstoqueEscalaBLL _bllEstoqueEscala = new EstoqueEscalaBLL();
@@ -29,7 +30,7 @@ namespace LanchoneteUDV
 
         private void CarregarCombos()
         {
-            var estoque = _estoqueEscalaService.ListarEstoqueComboProdutos(IDEscala);
+            var estoque = _estoqueEscalaService.ListarEstoqueComboProdutos(IDEscala, ExibeSemEstoqueCheckBox.Checked);
             ProdutosComboBox.DataSource = estoque;
             ProdutosComboBox.DisplayMember = "DescricaoProduto";
             ProdutosComboBox.ValueMember = "IdProduto";
@@ -67,6 +68,8 @@ namespace LanchoneteUDV
             EstoqueComboBox.SelectedValue = -1;
             QtdVendaTextBox.Clear();
             ObservacaoTextBox.Clear();
+            ModoEditar(false);
+            ExibeSemEstoqueCheckBox.Checked = false;
 
         }
 
@@ -76,8 +79,9 @@ namespace LanchoneteUDV
 
             ValidaComZero(QtdVendaTextBox);
 
-            if (string.IsNullOrEmpty(ProdutosComboBox.Text))
+            if (string.IsNullOrEmpty(ProdutosComboBox.Text) && Convert.ToInt32(IDTextBox.Text)==0)
             {
+                valido = false;
                 MessageBox.Show("É necessário selecionar um produto para salvar!", "Atenção!", MessageBoxButtons.OK);
             }
 
@@ -114,8 +118,9 @@ namespace LanchoneteUDV
 
         private void LimparButton_Click(object sender, EventArgs e)
         {
+
             _helper.Desabilita(ProdutosComboBox, QtdVendaTextBox, ObservacaoTextBox,
-          ExcluirButton, EditarButton, SalvarButton);
+          ExcluirButton, EditarButton, SalvarButton, ExibeSemEstoqueCheckBox);
 
             _helper.Habilita(NovoButton);
             LimparCampos();
@@ -175,9 +180,15 @@ namespace LanchoneteUDV
             }
         }
 
+        private void ModoEditar(bool exibeCheck)
+        {
+            ProdutosComboBox.Visible = !exibeCheck;
+            ProdutoTextBox.Visible = exibeCheck;
+        }
+
         private void NovoButton_Click(object sender, EventArgs e)
         {
-            _helper.Habilita(ProdutosComboBox, QtdVendaTextBox, ObservacaoTextBox, SalvarButton);
+            _helper.Habilita(ProdutosComboBox, QtdVendaTextBox, ObservacaoTextBox, SalvarButton, ExibeSemEstoqueCheckBox);
 
             _helper.Desabilita(NovoButton, EditarButton, ExcluirButton);
             LimparCampos();
@@ -194,17 +205,28 @@ namespace LanchoneteUDV
 
         private void EstoqueEscalaDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            ModoEditar(true);
+
             int row = EstoqueEscalaDataGridView.CurrentRow.Index;
 
             IDTextBox.Text = EstoqueEscalaDataGridView.Rows[row].Cells[0].Value.ToString();
-            ProdutosComboBox.SelectedValue = Convert.ToInt32(EstoqueEscalaDataGridView.Rows[row].Cells[4].Value);
-            EstoqueComboBox.SelectedValue = Convert.ToInt32(EstoqueEscalaDataGridView.Rows[row].Cells[4].Value);
-            QtdVendaTextBox.Text = EstoqueEscalaDataGridView.Rows[row].Cells[2].Value.ToString();
+            //ProdutosComboBox.SelectedValue = Convert.ToInt32(EstoqueEscalaDataGridView.Rows[row].Cells[3].Value);
+            
+            //EstoqueComboBox.SelectedValue = Convert.ToInt32(EstoqueEscalaDataGridView.Rows[row].Cells[4].Value);
+            QtdVendaTextBox.Text = EstoqueEscalaDataGridView.Rows[row].Cells[4].Value.ToString();
 
             ObservacaoTextBox.Text = EstoqueEscalaDataGridView.Rows[row].Cells[5].Value.ToString();
 
+
+
+            ProdutoTextBox.Text = EstoqueEscalaDataGridView.Rows[row].Cells[3].Value.ToString();
+            //IdProdutoTextBox.Text = EstoqueEscalaDataGridView.Rows[row].Cells[4].Value.ToString();
+            //EstoqueTextBox.Text = EstoqueEscalaDataGridView.Rows[row].Cells[2].Value.ToString();
+
+
+
             _helper.Desabilita(ProdutosComboBox,
-                              QtdVendaTextBox, SalvarButton);
+                              QtdVendaTextBox, SalvarButton, ExibeSemEstoqueCheckBox);
 
             _helper.Habilita(ExcluirButton, EditarButton, NovoButton);
         }
@@ -220,6 +242,11 @@ namespace LanchoneteUDV
                 RecarregaGrid();
                 CarregarCombos();
             }
+        }
+
+        private void CheckBoxExibeSemEstoque_CheckedChanged(object sender, EventArgs e)
+        {
+            CarregarCombos();
         }
     }
 }

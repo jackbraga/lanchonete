@@ -1,4 +1,5 @@
 ﻿using LanchoneteUDV.Application.DTO;
+using LanchoneteUDV.Domain.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,9 @@ namespace LanchoneteUDV.Application.Interfaces
     {
         IEnumerable<VendasPedidoSocioDTO> ListarVendasPedido(int idVenda);
 
-        IEnumerable<VendasPedidoEscalaDTO> ListarTodosVendasPedido(int idEscala);
+        //IEnumerable<VendasPedidoSocioDTO> ListarVendasPedidoPago(int idVenda);
+
+        IEnumerable<VendasPedidoEscalaDTO> ListarTodosVendasPedido(int idEscala, string filtro);
 
         void Add(VendasPedidoDTO vendaPedido);
 
@@ -20,5 +23,13 @@ namespace LanchoneteUDV.Application.Interfaces
         void DesmarcarRetirada(int idVendaPedido);
 
         void Remove(int idVendaPedido);
+
+        void AtualizaFormaPagamentoItem(int idVendaPedido, string tipoPagamento);
+
+        void RegistrarPagamentoItem(int idVendaPedido);
+
+        void DesmarcarPagamentoItem(int idVendaPedido);
+
+
     }
 }
