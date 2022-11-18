@@ -11,10 +11,11 @@ namespace LanchoneteUDV
         private readonly IEstoqueEscalaService _estoqueEscalaService;
         private readonly IVendaService _vendaService;
         private readonly IVendasPedidoService _vendasPedidoService;
+        private readonly ICompraService _compraService;
         Helper _helper = new Helper();
 
         public EscalasForm(IEscalaService escalaService, IProdutoService produtoService,
-            ISocioService socioService, IEstoqueEscalaService estoqueEscalaService, IVendaService vendaService, IVendasPedidoService vendasPedidoService)
+            ISocioService socioService, IEstoqueEscalaService estoqueEscalaService, IVendaService vendaService, IVendasPedidoService vendasPedidoService, ICompraService compraService)
         {
             _escalaService = escalaService;
             _produtoService = produtoService;
@@ -22,7 +23,9 @@ namespace LanchoneteUDV
             _estoqueEscalaService = estoqueEscalaService;
             _vendaService = vendaService;
             _vendasPedidoService = vendasPedidoService;
+            _compraService = compraService;
             InitializeComponent();
+          
         }
 
 
@@ -212,7 +215,7 @@ namespace LanchoneteUDV
 
         private void AbrirEscalaButton_Click(object sender, EventArgs e)
         {
-            VendasForm vendasForm = new VendasForm(_vendaService, _produtoService, _socioService, _estoqueEscalaService, _vendasPedidoService,_escalaService);
+            VendasForm vendasForm = new VendasForm(_vendaService, _produtoService, _socioService, _estoqueEscalaService, _vendasPedidoService,_escalaService,_compraService);
             vendasForm.Tag = IdTextBox.Text;
             vendasForm.ShowDialog();
 

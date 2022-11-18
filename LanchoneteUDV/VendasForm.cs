@@ -11,8 +11,9 @@ namespace LanchoneteUDV
         private readonly IEstoqueEscalaService _estoqueEscalaService;
         private readonly IVendasPedidoService _vendasPedidoService;
         private readonly IEscalaService _escalaService;
+        private readonly ICompraService _compraService;
         public VendasForm(IVendaService vendaService,IProdutoService produtoService,ISocioService socioService,IEstoqueEscalaService estoqueEscalaService
-            ,IVendasPedidoService vendasPedidoService, IEscalaService escalaService)
+            ,IVendasPedidoService vendasPedidoService, IEscalaService escalaService,ICompraService compraService)
         {
             _vendaService = vendaService;
             _produtoService = produtoService;
@@ -20,6 +21,7 @@ namespace LanchoneteUDV
             _estoqueEscalaService = estoqueEscalaService;
             _vendasPedidoService = vendasPedidoService;
             _escalaService = escalaService;
+            _compraService = compraService;
             InitializeComponent();
             
         }
@@ -97,18 +99,6 @@ namespace LanchoneteUDV
 
         private void RecarregarTela()
         {
-            // DataTable dados = _vendaService.TrazerVendaEscalaResumoVenda(Convert.ToInt32(this.Tag));  //_bllVendas.TrazerEscala(Convert.ToInt32(this.Tag));
-
-            //DataRow row = dados.Rows[0];
-
-            //IdTextBox.Text = row["ID"].ToString();
-            //DescricaoEscalaTextBox.Text = row["Descricao"].ToString();
-            //DataEscalaDateTimePicker.Value = Convert.ToDateTime(row["DataEscala"]);
-            //if (!string.IsNullOrEmpty(row["Resumo"].ToString()))
-            //{
-            //    ResumoVendasTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(row["Resumo"].ToString()));
-            //}
-
 
             var escala = _escalaService.GetById(Convert.ToInt32(this.Tag));
 
@@ -120,7 +110,6 @@ namespace LanchoneteUDV
             DataEscalaDateTimePicker.Value = escala.DataEscala;
             if (vendasLanchonete.Count()>0)
             {
-                //ResumoVendasTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(vendas1.ResumoVendas.ToString()));
                 TotalLanchoneteTextBox.Text = "R$ " + String.Format("{0:N2}", vendasLanchonete.Sum(x=>x.ResumoVendas));
 
             }
@@ -129,7 +118,6 @@ namespace LanchoneteUDV
 
             if (vendasChurrasco.Count() > 0)
             {
-                //ResumoVendasTextBox.Text = "R$ " + String.Format("{0:N2}", double.Parse(vendas1.ResumoVendas.ToString()));
                 TotalChurrascoTextBox.Text = "R$ " + String.Format("{0:N2}", vendasChurrasco.Sum(x => x.ResumoVendas));
 
             }
@@ -152,7 +140,7 @@ namespace LanchoneteUDV
 
         private void EstoqueButton_Click(object sender, EventArgs e)
         {
-            EstoqueForm estoque = new EstoqueForm(_estoqueEscalaService);
+            EstoqueForm estoque = new EstoqueForm(_estoqueEscalaService, _compraService);
             estoque.Show();
         }
 

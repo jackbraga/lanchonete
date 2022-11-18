@@ -551,9 +551,9 @@ namespace LanchoneteUDV
                 ColorirSemEstoque();
                 
             }
-            catch
+            catch(Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
 
             }
 

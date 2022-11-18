@@ -3,6 +3,7 @@ using LanchoneteUDV.Application.DTO;
 using LanchoneteUDV.Application.Interfaces;
 using LanchoneteUDV.Domain.Entidades;
 using LanchoneteUDV.Domain.Interfaces;
+using System.Drawing;
 
 namespace LanchoneteUDV.Application.Services
 {
@@ -29,9 +30,14 @@ namespace LanchoneteUDV.Application.Services
             _estoqueEscalaRepository.CompletarEstoqueEscala(idEscala);
         }
 
-        public IEnumerable<EstoqueDTO> ListarEstoque()
+        public int GetEstoqueProduto(int idProduto)
         {
-            var estoque = _estoqueEscalaRepository.ListarEstoque();
+            return _estoqueEscalaRepository.GetEstoqueProduto(idProduto);
+        }
+
+        public IEnumerable<EstoqueDTO> ListarEstoque(string filtro)
+        {
+            var estoque = _estoqueEscalaRepository.ListarEstoque(filtro);
             return _mapper.Map<IEnumerable<EstoqueDTO>>(estoque);
         }
         public IEnumerable<EstoqueDTO> ListarEstoqueComboProdutos(int idEscala, bool exibeMesmoSemEstoque)

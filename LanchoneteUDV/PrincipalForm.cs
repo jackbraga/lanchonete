@@ -66,13 +66,13 @@ namespace LanchoneteUDV
 
         private void escalasDeVendaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EscalasForm sc = new EscalasForm(_escalaService, _produtoService, _socioService, _estoqueEscalaService, _vendaService, _vendasPedidoService);
+            EscalasForm sc = new EscalasForm(_escalaService, _produtoService, _socioService, _estoqueEscalaService, _vendaService, _vendasPedidoService, _compraService);
             sc.Show();
         }
 
         private void estoqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EstoqueForm sc = new EstoqueForm(_estoqueEscalaService);
+            EstoqueForm sc = new EstoqueForm(_estoqueEscalaService, _compraService);
             sc.Show();
         }
 
