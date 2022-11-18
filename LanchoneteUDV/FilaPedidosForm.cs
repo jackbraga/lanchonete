@@ -125,5 +125,25 @@ namespace LanchoneteUDV
             _filtro = "Parcerias";
             RecarregarGrid();
         }
+
+        private void TudoRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SalgadosRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ChurrascoRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ParceriasRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

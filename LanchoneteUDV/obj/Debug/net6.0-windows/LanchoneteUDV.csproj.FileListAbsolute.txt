@@ -269,3 +269,4 @@ C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\refint\LanchoneteUDV
 C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\LanchoneteUDV.pdb
 C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\LanchoneteUDV.genruntimeconfig.cache
 C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\ref\LanchoneteUDV.dll
+C:\Github\lanchonete\LanchoneteUDV\obj\Debug\net6.0-windows\LanchoneteUDV.AjustarEstoqueForm.resources

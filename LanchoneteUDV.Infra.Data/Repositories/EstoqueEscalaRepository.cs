@@ -90,8 +90,15 @@ namespace LanchoneteUDV.Infra.Data.Repositories
             }
         }
 
-        public IEnumerable<Estoque> ListarEstoque()
+        public IEnumerable<Estoque> ListarEstoque(string filtro)
         {
+            string sqlFiltro = "";
+
+            if (!filtro.Equals("Todos"))
+            {
+                sqlFiltro = $"AND D.Descricao='{filtro}' ";
+            }
+
             string sql = "SELECT DISTINCT A.ID AS IdProduto, A.Descricao AS DescricaoProduto, A.PrecoVenda, " +
                     "A.EstoqueInicial, " +
                     "(SELECT SUM(tbCompras.Quantidade) FROM tbCompras WHERE Produto = A.ID) AS Entrada, " +
@@ -100,7 +107,8 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                     "FROM tbProdutos AS A " +
                     "LEFT JOIN tbCompras AS B ON A.ID = B.Produto " +
                     "LEFT JOIN tbVendasPedido AS C ON A.ID = C.Produto " +
-                    "WHERE A.ProdutoVenda = 1 " +
+                    "INNER JOIN tbCategorias AS D ON D.ID=A.Categoria " +
+                    "WHERE A.ProdutoVenda = 1 " + " " + sqlFiltro +
                     "GROUP BY A.ID, A.Descricao, A.PrecoVenda, A.EstoqueInicial " +
                     "ORDER BY A.Descricao ;";
 
@@ -191,6 +199,21 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                 });
             }
             return classe;
+        }
+
+        public int GetEstoqueProduto(int idProduto)
+        {
+            string sql = "SELECT DBO.EstoqueProduto(@idproduto)";
+
+            using (var connection = _connection.Connection())
+            {
+                connection.Open();
+                int estoque  = connection.ExecuteScalar<int>(sql, new
+                {
+                    idproduto = idProduto
+                });
+                return estoque;
+            }
         }
     }
 }

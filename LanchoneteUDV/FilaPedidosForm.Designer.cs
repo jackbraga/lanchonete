@@ -79,7 +79,7 @@
             this.ChurrascoRadioButton.TabStop = true;
             this.ChurrascoRadioButton.Text = "Só Churrasco";
             this.ChurrascoRadioButton.UseVisualStyleBackColor = true;
-            
+            this.ChurrascoRadioButton.CheckedChanged += new System.EventHandler(this.ChurrascoRadioButton_CheckedChanged);
             this.ChurrascoRadioButton.Click += new System.EventHandler(this.ChurrascoRadioButton_Click);
             // 
             // ParceriasRadioButton
@@ -92,7 +92,7 @@
             this.ParceriasRadioButton.TabStop = true;
             this.ParceriasRadioButton.Text = "Só Parcerias";
             this.ParceriasRadioButton.UseVisualStyleBackColor = true;
-            
+            this.ParceriasRadioButton.CheckedChanged += new System.EventHandler(this.ParceriasRadioButton_CheckedChanged);
             this.ParceriasRadioButton.Click += new System.EventHandler(this.ParceriasRadioButton_Click);
             // 
             // SalgadosRadioButton
@@ -105,7 +105,7 @@
             this.SalgadosRadioButton.TabStop = true;
             this.SalgadosRadioButton.Text = "Só Salgados";
             this.SalgadosRadioButton.UseVisualStyleBackColor = true;
-            
+            this.SalgadosRadioButton.CheckedChanged += new System.EventHandler(this.SalgadosRadioButton_CheckedChanged);
             this.SalgadosRadioButton.Click += new System.EventHandler(this.SalgadosRadioButton_Click);
             // 
             // TudoRadioButton
@@ -119,7 +119,7 @@
             this.TudoRadioButton.TabStop = true;
             this.TudoRadioButton.Text = "Exibe Tudo";
             this.TudoRadioButton.UseVisualStyleBackColor = true;
-            
+            this.TudoRadioButton.CheckedChanged += new System.EventHandler(this.TudoRadioButton_CheckedChanged);
             this.TudoRadioButton.Click += new System.EventHandler(this.TudoRadioButton_Click);
             // 
             // label1

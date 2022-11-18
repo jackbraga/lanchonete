@@ -10,7 +10,7 @@ namespace LanchoneteUDV.Domain.Interfaces
 
         public IEnumerable<EstoqueEscala> ListarProdutosEstoqueEscala(int idEscala);
 
-        public IEnumerable<Estoque> ListarEstoque();
+        public IEnumerable<Estoque> ListarEstoque(string filtro);
         public IEnumerable<Estoque> ListarEstoqueComboProdutos(int idEscala, bool exibeMesmoSemEstoque);
 
         public IEnumerable<Estoque> PesquisarEstoque(string pesquisa);
@@ -18,6 +18,8 @@ namespace LanchoneteUDV.Domain.Interfaces
         public void Remove(int id);
 
         public EstoqueEscala Update(EstoqueEscala classe);
+
+        int GetEstoqueProduto(int idProduto);
 
     }
 }

@@ -10,12 +10,14 @@ namespace LanchoneteUDV.Application.Interfaces
 
         public IEnumerable<EstoqueEscalaDTO> ListarProdutosEstoqueEscala(int idEscala);
 
-        public IEnumerable<EstoqueDTO> ListarEstoque();
+        public IEnumerable<EstoqueDTO> ListarEstoque(string filtro);
         public IEnumerable<EstoqueDTO> ListarEstoqueComboProdutos(int idEscala, bool exibeMesmoSemEstoque);
         public IEnumerable<EstoqueDTO> PesquisarEstoque(string pesquisa);
 
         public void Remove(int id);
 
         public EstoqueEscalaDTO Update(EstoqueEscalaDTO classe);
+
+        public int GetEstoqueProduto(int idProduto);
     }
 }
