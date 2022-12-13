@@ -117,8 +117,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
         {
             string sql = "SELECT  A.ID,A.DataEscala, A.Descricao, A.Finalizada, A.Observacao, A.TipoSessao " +
                     "FROM tbEscalas A " +
-                    "WHERE A.Descricao LIKE '@pesquisa%' " +
-                    "order by A.DataEscala Desc";
+                    "WHERE A.Descricao LIKE '@pesquisa%' ";
             IList<Escala> categorias = new List<Escala>();
 
             using (var connection = _connection.Connection())

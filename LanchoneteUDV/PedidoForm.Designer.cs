@@ -42,16 +42,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label27 = new System.Windows.Forms.Label();
             this.TotalAPagarTextBox = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.VisitanteButton = new System.Windows.Forms.Button();
             this.IdEscalaLabel = new System.Windows.Forms.Label();
             this.IDVendaLabel = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.TotalConsumidoTextBox = new System.Windows.Forms.TextBox();
             this.SocioComboBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.TotalConsumidoTextBox = new System.Windows.Forms.TextBox();
             this.PagamentoComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -109,6 +109,8 @@
             this.DesmarcarRetiradaPagoButton = new System.Windows.Forms.Button();
             this.RegistrarRetiradaPagoButton = new System.Windows.Forms.Button();
             this.PedidosPagosDataGridView = new System.Windows.Forms.DataGridView();
+            this.button7 = new System.Windows.Forms.Button();
+            this.label28 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -138,15 +140,6 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cliente";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(710, 160);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(67, 18);
-            this.label27.TabIndex = 55;
-            this.label27.Text = "Total Pago";
             // 
             // TotalAPagarTextBox
             // 
@@ -217,19 +210,6 @@
             this.label13.TabIndex = 40;
             this.label13.Text = "Total a Pagar";
             // 
-            // TotalConsumidoTextBox
-            // 
-            this.TotalConsumidoTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.TotalConsumidoTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
-            this.TotalConsumidoTextBox.BackColor = System.Drawing.SystemColors.Info;
-            this.TotalConsumidoTextBox.Enabled = false;
-            this.TotalConsumidoTextBox.Location = new System.Drawing.Point(710, 181);
-            this.TotalConsumidoTextBox.MaxLength = 150;
-            this.TotalConsumidoTextBox.Name = "TotalConsumidoTextBox";
-            this.TotalConsumidoTextBox.Size = new System.Drawing.Size(105, 23);
-            this.TotalConsumidoTextBox.TabIndex = 39;
-            this.TotalConsumidoTextBox.Text = "R$ 0,00";
-            // 
             // SocioComboBox
             // 
             this.SocioComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
@@ -255,6 +235,28 @@
             this.label2.Size = new System.Drawing.Size(39, 18);
             this.label2.TabIndex = 3;
             this.label2.Text = "Socio";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(710, 160);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(67, 18);
+            this.label27.TabIndex = 55;
+            this.label27.Text = "Total Pago";
+            // 
+            // TotalConsumidoTextBox
+            // 
+            this.TotalConsumidoTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.TotalConsumidoTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
+            this.TotalConsumidoTextBox.BackColor = System.Drawing.SystemColors.Info;
+            this.TotalConsumidoTextBox.Enabled = false;
+            this.TotalConsumidoTextBox.Location = new System.Drawing.Point(710, 181);
+            this.TotalConsumidoTextBox.MaxLength = 150;
+            this.TotalConsumidoTextBox.Name = "TotalConsumidoTextBox";
+            this.TotalConsumidoTextBox.Size = new System.Drawing.Size(105, 23);
+            this.TotalConsumidoTextBox.TabIndex = 39;
+            this.TotalConsumidoTextBox.Text = "R$ 0,00";
             // 
             // PagamentoComboBox
             // 
@@ -530,6 +532,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.button7);
+            this.groupBox3.Controls.Add(this.label28);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.RegistrarPagamentoButton);
             this.groupBox3.Controls.Add(this.FilaButton);
@@ -585,7 +589,7 @@
             this.FilaButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.FilaButton.FlatAppearance.BorderSize = 0;
             this.FilaButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.FilaButton.Location = new System.Drawing.Point(710, 238);
+            this.FilaButton.Location = new System.Drawing.Point(710, 210);
             this.FilaButton.Name = "FilaButton";
             this.FilaButton.Size = new System.Drawing.Size(46, 41);
             this.FilaButton.TabIndex = 56;
@@ -597,7 +601,7 @@
             // label19
             // 
             this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.Location = new System.Drawing.Point(761, 238);
+            this.label19.Location = new System.Drawing.Point(761, 210);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(84, 41);
             this.label19.TabIndex = 55;
@@ -1127,6 +1131,33 @@
             this.PedidosPagosDataGridView.TabIndex = 0;
             this.PedidosPagosDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PedidosPagosDataGridView_CellDoubleClick);
             // 
+            // button7
+            // 
+            this.button7.AutoSize = true;
+            this.button7.BackColor = System.Drawing.SystemColors.Window;
+            this.button7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button7.BackgroundImage")));
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button7.Location = new System.Drawing.Point(710, 272);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(46, 41);
+            this.button7.TabIndex = 60;
+            this.button7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button7.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // label28
+            // 
+            this.label28.BackColor = System.Drawing.Color.Transparent;
+            this.label28.Location = new System.Drawing.Point(761, 272);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(84, 41);
+            this.label28.TabIndex = 59;
+            this.label28.Text = "Dicas e Macetes";
+            // 
             // PedidoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1238,5 +1269,7 @@
         private Button DesmarcarPagamentoButton;
         private TextBox TotalAPagarTextBox;
         private Label label27;
+        private Button button7;
+        private Label label28;
     }
 }

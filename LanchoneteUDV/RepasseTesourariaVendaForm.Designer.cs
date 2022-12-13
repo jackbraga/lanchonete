@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.LancarFluxoCaixaButton = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             this.ProgressLabel = new System.Windows.Forms.Label();
             this.EmailProgressBar = new System.Windows.Forms.ProgressBar();
             this.label6 = new System.Windows.Forms.Label();
@@ -64,6 +66,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.LancarFluxoCaixaButton);
+            this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.ProgressLabel);
             this.groupBox2.Controls.Add(this.EmailProgressBar);
             this.groupBox2.Controls.Add(this.label6);
@@ -87,6 +91,33 @@
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Histórico de Pedidos";
+            // 
+            // LancarFluxoCaixaButton
+            // 
+            this.LancarFluxoCaixaButton.AutoSize = true;
+            this.LancarFluxoCaixaButton.BackColor = System.Drawing.SystemColors.Window;
+            this.LancarFluxoCaixaButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LancarFluxoCaixaButton.BackgroundImage")));
+            this.LancarFluxoCaixaButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.LancarFluxoCaixaButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.LancarFluxoCaixaButton.FlatAppearance.BorderSize = 0;
+            this.LancarFluxoCaixaButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.LancarFluxoCaixaButton.Location = new System.Drawing.Point(740, 333);
+            this.LancarFluxoCaixaButton.Name = "LancarFluxoCaixaButton";
+            this.LancarFluxoCaixaButton.Size = new System.Drawing.Size(46, 41);
+            this.LancarFluxoCaixaButton.TabIndex = 56;
+            this.LancarFluxoCaixaButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.LancarFluxoCaixaButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.LancarFluxoCaixaButton.UseVisualStyleBackColor = false;
+            this.LancarFluxoCaixaButton.Click += new System.EventHandler(this.LancarFluxoCaixaButton_Click);
+            // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Location = new System.Drawing.Point(792, 337);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(98, 37);
+            this.label7.TabIndex = 55;
+            this.label7.Text = "Lançar Fluxo de Caixa";
             // 
             // ProgressLabel
             // 
@@ -438,5 +469,7 @@
         private CheckBox FinalizadaCheckBox;
         private ProgressBar EmailProgressBar;
         private Label ProgressLabel;
+        private Button LancarFluxoCaixaButton;
+        private Label label7;
     }
 }

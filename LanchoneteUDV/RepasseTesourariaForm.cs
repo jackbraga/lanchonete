@@ -8,12 +8,14 @@ namespace LanchoneteUDV
         private readonly IEscalaService _escalaService;
         private readonly IFinanceiroService _financeiroService;
         private readonly IVendaService _vendaService;
-        public RepasseTesourariaForm(IEscalaService escalaService, IFinanceiroService financeiroService, IVendaService vendaService)
+        private readonly ICaixaService _caixaService;
+        public RepasseTesourariaForm(IEscalaService escalaService, IFinanceiroService financeiroService, IVendaService vendaService, ICaixaService caixaService)
         {
-            _escalaService=escalaService;
+            _escalaService = escalaService;
             _financeiroService = financeiroService;
             _vendaService = vendaService;
             InitializeComponent();
+            _caixaService = caixaService;
         }
 
         #region Eventos
@@ -25,7 +27,7 @@ namespace LanchoneteUDV
 
         private void AbrirEscalaButton_Click(object sender, EventArgs e)
         {
-            RepasseTesourariaVendaForm repasseVendaForm = new RepasseTesourariaVendaForm(_escalaService,_financeiroService,_vendaService);
+            RepasseTesourariaVendaForm repasseVendaForm = new RepasseTesourariaVendaForm(_escalaService,_financeiroService,_vendaService,_caixaService);
             repasseVendaForm.IDEscala = Convert.ToInt32(IdTextBox.Text);
             repasseVendaForm.ShowDialog();
             RecarregarGrid();

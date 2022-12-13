@@ -44,7 +44,7 @@ namespace LanchoneteUDV
                 SocioComboBox.SelectedValue = IdSocio;
                 _helper.Habilita(AdicionarButton);
                 RecarregarVenda();
- 
+
             }
             RecarregarGridEstoque();
             RecarregarGridEstoqueSalgados();
@@ -114,6 +114,8 @@ namespace LanchoneteUDV
             QuantidadeTextBox.Text = "0";
             DescontoTextBox.Text = "0";
             RecarregarVenda();
+            RecarregarGridEstoque();
+            RecarregarGridEstoqueSalgados();
         }
 
         private bool ValidaCamposParaAdicionarItens()
@@ -179,8 +181,9 @@ namespace LanchoneteUDV
             LimparTela();
             _helper.Habilita(AdicionarButton);
 
-            RecarregarVenda();
+
             IdSocio = Convert.ToInt32(SocioComboBox.SelectedValue);
+            RecarregarVenda();
         }
 
         private void RegistrarRetiradaButton_Click(object sender, EventArgs e)
@@ -250,6 +253,8 @@ namespace LanchoneteUDV
 
                     _vendasPedidoService.Remove(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
                     RecarregarVenda();
+                    RecarregarGridEstoque();
+                    RecarregarGridEstoqueSalgados();
 
                 }
             }
@@ -303,10 +308,27 @@ namespace LanchoneteUDV
                     case Keys.D:
                         AtualizarFormaPagamentoItem("DINHEIRO");
                         break;
+                    case Keys.R:
+                        MarcarTodosRetirado();
+                        break;
 
                     default:
                         break;
                 }
+            }
+
+        }
+
+        private void MarcarTodosRetirado()
+        {
+            if (MessageBox.Show("Deseja marcar todos os itens como retirado?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow row in PedidosDataGridView.Rows)
+                {
+                    _vendasPedidoService.RegistrarRetirada(Convert.ToInt32(row.Cells[0].Value));
+                }
+                RecarregarGrid();
+                MessageBox.Show("Itens retirados com sucesso!", "Atenção!", MessageBoxButtons.OK);
             }
 
         }
@@ -452,7 +474,7 @@ namespace LanchoneteUDV
                 TotalAPagarTextBox.Text = "R$ " + String.Format("{0:N2}", totalAPagar);
 
                 TotalConsumidoTextBox.Text = "R$ " + String.Format("{0:N2}", totalPago);
-              
+
 
 
                 IdVenda = Convert.ToInt32(vendas.First().IdVenda);
@@ -461,13 +483,13 @@ namespace LanchoneteUDV
             else
             {
                 IdVenda = 0;
-                TotalConsumidoTextBox.Text = "R$ 0,00";
+                TotalAPagarTextBox.Text = "R$ " + String.Format("{0:N2}", 0);
+                TotalConsumidoTextBox.Text = "R$ " + String.Format("{0:N2}", 0);
 
             }
 
             RecarregarGrid();
-            RecarregarGridEstoque();
-            RecarregarGridEstoqueSalgados();
+
         }
 
         private void RecarregarTodosGrids()
@@ -479,7 +501,7 @@ namespace LanchoneteUDV
         {
 
             var pedidos = _vendasPedidoService.ListarVendasPedido(IdVenda);
-            PedidosDataGridView.DataSource = pedidos.Where(x => !x.ItemPago).ToList(); 
+            PedidosDataGridView.DataSource = pedidos.Where(x => !x.ItemPago).ToList();
             PedidosPagosDataGridView.DataSource = pedidos.Where(x => x.ItemPago).ToList();
             FormatarGridPedidos();
             FormatarGridPedidosPagos();
@@ -507,7 +529,7 @@ namespace LanchoneteUDV
             PedidosDataGridView.Columns[8].HeaderText = "Pagamento";
             PedidosDataGridView.Columns[9].Visible = false;
 
-            PedidosDataGridView.ClearSelection();  
+            PedidosDataGridView.ClearSelection();
         }
 
         private void FormatarGridPedidosPagos()
@@ -549,11 +571,11 @@ namespace LanchoneteUDV
 
                 EstoqueDataGridView.ClearSelection();
                 ColorirSemEstoque();
-                
+
             }
-            catch(Exception ex)
+            catch
             {
-                Console.WriteLine(ex.Message);
+                // Console.WriteLine(ex.Message);
 
             }
 
@@ -674,6 +696,16 @@ namespace LanchoneteUDV
                 MessageBox.Show("Item desmarcado!", "Atenção!", MessageBoxButtons.OK);
                 RecarregarVenda();
             }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(@"
+                              Ctrl + C: Muda o pagamento de um item para Cartão!
+                              Ctrl + B: Muda o pagamento de um item para Boleto!
+                              Ctrl + P: Muda o pagamento de um item para Pix!
+                              Ctrl + D: Muda o pagamento de um item para Dinheiro!
+                              Ctrl + R: Registra a retirada de todos os itens da lista!", "Informativo!", MessageBoxButtons.OK);
         }
     }
 }

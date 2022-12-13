@@ -81,6 +81,16 @@ namespace LanchoneteUDV
             ResumoVendasChurrascoDataGridView.Columns[3].HeaderText = "Total";
             ResumoVendasChurrascoDataGridView.Columns[5].HeaderText = "Pagamento";
 
+            ResumoVendasParceriasDataGridView.Columns[0].Visible = false;
+            ResumoVendasParceriasDataGridView.Columns[1].Visible = false;
+            ResumoVendasParceriasDataGridView.Columns[2].Visible = false;
+            ResumoVendasParceriasDataGridView.Columns[4].Visible = false;
+            ResumoVendasParceriasDataGridView.Columns[3].DefaultCellStyle.Format = "R$ 0.00##";
+            ResumoVendasParceriasDataGridView.Columns[3].Width = 80;
+            ResumoVendasParceriasDataGridView.Columns[5].Width = 80;
+            ResumoVendasParceriasDataGridView.Columns[3].HeaderText = "Total";
+            ResumoVendasParceriasDataGridView.Columns[5].HeaderText = "Pagamento";
+
         }
 
         #endregion
@@ -101,13 +111,13 @@ namespace LanchoneteUDV
         {
 
             var escala = _escalaService.GetById(Convert.ToInt32(this.Tag));
-
-            var vendasLanchonete = _vendaService.TrazerVendaEscalaResumoVenda(Convert.ToInt32(this.Tag));
-            
             //var vendas1 = vendasLanchonete.First();
             IdTextBox.Text = escala.Id.ToString();
             DescricaoEscalaTextBox.Text = escala.Descricao;
             DataEscalaDateTimePicker.Value = escala.DataEscala;
+
+            var vendasLanchonete = _vendaService.TrazerVendaEscalaResumoVenda(Convert.ToInt32(this.Tag));     
+
             if (vendasLanchonete.Count()>0)
             {
                 TotalLanchoneteTextBox.Text = "R$ " + String.Format("{0:N2}", vendasLanchonete.Sum(x=>x.ResumoVendas));
@@ -122,9 +132,19 @@ namespace LanchoneteUDV
 
             }
 
+            var vendasParcerias = _vendaService.TrazerVendaEscalaResumoVendaParcerias(Convert.ToInt32(this.Tag));
+
+            if (vendasParcerias.Count() > 0)
+            {
+                TotalParceriasTextBox.Text = "R$ " + String.Format("{0:N2}", vendasParcerias.Sum(x => x.ResumoVendas));
+
+            }
+
             //vendas.First().
             ResumoVendasDataGridView.DataSource = vendasLanchonete;//dados;
             ResumoVendasChurrascoDataGridView.DataSource = vendasChurrasco;//dados;
+            ResumoVendasParceriasDataGridView.DataSource = vendasParcerias;
+
             FormataGridResumo();
             RecarregaGrid();
         }

@@ -54,6 +54,7 @@ namespace LanchoneteUDV
             RecarregarTela();
             LimparButton_Click(sender, e);
             MessageBox.Show("Evento registrado com sucesso!", "Sucesso!", MessageBoxButtons.OK);
+
         }
 
         private bool ValidaCamposParaSalvar()

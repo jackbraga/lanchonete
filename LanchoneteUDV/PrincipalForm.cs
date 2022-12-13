@@ -78,7 +78,7 @@ namespace LanchoneteUDV
 
         private async void gerarRepasseTesourariaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RepasseTesourariaForm sc = new RepasseTesourariaForm(_escalaService,_financeiroService,_vendaService);
+            RepasseTesourariaForm sc = new RepasseTesourariaForm(_escalaService,_financeiroService,_vendaService,_caixaService);
             sc.Show();
         }
 

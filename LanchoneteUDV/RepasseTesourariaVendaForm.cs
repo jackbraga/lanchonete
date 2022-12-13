@@ -1,4 +1,5 @@
-﻿using LanchoneteUDV.Application.Interfaces;
+﻿using LanchoneteUDV.Application.DTO;
+using LanchoneteUDV.Application.Interfaces;
 
 namespace LanchoneteUDV
 {
@@ -10,16 +11,18 @@ namespace LanchoneteUDV
         private readonly IVendaService _vendaService;
         private readonly IFinanceiroService _financeiroService;
         private readonly IEscalaService _escalaService;
+        private readonly ICaixaService _caixaService;
         Helper _helper = new Helper();
         public int IDEscala { get; set; }
 
 
-        public RepasseTesourariaVendaForm(IEscalaService escalaService, IFinanceiroService financeiroService, IVendaService vendaService)
+        public RepasseTesourariaVendaForm(IEscalaService escalaService, IFinanceiroService financeiroService, IVendaService vendaService, ICaixaService caixaService)
         {
             _escalaService = escalaService;
             _financeiroService = financeiroService;
             _vendaService = vendaService;
             InitializeComponent();
+            _caixaService = caixaService;
         }
 
         private void RecarregarTela()
@@ -28,7 +31,7 @@ namespace LanchoneteUDV
 
             IdTextBox.Text = escala.Id.ToString();
             DescricaoEscalaTextBox.Text = escala.Descricao;
-            DataEscalaDateTimePicker.Value = escala.DataEscala; 
+            DataEscalaDateTimePicker.Value = escala.DataEscala;
             FinalizadaCheckBox.Checked = escala.Finalizada;
 
             if (FinalizadaCheckBox.Checked)
@@ -150,6 +153,35 @@ namespace LanchoneteUDV
                     MessageBox.Show("Ocorreu um erro ao gerar a planilha!", "Repasse tesouraria", MessageBoxButtons.OK);
 
                 }
+            }
+        }
+
+        private void LancarFluxoCaixaButton_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja realmente gerar os lançamentos no fluxo de caixa?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+
+                _caixaService.RemoverPorIDEscala(IDEscala);
+
+                var lista = _financeiroService.GerarListaFluxoCaixaEscala(IDEscala);
+
+                foreach (var item in lista)
+                {
+                    CaixaDTO caixa = new CaixaDTO
+                    {
+                        DataEvento = item.DataEvento,
+                        EspecieMoeda = item.EspecieMoeda,
+                        Frente = item.Frente,
+                        IdCategoria = item.IdCategoria,
+                        Observacao = item.Observacao,
+                        TipoEvento = item.TipoEvento,
+                        Valor = item.Valor,
+                        IDEscala=IDEscala,
+                        
+                    };
+                    _caixaService.Add(caixa);
+                }
+                MessageBox.Show("Lançamentos efetuados com sucesso!", "Repasse tesouraria", MessageBoxButtons.OK);
             }
         }
     }

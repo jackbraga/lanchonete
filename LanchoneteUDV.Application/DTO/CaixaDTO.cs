@@ -20,5 +20,7 @@ namespace LanchoneteUDV.Application.DTO
         public string EspecieMoeda { get; set; }
 
         public string Frente { get; set; }
+
+        public int IDEscala { get; set; }
     }
 }
