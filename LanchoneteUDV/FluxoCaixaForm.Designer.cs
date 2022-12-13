@@ -302,11 +302,11 @@
             this.EspecieMoedaComboBox.Enabled = false;
             this.EspecieMoedaComboBox.FormattingEnabled = true;
             this.EspecieMoedaComboBox.Items.AddRange(new object[] {
-            "BOLETO/PIX",
+            "BOLETO",
             "CARTAO",
             "CONTA",
             "DINHEIRO",
-            "PARCERIA"});
+            "PIX"});
             this.EspecieMoedaComboBox.Location = new System.Drawing.Point(287, 84);
             this.EspecieMoedaComboBox.Name = "EspecieMoedaComboBox";
             this.EspecieMoedaComboBox.Size = new System.Drawing.Size(293, 26);

@@ -143,5 +143,23 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                 return result;
             }
         }
+
+        public IEnumerable<Caixa> GerarListaFluxoCaixaEscala(int idEscala)
+        {
+            string sql =
+            @" SELECT DataEscala AS DataEvento,
+                TipoEvento,ResumoVendas AS Valor,Descricao AS Observacao,CategoriaLancamento AS IdCategoria,
+                TipoPagamento AS EspecieMoeda, Frente from dbo.FluxoCaixaEscala(@idEscala)  ";
+
+            using (var connection = _connection.Connection())
+            {
+                connection.Open();
+                var result = connection.Query<Caixa>(sql, new
+                {
+                    idEscala = idEscala
+                });
+                return result;
+            }
+        }
     }
 }

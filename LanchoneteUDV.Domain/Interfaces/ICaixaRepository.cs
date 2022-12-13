@@ -12,6 +12,7 @@ namespace LanchoneteUDV.Domain.Interfaces
 
         void AtualizarDinheiroCaixa(double valor);
 
+        public void RemoverPorIDEscala(int idEscala);
 
     }
 }

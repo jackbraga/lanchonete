@@ -1,4 +1,5 @@
 ﻿using LanchoneteUDV.Application.DTO;
+using LanchoneteUDV.Domain.Entidades;
 
 namespace LanchoneteUDV.Application.Interfaces
 {
@@ -11,5 +12,7 @@ namespace LanchoneteUDV.Application.Interfaces
         void AtualizaEmailDisparado(int idVenda);
 
         bool GerarListaRepasseFinanceiroExcel(int idEscala);
+
+        IEnumerable<CaixaDTO> GerarListaFluxoCaixaEscala(int idEscala);
     }
 }

@@ -28,17 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VendasForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TotalParceriasTextBox = new System.Windows.Forms.TextBox();
+            this.ResumoVendasParceriasDataGridView = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
             this.TotalChurrascoTextBox = new System.Windows.Forms.TextBox();
             this.TotalLanchoneteTextBox = new System.Windows.Forms.TextBox();
             this.ResumoVendasChurrascoDataGridView = new System.Windows.Forms.DataGridView();
@@ -64,6 +70,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.VendasDataGridView = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ResumoVendasParceriasDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ResumoVendasChurrascoDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ResumoVendasDataGridView)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -72,6 +79,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.TotalParceriasTextBox);
+            this.groupBox1.Controls.Add(this.ResumoVendasParceriasDataGridView);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.TotalChurrascoTextBox);
             this.groupBox1.Controls.Add(this.TotalLanchoneteTextBox);
             this.groupBox1.Controls.Add(this.ResumoVendasChurrascoDataGridView);
@@ -91,10 +101,68 @@
             this.groupBox1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(6, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(672, 237);
+            this.groupBox1.Size = new System.Drawing.Size(817, 237);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cadastro de Pedidos";
+            // 
+            // TotalParceriasTextBox
+            // 
+            this.TotalParceriasTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.TotalParceriasTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
+            this.TotalParceriasTextBox.BackColor = System.Drawing.SystemColors.Info;
+            this.TotalParceriasTextBox.Enabled = false;
+            this.TotalParceriasTextBox.Location = new System.Drawing.Point(463, 208);
+            this.TotalParceriasTextBox.MaxLength = 150;
+            this.TotalParceriasTextBox.Name = "TotalParceriasTextBox";
+            this.TotalParceriasTextBox.Size = new System.Drawing.Size(106, 23);
+            this.TotalParceriasTextBox.TabIndex = 62;
+            // 
+            // ResumoVendasParceriasDataGridView
+            // 
+            this.ResumoVendasParceriasDataGridView.AllowUserToAddRows = false;
+            this.ResumoVendasParceriasDataGridView.AllowUserToDeleteRows = false;
+            this.ResumoVendasParceriasDataGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.LightCyan;
+            this.ResumoVendasParceriasDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            this.ResumoVendasParceriasDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ResumoVendasParceriasDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            this.ResumoVendasParceriasDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ResumoVendasParceriasDataGridView.DefaultCellStyle = dataGridViewCellStyle15;
+            this.ResumoVendasParceriasDataGridView.Location = new System.Drawing.Point(463, 43);
+            this.ResumoVendasParceriasDataGridView.MultiSelect = false;
+            this.ResumoVendasParceriasDataGridView.Name = "ResumoVendasParceriasDataGridView";
+            this.ResumoVendasParceriasDataGridView.ReadOnly = true;
+            this.ResumoVendasParceriasDataGridView.RowHeadersVisible = false;
+            this.ResumoVendasParceriasDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ResumoVendasParceriasDataGridView.RowTemplate.Height = 25;
+            this.ResumoVendasParceriasDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ResumoVendasParceriasDataGridView.Size = new System.Drawing.Size(171, 159);
+            this.ResumoVendasParceriasDataGridView.TabIndex = 61;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(463, 22);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(105, 18);
+            this.label7.TabIndex = 60;
+            this.label7.Text = "Vendas Parcerias";
             // 
             // TotalChurrascoTextBox
             // 
@@ -102,7 +170,7 @@
             this.TotalChurrascoTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
             this.TotalChurrascoTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.TotalChurrascoTextBox.Enabled = false;
-            this.TotalChurrascoTextBox.Location = new System.Drawing.Point(480, 208);
+            this.TotalChurrascoTextBox.Location = new System.Drawing.Point(640, 208);
             this.TotalChurrascoTextBox.MaxLength = 150;
             this.TotalChurrascoTextBox.Name = "TotalChurrascoTextBox";
             this.TotalChurrascoTextBox.Size = new System.Drawing.Size(106, 23);
@@ -125,28 +193,28 @@
             this.ResumoVendasChurrascoDataGridView.AllowUserToAddRows = false;
             this.ResumoVendasChurrascoDataGridView.AllowUserToDeleteRows = false;
             this.ResumoVendasChurrascoDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightCyan;
-            this.ResumoVendasChurrascoDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.LightCyan;
+            this.ResumoVendasChurrascoDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
             this.ResumoVendasChurrascoDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ResumoVendasChurrascoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ResumoVendasChurrascoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.ResumoVendasChurrascoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ResumoVendasChurrascoDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ResumoVendasChurrascoDataGridView.Location = new System.Drawing.Point(480, 43);
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ResumoVendasChurrascoDataGridView.DefaultCellStyle = dataGridViewCellStyle18;
+            this.ResumoVendasChurrascoDataGridView.Location = new System.Drawing.Point(640, 43);
             this.ResumoVendasChurrascoDataGridView.MultiSelect = false;
             this.ResumoVendasChurrascoDataGridView.Name = "ResumoVendasChurrascoDataGridView";
             this.ResumoVendasChurrascoDataGridView.ReadOnly = true;
@@ -154,13 +222,13 @@
             this.ResumoVendasChurrascoDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ResumoVendasChurrascoDataGridView.RowTemplate.Height = 25;
             this.ResumoVendasChurrascoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ResumoVendasChurrascoDataGridView.Size = new System.Drawing.Size(186, 159);
+            this.ResumoVendasChurrascoDataGridView.Size = new System.Drawing.Size(170, 159);
             this.ResumoVendasChurrascoDataGridView.TabIndex = 55;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(480, 22);
+            this.label4.Location = new System.Drawing.Point(640, 19);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 18);
             this.label4.TabIndex = 54;
@@ -171,27 +239,27 @@
             this.ResumoVendasDataGridView.AllowUserToAddRows = false;
             this.ResumoVendasDataGridView.AllowUserToDeleteRows = false;
             this.ResumoVendasDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightCyan;
-            this.ResumoVendasDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.LightCyan;
+            this.ResumoVendasDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle19;
             this.ResumoVendasDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ResumoVendasDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ResumoVendasDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.ResumoVendasDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ResumoVendasDataGridView.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ResumoVendasDataGridView.DefaultCellStyle = dataGridViewCellStyle21;
             this.ResumoVendasDataGridView.Location = new System.Drawing.Point(289, 43);
             this.ResumoVendasDataGridView.MultiSelect = false;
             this.ResumoVendasDataGridView.Name = "ResumoVendasDataGridView";
@@ -200,7 +268,7 @@
             this.ResumoVendasDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ResumoVendasDataGridView.RowTemplate.Height = 25;
             this.ResumoVendasDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ResumoVendasDataGridView.Size = new System.Drawing.Size(185, 159);
+            this.ResumoVendasDataGridView.Size = new System.Drawing.Size(168, 159);
             this.ResumoVendasDataGridView.TabIndex = 16;
             // 
             // label6
@@ -211,7 +279,6 @@
             this.label6.Size = new System.Drawing.Size(94, 18);
             this.label6.TabIndex = 52;
             this.label6.Text = "Estoque Escala";
-            
             // 
             // EstoqueEscalaButton
             // 
@@ -365,7 +432,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(276, 23);
+            this.label1.Location = new System.Drawing.Point(328, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(20, 18);
             this.label1.TabIndex = 1;
@@ -376,7 +443,7 @@
             // 
             this.IdTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.IdTextBox.Enabled = false;
-            this.IdTextBox.Location = new System.Drawing.Point(276, 43);
+            this.IdTextBox.Location = new System.Drawing.Point(328, 39);
             this.IdTextBox.Name = "IdTextBox";
             this.IdTextBox.Size = new System.Drawing.Size(53, 23);
             this.IdTextBox.TabIndex = 0;
@@ -391,16 +458,16 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.IdTextBox);
             this.groupBox2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.Location = new System.Drawing.Point(6, 245);
+            this.groupBox2.Location = new System.Drawing.Point(6, 239);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(672, 470);
+            this.groupBox2.Size = new System.Drawing.Size(817, 470);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Histórico de Pedidos";
             // 
             // PesquisaTextBox
             // 
-            this.PesquisaTextBox.Location = new System.Drawing.Point(6, 43);
+            this.PesquisaTextBox.Location = new System.Drawing.Point(58, 39);
             this.PesquisaTextBox.MaxLength = 150;
             this.PesquisaTextBox.Name = "PesquisaTextBox";
             this.PesquisaTextBox.Size = new System.Drawing.Size(260, 23);
@@ -410,7 +477,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 23);
+            this.label3.Location = new System.Drawing.Point(58, 19);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 18);
             this.label3.TabIndex = 1;
@@ -421,28 +488,28 @@
             this.VendasDataGridView.AllowUserToAddRows = false;
             this.VendasDataGridView.AllowUserToDeleteRows = false;
             this.VendasDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.LightCyan;
-            this.VendasDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.LightCyan;
+            this.VendasDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle22;
             this.VendasDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.VendasDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.VendasDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
             this.VendasDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.VendasDataGridView.DefaultCellStyle = dataGridViewCellStyle9;
-            this.VendasDataGridView.Location = new System.Drawing.Point(6, 72);
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.VendasDataGridView.DefaultCellStyle = dataGridViewCellStyle24;
+            this.VendasDataGridView.Location = new System.Drawing.Point(58, 72);
             this.VendasDataGridView.MultiSelect = false;
             this.VendasDataGridView.Name = "VendasDataGridView";
             this.VendasDataGridView.ReadOnly = true;
@@ -450,7 +517,7 @@
             this.VendasDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.VendasDataGridView.RowTemplate.Height = 25;
             this.VendasDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.VendasDataGridView.Size = new System.Drawing.Size(660, 392);
+            this.VendasDataGridView.Size = new System.Drawing.Size(701, 392);
             this.VendasDataGridView.TabIndex = 0;
             this.VendasDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.VendasDataGridView_CellDoubleClick);
             // 
@@ -459,7 +526,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(683, 717);
+            this.ClientSize = new System.Drawing.Size(830, 717);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.EstoqueButton);
@@ -471,6 +538,7 @@
             this.Load += new System.EventHandler(this.VendasForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ResumoVendasParceriasDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ResumoVendasChurrascoDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ResumoVendasDataGridView)).EndInit();
             this.groupBox2.ResumeLayout(false);
@@ -508,5 +576,8 @@
         private DataGridView ResumoVendasChurrascoDataGridView;
         private TextBox TotalLanchoneteTextBox;
         private TextBox TotalChurrascoTextBox;
+        private DataGridView ResumoVendasParceriasDataGridView;
+        private Label label7;
+        private TextBox TotalParceriasTextBox;
     }
 }

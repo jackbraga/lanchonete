@@ -16,5 +16,7 @@ namespace LanchoneteUDV.Application.Interfaces
         Task<IEnumerable<ResumoVendasDTO>> ListarResumoMesAMes(int ano);
 
         void AtualizarDinheiroCaixa(double valor);
+
+        public void RemoverPorIDEscala(int idEscala);
     }
 }

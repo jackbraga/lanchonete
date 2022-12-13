@@ -31,7 +31,7 @@ namespace LanchoneteUDV.Application.Services
 
         public IEnumerable<CaixaDTO> GetAll()
         {
-            var lista = _caixaRepository.GetAll();
+            var lista = _caixaRepository.GetAll().OrderByDescending(x=>x.DataEvento).ThenBy(y=>y.Frente);
             return _mapper.Map<IEnumerable<CaixaDTO>>(lista);
         }
 
@@ -79,6 +79,11 @@ namespace LanchoneteUDV.Application.Services
         public void AtualizarDinheiroCaixa(double valor)
         {            
             _caixaRepository.AtualizarDinheiroCaixa(valor);
+        }
+
+        public void RemoverPorIDEscala(int idEscala)
+        {
+            _caixaRepository.RemoverPorIDEscala(idEscala);
         }
     }
 }

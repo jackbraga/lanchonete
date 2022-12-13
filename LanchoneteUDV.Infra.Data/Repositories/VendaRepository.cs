@@ -91,7 +91,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                 "LEFT JOIN tbVendas ON tbEscalas.ID = tbVendas.Escala " +
                 "LEFT JOIN tbVendasPedido ON tbVendas.ID = tbVendasPedido.Venda " +
                 "INNER JOIN tbProdutos ON tbProdutos.ID = tbVendasPedido.Produto " +
-                "WHERE tbEscalas.ID = " + idEscala + " AND tbProdutos.Categoria <> 15 " +
+                "WHERE tbEscalas.ID = " + idEscala + " AND tbProdutos.Categoria <> 15 AND tbProdutos.Categoria <> 16 " +
                 "GROUP BY  tbEscalas.ID, tbEscalas.Descricao, tbEscalas.DataEscala, tbVendasPedido.TipoPagamento,tbEscalas.Finalizada ";
 
             using (var connection = _connection.Connection())
@@ -102,6 +102,29 @@ namespace LanchoneteUDV.Infra.Data.Repositories
             }
         }
 
+        public IEnumerable<VendaEscalaResumoVenda> TrazerVendaEscalaResumoVendaParcerias(int idEscala)
+        {
+            string sql = "SELECT " +
+                "tbEscalas.ID AS IdEscala,  " +
+                "tbEscalas.Descricao, " +
+                "tbEscalas.DataEscala, " +
+                "SUM((tbVendasPedido.PrecoProduto * tbVendasPedido.Quantidade)) AS ResumoVendas, " +
+                "tbEscalas.Finalizada as EscalaFinalizada, " +
+                "tbVendasPedido.TipoPagamento " +
+                "FROM tbEscalas " +
+                "LEFT JOIN tbVendas ON tbEscalas.ID = tbVendas.Escala " +
+                "LEFT JOIN tbVendasPedido ON tbVendas.ID = tbVendasPedido.Venda " +
+                "INNER JOIN tbProdutos ON tbProdutos.ID = tbVendasPedido.Produto " +
+                "WHERE tbEscalas.ID = " + idEscala + " AND tbProdutos.Categoria = 16 " +
+                "GROUP BY  tbEscalas.ID, tbEscalas.Descricao, tbEscalas.DataEscala, tbVendasPedido.TipoPagamento,tbEscalas.Finalizada ";
+
+            using (var connection = _connection.Connection())
+            {
+                connection.Open();
+                var result = connection.Query<VendaEscalaResumoVenda>(sql);
+                return result;
+            }
+        }
         public IEnumerable<VendaEscalaResumoVenda> TrazerVendaEscalaResumoVendaChurrasco(int idEscala)
         {
             string sql = "SELECT " +
@@ -154,8 +177,8 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                     "FROM tbProdutos " +
                     "INNER JOIN tbEstoqueEscala ON tbProdutos.ID = tbEstoqueEscala.Produto " +
                     "LEFT JOIN tbVendasPedido ON tbProdutos.ID = tbVendasPedido.Produto " +
-                    "WHERE Escala =" + idEscala + " AND tbProdutos.Categoria<>10 AND tbProdutos.Categoria<>15 " +
-                    "ORDER BY 1;";
+                    "WHERE Escala =" + idEscala + " AND tbProdutos.Categoria<>10 AND tbProdutos.Categoria<>15 ";
+                   
 
             using (var connection = _connection.Connection())
             {
@@ -170,7 +193,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
         {
             int idSalgado = exibeSalgados ? 10 : 0;
             int idChurrasco = exibeChurrasco ? 15 : 0;
-            
+
 
             string sql = "SELECT DISTINCT " +
                     "tbProdutos.Descricao as DescricaoProduto, " +
@@ -181,8 +204,8 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                     "FROM tbProdutos " +
                     "INNER JOIN tbEstoqueEscala ON tbProdutos.ID = tbEstoqueEscala.Produto " +
                     "LEFT JOIN tbVendasPedido ON tbProdutos.ID = tbVendasPedido.Produto " +
-                    "WHERE Escala =" + idEscala + " AND tbProdutos.Categoria IN(" + idSalgado +  "," + idChurrasco + ") " + 
-                    "ORDER BY 1;";
+                    "WHERE Escala =" + idEscala + " AND tbProdutos.Categoria IN(" + idSalgado + "," + idChurrasco + ") "; 
+                    
 
             using (var connection = _connection.Connection())
             {

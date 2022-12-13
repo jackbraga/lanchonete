@@ -1,4 +1,5 @@
 ﻿using LanchoneteUDV.Application.DTO;
+using LanchoneteUDV.Domain.Entidades;
 
 namespace LanchoneteUDV.Application.Interfaces
 {
@@ -9,6 +10,8 @@ namespace LanchoneteUDV.Application.Interfaces
         public IEnumerable<VendaEscalaDTO> ListarVendasPesquisa(int idEscala, string pesquisa);
 
         public IEnumerable<VendaEscalaResumoVendaDTO> TrazerVendaEscalaResumoVenda(int idEscala);
+
+        public IEnumerable<VendaEscalaResumoVendaDTO> TrazerVendaEscalaResumoVendaParcerias(int idEscala);
 
         public IEnumerable<VendaEscalaResumoVendaDTO> TrazerVendaEscalaResumoVendaChurrasco(int idEscala);
 

@@ -27,13 +27,13 @@ namespace LanchoneteUDV.Application.Services
         public async Task<IEnumerable<EstoquePorEscalaDTO>> ListarEstoquePorEscala(int idEscala)
         {
             var estoques = await _vendaRepository.ListarEstoquePorEscala(idEscala);
-            return _mapper.Map<IEnumerable<EstoquePorEscalaDTO>>(estoques);
+            return _mapper.Map<IEnumerable<EstoquePorEscalaDTO>>(estoques.OrderBy(x=>x.DescricaoProduto).ToList());
         }
 
         public async Task<IEnumerable<EstoquePorEscalaDTO>> ListarEstoqueSalgadosPorEscala(int idEscala, bool exibeSalgados, bool exibeChurrasco)
         {
             var estoques = await _vendaRepository.ListarEstoqueSalgadosPorEscala(idEscala, exibeSalgados, exibeChurrasco);
-            return _mapper.Map<IEnumerable<EstoquePorEscalaDTO>>(estoques);
+            return _mapper.Map<IEnumerable<EstoquePorEscalaDTO>>(estoques.OrderBy(x => x.DescricaoProduto).ToList());
         }
 
         public IEnumerable<VendaEscalaDTO> ListarVendasEscala(int idEscala)
@@ -51,6 +51,12 @@ namespace LanchoneteUDV.Application.Services
         public IEnumerable<VendaEscalaResumoVendaDTO> TrazerVendaEscalaResumoVenda(int idEscala)
         {
             var estoques = _vendaRepository.TrazerVendaEscalaResumoVenda(idEscala);
+            return _mapper.Map<IEnumerable<VendaEscalaResumoVendaDTO>>(estoques);
+        }
+
+        public IEnumerable<VendaEscalaResumoVendaDTO> TrazerVendaEscalaResumoVendaParcerias(int idEscala)
+        {
+            var estoques = _vendaRepository.TrazerVendaEscalaResumoVendaParcerias(idEscala);
             return _mapper.Map<IEnumerable<VendaEscalaResumoVendaDTO>>(estoques);
         }
 

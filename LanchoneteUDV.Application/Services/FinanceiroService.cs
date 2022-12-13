@@ -53,5 +53,11 @@ namespace LanchoneteUDV.Application.Services
             planilhas.Add(listaParceriaDto);
             return _excelService.CriarPlanilhaRepasse(planilhas);
         }
+
+        public IEnumerable<CaixaDTO> GerarListaFluxoCaixaEscala(int idEscala)
+        {
+            var lista = _financeiroRepository.GerarListaFluxoCaixaEscala(idEscala);
+            return _mapper.Map<IEnumerable<CaixaDTO>>(lista);
+        }
     }
 }

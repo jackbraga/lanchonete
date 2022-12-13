@@ -19,8 +19,8 @@ namespace LanchoneteUDV.Infra.Data.Repositories
         }
         public Caixa Add(Caixa classe)
         {
-            string sql = "INSERT INTO tbCaixa(DataEvento, TipoEvento,CategoriaLancamento,Valor,Observacao,EspecieMoeda,Frente) " +
-                "VALUES(@data,@tipoEvento,@categoria,@valor,@observacao,@moeda,@frente) ";
+            string sql = "INSERT INTO tbCaixa(DataEvento, TipoEvento,CategoriaLancamento,Valor,Observacao,EspecieMoeda,Frente,Escala) " +
+                "VALUES(@data,@tipoEvento,@categoria,@valor,@observacao,@moeda,@frente,@escala) ";
 
             using (var connection = _connection.Connection())
             {
@@ -33,7 +33,8 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                     categoria = classe.IdCategoria,
                     valor = classe.Valor,
                     observacao = classe.Observacao,
-                    frente = classe.Frente
+                    frente = classe.Frente,
+                    escala = classe.IDEscala
                 });
                 return classe;
             }
@@ -43,8 +44,8 @@ namespace LanchoneteUDV.Infra.Data.Repositories
         {
             string sql = "SELECT A.ID, A.DataEvento, A.TipoEvento, A.Valor,B.Descricao as DescricaoCategoria, A.Observacao,B.ID as IDCategoria, ISNULL(A.EspecieMoeda,'Nao Definido') AS EspecieMoeda, A.Frente " +
             "FROM tbCaixa AS A " +
-            "INNER JOIN tbCategoriaLancamento AS B ON B.ID=A.CAtegoriaLancamento " +
-            "ORDER BY 2 desc; ";
+            "INNER JOIN tbCategoriaLancamento AS B ON B.ID=A.CAtegoriaLancamento ";
+            
 
             using (var connection = _connection.Connection())
             {
@@ -84,7 +85,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                             "((SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Entrada' AND CategoriaLancamento NOT IN(3, 4) AND Frente='" + frente + "') + (SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Saida' AND Frente='" + frente + "') ) AS Lucro, " +
                             "(SELECT SUM(VALOR) AS Dinheiro FROM tbCaixa WHERE EspecieMoeda = 'DINHEIRO' AND Frente='" + frente + "') AS Dinheiro, " +
                             "(SELECT SUM(VALOR) AS CARTAO FROM tbCaixa WHERE EspecieMoeda = 'CARTAO' AND Frente='" + frente + "') AS Cartao, " +
-                            "(SELECT SUM(VALOR) AS BOLETO FROM tbCaixa WHERE EspecieMoeda = 'BOLETO/PIX' AND Frente='" + frente + "') AS BOLETO, " +
+                            "(SELECT SUM(VALOR) AS BOLETO FROM tbCaixa WHERE EspecieMoeda = 'BOLETO' AND Frente='" + frente + "') AS BOLETO, " +
                             "((SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Entrada' AND Frente='" + frente + "') + (SELECT SUM(VALOR)  FROM tbCaixa WHERE TipoEvento = 'Saida' AND Frente='" + frente + "')) AS Saldo, " +
                             "(SELECT SUM(VALOR) AS PARCERIA FROM tbCaixa WHERE CategoriaLancamento = 6 AND Frente='" + frente + "') AS PARCERIA ";
 
@@ -140,6 +141,19 @@ namespace LanchoneteUDV.Infra.Data.Repositories
             }
         }
 
+        public void RemoverPorIDEscala(int idEscala)
+        {
+            string sql = "DELETE FROM tbCaixa WHERE Escala=@idEscala";
+            using (var connection = _connection.Connection())
+            {
+                connection.Open();
+                connection.Execute(sql, new
+                {
+                    idEscala = idEscala
+                });
+            }
+        }
+
         public Caixa Update(Caixa classe)
         {
             string sql = "UPDATE tbCaixa SET DataEvento=@data, TipoEvento=@tipoEvento,CategoriaLancamento=@categoria,Valor=@valor,Observacao=@observacao, EspecieMoeda=@moeda, Frente=@frente " +
@@ -177,5 +191,8 @@ namespace LanchoneteUDV.Infra.Data.Repositories
                 
             }
         }
+
+
+    
     }
 }
