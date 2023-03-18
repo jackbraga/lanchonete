@@ -101,7 +101,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
     "INNER JOIN	tbSocios	AS C ON C.ID=A.Socio " +
     "INNER JOIN	tbVendasPedido AS D ON D.Venda=A.ID	 " +
     "INNER JOIN  tbProdutos AS E ON E.ID=D.Produto " +
-    "WHERE E.Categoria<>15 AND E.Categoria<>16 AND B.ID=" + idEscala + " " +
+    "WHERE E.Categoria<>15  AND B.ID=" + idEscala + " " + //AND E.Categoria<>16
     "GROUP BY  ISNULL(C.ResponsavelFinanceiro,C.ID),NOME,B.Descricao,B.DataEscala,D.TipoPagamento " +
     ") AS A " +
     "INNER JOIN tbSocios as B ON B.ID=A.ID " +

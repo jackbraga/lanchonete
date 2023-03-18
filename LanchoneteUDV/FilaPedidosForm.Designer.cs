@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.AgruparCheckBox = new System.Windows.Forms.CheckBox();
+            this.SemRetirarCheckBox = new System.Windows.Forms.CheckBox();
             this.ChurrascoRadioButton = new System.Windows.Forms.RadioButton();
             this.ParceriasRadioButton = new System.Windows.Forms.RadioButton();
             this.SalgadosRadioButton = new System.Windows.Forms.RadioButton();
@@ -50,6 +52,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.AgruparCheckBox);
+            this.groupBox3.Controls.Add(this.SemRetirarCheckBox);
             this.groupBox3.Controls.Add(this.ChurrascoRadioButton);
             this.groupBox3.Controls.Add(this.ParceriasRadioButton);
             this.groupBox3.Controls.Add(this.SalgadosRadioButton);
@@ -68,6 +72,28 @@
             this.groupBox3.TabIndex = 30;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Fila";
+            // 
+            // AgruparCheckBox
+            // 
+            this.AgruparCheckBox.AutoSize = true;
+            this.AgruparCheckBox.Location = new System.Drawing.Point(931, 388);
+            this.AgruparCheckBox.Name = "AgruparCheckBox";
+            this.AgruparCheckBox.Size = new System.Drawing.Size(73, 22);
+            this.AgruparCheckBox.TabIndex = 57;
+            this.AgruparCheckBox.Text = "Agrupar";
+            this.AgruparCheckBox.UseVisualStyleBackColor = true;
+            this.AgruparCheckBox.CheckedChanged += new System.EventHandler(this.AgruparCheckBox_CheckedChanged);
+            // 
+            // SemRetirarCheckBox
+            // 
+            this.SemRetirarCheckBox.AutoSize = true;
+            this.SemRetirarCheckBox.Location = new System.Drawing.Point(931, 347);
+            this.SemRetirarCheckBox.Name = "SemRetirarCheckBox";
+            this.SemRetirarCheckBox.Size = new System.Drawing.Size(111, 22);
+            this.SemRetirarCheckBox.TabIndex = 56;
+            this.SemRetirarCheckBox.Text = "Só sem retirar";
+            this.SemRetirarCheckBox.UseVisualStyleBackColor = true;
+            this.SemRetirarCheckBox.CheckedChanged += new System.EventHandler(this.SemRetirarCheckBox_CheckedChanged);
             // 
             // ChurrascoRadioButton
             // 
@@ -232,7 +258,6 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.PedidosDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.PedidosDataGridView.Location = new System.Drawing.Point(6, 22);
-            this.PedidosDataGridView.MultiSelect = false;
             this.PedidosDataGridView.Name = "PedidosDataGridView";
             this.PedidosDataGridView.ReadOnly = true;
             this.PedidosDataGridView.RowHeadersVisible = false;
@@ -276,5 +301,7 @@
         private RadioButton SalgadosRadioButton;
         private RadioButton TudoRadioButton;
         private RadioButton ChurrascoRadioButton;
+        private CheckBox SemRetirarCheckBox;
+        private CheckBox AgruparCheckBox;
     }
 }

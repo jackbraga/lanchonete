@@ -92,7 +92,7 @@ namespace LanchoneteUDV.Infra.Data.Repositories
             }
         }
 
-        public IEnumerable<VendasPedidoEscala> ListarTodosVendasPedido(int idEscala, string filtro)
+        public IEnumerable<VendasPedidoEscala> ListarTodosVendasPedido(int idEscala, string filtro, bool soSemRetirar)
         {
             string sqlFiltro = "";
 
@@ -100,6 +100,12 @@ namespace LanchoneteUDV.Infra.Data.Repositories
             {
                  sqlFiltro =  $"AND tbCategorias.Descricao='{filtro}' ";
             }
+
+            if (soSemRetirar)
+            {
+                sqlFiltro = sqlFiltro + $" AND tbVendasPedido.Retirado=0 ";
+            }
+
 
             string sql = "SELECT tbVendasPedido.ID,tbVendasPedido.DataHoraPedido, tbSocios.Nome, tbProdutos.Descricao, tbVendasPedido.TipoPagamento, " +
                         "tbVendasPedido.Quantidade, tbVendasPedido.Retirado, tbVendasPedido.Observacao " +

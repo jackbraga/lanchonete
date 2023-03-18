@@ -17,7 +17,7 @@ namespace LanchoneteUDV.Application.Services
         private readonly IVendasPedidoRepository _vendasPedido;
         private readonly IMapper _mapper;
 
-        public VendasPedidoService(IVendasPedidoRepository vendasPedido,IMapper mapper)
+        public VendasPedidoService(IVendasPedidoRepository vendasPedido, IMapper mapper)
         {
             _vendasPedido = vendasPedido;
             _mapper = mapper;
@@ -32,7 +32,7 @@ namespace LanchoneteUDV.Application.Services
 
         public void AtualizaFormaPagamentoItem(int idVendaPedido, string tipoPagamento)
         {
-            _vendasPedido.AtualizaFormaPagamentoItem(idVendaPedido,tipoPagamento);
+            _vendasPedido.AtualizaFormaPagamentoItem(idVendaPedido, tipoPagamento);
         }
 
         public void DesmarcarPagamentoItem(int idVendaPedido)
@@ -45,9 +45,24 @@ namespace LanchoneteUDV.Application.Services
             _vendasPedido.DesmarcarRetirada(idVendaPedido);
         }
 
-        public IEnumerable<VendasPedidoEscalaDTO> ListarTodosVendasPedido(int idEscala, string filtro)
+        public IEnumerable<VendasPedidoEscalaDTO> ListarTodosVendasPedido(int idEscala, string filtro, bool soSemRetirar, bool agrupar)
         {
-            var pedidos = _vendasPedido.ListarTodosVendasPedido(idEscala, filtro);
+            var pedidos = _vendasPedido.ListarTodosVendasPedido(idEscala, filtro, soSemRetirar);
+
+            if (agrupar)
+            {
+                IEnumerable<VendasPedidoEscalaDTO> pedidos2 = pedidos.GroupBy(p => new { p.Nome, p.Descricao })
+                    .Select(i => new VendasPedidoEscalaDTO
+                    {
+                        Nome = i.Key.Nome,
+                        Descricao = i.Key.Descricao,
+                        Quantidade = i.Sum(s => s.Quantidade),
+                        DataHoraPedido = i.First().DataHoraPedido,
+                    }).ToList();
+                return _mapper.Map<IEnumerable<VendasPedidoEscalaDTO>>(pedidos2);
+            }
+
+
             return _mapper.Map<IEnumerable<VendasPedidoEscalaDTO>>(pedidos);
         }
 

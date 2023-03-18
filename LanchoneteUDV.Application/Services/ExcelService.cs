@@ -27,7 +27,7 @@ namespace LanchoneteUDV.Application.Services
                 ExcelPackage excel = new ExcelPackage();
 
                 var workSheet = Planilha(planilhas[0],excel.Workbook.Worksheets.Add("Vendas - " + dataEscala));
-                var workSheetParceria = Planilha(planilhas[1], excel.Workbook.Worksheets.Add("Parcerias - " + dataEscala));
+                //var workSheetParceria = Planilha(planilhas[1], excel.Workbook.Worksheets.Add("Parcerias - " + dataEscala));
 
 
                 if (File.Exists(caminho))

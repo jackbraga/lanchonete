@@ -14,7 +14,7 @@ namespace LanchoneteUDV.Application.Interfaces
 
         //IEnumerable<VendasPedidoSocioDTO> ListarVendasPedidoPago(int idVenda);
 
-        IEnumerable<VendasPedidoEscalaDTO> ListarTodosVendasPedido(int idEscala, string filtro);
+        IEnumerable<VendasPedidoEscalaDTO> ListarTodosVendasPedido(int idEscala, string filtro, bool exibeSoSemRetirar, bool agrupar);
 
         void Add(VendasPedidoDTO vendaPedido);
 
