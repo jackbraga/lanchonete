@@ -6,6 +6,7 @@ namespace LanchoneteUDV
     public partial class FilaPedidosForm : Form
     {
         private readonly IVendasPedidoService _pedidoService;
+        Helper _helper = new Helper();
 
         private string _filtro="Todos";
         public FilaPedidosForm(IVendasPedidoService pedidoService)
@@ -21,7 +22,7 @@ namespace LanchoneteUDV
         private void RecarregarGrid()
         {
        
-            var lista = _pedidoService.ListarTodosVendasPedido(Convert.ToInt32(this.Tag), _filtro).ToList();
+            var lista = _pedidoService.ListarTodosVendasPedido(Convert.ToInt32(this.Tag), _filtro, Global.ExibeSoSemRetirar, Global.Agrupar).ToList();
             SortableBindingList<VendasPedidoEscalaDTO> listaSort = new SortableBindingList<VendasPedidoEscalaDTO>(lista);
             BindingSource bs = new BindingSource();
             bs.DataSource = listaSort;   // Bind to the sortable list
@@ -57,24 +58,58 @@ namespace LanchoneteUDV
 
         private void RegistrarRetirada()
         {
-            int row = PedidosDataGridView.CurrentRow.Index;
-            _pedidoService.RegistrarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
+
+            var linhasSelecionadas = PedidosDataGridView.SelectedRows
+                .OfType<DataGridViewRow>()
+                .Where(row => !row.IsNewRow)
+                .ToArray();
+
+            foreach (var linha in linhasSelecionadas)
+            {
+                //MessageBox.Show(PedidosDataGridView.Rows[linha.Index].Cells[2].Value.ToString());
+                _pedidoService.RegistrarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[linha.Index].Cells[0].Value));
+            }
+
             RecarregarGrid();
-            MessageBox.Show("Retirada registrada!", "Atenção!", MessageBoxButtons.OK);
-            PedidosDataGridView.Rows[row].Selected = true;
-            PedidosDataGridView.FirstDisplayedScrollingRowIndex = row;
+            MessageBox.Show("Retirada dos selecionados foi registrada!", "Atenção!", MessageBoxButtons.OK);
+            
+            //PedidosDataGridView.FirstDisplayedScrollingRowIndex = linhasSelecionadas.First().Index;
+
+            //int row = PedidosDataGridView.CurrentRow.Index;
+            //_pedidoService.RegistrarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
+            //RecarregarGrid();
+            //MessageBox.Show("Retirada registrada!", "Atenção!", MessageBoxButtons.OK);
+            //PedidosDataGridView.Rows[row].Selected = true;
+            //PedidosDataGridView.FirstDisplayedScrollingRowIndex = row;
 
         }
 
         private void DesmarcarRetirada()
         {
-            int row = PedidosDataGridView.CurrentRow.Index;
 
-            _pedidoService.DesmarcarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
+            var linhasSelecionadas = PedidosDataGridView.SelectedRows
+             .OfType<DataGridViewRow>()
+             .Where(row => !row.IsNewRow)
+             .ToArray();
+
+            foreach (var linha in linhasSelecionadas)
+            {
+                //MessageBox.Show(PedidosDataGridView.Rows[linha.Index].Cells[2].Value.ToString());
+                _pedidoService.DesmarcarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[linha.Index].Cells[0].Value));
+            }
+
             RecarregarGrid();
-            MessageBox.Show("Desmarcada retirada!", "Atenção!", MessageBoxButtons.OK);
-            PedidosDataGridView.Rows[row].Selected = true;
-            PedidosDataGridView.FirstDisplayedScrollingRowIndex = row;
+            MessageBox.Show("Desmarcada Retirada dos selecionados!", "Atenção!", MessageBoxButtons.OK);
+
+
+
+            //int row = PedidosDataGridView.CurrentRow.Index;
+
+            //_pedidoService.DesmarcarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
+            //RecarregarGrid();
+            //MessageBox.Show("Desmarcada retirada!", "Atenção!", MessageBoxButtons.OK);
+            //PedidosDataGridView.Rows[row].Selected = true;
+            //PedidosDataGridView.FirstDisplayedScrollingRowIndex = row;
 
         }
 
@@ -85,15 +120,20 @@ namespace LanchoneteUDV
 
         private void PedidosDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int row = PedidosDataGridView.CurrentRow.Index;
-            if (!Convert.ToBoolean(PedidosDataGridView.Rows[row].Cells[5].Value))
+            if (!Global.Agrupar)
             {
-                RegistrarRetirada();
+                int row = PedidosDataGridView.CurrentRow.Index;
+                if (!Convert.ToBoolean(PedidosDataGridView.Rows[row].Cells[5].Value))
+                {
+                    RegistrarRetirada();
+                }
+                else
+                {
+                    DesmarcarRetirada();
+                }
             }
-            else
-            {
-                DesmarcarRetirada();
-            }
+
+  
         }
 
         private void AtualizaButton_Click(object sender, EventArgs e)
@@ -143,6 +183,30 @@ namespace LanchoneteUDV
 
         private void ParceriasRadioButton_CheckedChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void SemRetirarCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Global.ExibeSoSemRetirar = SemRetirarCheckBox.Checked;
+            RecarregarGrid();
+            
+        }
+
+        private void AgruparCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Global.Agrupar = AgruparCheckBox.Checked;
+
+            if (Global.Agrupar)
+            {
+                _helper.Desabilita(RegistrarRetiradaButton, DesmarcarRetiradaButton);
+            }
+            else
+            {
+                _helper.Habilita(RegistrarRetiradaButton, DesmarcarRetiradaButton);
+            }
+            
+            RecarregarGrid();
 
         }
     }

@@ -7,6 +7,10 @@ namespace LanchoneteUDV
     {
         public static bool ExibeChurrasco { get; set; } = true;
         public static bool ExibeSalgados { get; set; } = true;
+
+        public static bool ExibeSoSemRetirar { get; set; } = false;
+
+        public static bool Agrupar { get; set; } = false;
     }
 
     internal static class Program

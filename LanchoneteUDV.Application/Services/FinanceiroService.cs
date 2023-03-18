@@ -46,11 +46,11 @@ namespace LanchoneteUDV.Application.Services
             var lista = _financeiroRepository.GerarListaRepasseFinanceiroExcel(idEscala);
             var listaDto = _mapper.Map<IEnumerable<RepasseFinanceiroExcelDTO>>(lista);
 
-            var listaParceria = _financeiroRepository.GerarListaRepasseFinanceiroParceriaExcel(idEscala);
-            var listaParceriaDto = _mapper.Map<IEnumerable<RepasseFinanceiroExcelDTO>>(listaParceria);
+            //var listaParceria = _financeiroRepository.GerarListaRepasseFinanceiroParceriaExcel(idEscala);
+            //var listaParceriaDto = _mapper.Map<IEnumerable<RepasseFinanceiroExcelDTO>>(listaParceria);
 
             planilhas.Add(listaDto);
-            planilhas.Add(listaParceriaDto);
+            //planilhas.Add(listaParceriaDto);
             return _excelService.CriarPlanilhaRepasse(planilhas);
         }
 

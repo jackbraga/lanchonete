@@ -13,7 +13,7 @@ namespace LanchoneteUDV.Domain.Interfaces
 
         //IEnumerable<VendasPedidoSocio> ListarVendasPedidoPago(int idVenda);
 
-        IEnumerable<VendasPedidoEscala> ListarTodosVendasPedido(int idEscala, string filtro);
+        IEnumerable<VendasPedidoEscala> ListarTodosVendasPedido(int idEscala, string filtro, bool soSemRetirar);
 
         void Add(VendasPedido vendaPedido);
 
