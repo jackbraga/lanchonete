@@ -48,6 +48,7 @@ namespace LanchoneteUDV
             PedidosDataGridView.Columns[6].HeaderText = "Observação";
             PedidosDataGridView.Columns[6].Width = 200;
 
+            TotalLabel.Text = lista.Sum(l=>l.Quantidade).ToString();
 
         }
 

@@ -743,7 +743,6 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.PedidosDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.PedidosDataGridView.Location = new System.Drawing.Point(6, 22);
-            this.PedidosDataGridView.MultiSelect = false;
             this.PedidosDataGridView.Name = "PedidosDataGridView";
             this.PedidosDataGridView.ReadOnly = true;
             this.PedidosDataGridView.RowHeadersVisible = false;

@@ -194,10 +194,30 @@ namespace LanchoneteUDV
             }
             else
             {
-                int row = PedidosDataGridView.CurrentRow.Index;
-                int idPedido = Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value);
-                RegistrarRetirada(idPedido);
+                var linhasSelecionadas = PedidosDataGridView.SelectedRows
+                    .OfType<DataGridViewRow>()
+                    .Where(row => !row.IsNewRow)
+                    .ToArray();
+
+                foreach (var linha in linhasSelecionadas)
+                {
+                    _vendasPedidoService.RegistrarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[linha.Index].Cells[0].Value));
+                }
+
+                MessageBox.Show("Retirada dos selecionados foi registrada!", "Atenção!", MessageBoxButtons.OK);
+                RecarregarGrid();
             }
+
+            //if (PedidosDataGridView.SelectedRows.Count == 0)
+            //{
+            //    MessageBox.Show("Selecione um registro! ", "ATENÇÃO!", MessageBoxButtons.OK);
+            //}
+            //else
+            //{
+            //    int row = PedidosDataGridView.CurrentRow.Index;
+            //    int idPedido = Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value);
+            //    RegistrarRetirada(idPedido);
+            //}
         }
 
         private void PedidosDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -206,58 +226,73 @@ namespace LanchoneteUDV
             int idPedido = Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value);
             if (!Convert.ToBoolean(PedidosDataGridView.Rows[row].Cells[6].Value))
             {
-                RegistrarRetirada(idPedido);
+                _vendasPedidoService.RegistrarRetirada(idPedido);
+                MessageBox.Show("Registrada retirada!", "Atenção!", MessageBoxButtons.OK);
             }
             else
             {
-                DesmarcarRetirada(idPedido);
+                _vendasPedidoService.DesmarcarRetirada(idPedido);
+                MessageBox.Show("Desmarcada retirada!", "Atenção!", MessageBoxButtons.OK);
             }
+            RecarregarGrid();
         }
 
         private void DesmarcarRetiradaButton_Click(object sender, EventArgs e)
         {
             if (PedidosDataGridView.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Selecione um registro!", "ATENÇÃO!", MessageBoxButtons.OK);
+                MessageBox.Show("Selecione um registro! ", "ATENÇÃO!", MessageBoxButtons.OK);
             }
             else
             {
-                int row = PedidosDataGridView.CurrentRow.Index;
-                int idPedido = Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value);
-                DesmarcarRetirada(idPedido);
+                var linhasSelecionadas = PedidosDataGridView.SelectedRows
+                    .OfType<DataGridViewRow>()
+                    .Where(row => !row.IsNewRow)
+                    .ToArray();
+
+                foreach (var linha in linhasSelecionadas)
+                {
+                    _vendasPedidoService.DesmarcarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[linha.Index].Cells[0].Value));
+                }
+
+                MessageBox.Show("Desmarcada retirada dos itens selecionados foi registrada!", "Atenção!", MessageBoxButtons.OK);
+                RecarregarGrid();
             }
 
         }
 
         private void RemoverButton_Click(object sender, EventArgs e)
         {
-            int row;
+            //int row;
 
 
             if (PedidosDataGridView.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Selecione um registro para remover", "ATENÇÃO!", MessageBoxButtons.OK);
+                MessageBox.Show("Selecione ao menos um registro para remover", "ATENÇÃO!", MessageBoxButtons.OK);
             }
             else
             {
-                if (MessageBox.Show("Deseja realmente excluir o item do pedido?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Deseja realmente excluir os itens do pedido?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    if (PedidosDataGridView.Rows.Count == 1)
+                    var linhasSelecionadas = PedidosDataGridView.SelectedRows
+                           .OfType<DataGridViewRow>()
+                           .Where(row => !row.IsNewRow)
+                           .ToArray();
+
+                    foreach (var linha in linhasSelecionadas)
                     {
-                        row = 0;
-                    }
-                    else
-                    {
-                        row = PedidosDataGridView.CurrentRow.Index;
+                        _vendasPedidoService.Remove(Convert.ToInt32(PedidosDataGridView.Rows[linha.Index].Cells[0].Value));
                     }
 
-                    _vendasPedidoService.Remove(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
+                    //_vendasPedidoService.Remove(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
                     RecarregarVenda();
                     RecarregarGridEstoque();
                     RecarregarGridEstoqueSalgados();
 
                 }
             }
+
+
         }
 
         private void FilaButton_Click(object sender, EventArgs e)
@@ -365,7 +400,10 @@ namespace LanchoneteUDV
                 int idPedido = Convert.ToInt32(PedidosPagosDataGridView.Rows[row].Cells[0].Value);
                 //_vendasPedidoService.RegistrarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
 
-                RegistrarRetirada(idPedido);
+                _vendasPedidoService.RegistrarRetirada(idPedido);
+                MessageBox.Show("Registrada Retirada! ", "ATENÇÃO!", MessageBoxButtons.OK);
+                RecarregarGrid();
+
             }
         }
 
@@ -647,12 +685,9 @@ namespace LanchoneteUDV
 
         private void RegistrarRetirada(int idPedido)
         {
-            //int row = PedidosDataGridView.CurrentRow.Index;
-            //_vendasPedidoService.RegistrarRetirada(Convert.ToInt32(PedidosDataGridView.Rows[row].Cells[0].Value));
             _vendasPedidoService.RegistrarRetirada(idPedido);
             RecarregarGrid();
-            MessageBox.Show("Retirada registrada!", "Atenção!", MessageBoxButtons.OK);
-
+            MessageBox.Show("Registrado retirada!", "Atenção!", MessageBoxButtons.OK);
         }
 
         private void DesmarcarRetirada(int idPedido)

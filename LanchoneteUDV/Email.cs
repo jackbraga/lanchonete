@@ -161,7 +161,10 @@ namespace LanchoneteUDV
                        no máximo até: <b>@contestacao</b>
                       <br>
                       <br>
-                Fraternalmente,
+Clique <a href='https://api.whatsapp.com/send/?phone=5511986055859&text&type=phone_number&app_absent=0'>aqui</a> para falar conosco 
+<br>
+<br>
+Fraternalmente,
                 <br>
                 <br>
                 Equipe da Lanchonete São Joao Batista
